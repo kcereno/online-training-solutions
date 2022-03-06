@@ -1,4 +1,5 @@
 import { Button, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Showcase() {
   return (
@@ -12,9 +13,11 @@ export default function Showcase() {
                   Where Trainers and Clients Connect
                 </h1>
                 <div>
-                  <Button className="mx-2" variant="outline-light" size="lg">
-                    Log In
-                  </Button>
+                  <Link to="/signin">
+                    <Button className="mx-2" variant="outline-light" size="lg">
+                      Log In
+                    </Button>
+                  </Link>
                   <Button className="mx-2" variant="outline-light" size="lg">
                     Sign Up
                   </Button>
