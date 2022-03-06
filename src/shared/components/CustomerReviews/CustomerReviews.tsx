@@ -1,10 +1,10 @@
 import { Carousel } from "react-bootstrap";
-
+import './CustomerReviews.css'
 
 export default function CustomerReviews(){
 
   return (
-    <div className="carousel text-center bg-secondary text-white ">
+    <div className="carousel text-center text-white" id='customerReviews'>
     <h2 className="pt-4 pb-3 display-6">Customer Reviews</h2>
     <Carousel controls={false}>
       <Carousel.Item> 
