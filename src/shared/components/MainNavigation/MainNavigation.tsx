@@ -9,7 +9,6 @@ export default function MainNavigation() {
         <Navbar.Brand href="/" className="mx-auto">
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
-
         </Navbar.Brand>
       </Container>
     </Navbar>

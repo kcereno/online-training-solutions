@@ -1,4 +1,10 @@
-a, a::before,a::after{
+a,
+a::before,
+a::after {
   color: white;
   cursor: pointer;
+}
+
+#footer {
+  height: 150px
 }
