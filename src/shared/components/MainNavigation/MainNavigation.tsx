@@ -6,7 +6,7 @@ export default function MainNavigation() {
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>
-        <Navbar.Brand href="/" className="mx-auto">
+        <Navbar.Brand href="/">
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
         </Navbar.Brand>
