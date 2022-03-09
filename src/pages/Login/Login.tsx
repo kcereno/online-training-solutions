@@ -2,15 +2,21 @@ import "./Login.css";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form, Row } from "react-bootstrap";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../store/auth-context";
 
-import validateCredentials from "../../helpers/validateCredentials";
 
 export default function Login() {
   const [credentialsValid, setCredentialsValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const ctx = useContext(AuthContext);
+
+  const { login, activeUser } = ctx;
+
+  console.log(activeUser);
   const emailChangeHandler = (e: any) => {
     setEmail(e.target.value);
   };
@@ -22,18 +28,17 @@ export default function Login() {
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
 
-    console.log(validateCredentials(email, password));
-
-    if (validateCredentials(email, password) === false) {
-      console.log("asfsdfds");
+    if (login(email, password) === false) {
       setCredentialsValid(false);
+      setEmail("");
+      setPassword("");
     }
   };
 
   return (
-    <Container className="form-container text-white text-center">
+    <Container className="form-container text-white text-center bg-black">
       <Row className="align-items-center h-100">
-        <Form onSubmit={onSubmitHandler} noValidate validated={false}>
+        <Form onSubmit={onSubmitHandler}>
           <FontAwesomeIcon
             className="icon mb-4"
             icon={faDumbbell}
@@ -64,7 +69,6 @@ export default function Login() {
             {!credentialsValid && (
               <p className="my-2 red-text">Incorrect Email or Password</p>
             )}
-
           </div>
 
           <div className="d-grid gap-2">
