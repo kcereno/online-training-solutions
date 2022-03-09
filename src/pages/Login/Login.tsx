@@ -3,9 +3,11 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
-import validate from "../../helpers/Validate";
+
+import validateCredentials from "../../helpers/validateCredentials";
 
 export default function Login() {
+  const [credentialsValid, setCredentialsValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,12 +21,19 @@ export default function Login() {
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
-    validate(email, password);
+
+    console.log(validateCredentials(email, password));
+
+    if (validateCredentials(email, password) === false) {
+      console.log("asfsdfds");
+      setCredentialsValid(false);
+    }
   };
+
   return (
     <Container className="form-container text-white text-center">
       <Row className="align-items-center h-100">
-        <Form onSubmit={onSubmitHandler}>
+        <Form onSubmit={onSubmitHandler} noValidate validated={false}>
           <FontAwesomeIcon
             className="icon mb-4"
             icon={faDumbbell}
@@ -33,21 +42,31 @@ export default function Login() {
           />
           <h1 className="display-5 mb-3">Please sign in</h1>
           <div className="input-fields mb-3">
-            <Form.Control
-              className="w-100"
-              type="email"
-              placeholder="Email"
-              onChange={emailChangeHandler}
-              value={email}
-            />
-            <Form.Control
-              className="w-100"
-              type="password"
-              placeholder="Password"
-              onChange={passwordChangeHandler}
-              value={password}
-            />
+            <Form.Group>
+              <Form.Control
+                className="w-100"
+                type="email"
+                placeholder="Email"
+                onChange={emailChangeHandler}
+                value={email}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                className="w-100"
+                type="password"
+                placeholder="Password"
+                onChange={passwordChangeHandler}
+                value={password}
+              />
+            </Form.Group>
+
+            {!credentialsValid && (
+              <p className="my-2 red-text">Incorrect Email or Password</p>
+            )}
+
           </div>
+
           <div className="d-grid gap-2">
             <Button variant="outline-light" size="lg" type="submit">
               Sign In
