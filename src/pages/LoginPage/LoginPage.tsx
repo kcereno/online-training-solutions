@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../store/auth-context";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [credentialsValid, setCredentialsValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  let navigate = useNavigate();
 
   const ctx = useContext(AuthContext);
 
@@ -25,10 +28,15 @@ export default function Login() {
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
 
-    if (login(email, password) === false) {
+    let loginResult = login(email, password);
+
+    if (!loginResult) {
       setCredentialsValid(false);
       setEmail("");
       setPassword("");
+    } else {
+      let userName = loginResult.info.firstName;
+      navigate(`/user/${userName}`);
     }
   };
 
