@@ -9,8 +9,7 @@ export default function MainNavigation() {
   const ctx = useContext(AuthContext);
 
   const { isLoggedIn } = ctx;
-
-  console.log(isLoggedIn);
+  
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>

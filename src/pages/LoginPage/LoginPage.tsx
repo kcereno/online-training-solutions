@@ -1,22 +1,19 @@
-import "./Login.css";
+import "./LoginPage.css";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../store/auth-context";
 
-
 export default function Login() {
   const [credentialsValid, setCredentialsValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const ctx = useContext(AuthContext);
 
-  const { login, activeUser } = ctx;
+  const { login } = ctx;
 
-  console.log(activeUser);
   const emailChangeHandler = (e: any) => {
     setEmail(e.target.value);
   };

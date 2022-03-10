@@ -13,7 +13,6 @@ export default function AuthContextProvider(props: any) {
   const [activeUser, setActiveUser] = useState(undefined);
 
   const login = useCallback((email: string, password: string): any => {
-    console.log(email, password);
     let foundUser = USERS.find(
       (user: any) => user.loginCredentials.email === email
     );

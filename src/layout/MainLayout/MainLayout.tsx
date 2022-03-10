@@ -1,12 +1,14 @@
+import './MainLayout.css'
 import Footer from "../Footer/Footer";
 import MainNavigation from "../MainNavigation/MainNavigation";
+import { Fragment } from "react";
 
 export default function MainLayout(props: any) {
   return (
-    <div className='bg-black'>
+    <Fragment>
       <MainNavigation />
-      {props.children}
+      <div className="layout-container">{props.children}</div>
       <Footer />
-    </div>
+    </Fragment>
   );
 }

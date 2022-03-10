@@ -5,10 +5,10 @@ export default function Showcase() {
   return (
     <section id="showcase">
       <div className="vertical-align">
-        <Container className="text-white text-center align-middle">
+        <Container className="text-white text-center">
           <Row className="">
             <div className="">
-              <h1 className="display-2 py-3   ">
+              <h1 className="display-2 py-3 ">
                 Where Trainers and Clients Connect
               </h1>
               <div className="button-group">
