@@ -1,6 +1,7 @@
 import { Button, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Showcase.css";
+
 export default function Showcase() {
   return (
     <section id="showcase">
@@ -17,7 +18,6 @@ export default function Showcase() {
                     Log In
                   </Button>
                 </Link>
-
                 <Button className="mx-2" variant="outline-light" size="lg">
                   Sign Up
                 </Button>

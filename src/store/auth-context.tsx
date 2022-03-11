@@ -1,19 +1,22 @@
 import { createContext, useCallback, useState } from "react";
 import { USERS } from "../constants/UserList";
+import { ChildrenInterface, LoginCredentials } from "../constants/interfaces";
 
 export const AuthContext = createContext({
   isLoggedIn: false,
   activeUser: undefined,
-  login: (email: string, password: string): any => {},
+  login: (loginCredentials: LoginCredentials): any => {},
   logout: () => {},
 });
 
-export default function AuthContextProvider(props: any) {
+export default function AuthContextProvider(props: ChildrenInterface) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeUser, setActiveUser] = useState(undefined);
 
   const login = useCallback(
-    (email: string, password: string): any => {
+    (loginCredentials: LoginCredentials): any => {
+      const { email, password } = loginCredentials;
+
       let foundUser = USERS.find(
         (user: any) => user.loginCredentials.email === email
       );

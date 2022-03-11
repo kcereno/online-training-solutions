@@ -28,7 +28,10 @@ export default function Login() {
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
 
-    let loginResult = login(email, password);
+    let loginResult = login({
+      email,
+      password,
+    });
 
     if (!loginResult) {
       setCredentialsValid(false);
