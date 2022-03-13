@@ -8,7 +8,7 @@ import NavLinks from "./NavLinks/NavLinks";
 export default function MainNavigation() {
   const ctx = useContext(AuthContext);
 
-  const { isLoggedIn } = ctx;
+  const { activeUser } = ctx;
   
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -18,7 +18,7 @@ export default function MainNavigation() {
           Online Training Solutions
         </Navbar.Brand>
 
-        {isLoggedIn ? <NavLinks /> : null}
+        {activeUser ? <NavLinks /> : null}
       </Container>
     </Navbar>
   );

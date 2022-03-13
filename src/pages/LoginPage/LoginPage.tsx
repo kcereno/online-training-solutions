@@ -14,7 +14,6 @@ export default function Login() {
   let navigate = useNavigate();
 
   const ctx = useContext(AuthContext);
-
   const { login } = ctx;
 
   const emailChangeHandler = (e: any) => {
@@ -38,6 +37,7 @@ export default function Login() {
       setEmail("");
       setPassword("");
     } else {
+      console.log("success");
       let userName = loginResult.info.firstName;
       navigate(`/user/${userName}`);
     }

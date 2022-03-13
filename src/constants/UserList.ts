@@ -1,10 +1,12 @@
-export const USERS: any = [
+import { UserInterface, Role } from "./interfaces";
+
+export const USERS: UserInterface[] = [
   {
     info: {
       firstName: "Karl",
       lastName: "Cereno",
     },
-    role: "TRAINER",
+    role: Role.Trainer,
     loginCredentials: {
       email: "trainer@gmail.com",
       password: "password",
@@ -15,7 +17,7 @@ export const USERS: any = [
       firstName: "Ana",
       lastName: "Li",
     },
-    role: "CLIENT",
+    role: Role.Client,
     loginCredentials: {
       email: "client@gmail.com",
       password: "password",
