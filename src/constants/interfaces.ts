@@ -1,11 +1,5 @@
-// Enums
-export enum Role {
-  Trainer,
-  Client,
-}
 
-// Intefaces
-
+// Interfaces
 export interface ChildrenInterface {
   children: object;
 }
@@ -20,7 +14,7 @@ export interface UserInterface {
     firstName: string | undefined;
     lastName: string | undefined;
   };
-  role: Role;
+  role: "TRAINER" | "CLIENT";
   loginCredentials: {
     email: string | undefined;
     password: string | undefined;

@@ -1,4 +1,4 @@
-import { UserInterface, Role } from "./interfaces";
+import { UserInterface } from "./interfaces";
 
 export const USERS: UserInterface[] = [
   {
@@ -6,7 +6,7 @@ export const USERS: UserInterface[] = [
       firstName: "Karl",
       lastName: "Cereno",
     },
-    role: Role.Trainer,
+    role: "TRAINER",
     loginCredentials: {
       email: "trainer@gmail.com",
       password: "password",
@@ -17,7 +17,7 @@ export const USERS: UserInterface[] = [
       firstName: "Ana",
       lastName: "Li",
     },
-    role: Role.Client,
+    role: "CLIENT",
     loginCredentials: {
       email: "client@gmail.com",
       password: "password",
