@@ -1,3 +1,4 @@
+// Aliases
 
 // Interfaces
 export interface ChildrenInterface {
@@ -9,20 +10,15 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface UserInterface {
+export interface User {
   info: {
-    firstName: string | undefined;
-    lastName: string | undefined;
+    firstName: string;
+    lastName: string;
+  };
+  loginCredentials: {
+    email: string;
+    password: string;
   };
   role: "TRAINER" | "CLIENT";
-  loginCredentials: {
-    email: string | undefined;
-    password: string | undefined;
-  };
 }
 
-export interface AuthInterface {
-  activeUser: UserInterface | undefined;
-  login: Function;
-  logout: Function;
-}

@@ -2,9 +2,13 @@ import "./MainLayout.css";
 import Footer from "../Footer/Footer";
 import MainNavigation from "../MainNavigation/MainNavigation";
 import { Fragment } from "react";
-import { ChildrenInterface } from "../../constants/interfaces";
 
-export default function MainLayout(props: ChildrenInterface) {
+type propType = {
+  children: object;
+};
+
+export default function MainLayout(props: propType) {
+  console.log(props);
   return (
     <Fragment>
       <MainNavigation />

@@ -1,44 +1,40 @@
 import { createContext, useCallback, useState } from "react";
 import { USERS } from "../constants/UserList";
 import {
-  AuthInterface,
   LoginCredentials,
   ChildrenInterface,
-  UserInterface,
+ 
 } from "../constants/interfaces";
 
-export const AuthContext = createContext<AuthInterface>({
+type AuthContextType = {
+  activeUser: any;
+  login: Function;
+  logout: Function;
+};
+
+export const AuthContext = createContext<AuthContextType>({
   activeUser: undefined,
   login: () => {},
   logout: () => {},
 });
 
 export default function AuthContextProvider(props: ChildrenInterface) {
-  const [activeUser, setActiveUser] = useState<UserInterface | undefined>(
-    undefined
-  );
+  const [activeUser, setActiveUser] = useState<any | undefined>(undefined);
 
-  const login = useCallback(
-    (loginCredentials: LoginCredentials): undefined | UserInterface => {
-      const { email, password } = loginCredentials;
+  const login = useCallback((loginCredentials: LoginCredentials) => {
+    const { email, password } = loginCredentials;
 
-      let foundUser = USERS.find(
-        (user) => user.loginCredentials.email === email
-      );
+    let foundUser = USERS.find((user) => user.loginCredentials.email === email);
 
-      console.log(foundUser);
+    if (!foundUser || foundUser.loginCredentials.password !== password) {
+      return undefined;
+    } else {
+      setActiveUser(foundUser);
+      return foundUser;
+    }
+  }, []);
 
-      if (!foundUser || foundUser.loginCredentials.password !== password) {
-        return undefined;
-      } else {
-        setActiveUser(foundUser);
-        return foundUser;
-      }
-    },
-    []
-  );
-
-  const logout = useCallback(() => {
+  const logout = useCallback((): void => {
     setActiveUser(undefined);
   }, []);
 

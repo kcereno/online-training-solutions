@@ -17,6 +17,7 @@ export default function Login() {
   const { login } = ctx;
 
   const emailChangeHandler = (e: any) => {
+    console.log(e)
     setEmail(e.target.value);
   };
 
