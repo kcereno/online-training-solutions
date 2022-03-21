@@ -19,7 +19,7 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 export default function AuthContextProvider(props: ChildrenInterface) {
-  const [activeUser, setActiveUser] = useState<any | undefined>(undefined);
+  const [activeUser, setActiveUser] = useState<any | undefined>(undefined); // Change to trainer/client/undefined typr
 
   const login = useCallback((loginCredentials: LoginCredentials) => {
     const { email, password } = loginCredentials;

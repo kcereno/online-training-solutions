@@ -1,3 +1,5 @@
+import { number } from "yargs";
+
 interface UserInfoInterface {
   firstName: string;
   lastName: string;
@@ -13,7 +15,7 @@ interface LoginCredentialsInterface {
 class User {
   constructor(
     protected info: UserInfoInterface,
-    protected loginCredentials: LoginCredentialsInterface
+    public loginCredentials: LoginCredentialsInterface
   ) {
     this.info.firstName = info.firstName;
     this.info.lastName = info.lastName;
@@ -22,13 +24,17 @@ class User {
   }
 }
 
+// TODO: Use setters and getters for the methods
+
 class Trainer extends User {
-  getName(): void {
-    console.log(this.info.firstName);
-  }
+  addClient(client: Client): void {}
+  removeClient(client: Client): void {}
+  editCleint(client: Client): void {}
 }
 
-class Client extends User {}
+class Client extends User {
+  recordSet(weight: number, set: number): void {}
+}
 
 const Karl = new Trainer(
   {
