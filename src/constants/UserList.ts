@@ -1,5 +1,3 @@
-import { number } from "yargs";
-
 interface UserInfoInterface {
   firstName: string;
   lastName: string;
@@ -10,6 +8,17 @@ interface UserInfoInterface {
 interface LoginCredentialsInterface {
   email: string;
   password: string;
+}
+
+interface ProgramInterface {
+  name: string;
+  exerciseList: ExerciseInterface[];
+}
+
+interface ExerciseInterface {
+  name: string;
+  weight: string;
+  reps: string;
 }
 
 class User {
@@ -27,16 +36,36 @@ class User {
 // TODO: Use setters and getters for the methods
 
 class Trainer extends User {
-  addClient(client: Client): void {}
-  removeClient(client: Client): void {}
-  editCleint(client: Client): void {}
+  constructor(
+    protected info: UserInfoInterface,
+    public loginCredentials: LoginCredentialsInterface
+  ) {
+    super(info, loginCredentials);
+  }
+
+  // client: object = {
+  //   add(client: Client): void {},
+  //   remove(client: Client): void {},
+  //   edit(client: Client): void {},
+  // };
+  // program: object = {
+  //   add(client: Client, program: ProgramInterface): void {},
+  //   remove(client: Client, program: ProgramInterface): void {},
+  //   edit(client: Client, program: ProgramInterface): void {},
+  // };
+  // exercise: object = {
+  //   add(client: Client, exercise: ExerciseInterface): void {},
+  //   remove(client: Client, exercise: ExerciseInterface): void {},
+  //   edit(client: Client, exercise: ExerciseInterface): void {},
+  // };
 }
 
 class Client extends User {
   recordSet(weight: number, set: number): void {}
+  editSet(weight: number, set: number): void {}
 }
 
-const Karl = new Trainer(
+export const Karl = new Trainer(
   {
     firstName: "Karl",
     lastName: "Cereno",

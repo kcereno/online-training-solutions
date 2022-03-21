@@ -1,10 +1,11 @@
 import { createContext, useCallback, useState } from "react";
-import { USERS } from "../constants/UserList";
+import { Karl, USERS } from "../constants/UserList";
 import {
   LoginCredentials,
   ChildrenInterface,
  
 } from "../constants/interfaces";
+
 
 type AuthContextType = {
   activeUser: any;
@@ -20,6 +21,7 @@ export const AuthContext = createContext<AuthContextType>({
 
 export default function AuthContextProvider(props: ChildrenInterface) {
   const [activeUser, setActiveUser] = useState<any | undefined>(undefined); // Change to trainer/client/undefined typr
+
 
   const login = useCallback((loginCredentials: LoginCredentials) => {
     const { email, password } = loginCredentials;

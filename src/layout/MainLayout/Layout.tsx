@@ -1,4 +1,4 @@
-import "./MainLayout.css";
+import "./Layout.css";
 import Footer from "../Footer/Footer";
 import MainNavigation from "../MainNavigation/MainNavigation";
 import { Fragment } from "react";
@@ -7,8 +7,8 @@ type propType = {
   children: object;
 };
 
-export default function MainLayout(props: propType) {
-  console.log(props);
+export default function Layout(props: propType) {
+
   return (
     <Fragment>
       <MainNavigation />
