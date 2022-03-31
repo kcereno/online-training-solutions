@@ -1,15 +1,15 @@
 import { Container, Navbar } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
-import { AuthContext } from "../../store/auth-context";
+
 import NavLinks from "./NavLinks/NavLinks";
+import { User } from "../../constants/UserList";
 
-export default function MainNavigation() {
-  const ctx = useContext(AuthContext);
+interface Props {
+  activeUser: User | null;
+}
 
-  const { activeUser } = ctx;
-  
+export default function MainNavigation({ activeUser }: Props) {
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>
@@ -17,8 +17,8 @@ export default function MainNavigation() {
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
         </Navbar.Brand>
-
-        {activeUser ? <NavLinks /> : null}
+      
+        {activeUser ? <NavLinks /> : null} 
       </Container>
     </Navbar>
   );

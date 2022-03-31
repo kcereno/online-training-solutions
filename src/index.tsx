@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./store/auth-context";
-import RouteTree from "./routes/RouteTree";
-import Layout from "./layout/MainLayout/Layout";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <Layout>
-        <RouteTree />
-      </Layout>
-    </AuthContextProvider>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

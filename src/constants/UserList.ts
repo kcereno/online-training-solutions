@@ -3,6 +3,7 @@ interface UserInfoInterface {
   lastName: string;
   birthday: Date;
   role: "TRAINER" | "CLIENT";
+  profilePicture: string;
 }
 
 interface LoginCredentialsInterface {
@@ -21,9 +22,9 @@ interface ExerciseInterface {
   reps: string;
 }
 
-class User {
+export class User {
   constructor(
-    protected info: UserInfoInterface,
+    public info: UserInfoInterface,
     public loginCredentials: LoginCredentialsInterface
   ) {
     this.info.firstName = info.firstName;
@@ -35,10 +36,11 @@ class User {
 
 // TODO: Use setters and getters for the methods
 
-class Trainer extends User {
+ export class Trainer extends User {
   constructor(
-    protected info: UserInfoInterface,
-    public loginCredentials: LoginCredentialsInterface
+    public info: UserInfoInterface,
+    public loginCredentials: LoginCredentialsInterface,
+    public clientList: Client[]
   ) {
     super(info, loginCredentials);
   }
@@ -60,23 +62,10 @@ class Trainer extends User {
   // };
 }
 
-class Client extends User {
+export class Client extends User {
   recordSet(weight: number, set: number): void {}
   editSet(weight: number, set: number): void {}
 }
-
-export const Karl = new Trainer(
-  {
-    firstName: "Karl",
-    lastName: "Cereno",
-    birthday: new Date(1989, 0o4, 18),
-    role: "TRAINER",
-  },
-  {
-    email: "trainer@gmail.com",
-    password: "password",
-  }
-);
 
 const Ana = new Client(
   {
@@ -84,6 +73,8 @@ const Ana = new Client(
     lastName: "Li",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
+    profilePicture:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   },
   {
     email: "trainer@gmail.com",
@@ -91,4 +82,35 @@ const Ana = new Client(
   }
 );
 
-export const USERS: User[] = [Karl, Ana];
+const Ana2 = new Client(
+  {
+    firstName: "Ana2",
+    lastName: "Li",
+    birthday: new Date(1989, 11, 31),
+    role: "CLIENT",
+    profilePicture:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  },
+  {
+    email: "trainer@gmail.com",
+    password: "password",
+  }
+);
+
+export const Karl = new Trainer(
+  {
+    firstName: "Karl",
+    lastName: "Cereno",
+    birthday: new Date(1989, 0o4, 18),
+    role: "TRAINER",
+    profilePicture:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  },
+  {
+    email: "trainer@gmail.com",
+    password: "password",
+  },
+  [Ana]
+);
+
+export const USERS: User[] = [Karl, Ana, Ana2];

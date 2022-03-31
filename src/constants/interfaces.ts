@@ -1,6 +1,3 @@
-// Aliases
-
-// Interfaces
 export interface ChildrenInterface {
   children: object;
 }
