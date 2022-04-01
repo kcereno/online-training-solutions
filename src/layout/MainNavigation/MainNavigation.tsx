@@ -9,7 +9,7 @@ interface Props {
   activeUser: User | null;
 }
 
-export default function MainNavigation({ activeUser }: Props) {
+const MainNavigation = ({ activeUser }: Props) => {
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>
@@ -17,9 +17,10 @@ export default function MainNavigation({ activeUser }: Props) {
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
         </Navbar.Brand>
-      
-        {activeUser ? <NavLinks /> : null} 
+        {activeUser ? <NavLinks /> : null}
       </Container>
     </Navbar>
   );
-}
+};
+
+export default MainNavigation;

@@ -1,27 +1,27 @@
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import './ClientCard.css'
+import "./ClientCard.css";
 
-type PropTypes = {
+interface Props {
+  firstName: string;
+  lastName: string;
   profilePicture: string;
-  name: string;
-};
-
-export default function ClientCard(props: PropTypes) {
-  const navigate = useNavigate();
-  const { name, profilePicture } = props;
-
-  const openButtonClickHandler = (e: object): void => {
-    console.log(e);
-    navigate("clients/" + "clientname");
-  };
-
+}
+export default function ClientCard({
+  firstName,
+  lastName,
+  profilePicture,
+}: Props) {
   return (
-    <Card className="text-center card-container">
-      <Card.Img variant="top" src={profilePicture} />
-      <Card.Title className="text-center mt-1">{name}</Card.Title>
+    <Card className="text-center text-white card-container bg-dark mx-5">
+      <Card.Img
+        variant="top"
+        className="profile-picture"
+        src={profilePicture}
+      />
+      <Card.Title className="text-center mt-2">{`${firstName} ${lastName}`}</Card.Title>
       <Card.Body>
-        <Button onClick={openButtonClickHandler}>Open</Button>
+        <Button>Open</Button>
       </Card.Body>
     </Card>
   );

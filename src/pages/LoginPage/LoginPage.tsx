@@ -3,12 +3,12 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
-import { User } from "../../constants/UserList";
+import { Client, Trainer } from "../../constants/UserList";
 import { USERS } from "../../constants/UserList";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  login: React.Dispatch<React.SetStateAction<User | null>>;
+  login: React.Dispatch<React.SetStateAction<Trainer | Client | null>>;
 }
 
 export default function LoginPage({ login }: Props) {

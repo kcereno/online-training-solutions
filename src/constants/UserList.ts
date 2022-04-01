@@ -11,17 +11,6 @@ interface LoginCredentialsInterface {
   password: string;
 }
 
-interface ProgramInterface {
-  name: string;
-  exerciseList: ExerciseInterface[];
-}
-
-interface ExerciseInterface {
-  name: string;
-  weight: string;
-  reps: string;
-}
-
 export class User {
   constructor(
     public info: UserInfoInterface,
@@ -36,7 +25,7 @@ export class User {
 
 // TODO: Use setters and getters for the methods
 
- export class Trainer extends User {
+export class Trainer extends User {
   constructor(
     public info: UserInfoInterface,
     public loginCredentials: LoginCredentialsInterface,
@@ -63,14 +52,14 @@ export class User {
 }
 
 export class Client extends User {
-  recordSet(weight: number, set: number): void {}
-  editSet(weight: number, set: number): void {}
+  // recordSet(weight: number, set: number): void {}
+  // editSet(weight: number, set: number): void {}
 }
 
-const Ana = new Client(
+const Steve = new Client(
   {
-    firstName: "Ana",
-    lastName: "Li",
+    firstName: "Steve",
+    lastName: "Porter",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
@@ -82,14 +71,14 @@ const Ana = new Client(
   }
 );
 
-const Ana2 = new Client(
+const John = new Client(
   {
-    firstName: "Ana2",
-    lastName: "Li",
+    firstName: "Jennifer",
+    lastName: "Doe",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
   },
   {
     email: "trainer@gmail.com",
@@ -110,7 +99,7 @@ export const Karl = new Trainer(
     email: "trainer@gmail.com",
     password: "password",
   },
-  [Ana]
+  [Steve,John]
 );
 
-export const USERS: User[] = [Karl, Ana, Ana2];
+export const USERS: (Trainer | Client)[] = [Karl, Steve, John];

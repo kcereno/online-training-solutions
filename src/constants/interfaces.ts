@@ -7,15 +7,15 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface User {
-  info: {
-    firstName: string;
-    lastName: string;
-  };
-  loginCredentials: {
-    email: string;
-    password: string;
-  };
-  role: "TRAINER" | "CLIENT";
-}
+// export interface User {
+//   info: {
+//     firstName: string;
+//     lastName: string;
+//   };
+//   loginCredentials: {
+//     email: string;
+//     password: string;
+//   };
+//   role: "TRAINER" | "CLIENT";
+// }
 
