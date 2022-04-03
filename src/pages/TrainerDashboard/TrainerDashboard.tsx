@@ -1,11 +1,13 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
-import { Trainer, Client, User } from "../../constants/UserList";
+import { User, Trainer } from "../../data/USERS";
 import "./TrainerDashboard.css";
 
-export default function TrainerDashboard({ trainer }: any) {
-  console.log(trainer.clientList);
+type Props = {
+  trainer: any
+};
 
-  const clients = trainer.clientList.map((client: any) => {
+const TrainerDashboard = ({ trainer }: Props) => {
+  const clients = trainer?.clientList.map((client: any) => {
     return (
       <ClientCard
         firstName={client.info.firstName}
@@ -22,6 +24,8 @@ export default function TrainerDashboard({ trainer }: any) {
       <div className="clients d-flex ">{clients}</div>
     </div>
   );
-}
+};
+
+export default TrainerDashboard;
 
 // card details: profile picture, name, age, current program,

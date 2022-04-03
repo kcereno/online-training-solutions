@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "./pages/TrainerDashboard/TrainerDashboard";
 import { useState } from "react";
-import { Client, Karl, Trainer, User } from "./constants/UserList";
+import { User, Client, Karl, Trainer } from "./data/USERS";
 import MainNavigation from "./layout/MainNavigation/MainNavigation";
 import Footer from "./layout/Footer/Footer";
 
@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<LoginPage login={setActiveUser} />} />
           <Route path="*" element={<NotFoundPage />} />
+
           <Route
             path="user/:trainer"
             element={<TrainerDashboard trainer={activeUser} />}

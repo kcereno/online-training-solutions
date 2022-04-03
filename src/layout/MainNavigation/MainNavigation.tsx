@@ -1,13 +1,11 @@
 import { Container, Navbar } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import NavLinks from "./NavLinks/NavLinks";
-import { User } from "../../constants/UserList";
 
-interface Props {
-  activeUser: User | null;
-}
+type Props = {
+  activeUser: any;
+};
 
 const MainNavigation = ({ activeUser }: Props) => {
   return (

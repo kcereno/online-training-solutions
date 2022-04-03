@@ -1,20 +1,17 @@
-interface UserInfoInterface {
-  firstName: string;
-  lastName: string;
-  birthday: Date;
-  role: "TRAINER" | "CLIENT";
-  profilePicture: string;
-}
-
-interface LoginCredentialsInterface {
-  email: string;
-  password: string;
-}
+import { LoginCredentials, UserInfo } from "./interfaces";
 
 export class User {
+  get userInfo() {
+    return this.info;
+  }
+
+  get userLoginCredentials() {
+    return this.loginCredentials;
+  }
+
   constructor(
-    public info: UserInfoInterface,
-    public loginCredentials: LoginCredentialsInterface
+    protected info: UserInfo,
+    protected loginCredentials: LoginCredentials
   ) {
     this.info.firstName = info.firstName;
     this.info.lastName = info.lastName;
@@ -27,34 +24,19 @@ export class User {
 
 export class Trainer extends User {
   constructor(
-    public info: UserInfoInterface,
-    public loginCredentials: LoginCredentialsInterface,
-    public clientList: Client[]
+    info: UserInfo,
+    loginCredentials: LoginCredentials,
+    private clientList: Client[]
   ) {
     super(info, loginCredentials);
   }
 
-  // client: object = {
-  //   add(client: Client): void {},
-  //   remove(client: Client): void {},
-  //   edit(client: Client): void {},
-  // };
-  // program: object = {
-  //   add(client: Client, program: ProgramInterface): void {},
-  //   remove(client: Client, program: ProgramInterface): void {},
-  //   edit(client: Client, program: ProgramInterface): void {},
-  // };
-  // exercise: object = {
-  //   add(client: Client, exercise: ExerciseInterface): void {},
-  //   remove(client: Client, exercise: ExerciseInterface): void {},
-  //   edit(client: Client, exercise: ExerciseInterface): void {},
-  // };
+  addClient(client: Client) {
+    this.clientList.push(client);
+  }
 }
 
-export class Client extends User {
-  // recordSet(weight: number, set: number): void {}
-  // editSet(weight: number, set: number): void {}
-}
+export class Client extends User {}
 
 const Steve = new Client(
   {
@@ -99,7 +81,7 @@ export const Karl = new Trainer(
     email: "trainer@gmail.com",
     password: "password",
   },
-  [Steve,John]
+  [Steve, John]
 );
 
 export const USERS: (Trainer | Client)[] = [Karl, Steve, John];
