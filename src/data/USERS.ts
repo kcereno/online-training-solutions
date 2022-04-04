@@ -1,42 +1,4 @@
-import { LoginCredentials, UserInfo } from "./interfaces";
-
-export class User {
-  get userInfo() {
-    return this.info;
-  }
-
-  get userLoginCredentials() {
-    return this.loginCredentials;
-  }
-
-  constructor(
-    protected info: UserInfo,
-    protected loginCredentials: LoginCredentials
-  ) {
-    this.info.firstName = info.firstName;
-    this.info.lastName = info.lastName;
-    this.info.birthday = info.birthday;
-    this.info.role = info.role;
-  }
-}
-
-// TODO: Use setters and getters for the methods
-
-export class Trainer extends User {
-  constructor(
-    info: UserInfo,
-    loginCredentials: LoginCredentials,
-    private clientList: Client[]
-  ) {
-    super(info, loginCredentials);
-  }
-
-  addClient(client: Client) {
-    this.clientList.push(client);
-  }
-}
-
-export class Client extends User {}
+import { Trainer, Client } from "./classes";
 
 const Steve = new Client(
   {
@@ -68,7 +30,7 @@ const John = new Client(
   }
 );
 
-export const Karl = new Trainer(
+const Karl = new Trainer(
   {
     firstName: "Karl",
     lastName: "Cereno",

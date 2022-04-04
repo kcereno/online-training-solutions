@@ -6,12 +6,12 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "./pages/TrainerDashboard/TrainerDashboard";
 import { useState } from "react";
-import { User, Client, Karl, Trainer } from "./data/USERS";
 import MainNavigation from "./layout/MainNavigation/MainNavigation";
 import Footer from "./layout/Footer/Footer";
+import { Client, Trainer } from "./data/classes";
 
 function App() {
-  const [activeUser, setActiveUser] = useState<Trainer | Client | null>(Karl);
+  const [activeUser, setActiveUser] = useState<Trainer | Client | null>(null);
 
   return (
     <div className="App">

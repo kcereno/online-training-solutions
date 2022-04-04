@@ -3,7 +3,7 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
-import { Client, Trainer } from "../../data/USERS";
+import { Trainer, Client } from "../../data/classes";
 import { USERS } from "../../data/USERS";
 import { useNavigate } from "react-router-dom";
 

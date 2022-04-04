@@ -3,10 +3,12 @@ export interface UserInfo {
   lastName: string;
   birthday: Date;
   role: "TRAINER" | "CLIENT";
-  profilePicture: string;
+  profilePicture: string | null;
 }
 
 export interface LoginCredentials {
   email: string;
   password: string;
 }
+
+
