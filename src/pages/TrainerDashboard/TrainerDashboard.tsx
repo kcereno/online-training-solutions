@@ -1,14 +1,13 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
-import { Trainer, Client } from "../../data/classes";
 import "./TrainerDashboard.css";
+import { Trainer } from "../../data/classes";
 
 type Props = {
-  trainer: any;
+  trainer: Trainer;
 };
 
-const TrainerDashboard = ({ trainer }: Props) => {
-  console.log(trainer);
-  const clients = trainer?.clients.map((client: any) => {
+const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
+  const clients = trainer.clientList.map((client: any) => {
     return (
       <ClientCard
         key={`
@@ -25,7 +24,9 @@ const TrainerDashboard = ({ trainer }: Props) => {
     <div className=" d-flex flex-column align-items-center py-5">
       <h2 className="text-white display-4">Clients</h2>
       <hr />
-      <div className="clients d-flex ">{clients}</div>
+      <div className="client-container d-flex justify-content-center flex-wrap ">
+        {clients}
+      </div>
     </div>
   );
 };

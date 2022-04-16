@@ -11,4 +11,18 @@ export interface LoginCredentials {
   password: string;
 }
 
-
+export interface UserData {
+  data: {
+    basicInfo: {
+      firstName: string;
+      lastName: string;
+      birthday: Date;
+      role: "TRAINER" | "CLIENT";
+      profilePicture: string | null;
+    };
+    accountInfo: {
+      email: string;
+      password: string;
+    };
+  };
+}

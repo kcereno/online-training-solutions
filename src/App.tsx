@@ -9,9 +9,26 @@ import { useState } from "react";
 import MainNavigation from "./layout/MainNavigation/MainNavigation";
 import Footer from "./layout/Footer/Footer";
 import { Client, Trainer } from "./data/classes";
+import { Karl } from "./data/USERS";
+
+export type User = Trainer | Client | null;
 
 function App() {
-  const [activeUser, setActiveUser] = useState<Trainer | Client | null>(null);
+  const [activeUser, setActiveUser] = useState<User>(Karl);
+
+  // Renders dashboard based on activeUser class
+  let dashboard: React.ReactElement;
+
+  if (activeUser instanceof Trainer) {
+    dashboard = (
+      <Route
+        path="user/:trainer"
+        element={<TrainerDashboard trainer={activeUser} />}
+      />
+    );
+  } else if (activeUser instanceof Client) {
+    console.log("CLIENT DASH");
+  }
 
   return (
     <div className="App">
@@ -21,11 +38,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<LoginPage login={setActiveUser} />} />
           <Route path="*" element={<NotFoundPage />} />
-
-          <Route
-            path="user/:trainer"
-            element={<TrainerDashboard trainer={activeUser} />}
-          />
+          {dashboard!}
         </Routes>
       </div>
 

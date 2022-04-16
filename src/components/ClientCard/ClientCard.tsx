@@ -13,7 +13,7 @@ export default function ClientCard({
   profilePicture,
 }: Props) {
   return (
-    <Card className="text-center text-white card-container bg-dark mx-5">
+    <Card className="text-center text-white card-container bg-dark mx-3 my-3">
       <Card.Img
         variant="top"
         className="profile-picture"
