@@ -26,6 +26,14 @@ export class Trainer extends User {
     this.clients = clients;
   }
 
+  deleteClient(clientId: string): Client[] {
+    const updatedClientList = this.clients.filter(
+      (client) => client.userInfo.id !== clientId
+    );
+    this.clients = updatedClientList;
+    return this.clients;
+  }
+
   get clientList() {
     return this.clients;
   }

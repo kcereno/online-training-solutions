@@ -1,21 +1,29 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
 import { Client, Trainer } from "../../data/classes";
+import { useState } from "react";
 
 type Props = {
   trainer: Trainer;
 };
 
 const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
-  const clients = trainer.clientList.map((client: Client) => {
+  const [clientList, setClients] = useState(trainer.clientList);
+
+  const deleteClientHandler = (clientId: string) => {
+    let updatedClientList = trainer.deleteClient(clientId);
+    setClients(updatedClientList);
+  };
+
+  let clients = clientList.map((client: Client) => {
     return (
       <ClientCard
-        key={`
-          ${client.clientInfo.id}
-        `}
+        key={client.clientInfo.id}
+        id={client.clientInfo.id}
         firstName={client.clientInfo.firstName}
         lastName={client.clientInfo.lastName}
         profilePicture={client.clientInfo.profilePicture}
+        deleteClient={deleteClientHandler}
       />
     );
   });

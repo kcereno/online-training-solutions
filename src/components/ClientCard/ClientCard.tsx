@@ -3,15 +3,17 @@ import { Card, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
 import "./ClientCard.css";
 
 type Props = {
+  id: string;
   firstName: string;
   lastName: string;
   profilePicture: string;
+  deleteClient: (clientId: string) => void;
 };
 export default function ClientCard(clientData: Props) {
-  const { firstName, lastName, profilePicture } = clientData;
+  const { id, firstName, lastName, profilePicture, deleteClient } = clientData;
 
   const deleteButtonHandler = () => {
-    console.log("clicked", firstName);
+    deleteClient(id);
   };
 
   return (
