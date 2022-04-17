@@ -2,6 +2,7 @@ import { Trainer, Client } from "./classes";
 
 const Steve = new Client(
   {
+    id: "snash1989",
     firstName: "Steve",
     lastName: "Nash",
     birthday: new Date(1989, 11, 31),
@@ -17,6 +18,7 @@ const Steve = new Client(
 
 const John = new Client(
   {
+    id: "jconnelly89",
     firstName: "Jennifer",
     lastName: "Connelly",
     birthday: new Date(1989, 11, 31),
@@ -32,6 +34,7 @@ const John = new Client(
 
 const Dave = new Client(
   {
+    id: "ddawson1989",
     firstName: "Dave",
     lastName: "Dawson",
     birthday: new Date(1989, 11, 31),
@@ -47,6 +50,7 @@ const Dave = new Client(
 
 const Daniel = new Client(
   {
+    id: "dkim1989",
     firstName: "Daniel",
     lastName: "Kim",
     birthday: new Date(1989, 11, 31),
@@ -62,6 +66,7 @@ const Daniel = new Client(
 
 const Kimberly = new Client(
   {
+    id: "klee1989",
     firstName: "Kimberly",
     lastName: "Lee",
     birthday: new Date(1989, 11, 31),
@@ -77,6 +82,7 @@ const Kimberly = new Client(
 
 export const Karl = new Trainer(
   {
+    id: "kcereno1989",
     firstName: "Karl",
     lastName: "Cereno",
     birthday: new Date(1989, 0o4, 18),
@@ -91,4 +97,4 @@ export const Karl = new Trainer(
   [Steve, John, Dave, Daniel, Kimberly]
 );
 
-export const USERS: Client[] = [Karl, Steve, John];
+export const USERS: (Client | Trainer)[] = [Karl, Steve, John];

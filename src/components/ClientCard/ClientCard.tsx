@@ -1,23 +1,19 @@
-import {
-  Card,
-  Button,
-  ButtonGroup,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
-import { useNavigate } from "react-router";
+import { Card, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
+
 import "./ClientCard.css";
 
-interface Props {
+type Props = {
   firstName: string;
   lastName: string;
   profilePicture: string;
-}
-export default function ClientCard({
-  firstName,
-  lastName,
-  profilePicture,
-}: Props) {
+};
+export default function ClientCard(clientData: Props) {
+  const { firstName, lastName, profilePicture } = clientData;
+
+  const deleteButtonHandler = () => {
+    console.log("clicked", firstName);
+  };
+
   return (
     <Card className="text-center text-white card-container bg-dark mx-3 my-3">
       <Card.Img
@@ -34,7 +30,9 @@ export default function ClientCard({
         >
           <Dropdown.Item eventKey="1">Open</Dropdown.Item>
           <Dropdown.Item eventKey="2">Edit</Dropdown.Item>
-          <Dropdown.Item eventKey="3">Delete</Dropdown.Item>
+          <Dropdown.Item eventKey="3" onClick={deleteButtonHandler}>
+            Delete
+          </Dropdown.Item>
         </DropdownButton>
       </Card.Body>
     </Card>

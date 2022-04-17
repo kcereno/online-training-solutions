@@ -1,21 +1,21 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
-import { Trainer } from "../../data/classes";
+import { Client, Trainer } from "../../data/classes";
 
 type Props = {
   trainer: Trainer;
 };
 
 const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
-  const clients = trainer.clientList.map((client: any) => {
+  const clients = trainer.clientList.map((client: Client) => {
     return (
       <ClientCard
         key={`
-          ${client.info.firstName}${client.info.lastName}
+          ${client.clientInfo.id}
         `}
-        firstName={client.info.firstName}
-        lastName={client.info.lastName}
-        profilePicture={client.info.profilePicture}
+        firstName={client.clientInfo.firstName}
+        lastName={client.clientInfo.lastName}
+        profilePicture={client.clientInfo.profilePicture}
       />
     );
   });

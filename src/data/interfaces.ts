@@ -1,9 +1,10 @@
 export interface UserInfo {
+  id: string;
   firstName: string;
   lastName: string;
   birthday: Date;
   role: "TRAINER" | "CLIENT";
-  profilePicture: string | null;
+  profilePicture: string;
 }
 
 export interface LoginCredentials {
@@ -18,7 +19,7 @@ export interface UserData {
       lastName: string;
       birthday: Date;
       role: "TRAINER" | "CLIENT";
-      profilePicture: string | null;
+      profilePicture: string;
     };
     accountInfo: {
       email: string;

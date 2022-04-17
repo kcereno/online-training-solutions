@@ -31,4 +31,8 @@ export class Trainer extends User {
   }
 }
 
-export class Client extends User {}
+export class Client extends User {
+  get clientInfo() {
+    return this.userInfo;
+  }
+}
