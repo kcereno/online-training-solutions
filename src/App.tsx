@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -14,7 +14,13 @@ import { Karl } from "./data/USERS";
 export type User = Trainer | Client | null;
 
 function App() {
-  const [activeUser, setActiveUser] = useState<User>(Karl);
+  const [activeUser, setActiveUser] = useState<User>(null);
+  const navigate = useNavigate();
+
+  const logoutUser = () => {
+    setActiveUser(null);
+    navigate('/')
+  };
 
   // Renders dashboard based on activeUser class
   let dashboard: React.ReactElement;
@@ -32,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <MainNavigation activeUser={activeUser} />
+      <MainNavigation activeUser={activeUser} logoutUser={logoutUser} />
       <div className="content">
         <Routes>
           <Route path="/" element={<LandingPage />} />

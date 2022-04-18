@@ -5,9 +5,10 @@ import NavLinks from "./NavLinks/NavLinks";
 
 type Props = {
   activeUser: any;
+  logoutUser: () => void;
 };
 
-const MainNavigation = ({ activeUser }: Props) => {
+const MainNavigation = ({ activeUser, logoutUser }: Props) => {
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>
@@ -15,7 +16,7 @@ const MainNavigation = ({ activeUser }: Props) => {
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
         </Navbar.Brand>
-        {activeUser ? <NavLinks /> : null}
+        {activeUser ? <NavLinks logoutUser={logoutUser} /> : null}
       </Container>
     </Navbar>
   );
