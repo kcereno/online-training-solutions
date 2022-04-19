@@ -11,11 +11,13 @@ import Footer from "./layout/Footer/Footer";
 import { Client, Trainer } from "./data/classes";
 import { Karl } from "./data/TRAINERS";
 import ClientProfilePage from "./pages/ClientProfilePage/ClientProfilePage";
+import ClientDashboard from "./pages/ClientDashboard/ClientDashboard";
 
 export type User = Trainer | Client | null;
 
 function App() {
-  const [activeUser, setActiveUser] = useState<User>(Karl);
+  const [activeUser, setActiveUser] = useState<User>(null);
+  console.log(activeUser);
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -24,17 +26,22 @@ function App() {
   };
 
   // Renders dashboard based on activeUser class
-  let dashboard: React.ReactElement;
+  let dashboard: null | React.ReactElement = null;
 
   if (activeUser instanceof Trainer) {
     dashboard = (
       <Route
-        path="trainer/:trainer"
+        path="trainer/:user"
         element={<TrainerDashboard trainer={activeUser} />}
       />
     );
   } else if (activeUser instanceof Client) {
-    console.log("CLIENT DASH");
+    dashboard = (
+      <Route
+        path="client/:user"
+        element={<ClientDashboard client={activeUser} />}
+      />
+    );
   }
 
   return (
@@ -44,12 +51,12 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<LoginPage login={setActiveUser} />} />
-          <Route path="*" element={<NotFoundPage />} />
           {dashboard!}
           <Route
             path="/trainer/:trainer/client/:client"
             element={ClientProfilePage}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
 

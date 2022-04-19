@@ -42,7 +42,8 @@ export default function LoginPage({ login }: Props) {
       login(foundUser);
       navigate("/trainer/" + foundUser.userInfo.id);
     } else if (foundUser?.userInfo.role === "CLIENT") {
-      console.log("Direct to client page");
+      login(foundUser);
+      navigate("/client/" + foundUser.userInfo.id);
     } else {
       setCredentialsValid(false);
       setEmail("");
