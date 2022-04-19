@@ -15,7 +15,7 @@ import ClientProfilePage from "./pages/ClientProfilePage/ClientProfilePage";
 export type User = Trainer | Client | null;
 
 function App() {
-  const [activeUser, setActiveUser] = useState<User>(null);
+  const [activeUser, setActiveUser] = useState<User>(Karl);
   const navigate = useNavigate();
 
   const logoutUser = () => {
