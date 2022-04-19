@@ -1,14 +1,14 @@
 import { Client } from "./classes";
 
-const Steve = new Client(
+const adraymon = new Client(
   {
-    id: "snash1989",
-    firstName: "Steve",
-    lastName: "Nash",
+    id: "adraymon",
+    firstName: "Alexander",
+    lastName: "Draymon",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "https://m.media-amazon.com/images/M/MV5BMmIzMjc5Y2ItNTIyZi00YTEzLWI4NDAtODQ0MzBiNTZmMDMxXkEyXkFqcGdeQXVyMjQwMzc1MzI@._V1_.jpg",
   },
   {
     email: "client@gmail.com",
@@ -16,15 +16,15 @@ const Steve = new Client(
   }
 );
 
-const John = new Client(
+const ddawson = new Client(
   {
-    id: "jconnelly89",
-    firstName: "Jennifer",
-    lastName: "Connelly",
+    id: "ddawson",
+    firstName: "David",
+    lastName: "Dawon",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://t3.ftcdn.net/jpg/03/67/46/48/360_F_367464887_f0w1JrL8PddfuH3P2jSPlIGjKU2BI0rn.jpg",
+      "https://www.unitedagents.co.uk/sites/default/files/thumbnails/image/20210721daviddawson00197-1.jpg",
   },
   {
     email: "client2@gmail.com",
@@ -32,15 +32,15 @@ const John = new Client(
   }
 );
 
-const Dave = new Client(
+const ebutterworth = new Client(
   {
-    id: "ddawson1989",
-    firstName: "Dave",
-    lastName: "Dawson",
+    id: "ebutterworth",
+    firstName: "Eliza",
+    lastName: "Butterworth",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://media.istockphoto.com/photos/headshot-portrait-of-smiling-ethnic-businessman-in-office-picture-id1300512215?b=1&k=20&m=1300512215&s=170667a&w=0&h=LsZL_-vvAHB2A2sNLHu9Vpoib_3aLLkRamveVW3AGeQ=",
+      "https://m.media-amazon.com/images/M/MV5BOTRmZTJmOWItZTNkNy00ZTcwLWIwYTctMzU0MGYyZmVkYWY5XkEyXkFqcGdeQXVyNzM3MDAzMTI@._V1_.jpg",
   },
   {
     email: "client3@gmail.com",
@@ -48,15 +48,15 @@ const Dave = new Client(
   }
 );
 
-const Daniel = new Client(
+const mbrady = new Client(
   {
-    id: "dkim1989",
-    firstName: "Daniel",
-    lastName: "Kim",
+    id: "mbrady",
+    firstName: "Millie",
+    lastName: "Brady",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://st.depositphotos.com/1597387/1984/i/950/depositphotos_19841901-stock-photo-asian-young-business-man-close.jpg",
+      "https://superstarsbio.com/wp-content/uploads/2019/10/Millie-Brady-hihgd-240x300.jpg",
   },
   {
     email: "client4@gmail.com",
@@ -64,15 +64,15 @@ const Daniel = new Client(
   }
 );
 
-const Kimberly = new Client(
+const tinnes = new Client(
   {
-    id: "klee1989",
-    firstName: "Kimberly",
-    lastName: "Lee",
+    id: "tinnes",
+    firstName: "Timothy",
+    lastName: "Innes",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+      "https://assets.mycast.io/actor_images/actor-timothy-innes-348914_large.jpg?1642667387",
   },
   {
     email: "client5@gmail.com",
@@ -80,4 +80,4 @@ const Kimberly = new Client(
   }
 );
 
-export const CLIENTS: Client[] = [Steve, John ,Dave, Daniel, Kimberly] ;
+export const CLIENTS: Client[] = [adraymon, ddawson ,ebutterworth, mbrady, tinnes] ;
