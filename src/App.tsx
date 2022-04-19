@@ -9,7 +9,8 @@ import { useState } from "react";
 import MainNavigation from "./layout/MainNavigation/MainNavigation";
 import Footer from "./layout/Footer/Footer";
 import { Client, Trainer } from "./data/classes";
-import { Karl } from "./data/USERS";
+import { Karl } from "./data/TRAINERS";
+import ClientProfilePage from "./pages/ClientProfilePage/ClientProfilePage";
 
 export type User = Trainer | Client | null;
 
@@ -19,7 +20,7 @@ function App() {
 
   const logoutUser = () => {
     setActiveUser(null);
-    navigate('/')
+    navigate("/");
   };
 
   // Renders dashboard based on activeUser class
@@ -28,7 +29,7 @@ function App() {
   if (activeUser instanceof Trainer) {
     dashboard = (
       <Route
-        path="user/:trainer"
+        path="trainer/:trainer"
         element={<TrainerDashboard trainer={activeUser} />}
       />
     );
@@ -45,6 +46,10 @@ function App() {
           <Route path="/signin" element={<LoginPage login={setActiveUser} />} />
           <Route path="*" element={<NotFoundPage />} />
           {dashboard!}
+          <Route
+            path="/trainer/:trainer/client/:client"
+            element={ClientProfilePage}
+          />
         </Routes>
       </div>
 

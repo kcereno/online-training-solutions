@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import { Trainer, Client } from "../../data/classes";
-import { USERS } from "../../data/USERS";
+import { CLIENTS } from "../../data/CLIENTS";
 import { useNavigate } from "react-router-dom";
+import { TRAINERS } from "../../data/TRAINERS";
 
 type Props = {
   login: React.Dispatch<React.SetStateAction<Trainer | Client | null>>;
@@ -29,15 +30,19 @@ export default function LoginPage({ login }: Props) {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const USERS = [...CLIENTS, ...TRAINERS];
+
     const foundUser = USERS.find(
       (user) =>
         user.userLoginCredentials.email === email &&
         user.userLoginCredentials.password === password
     );
 
-    if (foundUser) {
+    if (foundUser?.userInfo.role === "TRAINER") {
       login(foundUser);
-      navigate("/user/" + foundUser.userInfo.firstName);
+      navigate("/trainer/" + foundUser.userInfo.id);
+    } else if (foundUser?.userInfo.role === "CLIENT") {
+      console.log("Direct to client page");
     } else {
       setCredentialsValid(false);
       setEmail("");
