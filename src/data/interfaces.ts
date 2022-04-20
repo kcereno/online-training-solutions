@@ -1,9 +1,12 @@
+import { Trainer } from "./classes";
+
 export interface UserInfo {
   id: string;
   firstName: string;
   lastName: string;
   birthday: Date;
   role: "TRAINER" | "CLIENT";
+  trainer?: Trainer;
   profilePicture: string;
 }
 

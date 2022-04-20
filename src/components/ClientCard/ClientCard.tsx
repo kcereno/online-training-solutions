@@ -13,14 +13,18 @@ import "./ClientCard.css";
 
 type Props = {
   id: string;
+  trainerId: string;
   firstName: string;
   lastName: string;
   profilePicture: string;
   deleteClient: (clientId: string) => void;
 };
 export default function ClientCard(clientData: Props) {
-  const { id, firstName, lastName, profilePicture, deleteClient } = clientData;
+  const { id, trainerId, firstName, lastName, profilePicture, deleteClient } =
+    clientData;
   const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const showModalHandler = () => {
     setShowModal(true);
@@ -30,13 +34,13 @@ export default function ClientCard(clientData: Props) {
     setShowModal(false);
   };
 
+  const openButtonHandler = () => {
+    navigate(`/dashboard/${trainerId}/client/${id}`);
+  };
+
   return (
     <>
-      <Modal
-        show={showModal}
-        onHide={hideModalHandler}
-        centered
-      >
+      <Modal show={showModal} onHide={hideModalHandler} centered>
         <Modal.Header>
           <Modal.Title>Attention</Modal.Title>
         </Modal.Header>
@@ -64,7 +68,9 @@ export default function ClientCard(clientData: Props) {
             title="Actions"
             id="bg-nested-dropdown"
           >
-            <Dropdown.Item eventKey="1">Open</Dropdown.Item>
+            <Dropdown.Item eventKey="1" onClick={openButtonHandler}>
+              Open
+            </Dropdown.Item>
             <Dropdown.Item eventKey="2">Edit</Dropdown.Item>
             <Dropdown.Item eventKey="3" onClick={showModalHandler}>
               Delete

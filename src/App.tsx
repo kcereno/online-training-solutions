@@ -17,7 +17,7 @@ export type User = Trainer | Client | null;
 
 function App() {
   const [activeUser, setActiveUser] = useState<User>(null);
-  console.log(activeUser);
+
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -25,23 +25,11 @@ function App() {
     navigate("/");
   };
 
-  // Renders dashboard based on activeUser class
-  let dashboard: null | React.ReactElement = null;
-
+  let dashboard = <NotFoundPage />;
   if (activeUser instanceof Trainer) {
-    dashboard = (
-      <Route
-        path="trainer/:user"
-        element={<TrainerDashboard trainer={activeUser} />}
-      />
-    );
+    dashboard = <TrainerDashboard trainer={activeUser} />;
   } else if (activeUser instanceof Client) {
-    dashboard = (
-      <Route
-        path="client/:user"
-        element={<ClientDashboard client={activeUser} />}
-      />
-    );
+    dashboard = <ClientDashboard client={activeUser} />;
   }
 
   return (
@@ -51,10 +39,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<LoginPage login={setActiveUser} />} />
-          {dashboard!}
+          <Route path="/dashboard/:user" element={dashboard} />
           <Route
-            path="/trainer/:trainer/client/:client"
-            element={ClientProfilePage}
+            path="/dashboard/:user/client/:client"
+            element={<ClientProfilePage/>}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

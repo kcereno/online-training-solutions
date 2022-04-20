@@ -19,6 +19,7 @@ const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
     return (
       <ClientCard
         key={client.clientInfo.id}
+        trainerId={trainer.userInfo.id}
         id={client.clientInfo.id}
         firstName={client.clientInfo.firstName}
         lastName={client.clientInfo.lastName}

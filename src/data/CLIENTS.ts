@@ -1,4 +1,5 @@
 import { Client } from "./classes";
+import { Karl } from "./TRAINERS";
 
 const adraymon = new Client(
   {
@@ -13,14 +14,15 @@ const adraymon = new Client(
   {
     email: "client@gmail.com",
     password: "password",
-  }
+  },
+  
 );
 
 const ddawson = new Client(
   {
     id: "ddawson",
     firstName: "David",
-    lastName: "Dawon",
+    lastName: "Dawson",
     birthday: new Date(1989, 11, 31),
     role: "CLIENT",
     profilePicture:
@@ -80,4 +82,10 @@ const tinnes = new Client(
   }
 );
 
-export const CLIENTS: Client[] = [adraymon, ddawson ,ebutterworth, mbrady, tinnes] ;
+export const CLIENTS: Client[] = [
+  adraymon,
+  ddawson,
+  ebutterworth,
+  mbrady,
+  tinnes,
+];

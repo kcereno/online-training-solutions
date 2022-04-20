@@ -40,16 +40,8 @@ export class Trainer extends User {
 }
 
 export class Client extends User {
-  // private trainedBy: Trainer;
 
-  constructor(
-    info: UserInfo,
-    loginCredentials: LoginCredentials,
-    // trainedBy: Trainer
-  ) {
-    super(info, loginCredentials);
-    // this.trainedBy = trainedBy;
-  }
+
 
   get clientInfo() {
     return this.userInfo;

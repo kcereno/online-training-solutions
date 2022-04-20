@@ -38,17 +38,16 @@ export default function LoginPage({ login }: Props) {
         user.userLoginCredentials.password === password
     );
 
-    if (foundUser?.userInfo.role === "TRAINER") {
-      login(foundUser);
-      navigate("/trainer/" + foundUser.userInfo.id);
-    } else if (foundUser?.userInfo.role === "CLIENT") {
-      login(foundUser);
-      navigate("/client/" + foundUser.userInfo.id);
-    } else {
-      setCredentialsValid(false);
-      setEmail("");
-      setPassword("");
-    }
+if (foundUser){
+  login(foundUser)
+  navigate("/dashboard/" + foundUser.userInfo.id);
+} else{
+  setCredentialsValid(false);
+  setEmail("");
+  setPassword("");
+}
+
+
   };
 
   return (
