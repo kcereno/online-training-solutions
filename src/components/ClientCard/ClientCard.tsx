@@ -5,6 +5,7 @@ import {
   Dropdown,
   Modal,
   Button,
+  Badge,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -33,6 +34,7 @@ export default function ClientCard({
 
   const navigate = useNavigate();
 
+  // Handlers
   const showModalHandler = () => {
     setShowModal(true);
   };
@@ -44,6 +46,31 @@ export default function ClientCard({
   const openButtonHandler = () => {
     navigate(`/dashboard/${trainerId}/client/${id}`);
   };
+
+  let goalBadge = null;
+  // if (goal === "BUILD MUSCLE") {
+  //   goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
+  // }
+
+  switch (goal) {
+    case "BUILD MUSCLE":
+      goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
+      break;
+    case "LOSE FAT":
+      goalBadge = <Badge bg="danger">LOSE FAT</Badge>;
+      break;
+    case "GAIN STRENGTH":
+      goalBadge = <Badge bg="success">GAIN STRENGTH</Badge>;
+      break;
+    case "BODY RECOMPOSITION":
+      goalBadge = <Badge bg="secondary">BODY RECOMPOSITION</Badge>;
+      break;
+    case "SPORTS SPECIFIC":
+      goalBadge = <Badge bg="warning">SPORTS SPECIFIC</Badge>;
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
@@ -69,7 +96,7 @@ export default function ClientCard({
           src={profilePicture}
         />
         <Card.Title className="text-center mt-2">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle className="text-muted">{`Goal: ${goal}`}</Card.Subtitle>
+        <Card.Subtitle>{goalBadge}</Card.Subtitle>
         <Card.Body>
           <DropdownButton
             as={ButtonGroup}
@@ -89,5 +116,3 @@ export default function ClientCard({
     </>
   );
 }
-
-//props
