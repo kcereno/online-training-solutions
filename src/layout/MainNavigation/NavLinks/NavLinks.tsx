@@ -1,18 +1,28 @@
 import { Fragment } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import UserContext from "../../../store/user-context";
+import { useContext } from "react";
 
-type Props = {
-  logoutUser: () => void;
-};
+export default function NavLinks() {
+  const userCtx = useContext(UserContext);
 
-export default function NavLinks({ logoutUser }: Props) {
+  const location = useLocation();
+  console.log(location);
+
+  let links = null;
+
+  if (location.pathname === "/dashboard/" + userCtx.activeUser?.userInfo.id) {
+    links = <Nav.Link>Add Client</Nav.Link>;
+  }
+
   return (
     <Fragment>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ms-auto">
-          <Nav.Link>Add Client</Nav.Link>
-          <Nav.Link onClick={logoutUser}>Log Out</Nav.Link>
+          {links}
+          <Nav.Link>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Fragment>

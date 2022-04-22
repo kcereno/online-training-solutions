@@ -2,52 +2,44 @@ import "./LoginPage.css";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
-import { useState } from "react";
-import { Trainer, Client } from "../../data/classes";
+import { useContext, useState } from "react";
 import { CLIENTS } from "../../data/CLIENTS";
-import { useNavigate } from "react-router-dom";
 import { TRAINERS } from "../../data/TRAINERS";
+import UserContext from "../../store/user-context";
 
-type Props = {
-  login: React.Dispatch<React.SetStateAction<Trainer | Client | null>>;
-};
-
-export default function LoginPage({ login }: Props) {
+export default function LoginPage() {
+  // States
   const [credentialsValid, setCredentialsValid] = useState<boolean>(true);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const navigate = useNavigate();
+  // Context
+  const userCtx = useContext(UserContext);
+  const { login } = userCtx;
 
+  // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-
   const passwordChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const USERS = [...CLIENTS, ...TRAINERS];
-
     const foundUser = USERS.find(
       (user) =>
         user.userLoginCredentials.email === email &&
         user.userLoginCredentials.password === password
     );
-
-if (foundUser){
-  login(foundUser)
-  navigate("/dashboard/" + foundUser.userInfo.id);
-} else{
-  setCredentialsValid(false);
-  setEmail("");
-  setPassword("");
-}
-
-
+    if (foundUser) {
+      login(foundUser);
+    } else {
+      setCredentialsValid(false);
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (

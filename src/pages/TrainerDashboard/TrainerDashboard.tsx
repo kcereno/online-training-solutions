@@ -10,6 +10,7 @@ type Props = {
 const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
   const [clientList, setClients] = useState(trainer.clientList);
 
+
   const deleteClientHandler = (clientId: string): void => {
     let updatedClientList = trainer.deleteClient(clientId);
     setClients(updatedClientList);
