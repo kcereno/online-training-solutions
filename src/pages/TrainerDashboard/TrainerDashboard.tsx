@@ -10,7 +10,6 @@ type Props = {
 const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
   const [clientList, setClients] = useState(trainer.clientList);
 
-
   const deleteClientHandler = (clientId: string): void => {
     let updatedClientList = trainer.deleteClient(clientId);
     setClients(updatedClientList);
@@ -21,12 +20,8 @@ const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
       <ClientCard
         key={client.clientInfo.id}
         trainerId={trainer.userInfo.id}
-        id={client.clientInfo.id}
-        firstName={client.clientInfo.firstName}
-        lastName={client.clientInfo.lastName}
-        profilePicture={client.clientInfo.profilePicture}
         deleteClient={deleteClientHandler}
-        goal={client.clientTrainingPlan.goal}
+        client={client}
       />
     );
   });

@@ -11,26 +11,24 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./ClientCard.css";
+import { Client } from "../../data/classes";
 
 type PropTypes = {
-  id: string;
+  key: string;
   trainerId: string;
-  firstName: string;
-  lastName: string;
-  profilePicture: string;
   deleteClient: (clientId: string) => void;
-  goal?: string;
+  client: Client;
 };
 export default function ClientCard({
-  id,
+  key,
   trainerId,
-  firstName,
-  lastName,
-  profilePicture,
   deleteClient,
-  goal,
+  client,
 }: PropTypes) {
   const [showModal, setShowModal] = useState(false);
+
+  const { id, firstName, lastName, profilePicture } = client.clientInfo;
+  const { goal } = client.clientTrainingPlan;
 
   const navigate = useNavigate();
 
@@ -48,9 +46,9 @@ export default function ClientCard({
   };
 
   let goalBadge = null;
-  // if (goal === "BUILD MUSCLE") {
-  //   goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
-  // }
+  if (goal === "BUILD MUSCLE") {
+    goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
+  }
 
   switch (goal) {
     case "BUILD MUSCLE":
