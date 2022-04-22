@@ -1,9 +1,32 @@
-import { LoginCredentials, UserInfo } from "./interfaces";
+export interface UserInfoInterface {
+  id: string;
+  firstName: string;
+  lastName: string;
+  birthday: Date;
+  role: "TRAINER" | "CLIENT";
+  trainer?: Trainer;
+  profilePicture: string;
+}
 
+export interface LoginCredentialInterface {
+  email: string;
+  password: string;
+}
+
+export interface TrainingPlanInterface {
+  goal:
+    | "BUILD MUSCLE"
+    | "LOSE FAT"
+    | "GAIN STRENGTH"
+    | "BODY RECOMPOSITION"
+    | "SPORTS SPECIFIC";
+}
+
+// Classes
 export abstract class User {
   constructor(
-    protected info: UserInfo,
-    protected loginCredentials: LoginCredentials
+    protected info: UserInfoInterface,
+    protected loginCredentials: LoginCredentialInterface
   ) {}
 
   get userLoginCredentials() {
@@ -18,8 +41,8 @@ export class Trainer extends User {
   private clients: Client[];
 
   constructor(
-    info: UserInfo,
-    loginCredentials: LoginCredentials,
+    info: UserInfoInterface,
+    loginCredentials: LoginCredentialInterface,
     clients: Client[]
   ) {
     super(info, loginCredentials);
@@ -40,10 +63,22 @@ export class Trainer extends User {
 }
 
 export class Client extends User {
+  private trainingPlan: TrainingPlanInterface;
 
-
+  constructor(
+    info: UserInfoInterface,
+    loginCredentials: LoginCredentialInterface,
+    trainingPlan: TrainingPlanInterface
+  ) {
+    super(info, loginCredentials);
+    this.trainingPlan = trainingPlan;
+  }
 
   get clientInfo() {
     return this.userInfo;
+  }
+
+  get clientTrainingPlan() {
+    return this.trainingPlan;
   }
 }

@@ -15,7 +15,9 @@ const adraymon = new Client(
     email: "client@gmail.com",
     password: "password",
   },
-  
+  {
+    goal: "GAIN STRENGTH",
+  }
 );
 
 const ddawson = new Client(
@@ -31,6 +33,9 @@ const ddawson = new Client(
   {
     email: "client2@gmail.com",
     password: "password",
+  },
+  {
+    goal: "BUILD MUSCLE",
   }
 );
 
@@ -47,6 +52,9 @@ const ebutterworth = new Client(
   {
     email: "client3@gmail.com",
     password: "password",
+  },
+  {
+    goal: "LOSE FAT",
   }
 );
 
@@ -63,6 +71,9 @@ const mbrady = new Client(
   {
     email: "client4@gmail.com",
     password: "password",
+  },
+  {
+    goal: "BODY RECOMPOSITION",
   }
 );
 
@@ -79,6 +90,9 @@ const tinnes = new Client(
   {
     email: "client5@gmail.com",
     password: "password",
+  },
+  {
+    goal: "SPORTS SPECIFIC",
   }
 );
 

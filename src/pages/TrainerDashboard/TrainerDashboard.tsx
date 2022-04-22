@@ -26,6 +26,7 @@ const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
         lastName={client.clientInfo.lastName}
         profilePicture={client.clientInfo.profilePicture}
         deleteClient={deleteClientHandler}
+        goal={client.clientTrainingPlan.goal}
       />
     );
   });

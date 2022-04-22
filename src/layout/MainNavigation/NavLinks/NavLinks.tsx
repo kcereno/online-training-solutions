@@ -6,13 +6,12 @@ import { useContext } from "react";
 
 export default function NavLinks() {
   const userCtx = useContext(UserContext);
-
+  const { activeUser, logout } = userCtx;
   const location = useLocation();
-  console.log(location);
 
   let links = null;
 
-  if (location.pathname === "/dashboard/" + userCtx.activeUser?.userInfo.id) {
+  if (location.pathname === "/dashboard/" + activeUser?.userInfo.id) {
     links = <Nav.Link>Add Client</Nav.Link>;
   }
 
@@ -22,7 +21,7 @@ export default function NavLinks() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ms-auto">
           {links}
-          <Nav.Link>Log Out</Nav.Link>
+          <Nav.Link onClick={logout}>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Fragment>

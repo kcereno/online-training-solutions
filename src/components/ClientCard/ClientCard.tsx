@@ -11,17 +11,24 @@ import { useState } from "react";
 
 import "./ClientCard.css";
 
-type Props = {
+type PropTypes = {
   id: string;
   trainerId: string;
   firstName: string;
   lastName: string;
   profilePicture: string;
   deleteClient: (clientId: string) => void;
+  goal: string;
 };
-export default function ClientCard(clientData: Props) {
-  const { id, trainerId, firstName, lastName, profilePicture, deleteClient } =
-    clientData;
+export default function ClientCard({
+  id,
+  trainerId,
+  firstName,
+  lastName,
+  profilePicture,
+  deleteClient,
+  goal,
+}: PropTypes) {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
@@ -62,6 +69,7 @@ export default function ClientCard(clientData: Props) {
           src={profilePicture}
         />
         <Card.Title className="text-center mt-2">{`${firstName} ${lastName}`}</Card.Title>
+        <Card.Subtitle className="text-muted">{`Goal: ${goal}`}</Card.Subtitle>
         <Card.Body>
           <DropdownButton
             as={ButtonGroup}
