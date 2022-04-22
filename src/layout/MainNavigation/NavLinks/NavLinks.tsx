@@ -11,7 +11,7 @@ export default function NavLinks() {
 
   let links = null;
 
-  if (location.pathname === "/dashboard/" + activeUser?.userInfo.id) {
+  if (location.pathname === "/dashboard/" + activeUser?.info.id) {
     links = <Nav.Link>Add Client</Nav.Link>;
   }
 

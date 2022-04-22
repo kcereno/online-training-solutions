@@ -1,4 +1,13 @@
-export interface UserInfoInterface {
+interface UserInfoInterface {
+  basicInfo: BasicInfoInterface;
+  logInCredentials: LoginCredentialInterface;
+}
+
+interface TrainerInfoInterface extends UserInfoInterface {
+  clientList: Client[];
+}
+
+export interface BasicInfoInterface {
   id: string;
   firstName: string;
   lastName: string;
@@ -21,78 +30,75 @@ export interface TrainingBlockInterface {
 interface ExerciseInterface {
   exerciseName: string;
   weight?: number;
-  reps?: number;
   rpe?: number;
+  reps: number;
+  sets: number;
   rest: number;
 }
 
 export interface TrainingPlanInterface {
-  goal?:
-    | "BUILD MUSCLE"
-    | "LOSE FAT"
-    | "GAIN STRENGTH"
-    | "BODY RECOMPOSITION"
-    | "SPORTS SPECIFIC";
-  trainingBlock?: TrainingBlockInterface[];
+  trainingPlan: {
+    goal?:
+      | "BUILD MUSCLE"
+      | "LOSE FAT"
+      | "GAIN STRENGTH"
+      | "BODY RECOMPOSITION"
+      | "SPORTS SPECIFIC";
+    trainingBlock?: TrainingBlockInterface[];
+  };
 }
 
 // Classes
 export abstract class User {
-  constructor(
-    protected info: UserInfoInterface,
-    protected loginCredentials: LoginCredentialInterface
-  ) {}
+  constructor(protected userInfo: UserInfoInterface) {}
 
-  get userLoginCredentials() {
-    return this.loginCredentials;
+  get loginCredentials() {
+    return this.userInfo.logInCredentials;
   }
-  get userInfo() {
-    return this.info;
+  get info() {
+    return this.userInfo.basicInfo;
   }
 }
 
 export class Trainer extends User {
-  private clients: Client[];
-
-  constructor(
-    info: UserInfoInterface,
-    loginCredentials: LoginCredentialInterface,
-    clients: Client[]
-  ) {
-    super(info, loginCredentials);
-    this.clients = clients;
+  constructor(protected userInfo: TrainerInfoInterface) {
+    super(userInfo);
+    this.userInfo.clientList = userInfo.clientList;
   }
 
   deleteClient(clientId: string): Client[] {
-    const updatedClientList = this.clients.filter(
-      (client) => client.userInfo.id !== clientId
+    const updatedClientList = this.userInfo.clientList.filter(
+      (client) => client.info.id !== clientId
     );
-    this.clients = updatedClientList;
-    return this.clients;
+    this.userInfo.clientList = updatedClientList;
+    return this.userInfo.clientList;
   }
 
-  get clientList() {
-    return this.clients;
+  get clients() {
+    return this.userInfo.clientList;
   }
 }
 
 export class Client extends User {
-  private trainingPlan: TrainingPlanInterface;
+  private clientTrainingPlan: TrainingPlanInterface;
 
   constructor(
-    info: UserInfoInterface,
-    loginCredentials: LoginCredentialInterface,
-    trainingPlan: TrainingPlanInterface
+    userInfo: UserInfoInterface,
+    clientTrainingPlan: TrainingPlanInterface
   ) {
-    super(info, loginCredentials);
-    this.trainingPlan = trainingPlan;
+    super(userInfo);
+    this.clientTrainingPlan = clientTrainingPlan;
   }
 
-  get clientInfo() {
-    return this.userInfo;
+  get info() {
+    return this.userInfo.basicInfo;
   }
 
-  get clientTrainingPlan() {
-    return this.trainingPlan;
+  get trainingPlan() {
+    return this.clientTrainingPlan.trainingPlan;
   }
+
+  // get clientTrainingPlan() {
+  //   return this.trainingPlan;
+  // }
 }

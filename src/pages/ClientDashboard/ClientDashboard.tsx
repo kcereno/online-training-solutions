@@ -6,7 +6,7 @@ type Props = {
 };
 
 const ClientDashboard = ({ client }: Props): JSX.Element => {
-  return <div>Hello {client.clientInfo.firstName}</div>;
+  return <div>Hello {client.info.firstName}</div>;
 };
 
 export default ClientDashboard;

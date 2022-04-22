@@ -8,11 +8,11 @@ const ClientProfilePage = () => {
 
   const clientId = params.client;
 
-  const client = CLIENTS.find((client) => client.clientInfo.id === clientId);
+  const client = CLIENTS.find((client) => client.info.id === clientId);
   return (
     <div>
-      <Image roundedCircle className="profile-picture" src={client?.clientInfo.profilePicture} />
-      <h1 className="text-white">{client?.clientInfo.firstName}</h1>
+      <Image roundedCircle className="profile-picture" src={client?.info.profilePicture} />
+      <h1 className="text-white">{client?.info.firstName}</h1>
     </div>
   );
 };

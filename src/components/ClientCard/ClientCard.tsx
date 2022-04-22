@@ -27,8 +27,8 @@ export default function ClientCard({
 }: PropTypes) {
   const [showModal, setShowModal] = useState(false);
 
-  const { id, firstName, lastName, profilePicture } = client.clientInfo;
-  const { goal } = client.clientTrainingPlan;
+  const { id, firstName, lastName, profilePicture } = client.info;
+  const { goal } = client.trainingPlan;
 
   const navigate = useNavigate();
 

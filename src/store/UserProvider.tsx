@@ -17,7 +17,7 @@ const UserProvider = ({ children }: PropTypes) => {
   // Functions
   const login = (user: UserType) => {
     setActiveUser(user);
-    navigate("dashboard/" + user?.userInfo.id);
+    navigate("dashboard/" + user?.info.id);
   };
 
   const logout = () => {

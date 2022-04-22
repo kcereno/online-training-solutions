@@ -30,8 +30,8 @@ export default function LoginPage() {
     const USERS = [...CLIENTS, ...TRAINERS];
     const foundUser = USERS.find(
       (user) =>
-        user.userLoginCredentials.email === email &&
-        user.userLoginCredentials.password === password
+        user.loginCredentials.email === email &&
+        user.loginCredentials.password === password
     );
     if (foundUser) {
       login(foundUser);
