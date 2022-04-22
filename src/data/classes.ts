@@ -13,13 +13,27 @@ export interface LoginCredentialInterface {
   password: string;
 }
 
+export interface TrainingBlockInterface {
+  blockName: string;
+  exercises: ExerciseInterface[];
+}
+
+interface ExerciseInterface {
+  exerciseName: string;
+  weight?: number;
+  reps?: number;
+  rpe?: number;
+  rest: number;
+}
+
 export interface TrainingPlanInterface {
-  goal:
+  goal?:
     | "BUILD MUSCLE"
     | "LOSE FAT"
     | "GAIN STRENGTH"
     | "BODY RECOMPOSITION"
     | "SPORTS SPECIFIC";
+  trainingBlock?: TrainingBlockInterface[];
 }
 
 // Classes

@@ -19,7 +19,7 @@ type PropTypes = {
   lastName: string;
   profilePicture: string;
   deleteClient: (clientId: string) => void;
-  goal: string;
+  goal?: string;
 };
 export default function ClientCard({
   id,
@@ -95,7 +95,7 @@ export default function ClientCard({
           className="profile-picture"
           src={profilePicture}
         />
-        <Card.Title className="text-center mt-2">{`${firstName} ${lastName}`}</Card.Title>
+        <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
         <Card.Subtitle>{goalBadge}</Card.Subtitle>
         <Card.Body>
           <DropdownButton
