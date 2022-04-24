@@ -30,10 +30,6 @@ const adraymon = new Client({
   },
 });
 
-// {basicInfo:{},
-// logInCredentials:{},
-// trainingPlan:{}}
-
 const ddawson = new Client({
   basicInfo: {
     id: "ddawson",

@@ -9,7 +9,6 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
 import "./ClientCard.css";
 import { Client } from "../../data/classes";
 
@@ -19,6 +18,7 @@ type PropTypes = {
   deleteClient: (clientId: string) => void;
   client: Client;
 };
+
 export default function ClientCard({
   trainerId,
   deleteClient,
@@ -44,30 +44,21 @@ export default function ClientCard({
     navigate(`/dashboard/${trainerId}/client/${id}`);
   };
 
-  let goalBadge = null;
-  if (goal === "BUILD MUSCLE") {
-    goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
+  interface BadgeIndexSignature {
+    [key: string]: JSX.Element;
   }
 
-  switch (goal) {
-    case "BUILD MUSCLE":
-      goalBadge = <Badge bg="primary">BUILD MUSCLE</Badge>;
-      break;
-    case "LOSE FAT":
-      goalBadge = <Badge bg="danger">LOSE FAT</Badge>;
-      break;
-    case "GAIN STRENGTH":
-      goalBadge = <Badge bg="success">GAIN STRENGTH</Badge>;
-      break;
-    case "BODY RECOMPOSITION":
-      goalBadge = <Badge bg="secondary">BODY RECOMPOSITION</Badge>;
-      break;
-    case "SPORTS SPECIFIC":
-      goalBadge = <Badge bg="warning">SPORTS SPECIFIC</Badge>;
-      break;
-    default:
-      break;
-  }
+  const getBadge = () => {
+    const cases: BadgeIndexSignature = {
+      "BUILD MUSCLE": <Badge bg="primary">BUILD MUSCLE</Badge>,
+      "LOSE FAT": <Badge bg="danger">LOSE FAT</Badge>,
+      "GAIN STRENGTH": <Badge bg="success">GAIN STRENGTH</Badge>,
+      "BODY RECOMPOSITION": <Badge bg="secondary">BODY RECOMPOSITION</Badge>,
+      "SPORTS SPECIFIC": <Badge bg="warning">SPORTS SPECIFIC</Badge>,
+    };
+
+    return cases[goal];
+  };
 
   return (
     <>
@@ -81,7 +72,7 @@ export default function ClientCard({
             Cancel
           </Button>
           <Button variant="danger" onClick={() => deleteClient(id)}>
-            Save Changes
+            DELETE CLIENT
           </Button>
         </Modal.Footer>
       </Modal>
@@ -93,7 +84,7 @@ export default function ClientCard({
           src={profilePicture}
         />
         <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle>{goalBadge}</Card.Subtitle>
+        <Card.Subtitle>{getBadge()}</Card.Subtitle>
         <Card.Body>
           <DropdownButton
             as={ButtonGroup}
