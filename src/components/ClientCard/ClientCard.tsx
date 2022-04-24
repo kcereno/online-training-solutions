@@ -20,7 +20,6 @@ type PropTypes = {
   client: Client;
 };
 export default function ClientCard({
-  key,
   trainerId,
   deleteClient,
   client,

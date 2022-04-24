@@ -2,8 +2,6 @@ import { Trainer } from "./classes";
 
 import { CLIENTS } from "./CLIENTS";
 
-const [adraymon] = CLIENTS;
-
 export const Karl = new Trainer({
   basicInfo: {
     id: "kcereno1989",
@@ -18,7 +16,7 @@ export const Karl = new Trainer({
     email: "trainer@gmail.com",
     password: "password",
   },
-  clientList: [adraymon],
+  clients: CLIENTS,
 });
 
 export const TRAINERS: Trainer[] = [Karl];
