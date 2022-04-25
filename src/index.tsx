@@ -3,13 +3,16 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+import ModalProvider from "./store/ModalProvider";
 import UserProvider from "./store/UserProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,

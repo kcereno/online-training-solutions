@@ -13,6 +13,7 @@ import { Karl } from "./data/TRAINERS";
 import ClientProfilePage from "./pages/ClientProfilePage/ClientProfilePage";
 import ClientDashboard from "./pages/ClientDashboard/ClientDashboard";
 import UserContext from "./store/user-context";
+import CustomModal from "./layout/Modal/CustomModal";
 
 export type User = Trainer | Client | null;
 
@@ -30,6 +31,8 @@ function App() {
 
   return (
     <div className="App">
+      <CustomModal />
+
       <MainNavigation />
       <div className="content">
         <Routes>
