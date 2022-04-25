@@ -72,7 +72,7 @@ export default function ClientCard({
             Cancel
           </Button>
           <Button variant="danger" onClick={() => deleteClient(id)}>
-            DELETE CLIENT
+            DELETE
           </Button>
         </Modal.Footer>
       </Modal>
@@ -86,19 +86,21 @@ export default function ClientCard({
         <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
         <Card.Subtitle>{getBadge()}</Card.Subtitle>
         <Card.Body>
-          <DropdownButton
-            as={ButtonGroup}
-            title="Actions"
-            id="bg-nested-dropdown"
-          >
-            <Dropdown.Item eventKey="1" onClick={openButtonHandler}>
-              Open
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="2">Edit</Dropdown.Item>
-            <Dropdown.Item eventKey="3" onClick={showModalHandler}>
-              Delete
-            </Dropdown.Item>
-          </DropdownButton>
+          <Dropdown as={ButtonGroup}>
+            <Button variant="primary">Open</Button>
+            <Dropdown.Toggle
+              split
+              variant="primary"
+              id="dropdown-split-basic"
+            />
+
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
+              <Dropdown.Item eventKey="2" onClick={showModalHandler}>
+                Delete
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Card.Body>
       </Card>
     </>
