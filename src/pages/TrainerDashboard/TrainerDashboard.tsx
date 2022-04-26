@@ -19,13 +19,13 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
 
   // Functions
   const deleteClient = (clientId: string): void => {
-    let updatedClientList = trainer.deleteClient(clientId);
-    setClients(updatedClientList);
-    hideModal();
-  };
+    
+    const confirmDelete = () => {
+      let updatedClientList = trainer.deleteClient(clientId);
+      setClients(updatedClientList);
+      hideModal();
+    };
 
-  // Handlers
-  const deleteButtonHandler = (clientId: string) => {
     showModal({
       title: "Attention",
       body: "Are you sure you want to delete this client?",
@@ -34,12 +34,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
           <Button variant="secondary" onClick={hideModal}>
             Cancel
           </Button>
-          <Button
-            variant="danger"
-            onClick={() => {
-              deleteClient(clientId);
-            }}
-          >
+          <Button variant="danger" onClick={confirmDelete}>
             DELETE
           </Button>
         </>
@@ -52,8 +47,8 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
       <ClientCard
         key={client.info.id}
         trainerId={trainer.info.id}
-        deleteButtonHandler={deleteButtonHandler}
         client={client}
+        deleteClient={deleteClient}
       />
     );
   });

@@ -6,18 +6,23 @@ import { Client } from "../../data/classes";
 type PropTypes = {
   key: string;
   trainerId: string;
-  deleteButtonHandler: (clientId: string) => void;
   client: Client;
+  deleteClient: (clientId: string) => void;
 };
 
-const ClientCard = ({ trainerId, deleteButtonHandler, client }: PropTypes) => {
+const ClientCard = ({ trainerId, client, deleteClient }: PropTypes) => {
   const { id, firstName, lastName, profilePicture } = client.info;
   const { goal } = client.trainingPlan;
 
   const navigate = useNavigate();
 
+  // Handlers
   const openButtonHandler = () => {
     navigate(`/dashboard/${trainerId}/client/${id}`);
+  };
+
+  const deleteButtonHandler = () => {
+    deleteClient(id);
   };
 
   interface stringToJSXElementIndex {
@@ -60,12 +65,7 @@ const ClientCard = ({ trainerId, deleteButtonHandler, client }: PropTypes) => {
 
             <Dropdown.Menu>
               <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-              <Dropdown.Item
-                eventKey="2"
-                onClick={() => {
-                  deleteButtonHandler(id);
-                }}
-              >
+              <Dropdown.Item eventKey="2" onClick={deleteButtonHandler}>
                 Delete
               </Dropdown.Item>
             </Dropdown.Menu>
