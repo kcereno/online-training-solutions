@@ -1,12 +1,11 @@
 import { Container, Navbar } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import NavLinks from "./NavLinks/NavLinks";
+import NavLinks from "../../UI/NavBar/NavLinks/NavLinks";
 import { useContext } from "react";
-
 import UserContext from "../../store/user-context";
 
-const MainNavigation = () => {
+const NavBar = () => {
   const userCtx = useContext(UserContext);
   const { activeUser } = userCtx;
   return (
@@ -22,4 +21,4 @@ const MainNavigation = () => {
   );
 };
 
-export default MainNavigation;
+export default NavBar;

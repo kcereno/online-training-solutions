@@ -5,22 +5,26 @@ import { useState, useContext } from "react";
 import ModalContext from "../../store/modal-context";
 import { Button } from "react-bootstrap";
 
-type Props = {
+type PropTypes = {
   trainer: Trainer;
 };
 
-const TrainerDashboard = ({ trainer }: Props): JSX.Element => {
+const TrainerDashboard = ({ trainer }: PropTypes) => {
+  // State
+  const [clientList, setClients] = useState(trainer.clients);
+
+  // Context
   const modalCtx = useContext(ModalContext);
   const { showModal, hideModal } = modalCtx;
 
-  const [clientList, setClients] = useState(trainer.clients);
-
+  // Functions
   const deleteClient = (clientId: string): void => {
     let updatedClientList = trainer.deleteClient(clientId);
     setClients(updatedClientList);
     hideModal();
   };
 
+  // Handlers
   const deleteButtonHandler = (clientId: string) => {
     showModal({
       title: "Attention",
