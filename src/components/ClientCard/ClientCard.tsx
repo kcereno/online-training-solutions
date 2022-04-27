@@ -46,8 +46,9 @@ const ClientCard = ({ trainerId, client, deleteClient }: PropTypes) => {
       <Card className="text-center text-white card-container bg-dark mx-3 my-3">
         <Card.Img
           variant="top"
-          className="profile-picture"
+          className="profile-picture pt-2"
           src={profilePicture}
+          
         />
         <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
         <Card.Subtitle>{setBadge()}</Card.Subtitle>

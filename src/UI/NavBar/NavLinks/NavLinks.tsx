@@ -133,7 +133,6 @@ export default function NavLinks() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ms-auto">
-          {links}
           <Nav.Link onClick={logout}>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
