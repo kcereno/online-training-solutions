@@ -8,13 +8,11 @@ export const Karl = new Trainer({
     firstName: "Karl",
     lastName: "Cereno",
     birthday: new Date(1989, 0o4, 18),
+    email: "trainer@gmail.com",
+    password: "password",
     role: "TRAINER",
     profilePicture:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-  },
-  logInCredentials: {
-    email: "trainer@gmail.com",
-    password: "password",
   },
   clients: CLIENTS,
 });
