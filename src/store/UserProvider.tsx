@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../data/classes";
-import { Karl } from "../data/TRAINERS";
+import { Karl } from "../data/Users/Trainers";
 import UserContext, { UserContextInterface } from "./user-context";
 
 type PropTypes = {

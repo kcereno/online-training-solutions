@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Client } from "../../data/classes";
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
 };
 
 const ClientDashboard = ({ client }: Props): JSX.Element => {
-  return <div>Hello {client.info.firstName}</div>;
+  return <div>Hello Client</div>;
 };
 
 export default ClientDashboard;

@@ -1,6 +1,4 @@
-import { Trainer } from "./classes";
-
-import { CLIENTS } from "./CLIENTS";
+import { Trainer } from "../classes";
 
 export const Karl = new Trainer({
   basicInfo: {

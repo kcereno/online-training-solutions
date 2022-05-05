@@ -1,5 +1,5 @@
-import { Client } from "./classes";
-import { Karl } from "./TRAINERS";
+import { Client } from "../classes";
+import { Karl } from "./Trainers";
 
 const adraymon = new Client({
   basicInfo: {

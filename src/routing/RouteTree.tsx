@@ -14,7 +14,7 @@ type PropTypes = {
 
 const RouteTree = ({ activeUser }: PropTypes) => {
   // Renders certain dashboards depending on user class
-  let dashboard = <NotFoundPage />;
+  let dashboard: JSX.Element = <NotFoundPage />;
 
   if (isTrainer(activeUser)) {
     dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
