@@ -1,14 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./UI/Layout/Layout";
 import RouteTree from "./routing/RouteTree";
-import useUserContext from "./hooks/useUserContext";
+import { CLIENTS } from "./data/Users/Clients";
 
 function App() {
-  const { activeUser } = useUserContext();
-
+  console.log(CLIENTS);
   return (
     <Layout>
-      <RouteTree activeUser={activeUser!} />
+      <RouteTree />
     </Layout>
   );
 }

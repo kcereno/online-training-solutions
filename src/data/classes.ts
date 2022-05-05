@@ -19,7 +19,7 @@ export class Trainer extends User {
 
   deleteClient(clientId: string): void {
     const updatedClientList = this._userData.clientList.filter(
-      (client) => client.info.id !== clientId
+      (client: Client) => client.info.id !== clientId
     );
     this._userData.clientList = updatedClientList;
   }

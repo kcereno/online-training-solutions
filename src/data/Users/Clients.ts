@@ -1,5 +1,4 @@
 import { Client } from "../classes";
-import { Karl } from "./Trainers";
 
 const adraymon = new Client({
   basicInfo: {
@@ -9,11 +8,11 @@ const adraymon = new Client({
     birthday: new Date(1989, 11, 31),
     email: "client@gmail.com",
     password: "password",
-    role: "CLIENT",
     profilePicture:
       "https://m.media-amazon.com/images/M/MV5BMmIzMjc5Y2ItNTIyZi00YTEzLWI4NDAtODQ0MzBiNTZmMDMxXkEyXkFqcGdeQXVyMjQwMzc1MzI@._V1_.jpg",
   },
   trainingPlan: {
+    trainer: "kcereno1989",
     goal: "GAIN STRENGTH",
     trainingBlock: [
       {
@@ -36,11 +35,11 @@ const ddawson = new Client({
     birthday: new Date(1989, 11, 31),
     email: "client2@gmail.com",
     password: "password",
-    role: "CLIENT",
     profilePicture:
       "https://www.unitedagents.co.uk/sites/default/files/thumbnails/image/20210721daviddawson00197-1.jpg",
   },
   trainingPlan: {
+    trainer: "kcereno1989",
     goal: "BUILD MUSCLE",
   },
 });
@@ -53,11 +52,11 @@ const ebutterworth = new Client({
     birthday: new Date(1989, 11, 31),
     email: "client3@gmail.com",
     password: "password",
-    role: "CLIENT",
     profilePicture:
       "https://m.media-amazon.com/images/M/MV5BOTRmZTJmOWItZTNkNy00ZTcwLWIwYTctMzU0MGYyZmVkYWY5XkEyXkFqcGdeQXVyNzM3MDAzMTI@._V1_.jpg",
   },
   trainingPlan: {
+    trainer: "kcereno1989",
     goal: "LOSE FAT",
   },
 });
@@ -70,11 +69,11 @@ const mbrady = new Client({
     birthday: new Date(1989, 11, 31),
     email: "client4@gmail.com",
     password: "password",
-    role: "CLIENT",
     profilePicture:
       "https://superstarsbio.com/wp-content/uploads/2019/10/Millie-Brady-hihgd-240x300.jpg",
   },
   trainingPlan: {
+    trainer: "kcereno1989",
     goal: "BODY RECOMPOSITION",
   },
 });
@@ -87,11 +86,11 @@ const tinnes = new Client({
     birthday: new Date(1989, 11, 31),
     email: "client5@gmail.com",
     password: "password",
-    role: "CLIENT",
     profilePicture:
       "https://assets.mycast.io/actor_images/actor-timothy-innes-348914_large.jpg?1642667387",
   },
   trainingPlan: {
+    trainer: "kcereno1989",
     goal: "SPORTS SPECIFIC",
   },
 });

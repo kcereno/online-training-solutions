@@ -5,12 +5,12 @@ export interface UserDataInterface {
 }
 
 export interface TrainerDataInterface extends UserDataInterface {
-  clientList: Client[];
+  clientList: any;
 }
 
 export interface ClientDataInterface extends UserDataInterface {
-  trainer?: Trainer;
   trainingPlan: {
+    trainer: string;
     goal:
       | "BUILD MUSCLE"
       | "LOSE FAT"
@@ -28,7 +28,6 @@ export interface BasicInfoInterface {
   birthday: Date;
   email: string;
   password: string;
-  role: "TRAINER" | "CLIENT";
   profilePicture: string;
 }
 

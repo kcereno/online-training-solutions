@@ -21,6 +21,7 @@ type PropTypes = {
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
   const clientList = trainer.clients;
+  console.log(trainer)
 
 // Rerenders page whenever clientList changes
   useEffect(() => {}, [clientList]);
