@@ -2,17 +2,27 @@ import { Card, ButtonGroup, Dropdown, Button, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./ClientCard.css";
 import { Client } from "../../data/classes";
+import { useContext } from "react";
+import UserContext from "../../store/user-context";
+import ModalContext from "../../store/modal-context";
+import { Trainer } from "../../data/classes";
+import useModal from "../../hooks/useModal";
 
 type PropTypes = {
   key: string;
   trainerId: string;
   client: Client;
-  deleteClient: (clientId: string) => void;
 };
 
-const ClientCard = ({ trainerId, client, deleteClient }: PropTypes) => {
+const ClientCard = ({ trainerId, client }: PropTypes) => {
   const { id, firstName, lastName, profilePicture } = client.info;
   const { goal } = client.trainingPlan;
+
+  const userCtx = useContext(UserContext);
+  const { activeUser } = userCtx;
+
+  const modalCtx = useContext(ModalContext);
+  const { showDeleteClientModal, hideModal } = modalCtx;
 
   const navigate = useNavigate();
 
@@ -22,7 +32,16 @@ const ClientCard = ({ trainerId, client, deleteClient }: PropTypes) => {
   };
 
   const deleteButtonHandler = () => {
-    deleteClient(id);
+    // const confirmDelete = () => {
+    //   if (activeUser instanceof Trainer) {
+    //     activeUser.deleteClient(id);
+    //     hideModal();
+    //   }
+    // };
+
+    //deleteClient(id)
+
+    showDeleteClientModal(id);
   };
 
   interface stringToJSXElementIndex {
@@ -48,7 +67,6 @@ const ClientCard = ({ trainerId, client, deleteClient }: PropTypes) => {
           variant="top"
           className="profile-picture pt-2"
           src={profilePicture}
-          
         />
         <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
         <Card.Subtitle>{setBadge()}</Card.Subtitle>

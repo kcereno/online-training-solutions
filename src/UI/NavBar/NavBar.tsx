@@ -2,12 +2,13 @@ import { Container, Navbar } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavLinks from "../../UI/NavBar/NavLinks/NavLinks";
-import { useContext } from "react";
-import UserContext from "../../store/user-context";
+import useUserContext from "../../hooks/useUserContext";
 
 const NavBar = () => {
-  const userCtx = useContext(UserContext);
-  const { activeUser } = userCtx;
+
+  const activeUser = useUserContext();
+  
+
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Container fluid>

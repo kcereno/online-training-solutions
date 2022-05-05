@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Client, Trainer } from "../data/classes";
-import { UserType } from "../data/types";
+import { Client, Trainer, User } from "../data/classes";
+import { isTrainer } from "../data/functions";
 import ClientDashboard from "../pages/ClientDashboard/ClientDashboard";
 import ClientProfilePage from "../pages/ClientProfilePage/ClientProfilePage";
 import LandingPage from "../pages/LandingPage/LandingPage";
@@ -9,17 +9,17 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
 
 type PropTypes = {
-  activeUser: UserType;
+  activeUser: User;
 };
 
 const RouteTree = ({ activeUser }: PropTypes) => {
-  
   // Renders certain dashboards depending on user class
   let dashboard = <NotFoundPage />;
-  if (activeUser instanceof Trainer) {
-    dashboard = <TrainerDashboard trainer={activeUser} />;
-  } else if (activeUser instanceof Client) {
-    dashboard = <ClientDashboard client={activeUser} />;
+
+  if (isTrainer(activeUser)) {
+    dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
+  } else {
+    dashboard = <ClientDashboard client={activeUser as Client} />;
   }
 
   return (

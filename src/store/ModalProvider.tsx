@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import ModalContext, {
-  ModalContentInterface,
+import ModalContext from "./modal-context";
+import {
+  ModalTypeInterface,
   ModalContextInterface,
-} from "./modal-context";
+} from "../../src/data/interfaces";
 
 type PropTypes = {
   children?: React.ReactNode;
@@ -10,12 +11,18 @@ type PropTypes = {
 
 const ModalProvider = ({ children }: PropTypes) => {
   const [isShowing, setIsShowing] = useState(false);
-  const [modalContent, setModalContent] = useState<ModalContentInterface>(
-    {} as ModalContentInterface
+
+  const [modalType, setModalType] = useState<ModalTypeInterface>(
+    {} as ModalTypeInterface
   );
 
-  const showModal = (content: ModalContentInterface) => {
-    setModalContent(content);
+  const showDeleteClientModal = (clientId: string) => {
+    setModalType({ type: "DELETE_CLIENT", clientId });
+    setIsShowing(true);
+  };
+
+  const showModal = (modalType: any) => {
+    setModalType(modalType);
     setIsShowing(true);
   };
 
@@ -25,9 +32,10 @@ const ModalProvider = ({ children }: PropTypes) => {
 
   const ModalContextValues: ModalContextInterface = {
     showModal,
+    showDeleteClientModal,
     hideModal,
     isShowing,
-    modalContent,
+    modalType,
   };
 
   return (

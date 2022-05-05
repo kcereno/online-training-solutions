@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Footer/Footer";
-import CustomModal from "../Modal/CustomModal";
+import CustomModal from "../CustomModal.tsx/CustomModal";
 import NavBar from "../NavBar/NavBar";
 import "./Layout.css";
 

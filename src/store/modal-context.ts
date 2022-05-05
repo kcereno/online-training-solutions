@@ -1,17 +1,5 @@
 import { createContext } from "react";
-
-export interface ModalContentInterface {
-  title: any;
-  body: any;
-  footer: any;
-}
-
-export interface ModalContextInterface {
-  showModal: (content: ModalContentInterface) => void;
-  hideModal: () => void;
-  isShowing: boolean;
-  modalContent: ModalContentInterface;
-}
+import { ModalContextInterface } from "../data/interfaces";
 
 const ModalContext = createContext<ModalContextInterface>(
   {} as ModalContextInterface

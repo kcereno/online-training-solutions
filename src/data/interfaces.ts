@@ -5,7 +5,7 @@ export interface UserDataInterface {
 }
 
 export interface TrainerDataInterface extends UserDataInterface {
-  clients: Client[];
+  clientList: Client[];
 }
 
 export interface ClientDataInterface extends UserDataInterface {
@@ -32,7 +32,6 @@ export interface BasicInfoInterface {
   profilePicture: string;
 }
 
-
 export interface TrainingBlockInterface {
   blockName: string;
   exercises: ExerciseInterface[];
@@ -45,4 +44,19 @@ interface ExerciseInterface {
   reps: number;
   sets: number;
   rest: number;
+}
+
+// Modal Context Interfaces
+
+export interface ModalContextInterface {
+  showModal: (modalType: "DELETE_CLIENT" | "ADD_CLIENT") => void;
+  showDeleteClientModal: (clientId: string) => void;
+  hideModal: () => void;
+  modalType: ModalTypeInterface;
+  isShowing: boolean;
+}
+
+export interface ModalTypeInterface {
+  type: "DELETE_CLIENT" | "ADD_CLIENT";
+  clientId?: string;
 }

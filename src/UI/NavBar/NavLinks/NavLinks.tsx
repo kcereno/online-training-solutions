@@ -18,18 +18,17 @@ export default function NavLinks() {
   const userCtx = useContext(UserContext);
   const { activeUser, logout } = userCtx;
 
-  const modalCtx = useContext(ModalContext);
-  const { showModal } = modalCtx;
+
 
   const location = useLocation();
 
-  const addClientHandler = () => {
-    showModal({
-      title: "Add Client",
-      body: modalBody,
-      footer: modalFooter,
-    });
-  };
+  // const addClientHandler = () => {
+  //   showModal({
+  //     title: "Add Client",
+  //     body: modalBody,
+  //     footer: modalFooter,
+  //   });
+  // };
 
   const modalBody = (
     <Form>
@@ -122,11 +121,6 @@ export default function NavLinks() {
     </>
   );
 
-  let links = null;
-
-  if (location.pathname === "/dashboard/" + activeUser?.info.id) {
-    links = <Nav.Link onClick={addClientHandler}>Add Client</Nav.Link>;
-  }
 
   return (
     <Fragment>

@@ -1,7 +1,7 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
 import { Client, Trainer } from "../../data/classes";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import ModalContext from "../../store/modal-context";
 import {
   Button,
@@ -20,36 +20,16 @@ type PropTypes = {
 };
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
-  // State
-  const [clientList, setClients] = useState(trainer.clients);
+  const clientList = trainer.clients;
+
+// Rerenders page whenever clientList changes
+  useEffect(() => {}, [clientList]);
 
   // Context
   const modalCtx = useContext(ModalContext);
-  const { showModal, hideModal } = modalCtx;
+  const { showDeleteClientModal, hideModal, showModal } = modalCtx;
 
   // Functions
-  const deleteClient = (clientId: string): void => {
-    const confirmDelete = () => {
-      let updatedClientList = trainer.deleteClient(clientId);
-      setClients(updatedClientList);
-      hideModal();
-    };
-
-    showModal({
-      title: "Attention",
-      body: "Are you sure you want to delete this client?",
-      footer: (
-        <>
-          <Button variant="secondary" onClick={hideModal}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={confirmDelete}>
-            DELETE
-          </Button>
-        </>
-      ),
-    });
-  };
 
   const addClientHandler = () => {
     const modalBody = (
@@ -143,20 +123,19 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
       </>
     );
 
-    showModal({
-      title: "Add Client",
-      body: modalBody,
-      footer: modalFooter,
-    });
+    // showModal({
+    //   title: "Add Client",
+    //   body: modalBody,
+    //   footer: modalFooter,
+    // });
   };
 
-  let clients = clientList.map((client: Client) => {
+  let clientCards = clientList.map((client: Client) => {
     return (
       <ClientCard
         key={client.info.id}
         trainerId={trainer.info.id}
         client={client}
-        deleteClient={deleteClient}
       />
     );
   });
@@ -168,7 +147,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
           <div className="d-flex justify-content-center align-items-center">
             <h2 className="text-white display-4 ">Clients</h2>
             <FontAwesomeIcon
-            className="header-button"
+              className="header-button"
               icon={faUserPlus}
               color="white"
               onClick={addClientHandler}
@@ -177,7 +156,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
           <hr />
         </Row>
         <Row className="d-flex justify-content-center flex-wrap header">
-          {clients}
+          {clientCards}
         </Row>
       </Container>
     </section>

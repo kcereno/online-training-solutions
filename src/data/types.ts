@@ -1,3 +1,3 @@
 import { Client, Trainer } from "./classes";
 
-export type UserType = Trainer| Client| null
+export type UserType = Trainer| Client| undefined
