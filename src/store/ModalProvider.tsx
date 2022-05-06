@@ -19,6 +19,11 @@ const ModalProvider = ({ children }: PropTypes) => {
     setIsShowing(true);
   };
 
+  const showAddClientModal = () => {
+    setModalType({ type: "ADD_CLIENT" });
+    setIsShowing(true);
+  };
+
   const showModal = (modalType: any) => {
     setModalType(modalType);
     setIsShowing(true);
@@ -31,6 +36,7 @@ const ModalProvider = ({ children }: PropTypes) => {
   const ModalContextValues: ModalContextInterface = {
     showModal,
     showDeleteClientModal,
+    showAddClientModal,
     hideModal,
     isShowing,
     modalType,

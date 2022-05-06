@@ -14,9 +14,12 @@ type PropTypes = {
 const TrainerDashboard = ({ trainer }: PropTypes) => {
   const clientList = trainer.clients;
 
-  const { showDeleteClientModal } = useContext(ModalContext);
+  const { showDeleteClientModal, showAddClientModal } =
+    useContext(ModalContext);
 
-  const HandleAddClient = (): void => {};
+  const HandleAddClient = (): void => {
+    showAddClientModal()
+  };
 
   const HandleDeleteClient = (clientId: string): void => {
     showDeleteClientModal(clientId);
