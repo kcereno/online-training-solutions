@@ -24,7 +24,7 @@ export class Trainer extends User {
     this._userData.clientList = updatedClientList;
   }
 
-  get clients() {
+  get clients():Client[]{
     return this._userData.clientList;
   }
 }

@@ -1,5 +1,19 @@
 import { createContext } from "react";
-import { ModalContextInterface } from "../data/interfaces";
+
+export type ModalTypeAlias = "DELETE_CLIENT" | "ADD_CLIENT";
+
+export interface ModalContextInterface {
+  showModal: (modalType: ModalTypeAlias) => void;
+  showDeleteClientModal: (clientId: string) => void;
+  hideModal: () => void;
+  modalType: ModalTypeInterface;
+  isShowing: boolean;
+}
+
+export interface ModalTypeInterface {
+  type: ModalTypeAlias;
+  clientId?: string;
+}
 
 const ModalContext = createContext<ModalContextInterface>(
   {} as ModalContextInterface

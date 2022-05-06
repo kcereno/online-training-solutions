@@ -7,3 +7,7 @@ export const isTrainer = (user: User | null) => {
 
 export const getClients = (trainerId: string) =>
   CLIENTS.filter((client: Client) => client.trainingPlan.trainer === trainerId);
+
+export const log = (x: any): void => {
+  console.log(x);
+};

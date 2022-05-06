@@ -47,15 +47,6 @@ interface ExerciseInterface {
 
 // Modal Context Interfaces
 
-export interface ModalContextInterface {
-  showModal: (modalType: "DELETE_CLIENT" | "ADD_CLIENT") => void;
-  showDeleteClientModal: (clientId: string) => void;
-  hideModal: () => void;
-  modalType: ModalTypeInterface;
-  isShowing: boolean;
-}
 
-export interface ModalTypeInterface {
-  type: "DELETE_CLIENT" | "ADD_CLIENT";
-  clientId?: string;
-}
+
+

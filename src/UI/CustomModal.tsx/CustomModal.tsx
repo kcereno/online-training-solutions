@@ -1,17 +1,18 @@
+import { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
+import ModalContext from "../../store/modal-context";
+import UserContext from "../../store/user-context";
 import { Trainer } from "../../data/classes";
-import useUserContext from "../../hooks/useUserContext";
-import useModal from "../../hooks/useModal";
 
 const CustomModal = () => {
-  const { isShowing, hideModal, modalType } = useModal();
-  const { clientId, type } = modalType;
+  const { isShowing, hideModal, modalType } = useContext(ModalContext);
+  const { type, clientId } = modalType;
 
-  const { activeUser } = useUserContext();
+  const { activeUser } = useContext(UserContext);
 
-  const deleteClient = () => {
-    if (activeUser instanceof Trainer) {
-      activeUser.deleteClient(clientId!);
+  const handleConfirmDeletClient = () => {
+    if (activeUser instanceof Trainer && clientId) {
+      activeUser.deleteClient(clientId);
     }
     hideModal();
   };
@@ -26,7 +27,7 @@ const CustomModal = () => {
         <Button variant="secondary" onClick={hideModal}>
           Cancel
         </Button>
-        <Button variant="danger" onClick={deleteClient}>
+        <Button variant="danger" onClick={handleConfirmDeletClient}>
           DELETE
         </Button>
       </>

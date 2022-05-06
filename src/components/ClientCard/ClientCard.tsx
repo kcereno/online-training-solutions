@@ -1,47 +1,27 @@
 import { Card, ButtonGroup, Dropdown, Button, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./ClientCard.css";
-import { Client } from "../../data/classes";
-import { useContext } from "react";
-import UserContext from "../../store/user-context";
-import ModalContext from "../../store/modal-context";
-import { Trainer } from "../../data/classes";
-import useModal from "../../hooks/useModal";
 
 type PropTypes = {
   key: string;
-  trainerId: string;
-  client: Client;
+  info: any;
+  trainingPlan: any;
+  deleteClient: (clientId: string) => void;
 };
 
-const ClientCard = ({ trainerId, client }: PropTypes) => {
-  const { id, firstName, lastName, profilePicture } = client.info;
-  const { goal } = client.trainingPlan;
-
-  const userCtx = useContext(UserContext);
-  const { activeUser } = userCtx;
-
-  const modalCtx = useContext(ModalContext);
-  const { showDeleteClientModal, hideModal } = modalCtx;
+const ClientCard = ({ info, trainingPlan, deleteClient }: PropTypes) => {
+  const { id, firstName, lastName, profilePicture } = info;
+  const { goal, trainer } = trainingPlan;
 
   const navigate = useNavigate();
 
   // Handlers
-  const openButtonHandler = () => {
-    navigate(`/dashboard/${trainerId}/client/${id}`);
+  const handleOpenButton = () => {
+    navigate(`/dashboard/${trainer}/client/${id}`);
   };
 
-  const deleteButtonHandler = () => {
-    // const confirmDelete = () => {
-    //   if (activeUser instanceof Trainer) {
-    //     activeUser.deleteClient(id);
-    //     hideModal();
-    //   }
-    // };
-
-    //deleteClient(id)
-
-    showDeleteClientModal(id);
+  const handleDeleteButton = () => {
+    deleteClient(id);
   };
 
   interface stringToJSXElementIndex {
@@ -72,7 +52,7 @@ const ClientCard = ({ trainerId, client }: PropTypes) => {
         <Card.Subtitle>{setBadge()}</Card.Subtitle>
         <Card.Body>
           <Dropdown as={ButtonGroup}>
-            <Button variant="primary" onClick={openButtonHandler}>
+            <Button variant="primary" onClick={handleOpenButton}>
               Open
             </Button>
 
@@ -84,7 +64,7 @@ const ClientCard = ({ trainerId, client }: PropTypes) => {
 
             <Dropdown.Menu>
               <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-              <Dropdown.Item eventKey="2" onClick={deleteButtonHandler}>
+              <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
                 Delete
               </Dropdown.Item>
             </Dropdown.Menu>

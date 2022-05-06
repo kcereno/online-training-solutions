@@ -1,17 +1,9 @@
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
 import { Client, Trainer } from "../../data/classes";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import ModalContext from "../../store/modal-context";
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Form,
-  Accordion,
-  FloatingLabel,
-} from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,122 +13,22 @@ type PropTypes = {
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
   const clientList = trainer.clients;
-  console.log(trainer)
 
-// Rerenders page whenever clientList changes
-  useEffect(() => {}, [clientList]);
+  const { showDeleteClientModal } = useContext(ModalContext);
 
-  // Context
-  const modalCtx = useContext(ModalContext);
-  const { showDeleteClientModal, hideModal, showModal } = modalCtx;
+  const HandleAddClient = (): void => {};
 
-  // Functions
-
-  const addClientHandler = () => {
-    const modalBody = (
-      <Form>
-        <Accordion defaultActiveKey="0">
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Basic Information</Accordion.Header>
-            <Accordion.Body>
-              <FloatingLabel
-                label="First Name"
-                controlId="firstName"
-                className="mb-3"
-              >
-                <Form.Control type="text" />
-              </FloatingLabel>
-
-              <FloatingLabel
-                label="Last Name"
-                controlId="lastName"
-                className="mb-3"
-              >
-                <Form.Control type="text" />
-              </FloatingLabel>
-              <FloatingLabel label="Email" controlId="email" className="mb-3">
-                <Form.Control type="email" />
-              </FloatingLabel>
-              <FloatingLabel
-                label="Birthday"
-                controlId="birthday"
-                className="mb-3"
-              >
-                <Form.Control type="date" />
-              </FloatingLabel>
-            </Accordion.Body>
-          </Accordion.Item>
-
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>Profile Picture</Accordion.Header>
-            <Accordion.Body>
-              <Form.Check
-                className="mb-3"
-                type="switch"
-                id="photoUrlSwitch"
-                label="Add a custom profile photo?"
-              />
-
-              <FloatingLabel
-                label="Photo URL"
-                controlId="photoUrl"
-                className="mb-3"
-              >
-                <Form.Control type="url" />
-              </FloatingLabel>
-            </Accordion.Body>
-          </Accordion.Item>
-
-          <Accordion.Item eventKey="2">
-            <Accordion.Header>Training Information</Accordion.Header>
-            <Accordion.Body>
-              <FloatingLabel controlId="floatingSelect" label="Goal">
-                <Form.Select aria-label="text">
-                  <option>Build Muscle</option>
-                  <option>Lose Fat</option>
-                  <option>Gain Strength</option>
-                  <option>Body Recomposition</option>
-                  <option>Sports Specific</option>
-                </Form.Select>
-              </FloatingLabel>
-
-              <div className="mt-3">
-                <Form.Label>Target</Form.Label>
-                <Row>
-                  <Col>
-                    <Form.Control placeholder="Weight in lbs" />
-                  </Col>
-                  <Col>
-                    <Form.Control placeholder="Body Fat Percentage" />
-                  </Col>
-                </Row>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      </Form>
-    );
-
-    const modalFooter = (
-      <>
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">SUBMIT</Button>
-      </>
-    );
-
-    // showModal({
-    //   title: "Add Client",
-    //   body: modalBody,
-    //   footer: modalFooter,
-    // });
+  const HandleDeleteClient = (clientId: string): void => {
+    showDeleteClientModal(clientId);
   };
 
   let clientCards = clientList.map((client: Client) => {
     return (
       <ClientCard
         key={client.info.id}
-        trainerId={trainer.info.id}
-        client={client}
+        info={client.info}
+        trainingPlan={client.trainingPlan}
+        deleteClient={HandleDeleteClient}
       />
     );
   });
@@ -151,7 +43,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
               className="header-button"
               icon={faUserPlus}
               color="white"
-              onClick={addClientHandler}
+              onClick={HandleAddClient}
             />
           </div>
           <hr />

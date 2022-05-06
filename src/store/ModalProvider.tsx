@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ModalContext from "./modal-context";
-import {
-  ModalTypeInterface,
+import ModalContext, {
   ModalContextInterface,
-} from "../../src/data/interfaces";
+  ModalTypeInterface,
+} from "./modal-context";
 
 type PropTypes = {
   children?: React.ReactNode;
@@ -11,7 +10,6 @@ type PropTypes = {
 
 const ModalProvider = ({ children }: PropTypes) => {
   const [isShowing, setIsShowing] = useState(false);
-
   const [modalType, setModalType] = useState<ModalTypeInterface>(
     {} as ModalTypeInterface
   );
