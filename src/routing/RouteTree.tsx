@@ -1,27 +1,23 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Client, Trainer } from "../data/classes";
-import { isTrainer } from "../data/functions";
-import useUserContext from "../hooks/useUserContext";
 import ClientDashboard from "../pages/ClientDashboard/ClientDashboard";
 import ClientProfilePage from "../pages/ClientProfilePage/ClientProfilePage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
+import UserContext from "../store/user-context";
 
 const RouteTree = () => {
-  const { activeUser } = useUserContext();
+  const { activeUser } = useContext(UserContext);
 
   // Renders certain dashboards depending on activeUser class
-  let dashboard: JSX.Element;
+  let dashboard = <NotFoundPage />;
 
-  if (!activeUser) {
-    dashboard = <NotFoundPage />;
-  }
-
-  if (isTrainer(activeUser)) {
+  if (activeUser instanceof Trainer) {
     dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
-  } else {
+  } else if (activeUser instanceof Client) {
     dashboard = <ClientDashboard client={activeUser as Client} />;
   }
 
