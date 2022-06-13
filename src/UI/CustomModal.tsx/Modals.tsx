@@ -10,23 +10,24 @@ import {
 } from "react-bootstrap";
 import ModalContext from "../../store/modal-context";
 import UserContext from "../../store/user-context";
-// import { Trainer } from "../../data/classes";
 
 type DeleteModalPropTypes = {
   clientId: string;
 };
 
-export const DeleteClientModal = (props: DeleteModalPropTypes) => {
-  const { clientId } = props;
+export const DeleteClientModal = ({ clientId }: DeleteModalPropTypes) => {
+  const { hideModal } = useContext(ModalContext);
+  const { activeUser } = useContext(UserContext);
 
-  // const { hideModal } = useContext(ModalContext);
-  // const { activeUser } = useContext(UserContext);
+  const handleConfirmDeleteClient = () => {
+    if (activeUser?.role === "TRAINER") {
+      const updatedClientList = activeUser.clients.filter(
+        (client) => client.info.id !== clientId
+      );
 
-  const handleConfirmDeletClient = () => {
-    //   if (activeUser instanceof Trainer && clientId) {
-    //     activeUser.deleteClient(clientId);
-    //   }
-    //   hideModal();
+      activeUser.clients = updatedClientList;
+    }
+    hideModal();
   };
 
   return (
@@ -34,12 +35,12 @@ export const DeleteClientModal = (props: DeleteModalPropTypes) => {
       <Modal.Header>
         <Modal.Title>Attention</Modal.Title>
       </Modal.Header>
-      <Modal.Body>"Are you sure you want to delete this client?"</Modal.Body>
+      <Modal.Body>Are you sure you want to delete this client?</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => {}}>
+        <Button variant="secondary" onClick={hideModal}>
           Cancel
         </Button>
-        <Button variant="danger" onClick={handleConfirmDeletClient}>
+        <Button variant="danger" onClick={handleConfirmDeleteClient}>
           DELETE
         </Button>
       </Modal.Footer>

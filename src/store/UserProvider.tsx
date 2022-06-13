@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Client } from "../data/interfaces";
 import { UserType } from "../data/types";
+import { CLIENTS } from "../data/Users/Clients";
 import { kcereno } from "../data/Users/Trainers";
 import UserContext, { UserContextInterface } from "./user-context";
 
@@ -10,7 +12,8 @@ type PropTypes = {
 
 const UserProvider = ({ children }: PropTypes) => {
   // State
-  const [activeUser, setActiveUser] = useState<UserType>(kcereno);
+  const [activeUser, setActiveUser] = useState<UserType>(null);
+  // const [clients, setClients] = useState<Client[]>(CLIENTS);
 
   // Navigate
   const navigate = useNavigate();
@@ -29,6 +32,8 @@ const UserProvider = ({ children }: PropTypes) => {
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
+    // clients,
+    // setClients,
     login,
     logout,
   };

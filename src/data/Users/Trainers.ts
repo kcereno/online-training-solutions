@@ -1,8 +1,6 @@
 import { Trainer } from "../interfaces";
 import { CLIENTS } from "./Clients";
 
-const [adraymon] = CLIENTS;
-
 export const kcereno: Trainer = {
   role: "TRAINER",
   info: {
@@ -15,7 +13,7 @@ export const kcereno: Trainer = {
     profilePicture:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   },
-  clients: CLIENTS,
+  clients: [...CLIENTS],
 };
 
 export const TRAINERS: Trainer[] = [kcereno];
