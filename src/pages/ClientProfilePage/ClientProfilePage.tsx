@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { CLIENTS } from "../../data/Users/Clients";
+import { ALL_CLIENTS } from "../../data/Users/Clients";
 
 const ClientProfilePage = () => {
   const params = useParams();

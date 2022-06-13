@@ -90,7 +90,7 @@ const tinnes: Client = {
   },
 };
 
-export const CLIENTS: Client[] = [
+export const ALL_CLIENTS: Client[] = [
   adraymon,
   ddawson,
   ebutterworth,

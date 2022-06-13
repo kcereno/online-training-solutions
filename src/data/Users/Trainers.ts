@@ -1,5 +1,5 @@
 import { Trainer } from "../interfaces";
-import { CLIENTS } from "./Clients";
+import { ALL_CLIENTS } from "./Clients";
 
 export const kcereno: Trainer = {
   role: "TRAINER",
@@ -13,7 +13,7 @@ export const kcereno: Trainer = {
     profilePicture:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
   },
-  clients: [...CLIENTS],
+  clients: [...ALL_CLIENTS],
 };
 
-export const TRAINERS: Trainer[] = [kcereno];
+export const ALL_TRAINERS: Trainer[] = [kcereno];

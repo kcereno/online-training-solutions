@@ -1,20 +1,19 @@
 import { Fragment } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-
 import useUserContext from "../../../hooks/useUserContext";
 
 export default function NavLinks() {
-  // const { activeUser, logout } = useUserContext();
+  const { activeUser, userControls } = useUserContext();
 
   let links;
 
-  // if (activeUser) {
-  //   links = (
-  //     <>
-  //       <Nav.Link onClick={logout}>Log Out</Nav.Link>
-  //     </>
-  //   );
-  // }
+  if (activeUser) {
+    links = (
+      <>
+        <Nav.Link onClick={userControls.logout}>Log Out</Nav.Link>
+      </>
+    );
+  }
 
   return (
     <Fragment>
