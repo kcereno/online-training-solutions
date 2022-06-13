@@ -1,0 +1,10 @@
+.profile-picture {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-container {
+  width: auto;
+}

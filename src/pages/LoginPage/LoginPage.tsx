@@ -2,10 +2,10 @@ import "./LoginPage.css";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { CLIENTS } from "../../data/Users/Clients";
 import { TRAINERS } from "../../data/Users/Trainers";
-import UserContext from "../../store/user-context";
+import useUserContext from "../../hooks/useUserContext";
 
 export default function LoginPage() {
   // States
@@ -14,8 +14,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
 
   // Context
-  const userCtx = useContext(UserContext);
-  const { login } = userCtx;
+  const { userControls } = useUserContext();
+  const { login } = userControls;
 
   // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,9 +28,12 @@ export default function LoginPage() {
     e.preventDefault();
 
     const USERS = [...CLIENTS, ...TRAINERS];
+
     const foundUser = USERS.find(
       (user) => user.info.email === email && user.info.password === password
     );
+    console.log(foundUser);
+
     if (foundUser) {
       login(foundUser);
     } else {

@@ -1,7 +1,8 @@
-import { Client } from "../classes";
+import { Client } from "../interfaces";
 
-const adraymon = new Client({
-  basicInfo: {
+const adraymon: Client = {
+  role: "CLIENT",
+  info: {
     id: "adraymon",
     firstName: "Alexander",
     lastName: "Draymon",
@@ -12,23 +13,14 @@ const adraymon = new Client({
       "https://m.media-amazon.com/images/M/MV5BMmIzMjc5Y2ItNTIyZi00YTEzLWI4NDAtODQ0MzBiNTZmMDMxXkEyXkFqcGdeQXVyMjQwMzc1MzI@._V1_.jpg",
   },
   trainingPlan: {
-    trainer: "kcereno1989",
+    trainer: "kcereno",
     goal: "GAIN STRENGTH",
-    trainingBlock: [
-      {
-        blockName: "Starting Strength",
-        exercises: [
-          { exerciseName: "Squat", rpe: 6, reps: 5, sets: 5, rest: 60 },
-          { exerciseName: "Bench", rpe: 6, reps: 5, sets: 5, rest: 60 },
-          { exerciseName: "Deadlift", rpe: 6, reps: 5, sets: 5, rest: 60 },
-        ],
-      },
-    ],
   },
-});
+};
 
-const ddawson = new Client({
-  basicInfo: {
+const ddawson: Client = {
+  role: "CLIENT",
+  info: {
     id: "ddawson",
     firstName: "David",
     lastName: "Dawson",
@@ -39,13 +31,14 @@ const ddawson = new Client({
       "https://www.unitedagents.co.uk/sites/default/files/thumbnails/image/20210721daviddawson00197-1.jpg",
   },
   trainingPlan: {
-    trainer: "kcereno1989",
+    trainer: "kcereno",
     goal: "BUILD MUSCLE",
   },
-});
+};
 
-const ebutterworth = new Client({
-  basicInfo: {
+const ebutterworth: Client = {
+  role: "CLIENT",
+  info: {
     id: "ebutterworth",
     firstName: "Eliza",
     lastName: "Butterworth",
@@ -56,13 +49,14 @@ const ebutterworth = new Client({
       "https://m.media-amazon.com/images/M/MV5BOTRmZTJmOWItZTNkNy00ZTcwLWIwYTctMzU0MGYyZmVkYWY5XkEyXkFqcGdeQXVyNzM3MDAzMTI@._V1_.jpg",
   },
   trainingPlan: {
-    trainer: "kcereno1989",
+    trainer: "kcereno",
     goal: "LOSE FAT",
   },
-});
+};
 
-const mbrady = new Client({
-  basicInfo: {
+const mbrady: Client = {
+  role: "CLIENT",
+  info: {
     id: "mbrady",
     firstName: "Millie",
     lastName: "Brady",
@@ -73,13 +67,14 @@ const mbrady = new Client({
       "https://superstarsbio.com/wp-content/uploads/2019/10/Millie-Brady-hihgd-240x300.jpg",
   },
   trainingPlan: {
-    trainer: "kcereno1989",
+    trainer: "kcereno",
     goal: "BODY RECOMPOSITION",
   },
-});
+};
 
-const tinnes = new Client({
-  basicInfo: {
+const tinnes: Client = {
+  role: "CLIENT",
+  info: {
     id: "tinnes",
     firstName: "Timothy",
     lastName: "Innes",
@@ -90,10 +85,10 @@ const tinnes = new Client({
       "https://assets.mycast.io/actor_images/actor-timothy-innes-348914_large.jpg?1642667387",
   },
   trainingPlan: {
-    trainer: "kcereno1989",
+    trainer: "kcereno",
     goal: "SPORTS SPECIFIC",
   },
-});
+};
 
 export const CLIENTS: Client[] = [
   adraymon,

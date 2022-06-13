@@ -1,14 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from "./UI/Layout/Layout";
 import RouteTree from "./routing/RouteTree";
-
+import CustomModal from "./UI/CustomModal.tsx/CustomModal";
+import NavBar from "./UI/NavBar/NavBar";
+import Footer from "./UI/Footer/Footer";
+import "./App.css";
 
 function App() {
-
   return (
-    <Layout>
+    <div className="App">
+      <CustomModal />
+      <NavBar />
       <RouteTree />
-    </Layout>
+      <Footer />
+    </div>
   );
 }
 

@@ -1,3 +1,3 @@
-import { Client, Trainer } from "./classes";
+import { Client, Trainer } from "./interfaces";
 
-export type UserType = Trainer| Client| undefined
+export type UserType = Trainer | Client | null;

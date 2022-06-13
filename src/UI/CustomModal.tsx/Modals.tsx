@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import ModalContext from "../../store/modal-context";
 import UserContext from "../../store/user-context";
-import { Trainer } from "../../data/classes";
+// import { Trainer } from "../../data/classes";
 
 type DeleteModalPropTypes = {
   clientId: string;
@@ -19,14 +19,14 @@ type DeleteModalPropTypes = {
 export const DeleteClientModal = (props: DeleteModalPropTypes) => {
   const { clientId } = props;
 
-  const { hideModal } = useContext(ModalContext);
-  const { activeUser } = useContext(UserContext);
+  // const { hideModal } = useContext(ModalContext);
+  // const { activeUser } = useContext(UserContext);
 
   const handleConfirmDeletClient = () => {
-    if (activeUser instanceof Trainer && clientId) {
-      activeUser.deleteClient(clientId);
-    }
-    hideModal();
+    //   if (activeUser instanceof Trainer && clientId) {
+    //     activeUser.deleteClient(clientId);
+    //   }
+    //   hideModal();
   };
 
   return (
@@ -36,7 +36,7 @@ export const DeleteClientModal = (props: DeleteModalPropTypes) => {
       </Modal.Header>
       <Modal.Body>"Are you sure you want to delete this client?"</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={hideModal}>
+        <Button variant="secondary" onClick={() => {}}>
           Cancel
         </Button>
         <Button variant="danger" onClick={handleConfirmDeletClient}>

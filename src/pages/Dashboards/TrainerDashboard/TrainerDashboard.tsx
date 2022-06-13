@@ -1,38 +1,38 @@
-import ClientCard from "../../components/ClientCard/ClientCard";
+import ClientCard from "../../../components/ClientCards/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
-import { useContext } from "react";
-import ModalContext from "../../store/modal-context";
+// import { Client } from "../../../data/classes";
+import { useContext, useEffect } from "react";
+import ModalContext from "../../../store/modal-context";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { Trainer } from "../../data/interfaces";
 
-type PropTypes = {
-  trainer: Trainer;
-};
 
-const TrainerDashboard = ({ trainer }: PropTypes) => {
-  const clientList = trainer.clients;
+
+const TrainerDashboard = () => {
+  // useEffect(() => {}, [clients]);
 
   const { showDeleteClientModal, showAddClientModal } =
     useContext(ModalContext);
 
-  const handleAddClient = (): void => {
+  const HandleAddClient = (): void => {
     showAddClientModal();
   };
 
-  const handleDeleteClient = (clientId: string): void => {
+  const HandleDeleteClient = (clientId: string): void => {
     showDeleteClientModal(clientId);
   };
 
-  const clientCards = clientList.map((client) => (
-    <ClientCard
-      key={client.info.id}
-      info={client.info}
-      trainingPlan={client.trainingPlan}
-      deleteClient={handleDeleteClient}
-    />
-  ));
+  // const clientCards = clientList.map((client: Client) => {
+  //   return (
+  //     <ClientCard
+  //       key={client.info.id}
+  //       info={client.info}
+  //       trainingPlan={client.trainingPlan}
+  //       deleteClient={HandleDeleteClient}
+  //     />
+  //   );
+  // });
 
   return (
     <section id="trainer-dashboard" className=" py-5">
@@ -44,13 +44,13 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
               className="header-button"
               icon={faUserPlus}
               color="white"
-              onClick={handleAddClient}
+              onClick={HandleAddClient}
             />
           </div>
           <hr />
         </Row>
         <Row className="d-flex justify-content-center flex-wrap header">
-          {clientCards}
+        <h1>hello</h1>
         </Row>
       </Container>
     </section>

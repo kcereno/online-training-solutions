@@ -1,11 +1,4 @@
-
-import { Client } from "../../data/classes";
-
-type Props = {
-  client: Client;
-};
-
-const ClientDashboard = ({ client }: Props): JSX.Element => {
+const ClientDashboard = (): JSX.Element => {
   return <div>Hello Client</div>;
 };
 

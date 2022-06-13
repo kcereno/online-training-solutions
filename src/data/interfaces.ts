@@ -1,14 +1,35 @@
-import { Trainer, Client } from "./classes";
-
-export interface UserDataInterface {
-  basicInfo: BasicInfoInterface;
+export interface User {
+  info: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    birthday: Date;
+    email: string;
+    password: string;
+    profilePicture: string;
+  };
 }
 
-export interface TrainerDataInterface extends UserDataInterface {
-  clientList: any;
+export interface Trainer extends User {
+  role: "TRAINER";
+  clients: Client[];
 }
 
-export interface ClientDataInterface extends UserDataInterface {
+export interface Client extends User {
+  role: "CLIENT";
+  trainingPlan: {
+    trainer: string; // trainer id
+    goal:
+      | "BUILD MUSCLE"
+      | "LOSE FAT"
+      | "GAIN STRENGTH"
+      | "BODY RECOMPOSITION"
+      | "SPORTS SPECIFIC";
+    // trainingBlock?: TrainingBlockInterface[];
+  };
+}
+
+export interface ClientDataInterface extends User {
   trainingPlan: {
     trainer: string;
     goal:
@@ -46,7 +67,3 @@ interface ExerciseInterface {
 }
 
 // Modal Context Interfaces
-
-
-
-
