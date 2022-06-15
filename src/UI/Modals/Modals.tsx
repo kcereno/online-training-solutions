@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import ModalContext from "../../store/modal-context";
-import { AddClientModal, DeleteClientModal } from "./Modals";
 import { Modal } from "react-bootstrap";
+import DeleteClientModal from "./ModalTypes/DeleteClientModal";
+import { AddClientModal } from "./ModalTypes/AddClientModal";
 
-const CustomModal = () => {
+const Modals = () => {
   const { isShowing, hideModal, modalType } = useContext(ModalContext);
   const { type, clientId } = modalType;
 
@@ -24,6 +25,6 @@ const CustomModal = () => {
   );
 };
 
-export default CustomModal;
+export default Modals;
 
 // Title, Body, Footer

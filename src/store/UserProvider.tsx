@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Client } from "../data/interfaces";
+import { Client, Trainer } from "../data/interfaces";
 import { UserType } from "../data/types";
 import { ALL_CLIENTS } from "../data/Users/Clients";
 import { kcereno } from "../data/Users/Trainers";
@@ -28,11 +28,14 @@ const UserProvider = ({ children }: PropTypes) => {
     navigate("/");
   };
 
+  const addClient = (newClient: Client) => {
+    (activeUser as Trainer).clients.push(newClient);
+  };
+
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
-    // clients,
-    // setClients,
+    addClient,
     login,
     logout,
   };

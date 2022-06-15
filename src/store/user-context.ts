@@ -4,8 +4,7 @@ import { UserType } from "../data/types";
 
 export interface UserContextInterface {
   activeUser: UserType;
-  // clients: Client[];
-  // setClients: React.Dispatch<React.SetStateAction<Client[]>>;
+  addClient: (newClient: Client) => void;
   login: (user: UserType | null) => void;
   logout: () => void;
 }

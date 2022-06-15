@@ -2,7 +2,7 @@ import { useContext } from "react";
 import UserContext from "../store/user-context";
 
 const useUserContext = () => {
-  const { activeUser, login, logout } = useContext(UserContext);
+  const { activeUser, login, logout, addClient } = useContext(UserContext);
 
   return {
     activeUser,
@@ -10,6 +10,7 @@ const useUserContext = () => {
       login,
       logout,
     },
+    addClient,
   };
 };
 
