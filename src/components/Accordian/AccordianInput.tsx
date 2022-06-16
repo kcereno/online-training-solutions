@@ -34,7 +34,13 @@ const AccordianInput = ({
       <Form.Select
         aria-label={selectAriaLabel}
         {...useFormData.register("Goal", { required: true })}
-      ></Form.Select>
+      >
+        <option>Build Muscle</option>
+        <option>Lose Fat</option>
+        <option>Gain Strength</option>
+        <option>Body Recomposition</option>
+        <option>Sports Specific</option>
+      </Form.Select>
     );
   }
 

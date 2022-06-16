@@ -12,8 +12,8 @@ type PropTypes = {
 
 const UserProvider = ({ children }: PropTypes) => {
   // State
-  const [activeUser, setActiveUser] = useState<UserType>(kcereno);
-
+  const [activeUser, setActiveUser] = useState<UserType>(null);
+  console.log(activeUser);
   // Navigate
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ const UserProvider = ({ children }: PropTypes) => {
 
   const addClient = (newClient: Client) => {
     (activeUser as Trainer).clients.push(newClient);
+    console.log(activeUser as Trainer);
   };
 
   // Context Value
