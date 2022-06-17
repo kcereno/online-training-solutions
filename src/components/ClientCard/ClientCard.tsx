@@ -9,10 +9,11 @@ type PropTypes = {
   deleteClient: (clientId: string) => void;
 };
 
-const ClientCard = ({ info, trainingPlan, deleteClient }: PropTypes) => {
-  const { id, firstName, lastName, profilePicture } = info;
-  const { goal, trainer } = trainingPlan;
-
+const ClientCard = ({
+  info: { id, firstName, lastName, profilePicture },
+  trainingPlan: { goal, trainer },
+  deleteClient,
+}: PropTypes) => {
   const navigate = useNavigate();
 
   // Handlers
@@ -42,7 +43,7 @@ const ClientCard = ({ info, trainingPlan, deleteClient }: PropTypes) => {
 
   return (
     <>
-      <Card className="text-center text-white card-container bg-dark mx-3 my-3">
+      <Card className="text-center text-white card-container  mx-3 my-3">
         <Card.Img
           variant="top"
           className="profile-picture pt-2"

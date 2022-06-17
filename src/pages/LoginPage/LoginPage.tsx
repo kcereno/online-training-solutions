@@ -44,7 +44,7 @@ export default function LoginPage() {
   };
 
   return (
-    <Container className="text-white text-center bg-black form-container pt-5">
+    <Container className="text-white text-center  form-container pt-5">
       <Form onSubmit={onSubmitHandler}>
         <FontAwesomeIcon
           className="icon mb-4"

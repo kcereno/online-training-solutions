@@ -2,9 +2,10 @@
   width: 200px;
   height: 250px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
 .card-container {
   width: auto;
+  background-color: #121212;
 }
