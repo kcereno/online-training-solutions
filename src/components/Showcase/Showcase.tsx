@@ -16,9 +16,9 @@ const Showcase = () => {
                 Log In
               </Button>
             </Link>
-            <Button className="mx-2" variant="outline-light" size="lg">
+            {/* <Button className="mx-2" variant="outline-light" size="lg">
               Sign Up
-            </Button>
+            </Button> */}
           </div>
         </Row>
       </Container>
