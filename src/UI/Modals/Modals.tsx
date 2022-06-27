@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import ModalContext from "../../store/modal-context";
 import { Modal } from "react-bootstrap";
 import DeleteClientModal from "./ModalTypes/DeleteClientModal";
 import { AddClientModal } from "./ModalTypes/AddClientModal";
+import useModal from "../../hooks/useModal";
 
 const Modals = () => {
-  const { isShowing, hideModal, modalType } = useContext(ModalContext);
-  const { type, clientId } = modalType;
+  const {
+    isShowing,
+    hideModal,
+    modalType: { clientId, type },
+  } = useModal();
 
   const getModalContent = () => {
     const content = {
