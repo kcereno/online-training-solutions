@@ -12,12 +12,12 @@ export interface User {
 
 export interface Trainer extends User {
   role: "TRAINER";
+  clients: string[];
 }
 
 export interface Client extends User {
   role: "CLIENT";
   trainingPlan: {
-    trainer: string; // trainer id
     goal:
       | "BUILD MUSCLE"
       | "LOSE FAT"
@@ -25,19 +25,6 @@ export interface Client extends User {
       | "BODY RECOMPOSITION"
       | "SPORTS SPECIFIC";
     // trainingBlock?: TrainingBlockInterface[];
-  };
-}
-
-export interface ClientDataInterface extends User {
-  trainingPlan: {
-    trainer: string;
-    goal:
-      | "BUILD MUSCLE"
-      | "LOSE FAT"
-      | "GAIN STRENGTH"
-      | "BODY RECOMPOSITION"
-      | "SPORTS SPECIFIC";
-    trainingBlock?: TrainingBlockInterface[];
   };
 }
 

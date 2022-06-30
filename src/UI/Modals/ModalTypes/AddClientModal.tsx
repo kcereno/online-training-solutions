@@ -49,7 +49,6 @@ export const AddClientModal = () => {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRieKfpLWxIJZGXslh9Zj05ykb3P_zU0dHUJQsVUJcdknc4-fS7zyjHIMfM30SGd52OS5w&usqp=CAU",
       },
       trainingPlan: {
-        trainer: activeUser?.info.id!,
         goal,
       },
     };

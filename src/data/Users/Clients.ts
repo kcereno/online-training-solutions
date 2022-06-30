@@ -1,6 +1,6 @@
 import { Client } from "../interfaces";
 
-export const clients: Client[] = [
+export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
@@ -14,7 +14,6 @@ export const clients: Client[] = [
         "https://m.media-amazon.com/images/M/MV5BMmIzMjc5Y2ItNTIyZi00YTEzLWI4NDAtODQ0MzBiNTZmMDMxXkEyXkFqcGdeQXVyMjQwMzc1MzI@._V1_.jpg",
     },
     trainingPlan: {
-      trainer: "kcereno",
       goal: "GAIN STRENGTH",
     },
   },
@@ -31,7 +30,6 @@ export const clients: Client[] = [
         "https://www.unitedagents.co.uk/sites/default/files/thumbnails/image/20210721daviddawson00197-1.jpg",
     },
     trainingPlan: {
-      trainer: "kcereno",
       goal: "BUILD MUSCLE",
     },
   },
@@ -48,7 +46,6 @@ export const clients: Client[] = [
         "https://m.media-amazon.com/images/M/MV5BOTRmZTJmOWItZTNkNy00ZTcwLWIwYTctMzU0MGYyZmVkYWY5XkEyXkFqcGdeQXVyNzM3MDAzMTI@._V1_.jpg",
     },
     trainingPlan: {
-      trainer: "kcereno",
       goal: "LOSE FAT",
     },
   },
@@ -65,7 +62,6 @@ export const clients: Client[] = [
         "https://superstarsbio.com/wp-content/uploads/2019/10/Millie-Brady-hihgd-240x300.jpg",
     },
     trainingPlan: {
-      trainer: "kcereno",
       goal: "BODY RECOMPOSITION",
     },
   },
@@ -82,7 +78,6 @@ export const clients: Client[] = [
         "https://assets.mycast.io/actor_images/actor-timothy-innes-348914_large.jpg?1642667387",
     },
     trainingPlan: {
-      trainer: "kcereno",
       goal: "SPORTS SPECIFIC",
     },
   },

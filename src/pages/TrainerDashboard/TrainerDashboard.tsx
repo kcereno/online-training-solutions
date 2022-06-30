@@ -4,7 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import ModalContext from "../../store/modal-context";
-import { Trainer } from "../../data/interfaces";
+import { Client, Trainer } from "../../data/interfaces";
 import { clients } from "../../data/Users/Clients";
 import ClientCard from "../../components/ClientCard/ClientCard";
 
@@ -13,11 +13,13 @@ type PropTypes = {
 };
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
-  const clientList = clients.filter(
-    (client) => client.trainingPlan.trainer === trainer.info.id
-  );
+  let clientList: Client[] = [];
 
-  console.log(clientList);
+  trainer.clients.forEach((clientId) => {
+    const foundClient = clients.find((client) => client.info.id === clientId);
+
+    clientList.push(foundClient!);
+  });
 
   const { showDeleteClientModal, showAddClientModal } =
     useContext(ModalContext);
