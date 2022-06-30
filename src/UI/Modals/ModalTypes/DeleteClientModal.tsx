@@ -10,14 +10,14 @@ export const DeleteClientModal = ({ clientId }: PropTypes) => {
   const { activeUser } = useUserContext();
 
   const handleConfirmDeleteClient = () => {
-    if (activeUser?.role === "TRAINER") {
-      const updatedClientList = activeUser.clients.filter(
-        (client) => client.info.id !== clientId
-      );
+    // if (activeUser?.role === "TRAINER") {
+    //   const updatedClientList = activeUser.clients.filter(
+    //     (client) => client.info.id !== clientId
+    //   );
 
-      activeUser.clients = updatedClientList;
-    }
-    hideModal();
+    //   activeUser.clients = updatedClientList;
+    // }
+    // hideModal();
   };
 
   return (

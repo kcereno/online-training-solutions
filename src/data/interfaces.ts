@@ -12,7 +12,6 @@ export interface User {
 
 export interface Trainer extends User {
   role: "TRAINER";
-  clients: Client[];
 }
 
 export interface Client extends User {

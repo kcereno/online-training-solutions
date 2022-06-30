@@ -2,19 +2,19 @@ import React from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ClientCard from "../../components/ClientCards/ClientCard/ClientCard";
-import { ALL_CLIENTS } from "../../data/Users/Clients";
+
 import "./ClientProfilePage.css";
 
 const ClientProfilePage = () => {
   const params = useParams();
   console.log(params);
 
-  const client = ALL_CLIENTS.find((client) => client.info.id === params.client);
-  console.log(client);
+  // const client = ALL_CLIENTS.find((client) => client.info.id === params.client);
+  // console.log(client);
 
   return (
     <Container className="text-white my-5">
-      <Row>
+      {/* <Row>
         <Col xs={3} style={{ background: "#121212", borderRadius: "25px" }}>
           <div className="profile-head text-center my-3">
             <img
@@ -59,7 +59,7 @@ const ClientProfilePage = () => {
         </Col>
 
         <Col>ADD PROGRAMS HERE</Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };

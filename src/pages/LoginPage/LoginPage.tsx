@@ -3,9 +3,9 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
-import { ALL_CLIENTS } from "../../data/Users/Clients";
-import { ALL_TRAINERS } from "../../data/Users/Trainers";
 import useUserContext from "../../hooks/useUserContext";
+import { clients } from "../../data/Users/Clients";
+import { trainers } from "../../data/Users/Trainers";
 
 export default function LoginPage() {
   // States
@@ -27,12 +27,11 @@ export default function LoginPage() {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const USERS = [...ALL_CLIENTS, ...ALL_TRAINERS];
+    const USERS = [...clients, ...trainers];
 
     const foundUser = USERS.find(
       (user) => user.info.email === email && user.info.password === password
     );
-    console.log(foundUser);
 
     if (foundUser) {
       login(foundUser);
