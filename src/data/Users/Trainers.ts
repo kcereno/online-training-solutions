@@ -1,12 +1,12 @@
 import { Trainer } from "../interfaces";
 
 export const assignToTrainer = (clientId: string, trainerId: string) => {
-  const trainer = trainers.find((trainer) => trainer.info.id === trainerId);
-  trainer?.clients.push(clientId);
+  const trainer = ALL_TRAINERS.find((trainer) => trainer.info.id === trainerId);
+  trainer!.clients.push(clientId);
 };
 
 export const removeFromTrainer = (clientId: string, trainerId: string) => {
-  const trainer = trainers.find((trainer) => trainer.info.id === trainerId);
+  const trainer = ALL_TRAINERS.find((trainer) => trainer.info.id === trainerId);
 
   if (trainer) {
     const updatedClientList = trainer.clients.filter(
@@ -16,7 +16,7 @@ export const removeFromTrainer = (clientId: string, trainerId: string) => {
   }
 };
 
-export const trainers: Trainer[] = [
+export const ALL_TRAINERS: Trainer[] = [
   {
     role: "TRAINER",
     info: {

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import ModalContext from "../../store/modal-context";
 import { Client, Trainer } from "../../data/interfaces";
-import { clients } from "../../data/Users/Clients";
+import { ALL_CLIENTS } from "../../data/Users/Clients";
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
 
@@ -16,7 +16,9 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
   let clientList: Client[] = [];
 
   trainer.clients.forEach((clientId) => {
-    const foundClient = clients.find((client) => client.info.id === clientId);
+    const foundClient = ALL_CLIENTS.find(
+      (client) => client.info.id === clientId
+    );
 
     clientList.push(foundClient!);
   });

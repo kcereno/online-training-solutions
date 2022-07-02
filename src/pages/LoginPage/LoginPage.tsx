@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import useUserContext from "../../hooks/useUserContext";
-import { clients } from "../../data/Users/Clients";
-import { trainers } from "../../data/Users/Trainers";
+import { ALL_CLIENTS } from "../../data/Users/Clients";
+import { ALL_TRAINERS } from "../../data/Users/Trainers";
 
 export default function LoginPage() {
   // States
@@ -27,7 +27,7 @@ export default function LoginPage() {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const USERS = [...clients, ...trainers];
+    const USERS = [...ALL_CLIENTS, ...ALL_TRAINERS];
 
     const foundUser = USERS.find(
       (user) => user.info.email === email && user.info.password === password

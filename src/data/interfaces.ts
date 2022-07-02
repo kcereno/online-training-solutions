@@ -18,15 +18,16 @@ export interface Trainer extends User {
 export interface Client extends User {
   role: "CLIENT";
   trainingPlan: {
-    goal:
-      | "BUILD MUSCLE"
-      | "LOSE FAT"
-      | "GAIN STRENGTH"
-      | "BODY RECOMPOSITION"
-      | "SPORTS SPECIFIC";
-    // trainingBlock?: TrainingBlockInterface[];
+    goal: TrainingGoal;
   };
 }
+
+export type TrainingGoal =
+  | "BUILD MUSCLE"
+  | "LOSE FAT"
+  | "GAIN STRENGTH"
+  | "BODY RECOMPOSITION"
+  | "SPORTS SPECIFIC";
 
 export interface BasicInfoInterface {
   id: string;

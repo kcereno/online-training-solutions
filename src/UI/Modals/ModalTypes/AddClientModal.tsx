@@ -8,11 +8,11 @@ import {
   Row,
 } from "react-bootstrap";
 import useModal from "../../../hooks/useModal";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import AccordianInput from "../../../components/Accordian/AccordianInput";
 import { AccordianItem } from "../../../components/Accordian/AccordianItem";
 import useUserContext from "../../../hooks/useUserContext";
-import { Client } from "../../../data/interfaces";
+import { Client, TrainingGoal } from "../../../data/interfaces";
 import { createId } from "../../../data/functions";
 
 export const AddClientModal = () => {
@@ -32,9 +32,10 @@ export const AddClientModal = () => {
     birthday,
     email,
     goal,
-  }: any) => {
+  }: {
+    [key: string]: any;
+  }) => {
     const id = createId(firstName, lastName);
-    console.log(goal);
 
     const newClient: Client = {
       role: "CLIENT",
