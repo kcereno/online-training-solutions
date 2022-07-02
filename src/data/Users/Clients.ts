@@ -4,14 +4,14 @@ export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
-      id: "adraymon",
-      firstName: "Alexander",
-      lastName: "Draymon",
+      id: "rflair",
+      firstName: "Ric",
+      lastName: "Flair",
       birthday: new Date(1989, 11, 31),
       email: "client@gmail.com",
       password: "password",
       profilePicture:
-        "https://m.media-amazon.com/images/M/MV5BMmIzMjc5Y2ItNTIyZi00YTEzLWI4NDAtODQ0MzBiNTZmMDMxXkEyXkFqcGdeQXVyMjQwMzc1MzI@._V1_.jpg",
+        "https://www.wwe.com/f/styles/gallery_img_l/public/all/2017/08/001_Flair_10--6e2ea2137b551b51f49670966ba5a72f.jpg",
     },
     trainingPlan: {
       goal: "GAIN STRENGTH",
@@ -20,14 +20,14 @@ export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
-      id: "ddawson",
-      firstName: "David",
-      lastName: "Dawson",
+      id: "bhart",
+      firstName: "Bret",
+      lastName: "Hart",
       birthday: new Date(1989, 11, 31),
       email: "client2@gmail.com",
       password: "password",
       profilePicture:
-        "https://www.unitedagents.co.uk/sites/default/files/thumbnails/image/20210721daviddawson00197-1.jpg",
+        "https://www.biography.com/.image/t_share/MTgxMTAzNDYwOTI0NTMyMDcy/bret-08_crop.jpg",
     },
     trainingPlan: {
       goal: "BUILD MUSCLE",
@@ -36,14 +36,14 @@ export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
-      id: "ebutterworth",
-      firstName: "Eliza",
-      lastName: "Butterworth",
+      id: "rsavage",
+      firstName: "Randy",
+      lastName: "Savage",
       birthday: new Date(1989, 11, 31),
       email: "client3@gmail.com",
       password: "password",
       profilePicture:
-        "https://m.media-amazon.com/images/M/MV5BOTRmZTJmOWItZTNkNy00ZTcwLWIwYTctMzU0MGYyZmVkYWY5XkEyXkFqcGdeQXVyNzM3MDAzMTI@._V1_.jpg",
+        "https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg",
     },
     trainingPlan: {
       goal: "LOSE FAT",
@@ -52,14 +52,14 @@ export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
-      id: "mbrady",
-      firstName: "Millie",
-      lastName: "Brady",
+      id: "smichaels",
+      firstName: "Shawn",
+      lastName: "Michaels",
       birthday: new Date(1989, 11, 31),
       email: "client4@gmail.com",
       password: "password",
       profilePicture:
-        "https://superstarsbio.com/wp-content/uploads/2019/10/Millie-Brady-hihgd-240x300.jpg",
+        "https://www.biography.com/.image/t_share/MTc5NjQ1NTQ1MjgxNzU5MTky/hbk-studio-1-1.jpg",
     },
     trainingPlan: {
       goal: "BODY RECOMPOSITION",
@@ -68,14 +68,14 @@ export let clients: Client[] = [
   {
     role: "CLIENT",
     info: {
-      id: "tinnes",
-      firstName: "Timothy",
-      lastName: "Innes",
+      id: "hhogan",
+      firstName: "Hulk",
+      lastName: "Hogan",
       birthday: new Date(1989, 11, 31),
       email: "client5@gmail.com",
       password: "password",
       profilePicture:
-        "https://assets.mycast.io/actor_images/actor-timothy-innes-348914_large.jpg?1642667387",
+        "http://i.dailymail.co.uk/i/pix/2014/02/23/article-2565879-1BC04B8200000578-367_634x641.jpg",
     },
     trainingPlan: {
       goal: "SPORTS SPECIFIC",
