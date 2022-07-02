@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import "./TrainerDashboard.css";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +6,7 @@ import ModalContext from "../../store/modal-context";
 import { Client, Trainer } from "../../data/interfaces";
 import { clients } from "../../data/Users/Clients";
 import ClientCard from "../../components/ClientCard/ClientCard";
+import "./TrainerDashboard.css";
 
 type PropTypes = {
   trainer: Trainer;

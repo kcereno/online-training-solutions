@@ -5,6 +5,7 @@ import { UserType } from "../data/types";
 export interface UserContextInterface {
   activeUser: UserType;
   addClient: (newClient: Client) => void;
+  deleteClient: (cliendId: string) => void;
   login: (user: UserType | null) => void;
   logout: () => void;
 }

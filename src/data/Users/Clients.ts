@@ -1,5 +1,17 @@
 import { Client } from "../interfaces";
 
+export const addToClientList = (newClient: Client) => {
+  const updatedClientList = [...clients, newClient];
+  clients = updatedClientList;
+};
+
+export const removeFromClientList = (clientId: string) => {
+  const updatedClientList = clients.filter(
+    (client) => client.info.id !== clientId
+  );
+  clients = updatedClientList;
+};
+
 export let clients: Client[] = [
   {
     role: "CLIENT",

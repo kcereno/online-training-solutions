@@ -1,5 +1,21 @@
 import { Trainer } from "../interfaces";
 
+export const assignToTrainer = (clientId: string, trainerId: string) => {
+  const trainer = trainers.find((trainer) => trainer.info.id === trainerId);
+  trainer?.clients.push(clientId);
+};
+
+export const removeFromTrainer = (clientId: string, trainerId: string) => {
+  const trainer = trainers.find((trainer) => trainer.info.id === trainerId);
+
+  if (trainer) {
+    const updatedClientList = trainer.clients.filter(
+      (client) => client !== clientId
+    );
+    trainer.clients = updatedClientList;
+  }
+};
+
 export const trainers: Trainer[] = [
   {
     role: "TRAINER",
