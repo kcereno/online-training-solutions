@@ -2,7 +2,7 @@ import { Modal } from "react-bootstrap";
 import DeleteClientModal from "./ModalTypes/DeleteClientModal";
 import { AddClientModal } from "./ModalTypes/AddClientModal";
 import useModal from "../../hooks/useModal";
-import { ModalTypeAlias } from "../../store/modal-context";
+import { ModalType } from "../../store/modal-context";
 
 const Modals = () => {
   const {
@@ -11,7 +11,7 @@ const Modals = () => {
     modalType: { clientId, type },
   } = useModal();
 
-  const getModalContent = (modalType: ModalTypeAlias) => {
+  const getModalContent = (modalType: ModalType) => {
     const content = {
       DELETE_CLIENT: <DeleteClientModal clientId={clientId!} />,
       ADD_CLIENT: <AddClientModal />,
@@ -30,4 +30,4 @@ const Modals = () => {
 
 export default Modals;
 
-// Title, Body, Footer
+
