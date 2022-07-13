@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import { Client } from "../data/interfaces";
-import { UserType } from "../data/types";
+import { User } from "../data/types";
 
 export interface UserContextInterface {
-  activeUser: UserType;
+  activeUser: User | null;
   addClient: (newClient: Client) => void;
   deleteClient: (cliendId: string) => void;
-  login: (user: UserType | null) => void;
+  login: (user: User) => void;
   logout: () => void;
 }
 

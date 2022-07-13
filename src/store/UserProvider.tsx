@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Client } from "../data/interfaces";
-import { UserType } from "../data/types";
+import { User } from "../data/types";
 import { addToClientList, removeFromClientList } from "../data/Users/Clients";
 import { assignToTrainer, removeFromTrainer } from "../data/Users/Trainers";
 import UserContext, { UserContextInterface } from "./user-context";
@@ -12,13 +12,13 @@ type PropTypes = {
 
 const UserProvider = ({ children }: PropTypes) => {
   // State
-  const [activeUser, setActiveUser] = useState<UserType>(null);
+  const [activeUser, setActiveUser] = useState<User | null>(null);
 
   // Navigate
   const navigate = useNavigate();
 
   // Functions
-  const login = (user: UserType) => {
+  const login = (user: User) => {
     setActiveUser(user);
     navigate("dashboard/" + user!.info.id);
   };

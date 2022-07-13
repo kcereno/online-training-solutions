@@ -1,3 +1,3 @@
 import { Client, Trainer } from "./interfaces";
 
-export type UserType = Trainer | Client | null;
+export type User = Trainer | Client;
