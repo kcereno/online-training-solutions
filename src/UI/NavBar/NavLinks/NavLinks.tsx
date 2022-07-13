@@ -6,7 +6,7 @@ import useUserContext from "../../../hooks/useUserContext";
 export default function NavLinks() {
   const navigate = useNavigate();
 
-  const { activeUser, userControls } = useUserContext();
+  const { activeUser, actions } = useUserContext();
 
   let links;
 
@@ -20,7 +20,7 @@ export default function NavLinks() {
         >
           Clients
         </Nav.Link>
-        <Nav.Link onClick={userControls.logout}>Log Out</Nav.Link>
+        <Nav.Link onClick={actions.logout}>Log Out</Nav.Link>
       </>
     );
   }

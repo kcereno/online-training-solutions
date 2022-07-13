@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import useUserContext from "../../hooks/useUserContext";
-import { ALL_CLIENTS } from "../../data/Users/Clients";
-import { ALL_TRAINERS } from "../../data/Users/Trainers";
+import useDatabase from "../../hooks/useDatabase";
 
 export default function LoginPage() {
   // States
@@ -14,8 +13,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
 
   // Context
-  const { userControls } = useUserContext();
-  const { login } = userControls;
+  const {
+    actions: { login },
+  } = useUserContext();
+
+  const { findUser } = useDatabase();
 
   // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,14 +26,11 @@ export default function LoginPage() {
   const passwordChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const USERS = [...ALL_CLIENTS, ...ALL_TRAINERS];
-
-    const foundUser = USERS.find(
-      (user) => user.info.email === email && user.info.password === password
-    );
+    const foundUser = findUser(email, password);
 
     if (foundUser) {
       login(foundUser);

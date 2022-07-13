@@ -6,7 +6,7 @@ const useUserContext = () => {
 
   return {
     activeUser,
-    userControls: {
+    actions: {
       login,
       logout,
     },

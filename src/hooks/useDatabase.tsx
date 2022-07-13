@@ -1,10 +1,14 @@
 // Simulates fetching data from database
-
-import React from "react";
 import { DUMMY_DATA } from "../data/DUMMY_DB";
 
 const useDatabase = () => {
-  return DUMMY_DATA;
+  const findUser = (email: string, password: string) => {
+    return DUMMY_DATA.find(
+      (user) => user.info.email === email && user.info.password === password
+    );
+  };
+
+  return { findUser };
 };
 
 export default useDatabase;
