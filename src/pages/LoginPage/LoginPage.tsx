@@ -13,10 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
 
   // Context
-  const {
-    actions: { login },
-  } = useUserContext();
-
+  const { login } = useUserContext();
   const { findUser } = useDatabase();
 
   // Event Handlers

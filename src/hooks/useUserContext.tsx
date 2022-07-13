@@ -6,10 +6,8 @@ const useUserContext = () => {
 
   return {
     activeUser,
-    actions: {
-      login,
-      logout,
-    },
+    login,
+    logout,
     addClient,
   };
 };

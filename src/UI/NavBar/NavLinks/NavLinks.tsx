@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useUserContext from "../../../hooks/useUserContext";
 
 export default function NavLinks() {
   const navigate = useNavigate();
 
-  const { activeUser, actions } = useUserContext();
+  const { activeUser, logout } = useUserContext();
 
   let links;
 
@@ -20,7 +20,7 @@ export default function NavLinks() {
         >
           Clients
         </Nav.Link>
-        <Nav.Link onClick={actions.logout}>Log Out</Nav.Link>
+        <Nav.Link onClick={logout}>Log Out</Nav.Link>
       </>
     );
   }
