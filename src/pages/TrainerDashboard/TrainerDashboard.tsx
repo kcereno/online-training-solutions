@@ -1,27 +1,24 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import ModalContext from "../../store/modal-context";
-import { Client, Trainer } from "../../data/interfaces";
-import { ALL_CLIENTS } from "../../data/Users/Clients";
+import { Trainer } from "../../data/interfaces";
 import ClientCard from "../../components/ClientCard/ClientCard";
 import "./TrainerDashboard.css";
+import useDatabase from "../../hooks/useDatabase";
 
 type PropTypes = {
   trainer: Trainer;
 };
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
-  let clientList: Client[] = [];
+  const { fetchClients } = useDatabase();
 
-  trainer.clients.forEach((clientId) => {
-    const foundClient = ALL_CLIENTS.find(
-      (client) => client.info.id === clientId
-    );
-
-    clientList.push(foundClient!);
-  });
+  let clients = useMemo(
+    () => fetchClients(trainer.clients),
+    [trainer.clients, fetchClients]
+  );
 
   const { showDeleteClientModal, showAddClientModal } =
     useContext(ModalContext);
@@ -34,7 +31,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
     showDeleteClientModal(clientId);
   };
 
-  const clientCards = clientList.map((client) => (
+  const clientCards = clients.map((client) => (
     <ClientCard
       key={client.info.id}
       info={client.info}
@@ -59,7 +56,14 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
           <hr />
         </Row>
         <Row className="d-flex justify-content-center flex-wrap header">
-          {clientCards}
+          {/* MAKE THIS LOOK BETTER */}
+          {clients.length === 0 ? (
+            <h1 style={{ color: "white", textAlign: "center" }}>
+              ADD NO CLIENTS DATA
+            </h1>
+          ) : (
+            clientCards
+          )}
         </Row>
       </Container>
     </section>
