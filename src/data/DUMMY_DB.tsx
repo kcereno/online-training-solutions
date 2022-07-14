@@ -1,4 +1,23 @@
+import { Trainer } from "./interfaces";
 import { User } from "./types";
+
+export const removeClient = (trainerId: string, clientId: string) => {
+
+  const trainer = DUMMY_DATA.find(
+    (trainer) => trainer.info.id === trainerId
+  ) as Trainer;
+
+  console.log(trainer.clients)
+
+  const updatedClientList = trainer.clients.filter(
+    (client) => client !== clientId
+  );
+
+  trainer.clients = updatedClientList;
+  console.log(trainer.clients)
+};
+
+const deleteUser = (userId: string) => {};
 
 export let DUMMY_DATA: User[] = [
   {

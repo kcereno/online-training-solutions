@@ -2,11 +2,11 @@ import { useContext, useMemo } from "react";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import ModalContext from "../../store/modal-context";
 import { Trainer } from "../../data/interfaces";
 import ClientCard from "../../components/ClientCard/ClientCard";
-import "./TrainerDashboard.css";
 import useDatabase from "../../hooks/useDatabase";
+import ModalContext from "../../store/modal-context";
+import "./TrainerDashboard.css";
 
 type PropTypes = {
   trainer: Trainer;

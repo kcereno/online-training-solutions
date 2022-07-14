@@ -1,4 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
+import useDatabase from "../../../hooks/useDatabase";
 import useModal from "../../../hooks/useModal";
 import useUserContext from "../../../hooks/useUserContext";
 
@@ -8,15 +9,19 @@ type PropTypes = {
 export const DeleteClientModal = ({ clientId }: PropTypes) => {
   const { hideModal } = useModal();
   const { activeUser } = useUserContext();
+  const { removeClient } = useDatabase();
 
   const handleConfirmDeleteClient = () => {
-    if (activeUser?.role === "TRAINER") {
-      const updatedClients = activeUser.clients.filter(
-        (client) => client !== clientId
-      );
+    removeClient(activeUser!.info.id, clientId);
 
-      activeUser.clients = updatedClients;
-    }
+    // if (activeUser?.role === "TRAINER") {
+    //   delete client;
+    //   const updatedClients = activeUser.clients.filter(
+    //     (client) => client !== clientId
+    //   );
+
+    //   activeUser.clients = updatedClients;
+    // }
     hideModal();
   };
 

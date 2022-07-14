@@ -1,5 +1,5 @@
 // Simulates fetching data from database
-import { DUMMY_DATA } from "../data/DUMMY_DB";
+import { DUMMY_DATA, removeClient } from "../data/DUMMY_DB";
 import { Client } from "../data/interfaces";
 
 const useDatabase = () => {
@@ -21,7 +21,7 @@ const useDatabase = () => {
     return result;
   };
 
-  return { findUser, fetchClients };
+  return { findUser, fetchClients, removeClient };
 };
 
 export default useDatabase;
