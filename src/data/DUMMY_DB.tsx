@@ -1,23 +1,29 @@
 import { Trainer } from "./interfaces";
 import { User } from "./types";
 
-export const removeClient = (trainerId: string, clientId: string) => {
+export const deleteClient = (trainerId: string, clientId: string) => {
+  unassignClient(trainerId, clientId);
+  deleteUser(clientId);
+};
 
+const unassignClient = (trainerId: string, clientId: string) => {
   const trainer = DUMMY_DATA.find(
     (trainer) => trainer.info.id === trainerId
   ) as Trainer;
-
-  console.log(trainer.clients)
 
   const updatedClientList = trainer.clients.filter(
     (client) => client !== clientId
   );
 
   trainer.clients = updatedClientList;
-  console.log(trainer.clients)
 };
 
-const deleteUser = (userId: string) => {};
+const deleteUser = (userId: string) => {
+  console.log(DUMMY_DATA)
+  const updatedData = DUMMY_DATA.filter((user) => user.info.id !== userId);
+  DUMMY_DATA = updatedData;
+  console.log(DUMMY_DATA)
+};
 
 export let DUMMY_DATA: User[] = [
   {

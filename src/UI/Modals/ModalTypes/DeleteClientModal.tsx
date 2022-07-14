@@ -9,19 +9,10 @@ type PropTypes = {
 export const DeleteClientModal = ({ clientId }: PropTypes) => {
   const { hideModal } = useModal();
   const { activeUser } = useUserContext();
-  const { removeClient } = useDatabase();
+  const { deleteClient } = useDatabase();
 
   const handleConfirmDeleteClient = () => {
-    removeClient(activeUser!.info.id, clientId);
-
-    // if (activeUser?.role === "TRAINER") {
-    //   delete client;
-    //   const updatedClients = activeUser.clients.filter(
-    //     (client) => client !== clientId
-    //   );
-
-    //   activeUser.clients = updatedClients;
-    // }
+    deleteClient(activeUser!.info.id, clientId);
     hideModal();
   };
 
