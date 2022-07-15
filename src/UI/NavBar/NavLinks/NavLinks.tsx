@@ -1,12 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import useUserContext from "../../../hooks/useUserContext";
+import UserContext from "../../../store/user-context";
 
 export default function NavLinks() {
   const navigate = useNavigate();
 
-  const { activeUser, logout } = useUserContext();
+  const { activeUser, logout } = useContext(UserContext)
 
   let links;
 

@@ -7,18 +7,21 @@ import ClientCard from "../../components/ClientCard/ClientCard";
 import useDatabase from "../../hooks/useDatabase";
 import ModalContext from "../../store/modal-context";
 import "./TrainerDashboard.css";
+import { useTrainerActions } from "../../hooks/useTrainerActions";
 
 type PropTypes = {
   trainer: Trainer;
 };
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
-  const { fetchClients } = useDatabase();
+  const { fetchClients } = useTrainerActions();
 
   let clients = useMemo(
     () => fetchClients(trainer.clients),
     [trainer.clients, fetchClients]
   );
+
+  console.log(clients);
 
   const { showDeleteClientModal, showAddClientModal } =
     useContext(ModalContext);

@@ -4,8 +4,8 @@ import { User } from "../data/types";
 
 export interface UserContextInterface {
   activeUser: User | null;
-  addClient: (newClient: Client) => void;
-  deleteClient: (cliendId: string) => void;
+  // addClient: (newClient: Client) => void;
+  // deleteClient: (cliendId: string) => void;
   login: (user: User) => void;
   logout: () => void;
 }

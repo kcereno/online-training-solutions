@@ -12,7 +12,7 @@ export interface User {
 
 export interface Trainer extends User {
   role: "TRAINER";
-  clients: string[];
+  clients: string[]
 }
 
 export interface Client extends User {

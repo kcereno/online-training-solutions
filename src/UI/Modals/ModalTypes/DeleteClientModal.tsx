@@ -1,18 +1,19 @@
+import { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
-import useDatabase from "../../../hooks/useDatabase";
 import useModal from "../../../hooks/useModal";
-import useUserContext from "../../../hooks/useUserContext";
+import { useTrainerActions } from "../../../hooks/useTrainerActions";
+import UserContext from "../../../store/user-context";
 
 type PropTypes = {
   clientId: string;
 };
 export const DeleteClientModal = ({ clientId }: PropTypes) => {
+  const { activeUser } = useContext(UserContext);
+  const { deleteClient } = useTrainerActions();
   const { hideModal } = useModal();
-  const { activeUser } = useUserContext();
-  const { deleteClient } = useDatabase();
 
   const handleConfirmDeleteClient = () => {
-    deleteClient(activeUser!.info.id, clientId);
+    deleteClient();
     hideModal();
   };
 

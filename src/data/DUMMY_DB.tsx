@@ -1,28 +1,14 @@
-import { Trainer } from "./interfaces";
 import { User } from "./types";
 
-export const deleteClient = (trainerId: string, clientId: string) => {
-  unassignClient(trainerId, clientId);
-  deleteUser(clientId);
+// Add and remove Users from DUMMY_DATA
+export const addUser = (user: User) => {
+  const updatedData = [...DUMMY_DATA, user];
+  DUMMY_DATA = updatedData;
 };
 
-const unassignClient = (trainerId: string, clientId: string) => {
-  const trainer = DUMMY_DATA.find(
-    (trainer) => trainer.info.id === trainerId
-  ) as Trainer;
-
-  const updatedClientList = trainer.clients.filter(
-    (client) => client !== clientId
-  );
-
-  trainer.clients = updatedClientList;
-};
-
-const deleteUser = (userId: string) => {
-  console.log(DUMMY_DATA)
+export const deleteUser = (userId: string) => {
   const updatedData = DUMMY_DATA.filter((user) => user.info.id !== userId);
   DUMMY_DATA = updatedData;
-  console.log(DUMMY_DATA)
 };
 
 export let DUMMY_DATA: User[] = [
@@ -38,7 +24,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     },
-    clients: ["rflair", "bhart", "rsavage", "smichaels", "hhogan"],
+    clients:['rflair','bhart','rsavage','hhogan','smichaels']
   },
   {
     role: "CLIENT",

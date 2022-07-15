@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Client } from "../data/interfaces";
 import { User } from "../data/types";
-import { addToClientList, removeFromClientList } from "../data/Users/Clients";
-import { assignToTrainer, removeFromTrainer } from "../data/Users/Trainers";
 import UserContext, { UserContextInterface } from "./user-context";
 
 type PropTypes = {
@@ -28,21 +25,9 @@ const UserProvider = ({ children }: PropTypes) => {
     navigate("/");
   };
 
-  const addClient = (newClient: Client) => {
-    addToClientList(newClient);
-    assignToTrainer(newClient.info.id, activeUser!.info.id!);
-  };
-
-  const deleteClient = (clientId: string) => {
-    removeFromClientList(clientId);
-    removeFromTrainer(clientId, activeUser!.info.id);
-  };
-
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
-    addClient,
-    deleteClient,
     login,
     logout,
   };

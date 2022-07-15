@@ -11,12 +11,14 @@ import useModal from "../../../hooks/useModal";
 import { useForm } from "react-hook-form";
 import AccordianInput from "../../../components/Accordian/AccordianInput";
 import { AccordianItem } from "../../../components/Accordian/AccordianItem";
-import useUserContext from "../../../hooks/useUserContext";
+
 import { Client, TrainingGoal } from "../../../data/interfaces";
 import { createId } from "../../../data/functions";
+import { useContext } from "react";
+import UserContext from "../../../store/user-context";
 
 export const AddClientModal = () => {
-  const { addClient, activeUser } = useUserContext();
+  const { activeUser } = useContext(UserContext);
   const { hideModal } = useModal();
   const {
     register,
@@ -53,7 +55,7 @@ export const AddClientModal = () => {
         goal,
       },
     };
-    addClient(newClient);
+    // addClient(newClient);
     hideModal();
   };
 

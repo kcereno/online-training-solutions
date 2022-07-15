@@ -2,9 +2,9 @@ import "./LoginPage.css";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
-import { useState } from "react";
-import useUserContext from "../../hooks/useUserContext";
+import { useContext, useState } from "react";
 import useDatabase from "../../hooks/useDatabase";
+import UserContext from "../../store/user-context";
 
 export default function LoginPage() {
   // States
@@ -13,8 +13,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
 
   // Context
-  const { login } = useUserContext();
-  const { findUser } = useDatabase();
+  const { login } = useContext(UserContext);
+  const { validateUser } = useDatabase();
 
   // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,10 +27,10 @@ export default function LoginPage() {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const foundUser = findUser(email, password);
+    const validatedUser = validateUser(email, password);
 
-    if (foundUser) {
-      login(foundUser);
+    if (validatedUser) {
+      login(validatedUser!);
     } else {
       setCredentialsValid(false);
       setEmail("");

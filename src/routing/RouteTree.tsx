@@ -1,14 +1,15 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import useUserContext from "../hooks/useUserContext";
 import ClientDashboard from "../pages/ClientDashboard/ClientDashboard";
 import ClientProfilePage from "../pages/ClientProfilePage/ClientProfilePage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
+import UserContext from "../store/user-context";
 
 const RouteTree = () => {
-  const { activeUser } = useUserContext();
+  const { activeUser } = useContext(UserContext);
   let dashboard = <NotFoundPage />;
 
   if (activeUser?.role === "TRAINER") {

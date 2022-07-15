@@ -1,27 +1,33 @@
-// Simulates fetching data from database
-import { DUMMY_DATA, deleteClient } from "../data/DUMMY_DB";
-import { Client } from "../data/interfaces";
+// Simulates interacting with database
+import { DUMMY_DATA, deleteUser } from "../data/DUMMY_DB";
+import { User } from "../data/types";
+
 
 const useDatabase = () => {
-  const findUser = (email: string, password: string) => {
+  const fetchUser = (userId: string) => {
+    DUMMY_DATA.find((user) => user.info.id === userId);
+  };
+
+  // Fetches users by id present in passed in array
+  const fetchUsers = (users: string[]) => {
+    let results: User[] = [];
+
+    users.forEach((userId) => {
+      const foundUser = DUMMY_DATA.find((user) => user.info.id === userId);
+      results.push(foundUser!);
+    });
+    return results;
+  };
+
+  const validateUser = (email: string, password: string) => {
     return DUMMY_DATA.find(
       (user) => user.info.email === email && user.info.password === password
     );
   };
 
-  const fetchClients = (clientIds: string[]) => {
-    console.log("useDatabase: Clients fetched");
-    let result: Client[] = [];
-
-    clientIds.forEach((clientId) => {
-      const foundClient = DUMMY_DATA.find((user) => user.info.id === clientId);
-      result.push(foundClient as Client);
-    });
-
-    return result;
-  };
-
-  return { findUser, fetchClients, deleteClient };
+  return { validateUser, deleteUser, userDB: DUMMY_DATA, fetchUsers };
 };
 
 export default useDatabase;
+
+// addUser, deleteUser
