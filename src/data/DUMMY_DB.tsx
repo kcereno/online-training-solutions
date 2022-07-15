@@ -15,7 +15,7 @@ export let DUMMY_DATA: User[] = [
   {
     role: "TRAINER",
     info: {
-      id: "kcereno",
+      id: "kcereno89",
       firstName: "Karl",
       lastName: "Cereno",
       email: "trainer@gmail.com",
@@ -24,7 +24,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     },
-    clients:['rflair','bhart','rsavage','hhogan','smichaels']
+    clients: ["rflair", "bhart", "rsavage", "hhogan", "smichaels"],
   },
   {
     role: "CLIENT",

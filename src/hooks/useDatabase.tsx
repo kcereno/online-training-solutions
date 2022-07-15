@@ -1,5 +1,6 @@
 // Simulates interacting with database
-import { DUMMY_DATA, deleteUser } from "../data/DUMMY_DB";
+import { useCallback } from "react";
+import { DUMMY_DATA, deleteUser, addUser } from "../data/DUMMY_DB";
 import { User } from "../data/types";
 
 const useDatabase = () => {
@@ -7,7 +8,7 @@ const useDatabase = () => {
     DUMMY_DATA.find((user) => user.info.id === userId);
 
   // Fetches users by id present in passed in array
-  const fetchUsers = (users: string[]) => {
+  const fetchUsers = useCallback((users: string[]) => {
     let results: User[] = [];
 
     users.forEach((userId) => {
@@ -15,7 +16,8 @@ const useDatabase = () => {
       results.push(foundUser!);
     });
     return results;
-  };
+  }, []);
+
 
   // Validates user email and password
   const validateUser = (email: string, password: string) =>
@@ -25,6 +27,7 @@ const useDatabase = () => {
 
   return {
     validateUser,
+    addUser,
     deleteUser,
     fetchUsers,
     fetchUser,

@@ -1,27 +1,30 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { Trainer } from "../../data/interfaces";
+import { Client, Trainer } from "../../data/interfaces";
 import ClientCard from "../../components/ClientCard/ClientCard";
-import useDatabase from "../../hooks/useDatabase";
 import ModalContext from "../../store/modal-context";
 import "./TrainerDashboard.css";
-import { useTrainerActions } from "../../hooks/useTrainerActions";
+import useDatabase from "../../hooks/useDatabase";
 
-type PropTypes = {
+interface Props {
   trainer: Trainer;
-};
+}
 
-const TrainerDashboard = ({ trainer }: PropTypes) => {
-  const { fetchClients } = useTrainerActions();
-  console.log(trainer.clients);
-  let clients = useMemo(
-    () => fetchClients(trainer.clients),
-    [trainer.clients, fetchClients]
-  );
+const TrainerDashboard = ({ trainer: { info, clients } }: Props) => {
+  const [clientList, setClientList] = useState<Client[]>([]);
+  const { fetchUsers } = useDatabase();
 
-  console.log(clients);
+  const getClients = useCallback(() => {
+    let results = fetchUsers(clients);
+    setClientList(results as Client[]);
+    console.log(results);
+  }, [clients, fetchUsers]);
+
+  useEffect(() => {
+    getClients();
+  }, [getClients]);
 
   const { showDeleteClientModal, showAddClientModal } =
     useContext(ModalContext);
@@ -34,7 +37,7 @@ const TrainerDashboard = ({ trainer }: PropTypes) => {
     showDeleteClientModal(clientId);
   };
 
-  const clientCards = clients.map((client) => (
+  const clientCards = clientList.map((client) => (
     <ClientCard
       key={client.info.id}
       info={client.info}

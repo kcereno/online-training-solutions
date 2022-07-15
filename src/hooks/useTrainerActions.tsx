@@ -1,37 +1,55 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { deleteUser } from "../data/DUMMY_DB";
 import { Client, Trainer } from "../data/interfaces";
 import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUsers, fetchUser } = useDatabase();
-  const { activeUser } = useContext(UserContext);
+  const { fetchUsers, fetchUser, addUser } = useDatabase();
+  const { updateUser } = useContext(UserContext);
 
-  const fetchClients = (clientList: string[]) => {
+  const fetchClients = useCallback((clientList: string[]) => {
     console.log("clients fetched");
     return fetchUsers(clientList) as Client[];
-  };
+  }, [fetchUsers]);
 
+  // Add/Delete Clients
   const deleteClient = (trainerId: string, clientId: string) => {
-    unassignClient(trainerId, clientId);
+    console.log("delete Client id", clientId);
     deleteUser(clientId);
+    unassignClient(trainerId, clientId);
   };
 
+  const addClient = (newClient: Client) => {
+    addUser(newClient);
+  };
+
+  // Assign / Unassign Clients
   const unassignClient = (trainerId: string, clientId: string) => {
     let trainer = fetchUser(trainerId);
 
     const updatedClientList = (trainer as Trainer).clients.filter(
       (client) => client !== clientId
     );
-
-    (trainer as Trainer).clients = updatedClientList;
+    const updatedTrainer = {
+      ...(trainer as Trainer),
+      clients: updatedClientList,
+    };
+    updateUser(updatedTrainer);
   };
 
-  //addClient
-  //Unassign Client
-  //assign CLient
-  return { deleteClient, fetchClients };
+  const assignClient = (trainerId: string, clientId: string) => {
+    let trainer = fetchUser(trainerId);
+
+    const updatedClientList = [...(trainer as Trainer).clients, clientId];
+    const updatedTrainer = {
+      ...(trainer as Trainer),
+      clients: updatedClientList,
+    };
+    updateUser(updatedTrainer);
+  };
+
+  return { addClient, deleteClient, fetchClients, assignClient };
 };
 
 // contains all trainer methods

@@ -12,13 +12,16 @@ import { useForm } from "react-hook-form";
 import AccordianInput from "../../../components/Accordian/AccordianInput";
 import { AccordianItem } from "../../../components/Accordian/AccordianItem";
 
-import { Client, TrainingGoal } from "../../../data/interfaces";
+import { Client, Trainer, TrainingGoal } from "../../../data/interfaces";
 import { createId } from "../../../data/functions";
 import { useContext } from "react";
 import UserContext from "../../../store/user-context";
+import useDatabase from "../../../hooks/useDatabase";
+import { useTrainerActions } from "../../../hooks/useTrainerActions";
 
 export const AddClientModal = () => {
   const { activeUser } = useContext(UserContext);
+  const { addClient, assignClient } = useTrainerActions();
   const { hideModal } = useModal();
   const {
     register,
@@ -55,7 +58,9 @@ export const AddClientModal = () => {
         goal,
       },
     };
-    // addClient(newClient);
+    addClient(newClient);
+    console.log("newClient", newClient);
+    assignClient((activeUser as Trainer).info.id, id);
     hideModal();
   };
 

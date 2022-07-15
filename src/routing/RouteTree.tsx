@@ -7,13 +7,15 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
 import UserContext from "../store/user-context";
+import { Trainer } from "../data/interfaces";
 
 const RouteTree = () => {
   const { activeUser } = useContext(UserContext);
+
   let dashboard = <NotFoundPage />;
 
   if (activeUser?.role === "TRAINER") {
-    dashboard = <TrainerDashboard trainer={activeUser} />;
+    dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
   }
 
   return (

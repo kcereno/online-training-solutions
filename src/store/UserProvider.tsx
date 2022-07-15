@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Trainer } from "../data/interfaces";
 import { User } from "../data/types";
 import UserContext, { UserContextInterface } from "./user-context";
 
@@ -25,11 +26,16 @@ const UserProvider = ({ children }: PropTypes) => {
     navigate("/");
   };
 
+  const updateUser = (updatedUser: User) => {
+    setActiveUser((prevVal) => (prevVal = updatedUser));
+    console.log("newActive", activeUser);
+  };
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
     login,
     logout,
+    updateUser,
   };
 
   return (
