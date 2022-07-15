@@ -1,6 +1,6 @@
 // Simulates interacting with database
 import { useCallback } from "react";
-import { DUMMY_DATA, deleteUser, addUser } from "../data/DUMMY_DB";
+import { DUMMY_DATA, deleteUser, addUser, updateUser } from "../data/DUMMY_DB";
 import { User } from "../data/types";
 
 const useDatabase = () => {
@@ -18,7 +18,6 @@ const useDatabase = () => {
     return results;
   }, []);
 
-
   // Validates user email and password
   const validateUser = (email: string, password: string) =>
     DUMMY_DATA.find(
@@ -31,6 +30,7 @@ const useDatabase = () => {
     deleteUser,
     fetchUsers,
     fetchUser,
+    updateDBUser: updateUser,
     userDB: DUMMY_DATA,
   };
 };

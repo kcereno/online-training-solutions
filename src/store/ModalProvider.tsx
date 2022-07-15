@@ -14,7 +14,9 @@ const ModalProvider = ({ children }: PropTypes) => {
     {} as ModalTypeInterface
   );
 
-  const showDeleteClientModal = (clientId: string) => {
+  const showDeleteClientModal = (
+    clientId: string,
+  ) => {
     setModalType({ type: "DELETE_CLIENT", clientId });
     setIsShowing(true);
   };

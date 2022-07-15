@@ -11,6 +11,15 @@ export const deleteUser = (userId: string) => {
   DUMMY_DATA = updatedData;
 };
 
+export const updateUser = (updatedUser: User) => {
+  const foundUserIndex = DUMMY_DATA.findIndex(
+    (user) => user.info.id === updatedUser.info.id
+  );
+
+  DUMMY_DATA[foundUserIndex] = updatedUser;
+  console.log(DUMMY_DATA);
+};
+
 export let DUMMY_DATA: User[] = [
   {
     role: "TRAINER",

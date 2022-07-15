@@ -19,7 +19,6 @@ const TrainerDashboard = ({ trainer: { info, clients } }: Props) => {
   const getClients = useCallback(() => {
     let results = fetchUsers(clients);
     setClientList(results as Client[]);
-    console.log(results);
   }, [clients, fetchUsers]);
 
   useEffect(() => {
