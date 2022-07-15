@@ -1,22 +1,31 @@
-import { Client } from "../data/interfaces";
+import { useContext } from "react";
+import { deleteUser } from "../data/DUMMY_DB";
+import { Client, Trainer } from "../data/interfaces";
+import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUsers } = useDatabase();
+  const { fetchUsers, fetchUser } = useDatabase();
+  const { activeUser } = useContext(UserContext);
 
   const fetchClients = (clientList: string[]) => {
+    console.log("clients fetched");
     return fetchUsers(clientList) as Client[];
   };
 
-  const deleteClient = () => {
-    //unasign from trainer
-    // remove from DUMMY
+  const deleteClient = (trainerId: string, clientId: string) => {
+    unassignClient(trainerId, clientId);
+    deleteUser(clientId);
   };
 
-  const unassignClient = () => {
-    //fetch user from db
-    // create updatedClient array
-    // override users client array
+  const unassignClient = (trainerId: string, clientId: string) => {
+    let trainer = fetchUser(trainerId);
+
+    const updatedClientList = (trainer as Trainer).clients.filter(
+      (client) => client !== clientId
+    );
+
+    (trainer as Trainer).clients = updatedClientList;
   };
 
   //addClient

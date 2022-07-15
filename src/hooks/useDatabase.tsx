@@ -2,11 +2,9 @@
 import { DUMMY_DATA, deleteUser } from "../data/DUMMY_DB";
 import { User } from "../data/types";
 
-
 const useDatabase = () => {
-  const fetchUser = (userId: string) => {
+  const fetchUser = (userId: string) =>
     DUMMY_DATA.find((user) => user.info.id === userId);
-  };
 
   // Fetches users by id present in passed in array
   const fetchUsers = (users: string[]) => {
@@ -19,13 +17,19 @@ const useDatabase = () => {
     return results;
   };
 
-  const validateUser = (email: string, password: string) => {
-    return DUMMY_DATA.find(
+  // Validates user email and password
+  const validateUser = (email: string, password: string) =>
+    DUMMY_DATA.find(
       (user) => user.info.email === email && user.info.password === password
     );
-  };
 
-  return { validateUser, deleteUser, userDB: DUMMY_DATA, fetchUsers };
+  return {
+    validateUser,
+    deleteUser,
+    fetchUsers,
+    fetchUser,
+    userDB: DUMMY_DATA,
+  };
 };
 
 export default useDatabase;

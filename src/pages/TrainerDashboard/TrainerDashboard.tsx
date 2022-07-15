@@ -15,7 +15,7 @@ type PropTypes = {
 
 const TrainerDashboard = ({ trainer }: PropTypes) => {
   const { fetchClients } = useTrainerActions();
-
+  console.log(trainer.clients);
   let clients = useMemo(
     () => fetchClients(trainer.clients),
     [trainer.clients, fetchClients]

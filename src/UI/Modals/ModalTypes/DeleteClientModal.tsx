@@ -13,7 +13,7 @@ export const DeleteClientModal = ({ clientId }: PropTypes) => {
   const { hideModal } = useModal();
 
   const handleConfirmDeleteClient = () => {
-    deleteClient();
+    deleteClient(activeUser!.info.id, clientId);
     hideModal();
   };
 
