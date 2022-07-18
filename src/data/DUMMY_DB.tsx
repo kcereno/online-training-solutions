@@ -4,13 +4,15 @@ import { User } from "./types";
 export const addUser = (user: User) => {
   const updatedData = [...DUMMY_DATA, user];
   DUMMY_DATA = updatedData;
+  console.log(user, "added to DB");
+  console.log("updated DB", DUMMY_DATA);
 };
 
 export const deleteUser = (userId: string) => {
   const updatedData = DUMMY_DATA.filter((user) => user.info.id !== userId);
   DUMMY_DATA = updatedData;
-  console.log(userId, 'removed from DB')
-  console.log('updated DB', DUMMY_DATA)
+  console.log(userId, "removed from DB");
+  console.log("updated DB", DUMMY_DATA);
 };
 
 export const updateUser = (updatedUser: User) => {
@@ -19,6 +21,7 @@ export const updateUser = (updatedUser: User) => {
   );
 
   DUMMY_DATA[foundUserIndex] = updatedUser;
+  console.log("user in DB updated", DUMMY_DATA[foundUserIndex]);
 };
 
 export let DUMMY_DATA: User[] = [

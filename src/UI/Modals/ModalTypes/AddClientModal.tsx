@@ -58,9 +58,7 @@ export const AddClientModal = () => {
         goal,
       },
     };
-    addClient(newClient);
-    console.log("newClient", newClient);
-    assignClient((activeUser as Trainer).info.id, id);
+    addClient(newClient, activeUser!.info.id);
     hideModal();
   };
 

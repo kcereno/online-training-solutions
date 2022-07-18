@@ -4,7 +4,8 @@ import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUser, addUser, updateDBUser, deleteUserFromDB } = useDatabase();
+  const { fetchUser, addUserToDB, updateDBUser, deleteUserFromDB } =
+    useDatabase();
   const { updateUser } = useContext(UserContext);
 
   // Add/Delete Clients
@@ -13,8 +14,9 @@ export const useTrainerActions = () => {
     deleteUserFromDB(clientId);
   };
 
-  const addClient = (newClient: Client) => {
-    addUser(newClient);
+  const addClient = (newClient: Client, trainerId: string) => {
+    assignClient(trainerId, newClient.info.id);
+    addUserToDB(newClient);
   };
 
   // Assign / Unassign Clients
@@ -39,6 +41,7 @@ export const useTrainerActions = () => {
       clients: updatedClientList,
     };
     updateUser(updatedTrainer);
+    updateDBUser(updatedTrainer);
   };
 
   return { addClient, deleteClient, assignClient };

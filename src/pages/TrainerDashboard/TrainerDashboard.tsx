@@ -16,8 +16,9 @@ const TrainerDashboard = ({ trainer: { info, clients } }: Props) => {
   const [clientList, setClientList] = useState<Client[]>([]);
   const { fetchUsers } = useDatabase();
 
-  console.log("trainer obj clientlist", clients);
+  // console.log("trainer obj clientlist", clients);
 
+  // TODO: Move into useTrainer
   const getClients = useCallback(() => {
     let results = fetchUsers(clients);
     setClientList(results as Client[]);
