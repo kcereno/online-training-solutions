@@ -9,6 +9,8 @@ export const addUser = (user: User) => {
 export const deleteUser = (userId: string) => {
   const updatedData = DUMMY_DATA.filter((user) => user.info.id !== userId);
   DUMMY_DATA = updatedData;
+  console.log(userId, 'removed from DB')
+  console.log('updated DB', DUMMY_DATA)
 };
 
 export const updateUser = (updatedUser: User) => {
@@ -17,7 +19,6 @@ export const updateUser = (updatedUser: User) => {
   );
 
   DUMMY_DATA[foundUserIndex] = updatedUser;
-  console.log(DUMMY_DATA);
 };
 
 export let DUMMY_DATA: User[] = [

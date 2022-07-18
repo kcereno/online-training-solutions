@@ -28,7 +28,6 @@ const UserProvider = ({ children }: PropTypes) => {
 
   const updateUser = (updatedUser: User) => {
     setActiveUser((prevVal) => (prevVal = updatedUser));
-    console.log("newActive", activeUser);
   };
   // Context Value
   const UserContextValue: UserContextInterface = {

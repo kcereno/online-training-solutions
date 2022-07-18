@@ -27,7 +27,7 @@ const useDatabase = () => {
   return {
     validateUser,
     addUser,
-    deleteUser,
+    deleteUserFromDB: deleteUser,
     fetchUsers,
     fetchUser,
     updateDBUser: updateUser,

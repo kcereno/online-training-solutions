@@ -1,19 +1,16 @@
 import { useContext } from "react";
-import { deleteUser } from "../data/DUMMY_DB";
 import { Client, Trainer } from "../data/interfaces";
 import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUser, addUser, updateDBUser } = useDatabase();
+  const { fetchUser, addUser, updateDBUser, deleteUserFromDB } = useDatabase();
   const { updateUser } = useContext(UserContext);
 
   // Add/Delete Clients
   const deleteClient = (trainerId: string, clientId: string) => {
-    console.log("useTrainer deleteClient");
     unassignClient(trainerId, clientId);
-    //remove from activeUser client array
-    // unassignClient()
+    deleteUserFromDB(clientId);
   };
 
   const addClient = (newClient: Client) => {
@@ -30,11 +27,7 @@ export const useTrainerActions = () => {
     const updatedTrainer = { ...trainer, clients: updatedClientList };
 
     updateUser(updatedTrainer);
-    updateDBUser(updatedTrainer)
-    // fetch trainer
-    // update trainer with new data
-    // update current state
-    // update backend
+    updateDBUser(updatedTrainer);
   };
 
   const assignClient = (trainerId: string, clientId: string) => {
@@ -50,5 +43,3 @@ export const useTrainerActions = () => {
 
   return { addClient, deleteClient, assignClient };
 };
-
-// contains all trainer methods
