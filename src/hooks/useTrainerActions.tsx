@@ -1,12 +1,19 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { Client, Trainer } from "../data/interfaces";
 import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUser, addUserToDB, updateDBUser, deleteUserFromDB } =
+  const { fetchUser, addUserToDB, updateDBUser, deleteUserFromDB, fetchUsers } =
     useDatabase();
   const { updateUser } = useContext(UserContext);
+
+  const getClients = useCallback(
+    (clients: string[]) => {
+      return fetchUsers(clients) as Client[];
+    },
+    [fetchUsers]
+  );
 
   // Add/Delete Clients
   const deleteClient = (trainerId: string, clientId: string) => {
@@ -44,5 +51,5 @@ export const useTrainerActions = () => {
     updateDBUser(updatedTrainer);
   };
 
-  return { addClient, deleteClient, assignClient };
+  return { addClient, deleteClient, assignClient, getClients };
 };
