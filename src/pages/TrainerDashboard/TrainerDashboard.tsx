@@ -71,5 +71,3 @@ const TrainerDashboard = ({ trainer: { clients } }: Props) => {
 };
 
 export default TrainerDashboard;
-
-// card details: profile picture, name, age, current program,
