@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Client, Trainer } from "../../data/interfaces";
 import ClientCard from "../../components/ClientCard/ClientCard";
-import ModalContext from "../../store/modal-context";
 import "./TrainerDashboard.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
+import useModal from "../../hooks/useModal";
 
 interface Props {
   trainer: Trainer;
@@ -21,8 +21,7 @@ const TrainerDashboard = ({ trainer: { clients } }: Props) => {
     setClientList(fetchedClients);
   }, [clients, getClients]);
 
-  const { showDeleteClientModal, showAddClientModal } =
-    useContext(ModalContext);
+  const { showDeleteClientModal, showAddClientModal } = useModal();
 
   const handleAddClient = (): void => {
     showAddClientModal();

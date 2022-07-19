@@ -1,47 +1,19 @@
 import React, { useState } from "react";
-import ModalContext, {
-  ModalContextInterface,
-  ModalTypeInterface,
-} from "./modal-context";
+import ModalContext, { ModalContextInterface } from "./modal-context";
 
 type PropTypes = {
   children?: React.ReactNode;
 };
 
 const ModalProvider = ({ children }: PropTypes) => {
-  const [isShowing, setIsShowing] = useState(false);
-  const [modalType, setModalType] = useState<ModalTypeInterface>(
-    {} as ModalTypeInterface
-  );
-
-  const showDeleteClientModal = (
-    clientId: string,
-  ) => {
-    setModalType({ type: "DELETE_CLIENT", clientId });
-    setIsShowing(true);
-  };
-
-  const showAddClientModal = () => {
-    setModalType({ type: "ADD_CLIENT" });
-    setIsShowing(true);
-  };
-
-  const showModal = (modalType: any) => {
-    setModalType(modalType);
-    setIsShowing(true);
-  };
-
-  const hideModal = () => {
-    setIsShowing(false);
-  };
+  const [isShowing, setIsShowing] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
 
   const ModalContextValues: ModalContextInterface = {
-    showModal,
-    showDeleteClientModal,
-    showAddClientModal,
-    hideModal,
     isShowing,
-    modalType,
+    setIsShowing,
+    modalContent,
+    setModalContent,
   };
 
   return (

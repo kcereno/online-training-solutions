@@ -1,19 +1,10 @@
 import { createContext } from "react";
 
-export type ModalType = "DELETE_CLIENT" | "ADD_CLIENT";
-
 export interface ModalContextInterface {
-  showModal: (modalType: ModalType) => void;
-  showDeleteClientModal: (clientId: string) => void;
-  showAddClientModal:()=>void
-  hideModal: () => void;
-  modalType: ModalTypeInterface;
   isShowing: boolean;
-}
-
-export interface ModalTypeInterface {
-  type: ModalType;
-  clientId?: string;
+  setIsShowing: React.Dispatch<React.SetStateAction<boolean>>;
+  modalContent: JSX.Element | null;
+  setModalContent: React.Dispatch<React.SetStateAction<JSX.Element | null>>;
 }
 
 const ModalContext = createContext<ModalContextInterface>(

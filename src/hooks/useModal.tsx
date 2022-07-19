@@ -1,13 +1,31 @@
 import { useContext } from "react";
 import ModalContext from "../store/modal-context";
+import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
+import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
 
 const useModal = () => {
-  const modalCtx = useContext(ModalContext);
+  const { setIsShowing, isShowing, modalContent, setModalContent } =
+    useContext(ModalContext);
+
+  const showAddClientModal = () => {
+    setIsShowing(true);
+    setModalContent(<AddClientModal />);
+  };
+  const showDeleteClientModal = (clientId: string) => {
+    setIsShowing(true);
+    setModalContent(<DeleteClientModal clientToDeleteId={clientId} />);
+  };
+  const hideModal = () => {
+    setIsShowing(false);
+    setModalContent(null);
+  };
 
   return {
-    isShowing: modalCtx.isShowing,
-    hideModal: modalCtx.hideModal,
-    modalType: modalCtx.modalType,
+    isShowing,
+    hideModal,
+    modalContent,
+    showAddClientModal,
+    showDeleteClientModal,
   };
 };
 

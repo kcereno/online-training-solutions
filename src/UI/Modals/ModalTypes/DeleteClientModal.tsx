@@ -4,16 +4,17 @@ import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import UserContext from "../../../store/user-context";
 
-type PropTypes = {
-  clientId: string;
-};
-export const DeleteClientModal = ({ clientId }: PropTypes) => {
+interface Props {
+  clientToDeleteId: string;
+}
+
+export const DeleteClientModal = ({ clientToDeleteId }: Props) => {
   const { activeUser } = useContext(UserContext);
   const { deleteClient } = useTrainerActions();
   const { hideModal } = useModal();
 
   const handleConfirmDeleteClient = () => {
-    deleteClient(activeUser!.info.id, clientId);
+    deleteClient(activeUser!.info.id, clientToDeleteId);
     hideModal();
   };
 
