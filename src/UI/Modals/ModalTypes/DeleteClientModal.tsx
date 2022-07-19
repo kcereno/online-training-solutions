@@ -10,8 +10,8 @@ interface Props {
 
 export const DeleteClientModal = ({ clientToDeleteId }: Props) => {
   const { activeUser } = useContext(UserContext);
-  const { deleteClient } = useTrainerActions();
   const { hideModal } = useModal();
+  const { deleteClient } = useTrainerActions();
 
   const handleConfirmDeleteClient = () => {
     deleteClient(activeUser!.info.id, clientToDeleteId);

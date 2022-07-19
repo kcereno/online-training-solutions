@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 
-type PropTypes = {
+interface Props {
   title: string;
-};
+}
 
-const ModalHeader = ({ title }: PropTypes) => {
+const ModalHeader = ({ title }: Props) => {
   return (
     <Modal.Header>
       <Modal.Title>{title}</Modal.Title>
