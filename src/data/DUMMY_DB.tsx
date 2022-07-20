@@ -51,7 +51,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://www.wwe.com/f/styles/gallery_img_l/public/all/2017/08/001_Flair_10--6e2ea2137b551b51f49670966ba5a72f.jpg",
     },
-    trainingDetails: {
+    trainingPlan: {
       goal: "GAIN STRENGTH",
       assignedExercises: [
         { exercise: "Bench Press", weight: 225, reps: 10, sets: 4 },
@@ -94,7 +94,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://www.biography.com/.image/t_share/MTgxMTAzNDYwOTI0NTMyMDcy/bret-08_crop.jpg",
     },
-    trainingDetails: {
+    trainingPlan: {
       goal: "BUILD MUSCLE",
       assignedExercises: [],
       log: [],
@@ -112,7 +112,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg",
     },
-    trainingDetails: {
+    trainingPlan: {
       goal: "LOSE FAT",
       assignedExercises: [],
       log: [],
@@ -130,7 +130,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://www.biography.com/.image/t_share/MTc5NjQ1NTQ1MjgxNzU5MTky/hbk-studio-1-1.jpg",
     },
-    trainingDetails: {
+    trainingPlan: {
       goal: "BODY RECOMPOSITION",
       assignedExercises: [],
       log: [],
@@ -148,7 +148,7 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "http://i.dailymail.co.uk/i/pix/2014/02/23/article-2565879-1BC04B8200000578-367_634x641.jpg",
     },
-    trainingDetails: {
+    trainingPlan: {
       goal: "SPORTS SPECIFIC",
       assignedExercises: [],
       log: [],

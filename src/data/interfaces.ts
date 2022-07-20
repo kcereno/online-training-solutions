@@ -17,7 +17,7 @@ export interface Trainer extends User {
 
 export interface Client extends User {
   role: "CLIENT";
-  trainingDetails: {
+  trainingPlan: {
     goal: TrainingGoal;
     assignedExercises: AssignedExercises[];
     log: LogEntry[];
