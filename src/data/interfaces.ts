@@ -19,13 +19,13 @@ export interface Client extends User {
   role: "CLIENT";
   trainingDetails: {
     goal: TrainingGoal;
-    program: AssignedExercises[];
+    assignedExercises: AssignedExercises[];
     log: LogEntry[];
   };
 }
 
 interface AssignedExercises {
-  name: string;
+  exercise: string;
   weight: number;
   reps: number;
   sets: number;
@@ -33,12 +33,18 @@ interface AssignedExercises {
 
 interface LogEntry {
   date: Date;
-  workload: WorkloadEntry[];
+  data: LogData[];
 }
 
-interface WorkloadEntry {
+interface LogData {
   exercise: string;
-  data: [{ exercise: string; reps: number; sets: number }];
+  data: WorkloadData[];
+}
+
+interface WorkloadData {
+  set: number;
+  weight: number;
+  reps: number;
 }
 
 export type TrainingGoal =
