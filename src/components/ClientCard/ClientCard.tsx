@@ -4,6 +4,7 @@ import "./ClientCard.css";
 
 type PropTypes = {
   key: string;
+  trainer: string;
   info: any;
   trainingPlan: any;
   deleteClient: (clientId: string) => void;
@@ -11,8 +12,9 @@ type PropTypes = {
 
 const ClientCard = ({
   info: { id, firstName, lastName, profilePicture },
-  trainingPlan: { goal, trainer },
+  trainingPlan: { goal },
   deleteClient,
+  trainer,
 }: PropTypes) => {
   const navigate = useNavigate();
 
