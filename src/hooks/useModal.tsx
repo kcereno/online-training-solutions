@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import ModalContext from "../store/modal-context";
-import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
-import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
+import DeleteClientModal from "../components/Modals/ModalTypes/DeleteClientModal";
+import { AddClientModal } from "../components/Modals/ModalTypes/AddClientModal";
+
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =

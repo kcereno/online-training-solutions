@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext } from "react";
 import { Accordion, Modal, Form, FloatingLabel, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -6,8 +7,8 @@ import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import UserContext from "../../../store/user-context";
 import { Client } from "../../../data/interfaces";
-import AccordianInput from "../../../components/Accordian/AccordianInput";
-import { AccordianItem } from "../../../components/Accordian/AccordianItem";
+import AccordianInput from "../../Accordian/AccordianInput";
+import { AccordianItem } from "../../Accordian/AccordianItem";
 
 export const AddClientModal = () => {
   const { activeUser } = useContext(UserContext);

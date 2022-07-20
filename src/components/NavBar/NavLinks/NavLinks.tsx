@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment, useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,7 @@ import UserContext from "../../../store/user-context";
 export default function NavLinks() {
   const navigate = useNavigate();
 
-  const { activeUser, logout } = useContext(UserContext)
+  const { activeUser, logout } = useContext(UserContext);
 
   let links;
 

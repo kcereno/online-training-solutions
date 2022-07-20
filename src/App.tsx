@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import RouteTree from "./routing/RouteTree";
-
-import NavBar from "./UI/NavBar/NavBar";
-import Footer from "./UI/Footer/Footer";
+import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
-import Modals from "./UI/Modals/Modals";
+import Modals from "./components/Modals/Modals";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
