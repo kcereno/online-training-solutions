@@ -8,7 +8,7 @@ const Showcase = () => {
       <Container className="text-white text-center vertical-align">
         <Row>
           <h1 className="display-2 py-3 ">
-            Where Trainers and Clients Connect
+            Where Trainers and Clients Connectz
           </h1>
           <div className="button-group">
             <Link to="/signin">
