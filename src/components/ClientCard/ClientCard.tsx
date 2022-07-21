@@ -1,5 +1,6 @@
 import { Card, ButtonGroup, Dropdown, Button, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useTrainerActions } from "../../hooks/useTrainerActions";
 import "./ClientCard.css";
 
 type PropTypes = {

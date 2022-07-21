@@ -4,15 +4,9 @@ import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
-
   const { fetchUser, addUserToDB, updateDBUser, deleteUserFromDB, fetchUsers } =
     useDatabase();
   const { updateUser } = useContext(UserContext);
-
-  const selectClient = (client: Client) => {
-    selectClient(client);
-  };
 
   const getClients = useCallback(
     (clients: string[]) => {
@@ -57,5 +51,5 @@ export const useTrainerActions = () => {
     updateDBUser(updatedTrainer);
   };
 
-  return { addClient, deleteClient, assignClient, getClients, selectClient };
+  return { addClient, deleteClient, assignClient, getClients };
 };
