@@ -54,8 +54,8 @@ export let DUMMY_DATA: User[] = [
     trainingPlan: {
       goal: "GAIN STRENGTH",
       assignedExercises: [
-        { exercise: "Bench Press", weight: 225, reps: 10, sets: 4 },
-        { exercise: "Deadlifts", weight: 315, reps: 5, sets: 4 },
+        { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
+        { name: "Deadlifts", weight: 315, reps: 5, sets: 4 },
       ],
       log: [
         {

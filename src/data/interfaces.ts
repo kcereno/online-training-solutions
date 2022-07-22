@@ -25,7 +25,7 @@ export interface Client extends User {
 }
 
 interface AssignedExercises {
-  exercise: string;
+  name: string;
   weight: number;
   reps: number;
   sets: number;
