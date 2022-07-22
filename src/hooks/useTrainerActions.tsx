@@ -8,6 +8,7 @@ export const useTrainerActions = () => {
     useDatabase();
   const { updateUser } = useContext(UserContext);
 
+  // * Client related functions
   const getClients = useCallback(
     (clients: string[]) => {
       return fetchUsers(clients) as Client[];
@@ -15,7 +16,6 @@ export const useTrainerActions = () => {
     [fetchUsers]
   );
 
-  // Add/Delete Clients
   const deleteClient = (trainerId: string, clientId: string) => {
     unassignClient(trainerId, clientId);
     deleteUserFromDB(clientId);
@@ -26,7 +26,6 @@ export const useTrainerActions = () => {
     addUserToDB(newClient);
   };
 
-  // Assign / Unassign Clients
   const unassignClient = (trainerId: string, clientId: string) => {
     const trainer = fetchUser(trainerId) as Trainer;
 
@@ -50,6 +49,12 @@ export const useTrainerActions = () => {
     updateUser(updatedTrainer);
     updateDBUser(updatedTrainer);
   };
+
+  // * Exercise Functions
+  // TODO change exerciseData to interface
+  const addExercise = (exerciseData: any, clientId: string) => {};
+  const deleteExercise = (exercise: any, clientId: string) => {};
+  const editExercise = (exercise: any, clientId: string) => {};
 
   return { addClient, deleteClient, assignClient, getClients };
 };
