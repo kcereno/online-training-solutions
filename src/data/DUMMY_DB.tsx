@@ -53,6 +53,33 @@ export let DUMMY_DATA: User[] = [
     },
     trainingPlan: {
       goal: "GAIN STRENGTH",
+      assignedExercises: [
+        { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
+        { name: "Deadlifts", weight: 315, reps: 5, sets: 4 },
+      ],
+      log: [
+        {
+          date: new Date(2018, 11, 24, 10, 33, 30, 0),
+          data: [
+            {
+              exercise: "Bench Press",
+              data: [
+                { set: 1, weight: 225, reps: 8 },
+                { set: 2, weight: 225, reps: 8 },
+                { set: 3, weight: 225, reps: 8 },
+              ],
+            },
+            {
+              exercise: "Deadlift",
+              data: [
+                { set: 1, weight: 315, reps: 8 },
+                { set: 2, weight: 325, reps: 8 },
+                { set: 3, weight: 250, reps: 8 },
+              ],
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -69,6 +96,8 @@ export let DUMMY_DATA: User[] = [
     },
     trainingPlan: {
       goal: "BUILD MUSCLE",
+      assignedExercises: [],
+      log: [],
     },
   },
   {
@@ -85,6 +114,8 @@ export let DUMMY_DATA: User[] = [
     },
     trainingPlan: {
       goal: "LOSE FAT",
+      assignedExercises: [],
+      log: [],
     },
   },
   {
@@ -101,6 +132,8 @@ export let DUMMY_DATA: User[] = [
     },
     trainingPlan: {
       goal: "BODY RECOMPOSITION",
+      assignedExercises: [],
+      log: [],
     },
   },
   {
@@ -117,6 +150,8 @@ export let DUMMY_DATA: User[] = [
     },
     trainingPlan: {
       goal: "SPORTS SPECIFIC",
+      assignedExercises: [],
+      log: [],
     },
   },
 ];

@@ -12,14 +12,39 @@ export interface User {
 
 export interface Trainer extends User {
   role: "TRAINER";
-  clients: string[]
+  clients: string[];
 }
 
 export interface Client extends User {
   role: "CLIENT";
   trainingPlan: {
     goal: TrainingGoal;
+    assignedExercises: AssignedExercises[];
+    log: LogEntry[];
   };
+}
+
+interface AssignedExercises {
+  name: string;
+  weight: number;
+  reps: number;
+  sets: number;
+}
+
+interface LogEntry {
+  date: Date;
+  data: LogData[];
+}
+
+interface LogData {
+  exercise: string;
+  data: WorkloadData[];
+}
+
+interface WorkloadData {
+  set: number;
+  weight: number;
+  reps: number;
 }
 
 export type TrainingGoal =
@@ -28,29 +53,3 @@ export type TrainingGoal =
   | "GAIN STRENGTH"
   | "BODY RECOMPOSITION"
   | "SPORTS SPECIFIC";
-
-export interface BasicInfoInterface {
-  id: string;
-  firstName: string;
-  lastName: string;
-  birthday: Date;
-  email: string;
-  password: string;
-  profilePicture: string;
-}
-
-export interface TrainingBlockInterface {
-  blockName: string;
-  exercises: ExerciseInterface[];
-}
-
-interface ExerciseInterface {
-  exerciseName: string;
-  weight?: number;
-  rpe?: number;
-  reps: number;
-  sets: number;
-  rest: number;
-}
-
-// Modal Context Interfaces

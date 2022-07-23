@@ -12,7 +12,12 @@ interface Props {
   trainer: Trainer;
 }
 
-const TrainerDashboard = ({ trainer: { clients } }: Props) => {
+const TrainerDashboard = ({
+  trainer: {
+    clients,
+    info: { id: trainerId },
+  },
+}: Props) => {
   const [clientList, setClientList] = useState<Client[]>([]);
   const { getClients } = useTrainerActions();
 
@@ -35,6 +40,7 @@ const TrainerDashboard = ({ trainer: { clients } }: Props) => {
     <ClientCard
       key={client.info.id}
       info={client.info}
+      trainer={trainerId}
       trainingPlan={client.trainingPlan}
       deleteClient={handleDeleteClient}
     />

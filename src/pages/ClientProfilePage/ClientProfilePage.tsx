@@ -1,19 +1,34 @@
 import React from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import ClientCard from "../../components/ClientCards/ClientCard/ClientCard";
+
+import useDatabase from "../../hooks/useDatabase";
+
+import { Client } from "../../data/interfaces";
 
 import "./ClientProfilePage.css";
 
 const ClientProfilePage = () => {
-  const params = useParams();
-  console.log(params);
+  const { client: clientId } = useParams();
+  const { fetchUser } = useDatabase();
+  const client = fetchUser(clientId!) as Client;
 
-  // const client = ALL_CLIENTS.find((client) => client.info.id === params.client);
-  // console.log(client);
+  const cardStyle = { width: "auto", background: "grey" };
 
   return (
     <Container className="text-white my-5">
+      <Card style={cardStyle}>
+        <h1>{client?.info.firstName}'s' profile page</h1>
+      </Card>
+      <Card style={cardStyle}>
+        <h1>{client?.info.firstName}'s Program</h1>
+        {client.trainingPlan.assignedExercises.map((exercise) => {
+          return (
+            <p>{`Exercise: ${exercise.name} Target Weight: ${exercise.weight} Target Reps:${exercise.reps} Target Sets: ${exercise.sets}`}</p>
+          );
+        })}
+      </Card>
+
       {/* <Row>
         <Col xs={3} style={{ background: "#121212", borderRadius: "25px" }}>
           <div className="profile-head text-center my-3">
