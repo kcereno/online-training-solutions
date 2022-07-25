@@ -10,9 +10,21 @@ type Props = {
 const DatabaseProvider = ({ children }: Props) => {
   const [database, setDatabase] = useState<User[]>(DUMMY_DATA);
 
+  const deleteUser = (userId: string) => {
+    const updatedDatabase = database.filter((user) => user.info.id !== userId);
+    setDatabase(updatedDatabase);
+  };
+
+  const addUser = (user: User) => {
+    const updatedDatabase = [...database, user];
+    setDatabase(updatedDatabase);
+  };
+
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
     updateDatabase: setDatabase,
+    deleteUser,
+    addUser,
   };
 
   return (
