@@ -12,12 +12,12 @@ export interface User {
 
 export interface Trainer extends User {
   role: "TRAINER";
-  clients: string[];
 }
 
 export interface Client extends User {
   role: "CLIENT";
   trainingPlan: {
+    trainer: string | null;
     goal: TrainingGoal;
     assignedExercises: AssignedExercises[];
     log: LogEntry[];

@@ -37,7 +37,6 @@ export let DUMMY_DATA: User[] = [
       profilePicture:
         "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     },
-    clients: ["rflair", "bhart", "rsavage", "hhogan", "smichaels"],
   },
   {
     role: "CLIENT",
@@ -52,6 +51,7 @@ export let DUMMY_DATA: User[] = [
         "https://www.wwe.com/f/styles/gallery_img_l/public/all/2017/08/001_Flair_10--6e2ea2137b551b51f49670966ba5a72f.jpg",
     },
     trainingPlan: {
+      trainer: "kcereno89",
       goal: "GAIN STRENGTH",
       assignedExercises: [
         { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
@@ -95,6 +95,7 @@ export let DUMMY_DATA: User[] = [
         "https://www.biography.com/.image/t_share/MTgxMTAzNDYwOTI0NTMyMDcy/bret-08_crop.jpg",
     },
     trainingPlan: {
+      trainer: "kcereno89",
       goal: "BUILD MUSCLE",
       assignedExercises: [],
       log: [],
@@ -113,6 +114,7 @@ export let DUMMY_DATA: User[] = [
         "https://www.biography.com/.image/t_share/MTc5Mzk0NDcxNjk0MTgxNzA5/macho01_ba.jpg",
     },
     trainingPlan: {
+      trainer: "kcereno89",
       goal: "LOSE FAT",
       assignedExercises: [],
       log: [],
@@ -131,6 +133,7 @@ export let DUMMY_DATA: User[] = [
         "https://www.biography.com/.image/t_share/MTc5NjQ1NTQ1MjgxNzU5MTky/hbk-studio-1-1.jpg",
     },
     trainingPlan: {
+      trainer: "kcereno89",
       goal: "BODY RECOMPOSITION",
       assignedExercises: [],
       log: [],
@@ -149,6 +152,7 @@ export let DUMMY_DATA: User[] = [
         "http://i.dailymail.co.uk/i/pix/2014/02/23/article-2565879-1BC04B8200000578-367_634x641.jpg",
     },
     trainingPlan: {
+      trainer: "kcereno89",
       goal: "SPORTS SPECIFIC",
       assignedExercises: [],
       log: [],
