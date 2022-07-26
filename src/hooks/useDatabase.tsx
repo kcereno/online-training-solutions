@@ -2,12 +2,12 @@
 // Performs CRUD operations on database itself
 
 import { useCallback, useContext } from "react";
-import { deleteUser, addUser, updateUser } from "../data/DUMMY_DB";
 import { User } from "../data/types";
 import DatabaseContext from "../store/database-context";
 
 const useDatabase = () => {
-  const { database, updateDatabase } = useContext(DatabaseContext);
+  const { database, addUser, updateDatabase, deleteUser } =
+    useContext(DatabaseContext);
 
   const fetchUser = (userId: string) =>
     database.find((user) => user.info.id === userId);
@@ -38,7 +38,7 @@ const useDatabase = () => {
     deleteUserFromDB: deleteUser,
     fetchUsers,
     fetchUser,
-    updateDBUser: updateUser,
+    updatedUserinDB: updateDatabase,
     userDB: database,
   };
 };

@@ -4,8 +4,13 @@ import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const { fetchUser, addUserToDB, updateDBUser, deleteUserFromDB, fetchUsers } =
-    useDatabase();
+  const {
+    fetchUser,
+    addUserToDB,
+    updatedUserinDB,
+    deleteUserFromDB,
+    fetchUsers,
+  } = useDatabase();
   const { updateUser } = useContext(UserContext);
 
   // * Client related functions
@@ -18,7 +23,7 @@ export const useTrainerActions = () => {
 
   const deleteClient = (trainerId: string, clientId: string) => {
     unassignClient(trainerId, clientId);
-    deleteUserFromDB(clientId);
+    // deleteUserFromDB(clientId);
   };
 
   const addClient = (newClient: Client, trainerId: string) => {
@@ -33,9 +38,9 @@ export const useTrainerActions = () => {
       (client) => client !== clientId
     );
     const updatedTrainer = { ...trainer, clients: updatedClientList };
-
-    updateUser(updatedTrainer);
-    updateDBUser(updatedTrainer);
+    console.log(updatedTrainer);
+    // updateUser(updatedTrainer);
+    // updateDBUser(updatedTrainer);
   };
 
   const assignClient = (trainerId: string, clientId: string) => {
@@ -47,7 +52,7 @@ export const useTrainerActions = () => {
       clients: updatedClientList,
     };
     updateUser(updatedTrainer);
-    updateDBUser(updatedTrainer);
+    // updateDBUser(updatedTrainer);
   };
 
   // * Exercise Functions
