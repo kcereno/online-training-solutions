@@ -14,17 +14,17 @@ interface Props {
 
 const TrainerDashboard = ({
   trainer: {
-    clients,
     info: { id: trainerId },
   },
 }: Props) => {
   const [clientList, setClientList] = useState<Client[]>([]);
-  const { getClients } = useTrainerActions();
+  const { fetchClients } = useTrainerActions();
 
   useEffect(() => {
-    const fetchedClients = getClients(clients);
-    setClientList(fetchedClients);
-  }, [clients, getClients]);
+    const fetchedClients = fetchClients(trainerId);
+    console.log("fetched Clients", fetchedClients);
+    setClientList(fetchedClients as Client[]);
+  }, [fetchClients, trainerId]);
 
   const { showDeleteClientModal, showAddClientModal } = useModal();
 
@@ -63,7 +63,7 @@ const TrainerDashboard = ({
         </Row>
         <Row className="d-flex justify-content-center flex-wrap header">
           {/* MAKE THIS LOOK BETTER */}
-          {clients.length === 0 ? (
+          {clientList.length === 0 ? (
             <h1 style={{ color: "white", textAlign: "center" }}>
               ADD NO CLIENTS DATA
             </h1>

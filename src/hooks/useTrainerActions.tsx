@@ -1,57 +1,56 @@
 import { useContext, useCallback, useState } from "react";
 import { Client, Trainer } from "../data/interfaces";
+import { User } from "../data/types";
+import DatabaseContext from "../store/database-context";
 import UserContext from "../store/user-context";
 import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
-  const {
-    fetchUser,
-    addUserToDB,
-    updatedUserinDB,
-    deleteUserFromDB,
-    fetchUsers,
-  } = useDatabase();
+  const { database, deleteUser: deleteUserFromDB } =
+    useContext(DatabaseContext);
+
   const { updateUser } = useContext(UserContext);
 
   // * Client related functions
-  const getClients = useCallback(
-    (clients: string[]) => {
-      return fetchUsers(clients) as Client[];
-    },
-    [fetchUsers]
+  const fetchClients = useCallback(
+    (trainerId: string) =>
+      database.filter((user: User) => {
+        if (user.role === "CLIENT") {
+          return user.trainingPlan.trainer === trainerId;
+        }
+      }),
+    [database]
   );
 
   const deleteClient = (trainerId: string, clientId: string) => {
-    unassignClient(trainerId, clientId);
-    // deleteUserFromDB(clientId);
+    // unassignClient(trainerId, clientId);
+    deleteUserFromDB(clientId);
   };
 
   const addClient = (newClient: Client, trainerId: string) => {
-    assignClient(trainerId, newClient.info.id);
-    addUserToDB(newClient);
+    // assignClient(trainerId, newClient.info.id);
+    // addUserToDB(newClient);
   };
 
   const unassignClient = (trainerId: string, clientId: string) => {
-    const trainer = fetchUser(trainerId) as Trainer;
-
-    const updatedClientList = trainer.clients.filter(
-      (client) => client !== clientId
-    );
-    const updatedTrainer = { ...trainer, clients: updatedClientList };
-    console.log(updatedTrainer);
+    // const trainer = fetchUser(trainerId) as Trainer;
+    // const updatedClientList = trainer.clients.filter(
+    //   (client) => client !== clientId
+    // );
+    // const updatedTrainer = { ...trainer, clients: updatedClientList };
+    // console.log(updatedTrainer);
     // updateUser(updatedTrainer);
     // updateDBUser(updatedTrainer);
   };
 
   const assignClient = (trainerId: string, clientId: string) => {
-    let trainer = fetchUser(trainerId);
-
-    const updatedClientList = [...(trainer as Trainer).clients, clientId];
-    const updatedTrainer = {
-      ...(trainer as Trainer),
-      clients: updatedClientList,
-    };
-    updateUser(updatedTrainer);
+    // let trainer = fetchUser(trainerId);
+    // const updatedClientList = [...(trainer as Trainer).clients, clientId];
+    // const updatedTrainer = {
+    //   ...(trainer as Trainer),
+    //   clients: updatedClientList,
+    // };
+    // updateUser(updatedTrainer);
     // updateDBUser(updatedTrainer);
   };
 
@@ -61,5 +60,5 @@ export const useTrainerActions = () => {
   const deleteExercise = (exercise: any, clientId: string) => {};
   const editExercise = (exercise: any, clientId: string) => {};
 
-  return { addClient, deleteClient, assignClient, getClients };
+  return { addClient, deleteClient, assignClient, fetchClients };
 };
