@@ -3,7 +3,6 @@ import { Client, Trainer } from "../data/interfaces";
 import { User } from "../data/types";
 import DatabaseContext from "../store/database-context";
 import UserContext from "../store/user-context";
-import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
   const {
@@ -15,6 +14,11 @@ export const useTrainerActions = () => {
   const { updateUser } = useContext(UserContext);
 
   // * Client related functions
+
+  const fetchClient = (clientId: string) => {
+    return database.find((user) => user.info.id === clientId);
+  };
+
   const fetchClients = useCallback(
     (trainerId: string) =>
       database.filter((user: User) => {
@@ -61,5 +65,5 @@ export const useTrainerActions = () => {
   const deleteExercise = (exercise: any, clientId: string) => {};
   const editExercise = (exercise: any, clientId: string) => {};
 
-  return { addClient, deleteClient, assignClient, fetchClients };
+  return { addClient, deleteClient, assignClient, fetchClients, fetchClient };
 };

@@ -3,8 +3,8 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useContext, useState } from "react";
-import useDatabase from "../../hooks/useDatabase";
 import UserContext from "../../store/user-context";
+import DatabaseContext from "../../store/database-context";
 
 export default function LoginPage() {
   // States
@@ -14,8 +14,7 @@ export default function LoginPage() {
 
   // Context
   const { login } = useContext(UserContext);
-  const { validateUser } = useDatabase();
-
+  const { validateUser } = useContext(DatabaseContext);
   // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
