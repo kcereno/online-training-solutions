@@ -1,8 +1,7 @@
-import { useContext, useCallback, useState } from "react";
-import { Client, Trainer } from "../data/interfaces";
+import { useContext, useCallback } from "react";
+import { Client } from "../data/interfaces";
 import { User } from "../data/types";
-import DatabaseContext from "../store/database-context";
-import UserContext from "../store/user-context";
+import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
   const {
@@ -10,8 +9,6 @@ export const useTrainerActions = () => {
     deleteUser: deleteUserFromDB,
     addUser: addUserToDB,
   } = useContext(DatabaseContext);
-
-  const { updateUser } = useContext(UserContext);
 
   // * Client related functions
 

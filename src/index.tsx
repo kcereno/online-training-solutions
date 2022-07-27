@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import DatabaseProvider from "./store/DatabaseProvider";
-import ModalProvider from "./store/ModalProvider";
-import UserProvider from "./store/UserProvider";
+import DatabaseProvider from "./store/Database/DatabaseProvider";
+import ModalProvider from "./store/Modal/ModalProvider";
+import UserProvider from "./store/User/UserProvider";
 
 ReactDOM.render(
   <React.StrictMode>

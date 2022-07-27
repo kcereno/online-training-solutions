@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { createId } from "../../../data/functions";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
-import UserContext from "../../../store/user-context";
+import UserContext from "../../../store/User/user-context";
 import { Client } from "../../../data/interfaces";
 import AccordianInput from "../../Accordian/AccordianInput";
 import { AccordianItem } from "../../Accordian/AccordianItem";

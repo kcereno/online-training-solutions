@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
-import UserContext from "../../../store/user-context";
+import UserContext from "../../../store/User/user-context";
 
 interface Props {
   clientToDeleteId: string;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { DUMMY_DATA } from "../data/DUMMY_DB";
-import { User } from "../data/types";
+import { DUMMY_DATA } from "../../data/DUMMY_DB";
+import { User } from "../../data/types";
 import DatabaseContext, { DatabaseContextInterface } from "./database-context";
 
 type Props = {
@@ -14,7 +14,6 @@ const DatabaseProvider = ({ children }: Props) => {
     database.find(
       (user) => user.info.email === email && user.info.password === password
     );
-
 
   const deleteUser = (userId: string) => {
     const updatedDatabase = database.filter((user) => user.info.id !== userId);
@@ -31,7 +30,7 @@ const DatabaseProvider = ({ children }: Props) => {
     updateDatabase: setDatabase,
     deleteUser,
     addUser,
-    validateUser
+    validateUser,
   };
 
   return (

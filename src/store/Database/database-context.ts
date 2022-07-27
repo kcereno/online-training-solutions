@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { User } from "../data/types";
+import { User } from "../../data/types";
 
 export interface DatabaseContextInterface {
   database: User[];

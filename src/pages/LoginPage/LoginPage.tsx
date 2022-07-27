@@ -3,8 +3,8 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useContext, useState } from "react";
-import UserContext from "../../store/user-context";
-import DatabaseContext from "../../store/database-context";
+import UserContext from "../../store/User/user-context";
+import DatabaseContext from "../../store/Database/database-context";
 
 export default function LoginPage() {
   // States

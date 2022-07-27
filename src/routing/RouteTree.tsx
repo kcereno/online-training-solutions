@@ -6,7 +6,7 @@ import LandingPage from "../pages/LandingPage/LandingPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
-import UserContext from "../store/user-context";
+import UserContext from "../store/User/user-context";
 import { Trainer } from "../data/interfaces";
 
 const RouteTree = () => {

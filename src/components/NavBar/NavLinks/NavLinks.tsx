@@ -2,7 +2,7 @@ import React from "react";
 import { Fragment, useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../../../store/user-context";
+import UserContext from "../../../store/User/user-context";
 
 export default function NavLinks() {
   const navigate = useNavigate();
