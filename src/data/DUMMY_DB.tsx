@@ -1,6 +1,6 @@
-import { User } from "./types";
+import { UserType } from "./types";
 
-export let DUMMY_DATA: User[] = [
+export let DUMMY_DATA: UserType[] = [
   {
     role: "TRAINER",
     info: {

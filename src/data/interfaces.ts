@@ -1,4 +1,4 @@
-export interface User {
+export interface UserInterface {
   info: {
     id: string;
     firstName: string;
@@ -10,11 +10,11 @@ export interface User {
   };
 }
 
-export interface Trainer extends User {
+export interface Trainer extends UserInterface {
   role: "TRAINER";
 }
 
-export interface Client extends User {
+export interface Client extends UserInterface {
   role: "CLIENT";
   trainingPlan: {
     trainer: string | null;

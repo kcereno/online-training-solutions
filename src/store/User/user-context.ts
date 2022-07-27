@@ -1,11 +1,11 @@
 import { createContext } from "react";
-import { User } from "../../data/types";
+import { UserType } from "../../data/types";
 
 export interface UserContextInterface {
-  activeUser: User | null;
-  login: (user: User) => void;
+  activeUser: UserType | null;
+  login: (user: UserType) => void;
   logout: () => void;
-  updateUser: (updatedUser: User) => void;
+  updateUser: (updatedUser: UserType) => void;
 }
 
 const UserContext = createContext<UserContextInterface>(

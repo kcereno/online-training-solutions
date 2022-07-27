@@ -1,12 +1,12 @@
 import { createContext } from "react";
-import { User } from "../../data/types";
+import { UserType } from "../../data/types";
 
 export interface DatabaseContextInterface {
-  database: User[];
-  updateDatabase: React.Dispatch<React.SetStateAction<User[]>>;
-  addUser: (user: User) => void;
+  database: UserType[];
+  updateDatabase: React.Dispatch<React.SetStateAction<UserType[]>>;
+  addUser: (user: UserType) => void;
   deleteUser: (userId: string) => void;
-  validateUser: (email: string, password: string) => User | undefined;
+  validateUser: (email: string, password: string) => UserType | undefined;
 }
 
 const DatabaseContext = createContext<DatabaseContextInterface>(

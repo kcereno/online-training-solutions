@@ -1,6 +1,6 @@
 import { useContext, useCallback } from "react";
 import { Client } from "../data/interfaces";
-import { User } from "../data/types";
+import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
@@ -18,7 +18,7 @@ export const useTrainerActions = () => {
 
   const fetchClients = useCallback(
     (trainerId: string) =>
-      database.filter((user: User) => {
+      database.filter((user: UserType) => {
         if (user.role === "CLIENT") {
           return user.trainingPlan.trainer === trainerId;
         }

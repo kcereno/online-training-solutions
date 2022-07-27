@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DUMMY_DATA } from "../../data/DUMMY_DB";
-import { User } from "../../data/types";
+import { UserType } from "../../data/types";
 import DatabaseContext, { DatabaseContextInterface } from "./database-context";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const DatabaseProvider = ({ children }: Props) => {
-  const [database, setDatabase] = useState<User[]>(DUMMY_DATA);
+  const [database, setDatabase] = useState<UserType[]>(DUMMY_DATA);
 
   const validateUser = (email: string, password: string) =>
     database.find(
@@ -20,7 +20,7 @@ const DatabaseProvider = ({ children }: Props) => {
     setDatabase(updatedDatabase);
   };
 
-  const addUser = (user: User) => {
+  const addUser = (user: UserType) => {
     const updatedDatabase = [...database, user];
     setDatabase(updatedDatabase);
   };
