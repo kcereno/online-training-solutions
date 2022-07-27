@@ -9,8 +9,8 @@ const useDatabase = () => {
   const { database, addUser, updateDatabase, deleteUser } =
     useContext(DatabaseContext);
 
-  const fetchUser = (userId: string) =>
-    database.find((user) => user.info.id === userId);
+  // const fetchUser = (userId: string) =>
+  //   database.find((user) => user.info.id === userId);
 
   // Fetches users by id present in passed in array
   const fetchUsers = useCallback(
@@ -27,17 +27,17 @@ const useDatabase = () => {
   );
 
   // Validates user email and password
-  const validateUser = (email: string, password: string) =>
-    database.find(
-      (user) => user.info.email === email && user.info.password === password
-    );
+  // const validateUser = (email: string, password: string) =>
+  //   database.find(
+  //     (user) => user.info.email === email && user.info.password === password
+  //   );
 
   return {
-    validateUser,
+
     addUserToDB: addUser,
     deleteUserFromDB: deleteUser,
     fetchUsers,
-    fetchUser,
+    // fetchUser,
     updatedUserinDB: updateDatabase,
     userDB: database,
   };

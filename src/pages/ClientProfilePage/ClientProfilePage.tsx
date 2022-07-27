@@ -1,17 +1,15 @@
 import React from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-
-import useDatabase from "../../hooks/useDatabase";
-
 import { Client } from "../../data/interfaces";
-
 import "./ClientProfilePage.css";
+import { useTrainerActions } from "../../hooks/useTrainerActions";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
-  const { fetchUser } = useDatabase();
-  const client = fetchUser(clientId!) as Client;
+  const { fetchClient } = useTrainerActions()
+
+  const client = fetchClient(clientId!) as Client;
 
   const cardStyle = { width: "auto", background: "grey" };
 

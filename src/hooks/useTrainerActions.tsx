@@ -25,12 +25,16 @@ export const useTrainerActions = () => {
     [database]
   );
 
+  const fetchClient = (clientId: string) => {
+    return database.find((client) => client.info.id === clientId);
+  };
+
   const deleteClient = (trainerId: string, clientId: string) => {
-    deleteUserFromDB(clientId);
+    // deleteUserFromDB(clientId);
   };
 
   const addClient = (newClient: Client, trainerId: string) => {
-    addUserToDB(newClient);
+    // addUserToDB(newClient);
   };
 
   const unassignClient = (trainerId: string, clientId: string) => {
@@ -61,5 +65,5 @@ export const useTrainerActions = () => {
   const deleteExercise = (exercise: any, clientId: string) => {};
   const editExercise = (exercise: any, clientId: string) => {};
 
-  return { addClient, deleteClient, assignClient, fetchClients };
+  return { addClient, deleteClient, assignClient, fetchClients, fetchClient };
 };
