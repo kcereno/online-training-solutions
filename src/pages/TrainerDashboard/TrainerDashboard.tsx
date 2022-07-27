@@ -22,7 +22,6 @@ const TrainerDashboard = ({
 
   useEffect(() => {
     const fetchedClients = fetchClients(trainerId);
-    console.log("fetched Clients", fetchedClients);
     setClientList(fetchedClients as Client[]);
   }, [fetchClients, trainerId]);
 

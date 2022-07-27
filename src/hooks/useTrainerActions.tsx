@@ -2,8 +2,6 @@ import { useContext, useCallback, useState } from "react";
 import { Client, Trainer } from "../data/interfaces";
 import { User } from "../data/types";
 import DatabaseContext from "../store/database-context";
-import UserContext from "../store/user-context";
-import useDatabase from "./useDatabase";
 
 export const useTrainerActions = () => {
   const {
@@ -12,7 +10,6 @@ export const useTrainerActions = () => {
     addUser: addUserToDB,
   } = useContext(DatabaseContext);
 
-  const { updateUser } = useContext(UserContext);
 
   // * Client related functions
   const fetchClients = useCallback(
@@ -29,8 +26,8 @@ export const useTrainerActions = () => {
     return database.find((client) => client.info.id === clientId);
   };
 
-  const deleteClient = (trainerId: string, clientId: string) => {
-    // deleteUserFromDB(clientId);
+  const deleteClient = (clientId: string) => {
+    deleteUserFromDB(clientId);
   };
 
   const addClient = (newClient: Client, trainerId: string) => {

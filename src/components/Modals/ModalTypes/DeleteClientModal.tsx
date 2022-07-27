@@ -14,7 +14,7 @@ export const DeleteClientModal = ({ clientToDeleteId }: Props) => {
   const { deleteClient } = useTrainerActions();
 
   const handleConfirmDeleteClient = () => {
-    deleteClient(activeUser!.info.id, clientToDeleteId);
+    deleteClient(clientToDeleteId);
     hideModal();
   };
 
