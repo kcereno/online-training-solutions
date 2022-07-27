@@ -31,17 +31,17 @@ interface AssignedExercises {
   sets: number;
 }
 
-interface LogEntry {
+export interface LogEntry {
   date: Date;
   data: LogData[];
 }
 
-interface LogData {
+export interface LogData {
   exercise: string;
   data: WorkloadData[];
 }
 
-interface WorkloadData {
+export interface WorkloadData {
   set: number;
   weight: number;
   reps: number;

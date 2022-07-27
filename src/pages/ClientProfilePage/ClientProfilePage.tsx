@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import "./ClientProfilePage.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
+import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
@@ -30,27 +31,7 @@ const ClientProfilePage = () => {
 
       <Card style={cardStyle}>
         <h1>{client?.info.firstName}'s Log</h1>
-        {client.trainingPlan.log.map((logEntry) => {
-          return (
-            <div>
-              <p>Date: {logEntry.date.toDateString()}</p>
-              {logEntry.data.map((exercise) => {
-                return (
-                  <div>
-                    <p>Exercise: {exercise.exercise}</p>
-                    {exercise.data.map((set) => {
-                      return (
-                        <p>
-                          Set: {set.set} Weight: {set.weight} Reps: {set.reps}
-                        </p>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        <ExerciseLog logs={client.trainingPlan.log} />
       </Card>
     </Container>
   );
