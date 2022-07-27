@@ -16,7 +16,7 @@ export const useTrainerActions = () => {
   // * Client related functions
 
   const fetchClient = (clientId: string) => {
-    return database.find((user) => user.info.id === clientId);
+    return database.find((user) => user.info.id === clientId) as Client;
   };
 
   const fetchClients = useCallback(
