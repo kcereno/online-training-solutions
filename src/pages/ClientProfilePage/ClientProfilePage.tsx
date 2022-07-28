@@ -15,11 +15,13 @@ const ClientProfilePage = () => {
   const cardStyle = { width: "auto", background: "grey" };
 
   return (
+    // Profile Name Card
     <Container className="text-white my-5">
       <Card style={cardStyle}>
         <h1>{client?.info.firstName}'s' profile page</h1>
       </Card>
 
+      {/* Program Card */}
       <Card style={cardStyle}>
         <h1>{client?.info.firstName}'s Program</h1>
         {client!.trainingPlan.assignedExercises.map((exercise: any) => {
@@ -29,10 +31,9 @@ const ClientProfilePage = () => {
         })}
       </Card>
 
-      <Card style={cardStyle}>
-        <h1>{client?.info.firstName}'s Log</h1>
-        <ExerciseLog logs={client.trainingPlan.log} />
-      </Card>
+      {/* Exercise Log */}
+
+      <ExerciseLog logs={client.trainingPlan.log} />
     </Container>
   );
 };
