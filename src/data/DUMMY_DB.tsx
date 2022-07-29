@@ -40,6 +40,27 @@ export let DUMMY_DATA: UserType[] = [
             {
               exercise: "Bench Press",
               data: [
+                { set: 2, weight: 350, reps: 8 },
+                { set: 3, weight: 350, reps: 8 },
+                { set: 1, weight: 350, reps: 8 },
+              ],
+            },
+            {
+              exercise: "Deadlift",
+              data: [
+                { set: 1, weight: 350, reps: 8 },
+                { set: 2, weight: 350, reps: 8 },
+                { set: 3, weight: 350, reps: 8 },
+              ],
+            },
+          ],
+        },
+        {
+          date: new Date(2018, 11, 26, 10, 33, 30, 0),
+          entry: [
+            {
+              exercise: "Bench Press",
+              data: [
                 { set: 1, weight: 225, reps: 8 },
                 { set: 2, weight: 225, reps: 8 },
                 { set: 3, weight: 225, reps: 8 },
