@@ -16,11 +16,12 @@ const ClientProfilePage = () => {
 
   return (
     <Container className="text-white my-5">
-      <Card style={cardStyle}>
-        <h1>{client?.info.firstName}'s' profile page</h1>
-      </Card>
-
-      <Card style={cardStyle}>
+      <Row>
+        <Col>
+          <Card style={cardStyle}>
+            <h1>{client?.info.firstName}'s' profile page</h1>
+          </Card>
+          <Card style={cardStyle}>
         <h1>{client?.info.firstName}'s Program</h1>
         {client!.trainingPlan.assignedExercises.map((exercise: any) => {
           return (
@@ -28,8 +29,12 @@ const ClientProfilePage = () => {
           );
         })}
       </Card>
+        </Col>
+        <Col>
+        <ExerciseLog logs={client.trainingPlan.log} /></Col>
+      </Row>
 
-        <ExerciseLog logs={client.trainingPlan.log} />
+     
     </Container>
   );
 };
