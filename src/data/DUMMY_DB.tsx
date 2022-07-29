@@ -29,14 +29,14 @@ export let DUMMY_DATA: UserType[] = [
     trainingPlan: {
       trainer: "kcereno89",
       goal: "GAIN STRENGTH",
-      assignedExercises: [
+      program: [
         { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
         { name: "Deadlifts", weight: 315, reps: 5, sets: 4 },
       ],
-      log: [
+      logs: [
         {
           date: new Date(2018, 11, 24, 10, 33, 30, 0),
-          data: [
+          entry: [
             {
               exercise: "Bench Press",
               data: [
@@ -73,8 +73,8 @@ export let DUMMY_DATA: UserType[] = [
     trainingPlan: {
       trainer: "kcereno89",
       goal: "BUILD MUSCLE",
-      assignedExercises: [],
-      log: [],
+      program: [],
+      logs: [],
     },
   },
   {
@@ -92,8 +92,8 @@ export let DUMMY_DATA: UserType[] = [
     trainingPlan: {
       trainer: "kcereno89",
       goal: "LOSE FAT",
-      assignedExercises: [],
-      log: [],
+      program: [],
+      logs: [],
     },
   },
   {
@@ -111,8 +111,8 @@ export let DUMMY_DATA: UserType[] = [
     trainingPlan: {
       trainer: "kcereno89",
       goal: "BODY RECOMPOSITION",
-      assignedExercises: [],
-      log: [],
+      program: [],
+      logs: [],
     },
   },
   {
@@ -130,8 +130,8 @@ export let DUMMY_DATA: UserType[] = [
     trainingPlan: {
       trainer: "kcereno89",
       goal: "SPORTS SPECIFIC",
-      assignedExercises: [],
-      log: [],
+      program: [],
+      logs: [],
     },
   },
 ];

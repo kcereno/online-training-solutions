@@ -1,19 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { LogEntry } from "../../data/interfaces";
+import { Log } from "../../data/interfaces";
 
 interface Props {
-  logs: LogEntry[];
+  logs: Log[];
 }
 
 const ExerciseLog = ({ logs }: Props) => {
   console.log(logs);
   return (
     <Card style={{ width: "auto", background: "grey" }}>
-      {logs.map((log: LogEntry) => (
+      {logs.map((log: Log) => (
         <div key={log.date.getTime()}>
           <h2>{log.date.toDateString()}</h2>
-          {log.data.map((entry) => (
+          {log.entry.map((entry) => (
             <div key={entry.exercise}>
               <p>{entry.exercise}</p>
               {entry.data.map((data) => (

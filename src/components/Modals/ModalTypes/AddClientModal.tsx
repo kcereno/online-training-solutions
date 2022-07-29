@@ -49,8 +49,8 @@ export const AddClientModal = () => {
         // TODO Change to dynamic entry
         trainer: "kcereno89",
         goal,
-        assignedExercises: [],
-        log: [],
+        program: [],
+        logs: [],
       },
     };
     addClient(newClient, activeUser!.info.id);

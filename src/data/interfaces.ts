@@ -1,8 +1,8 @@
 export interface UserInterface {
-  info:UserInfo
+  info: UserInfo;
 }
 
-export interface UserInfo  {
+export interface UserInfo {
   id: string;
   firstName: string;
   lastName: string;
@@ -21,29 +21,29 @@ export interface Client extends UserInterface {
   trainingPlan: {
     trainer: string | null;
     goal: TrainingGoal;
-    assignedExercises: AssignedExercises[];
-    log: LogEntry[];
+    program: AssignedExercise[];
+    logs: Log[];
   };
 }
 
-interface AssignedExercises {
+export interface AssignedExercise {
   name: string;
   weight: number;
   reps: number;
   sets: number;
 }
 
-export interface LogEntry {
+export interface Log {
   date: Date;
-  data: LogData[];
+  entry: LogEntry[];
 }
 
-export interface LogData {
+export interface LogEntry {
   exercise: string;
-  data: WorkloadData[];
+  data: ExerciseData[];
 }
 
-export interface WorkloadData {
+export interface ExerciseData {
   set: number;
   weight: number;
   reps: number;

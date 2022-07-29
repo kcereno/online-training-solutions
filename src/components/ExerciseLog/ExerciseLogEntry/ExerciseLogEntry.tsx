@@ -1,9 +1,8 @@
 import React from "react";
-import { LogData, WorkloadData } from "../../../data/interfaces";
 
 interface Props {
   exercise: string;
-  data: WorkloadData;
+  data: any;
 }
 
 const ExerciseLogEntry = ({ exercise, data: { set, weight, reps } }: Props) => {
