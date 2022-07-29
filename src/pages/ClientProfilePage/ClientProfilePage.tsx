@@ -24,7 +24,7 @@ const ClientProfilePage = () => {
         <h1>{client?.info.firstName}'s Program</h1>
         {client!.trainingPlan.assignedExercises.map((exercise: any) => {
           return (
-            <p>{`Exercise: ${exercise.name} Target Weight: ${exercise.weight} Target Reps:${exercise.reps} Target Sets: ${exercise.sets}`}</p>
+            <p key={exercise.name}>{`Exercise: ${exercise.name} Target Weight: ${exercise.weight} Target Reps:${exercise.reps} Target Sets: ${exercise.sets}`}</p>
           );
         })}
       </Card>

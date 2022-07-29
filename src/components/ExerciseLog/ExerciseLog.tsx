@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { LogEntry } from "../../data/interfaces";
-import ExerciseLogEntry from "./ExerciseLogEntry/ExerciseLogEntry";
 
 interface Props {
   logs: LogEntry[];
@@ -15,9 +14,9 @@ const ExerciseLog = ({ logs }: Props) => {
         <div key={log.date.getTime()}>
           <h2>{log.date.toDateString()}</h2>
           {log.data.map((entry) => (
-            <div>
+            <div key={entry.exercise}>
               <p>{entry.exercise}</p>
-              {entry.data.map((data)=> <ul>
+              {entry.data.map((data)=> <ul key={data.set}>
                 <li>{`Set: ${data.set} Weight: ${data.weight} Reps: ${data.reps}`}</li>
               </ul>)}
             </div>
