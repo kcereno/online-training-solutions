@@ -15,7 +15,7 @@ const ClientProfilePage = () => {
   return (
     <Container className="text-white my-5">
       <Row>
-        <Col>
+        <Col xs="12" md="3">
           <ClientDetails info={client.info} />
         </Col>
         <Col>

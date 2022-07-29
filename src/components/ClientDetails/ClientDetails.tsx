@@ -10,9 +10,9 @@ const ClientDetails = ({
   info: { firstName, lastName, birthday, email, profilePicture },
 }: Props) => {
   return (
-    <Card style={{ width: "250px", background: "grey" }}>
+    <Card style={{ width: "auto", background: "grey" }}>
       <Card.Img
-        style={{ width: "200px" }}
+        style={{ maxWidth: "200px" }}
         src={profilePicture}
         alt="Card image"
       />
