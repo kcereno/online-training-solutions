@@ -1,13 +1,15 @@
 export interface UserInterface {
-  info: {
-    id: string;
-    firstName: string;
-    lastName: string;
-    birthday: Date;
-    email: string;
-    password: string;
-    profilePicture: string;
-  };
+  info:UserInfo
+}
+
+export interface UserInfo  {
+  id: string;
+  firstName: string;
+  lastName: string;
+  birthday: Date;
+  email: string;
+  password: string;
+  profilePicture: string;
 }
 
 export interface Trainer extends UserInterface {

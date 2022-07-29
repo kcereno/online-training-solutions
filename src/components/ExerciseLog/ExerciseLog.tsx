@@ -17,7 +17,7 @@ const ExerciseLog = ({ logs }: Props) => {
             <div key={entry.exercise}>
               <p>{entry.exercise}</p>
               {entry.data.map((data)=> <ul key={data.set}>
-                <li>{`Set: ${data.set} Weight: ${data.weight} Reps: ${data.reps}`}</li>
+                <li key={data.set}>{`Set: ${data.set} Weight: ${data.weight} Reps: ${data.reps}`}</li>
               </ul>)}
             </div>
           ))}
