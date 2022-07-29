@@ -29,10 +29,7 @@ const ClientProfilePage = () => {
         })}
       </Card>
 
-      <Card style={cardStyle}>
-        <h1>{client?.info.firstName}'s Log</h1>
         <ExerciseLog logs={client.trainingPlan.log} />
-      </Card>
     </Container>
   );
 };

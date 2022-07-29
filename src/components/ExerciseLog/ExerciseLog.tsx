@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 import { LogEntry } from "../../data/interfaces";
 import ExerciseLogEntry from "./ExerciseLogEntry/ExerciseLogEntry";
 
@@ -9,13 +10,21 @@ interface Props {
 const ExerciseLog = ({ logs }: Props) => {
   console.log(logs);
   return (
-    <div>
+    <Card style={{ width: "auto", background: "grey" }}>
       {logs.map((log: LogEntry) => (
-        <div>
-          <p>{log.date.toDateString()}</p>
+        <div key={log.date.getTime()}>
+          <h2>{log.date.toDateString()}</h2>
+          {log.data.map((entry) => (
+            <div>
+              <p>{entry.exercise}</p>
+              {entry.data.map((data)=> <ul>
+                <li>{`Set: ${data.set} Weight: ${data.weight} Reps: ${data.reps}`}</li>
+              </ul>)}
+            </div>
+          ))}
         </div>
       ))}
-    </div>
+    </Card>
   );
 };
 
