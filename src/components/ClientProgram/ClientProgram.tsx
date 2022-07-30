@@ -1,16 +1,32 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { AssignedExercise } from "../../data/interfaces";
+import { Row, Col } from "react-bootstrap";
 
 interface Props {
   program: AssignedExercise[];
+  addExercise: () => void;
 }
 
-const ClientProgram = ({ program }: Props) => {
+const ClientProgram = ({ program, addExercise }: Props) => {
   console.log("program", program);
+  const handleAddExerciseButon = () => {
+    addExercise();
+  };
+
   return (
     <Card style={{ width: "auto", background: "grey" }}>
-      <h1>Current Program</h1>
+      <Container>
+        <Row>
+          <Col>
+            <h1>Program</h1>
+          </Col>
+          <Col>
+            <button onClick={handleAddExerciseButon}>+</button>
+          </Col>
+        </Row>
+      </Container>
+
       <ul>
         {program.map((exercise: AssignedExercise) => {
           return (

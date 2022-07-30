@@ -13,7 +13,7 @@ const ExerciseLog = ({ logs }: Props) => {
       <h1>Logs</h1>
       <Accordion defaultActiveKey="0" flush>
         {logs.map((log: Log) => (
-          <Accordion.Item eventKey={log.date.toDateString()}>
+          <Accordion.Item eventKey={log.date.toDateString()} key={log.date.toDateString()}>
             <Accordion.Header>{log.date.toDateString()}</Accordion.Header>
             <Accordion.Body style={{ background: "black" }}>
               {log.entry.map((entry) => (

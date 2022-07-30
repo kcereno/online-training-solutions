@@ -2,10 +2,16 @@ import { useContext } from "react";
 import ModalContext from "../store/Modal/modal-context";
 import DeleteClientModal from "../components/Modals/ModalTypes/DeleteClientModal";
 import { AddClientModal } from "../components/Modals/ModalTypes/AddClientModal";
+import { AddExerciseModal } from "../components/Modals/ModalTypes/AddExerciseModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
     useContext(ModalContext);
+
+  const showAddExerciseModal = () => {
+    setIsShowing(true);
+    setModalContent(<AddExerciseModal />);
+  };
 
   const showAddClientModal = () => {
     setIsShowing(true);
@@ -26,6 +32,7 @@ const useModal = () => {
     modalContent,
     showAddClientModal,
     showDeleteClientModal,
+    showAddExerciseModal,
   };
 };
 

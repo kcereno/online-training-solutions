@@ -6,11 +6,15 @@ import { useTrainerActions } from "../../hooks/useTrainerActions";
 import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
 import ClientDetails from "../../components/ClientDetails/ClientDetails";
 import ClientProgram from "../../components/ClientProgram/ClientProgram";
+import useModal from "../../hooks/useModal";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
   const { fetchClient } = useTrainerActions();
   const client = fetchClient(clientId!);
+  const { showAddExerciseModal } = useModal();
+
+  // TODO: Create add exercise modal
 
   return (
     <Container className="text-white my-5">
@@ -19,7 +23,10 @@ const ClientProfilePage = () => {
           <ClientDetails info={client.info} />
         </Col>
         <Col>
-          <ClientProgram program={client.trainingPlan.program} />
+          <ClientProgram
+            program={client.trainingPlan.program}
+            addExercise={showAddExerciseModal}
+          />
           <ExerciseLog logs={client.trainingPlan.logs} />
         </Col>
       </Row>
