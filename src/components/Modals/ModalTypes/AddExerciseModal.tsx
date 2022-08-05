@@ -19,39 +19,16 @@ export const AddExerciseModal = () => {
 
   const useFormData = { register, errors: errors };
 
-  const confirmAddClient = ({
-    firstName,
-    lastName,
-    birthday,
-    email,
-    goal,
-  }: {
-    [key: string]: any;
-  }) => {
-    const id = createId(firstName, lastName);
+  console.log(
+    "file: AddExerciseModal.tsx ~ line 22 ~ AddExerciseModal ~ useFormData",
+    useFormData
+  );
 
-    const newClient: any = {
-      role: "CLIENT",
-      info: {
-        id,
-        firstName,
-        lastName,
-        birthday,
-        email,
-        password: "password",
-        profilePicture:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRieKfpLWxIJZGXslh9Zj05ykb3P_zU0dHUJQsVUJcdknc4-fS7zyjHIMfM30SGd52OS5w&usqp=CAU",
-      },
-      trainingPlan: {
-        // TODO Change to dynamic entry
-        trainer: "kcereno89",
-        goal,
-        program: [],
-        logs: [],
-      },
-    };
-    addClient(newClient, activeUser!.info.id);
-    hideModal();
+  const handleAddButtonClick = (data: any) => {
+    console.log(
+      "🚀 ~ file: AddExerciseModal.tsx ~ line 23 ~ handleAddButtonClick ~ data",
+      data
+    );
   };
 
   return (
@@ -66,21 +43,43 @@ export const AddExerciseModal = () => {
             label="Exercise Name"
             className="mb-3"
           >
-            <Form.Control type="text" placeholder="Exercise Name" />
+            <Form.Control
+              type="text"
+              placeholder="Exercise Name"
+              {...register("exerciseName", { required: true })}
+            />
+
+            {useFormData.errors.hasOwnProperty("exerciseName") && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
           </FloatingLabel>
           <FloatingLabel
             controlId="floatingTargetWeight"
             label="Target Weight"
             className="mb-3"
           >
-            <Form.Control type="number" placeholder="225lbs" />
+            <Form.Control
+              type="number"
+              placeholder="225lbs"
+              {...register("targetWeight", { required: true })}
+            />
+            {useFormData.errors.hasOwnProperty("targetWeight") && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
           </FloatingLabel>
           <FloatingLabel
             controlId="floatingTargetReps"
             label="Target Repetitions"
             className="mb-3"
           >
-            <Form.Control type="number" placeholder="10" />
+            <Form.Control
+              type="number"
+              placeholder="10"
+              {...register("targetReps", { required: true })}
+            />
+            {useFormData.errors.hasOwnProperty("targetReps") && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
           </FloatingLabel>
         </Form>
       </Modal.Body>
@@ -88,7 +87,7 @@ export const AddExerciseModal = () => {
         <Button variant="secondary" onClick={hideModal}>
           Cancel
         </Button>
-        <Button variant="primary" onClick={handleSubmit(confirmAddClient)}>
+        <Button variant="primary" onClick={handleSubmit(handleAddButtonClick)}>
           ADD
         </Button>
       </Modal.Footer>
