@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./ClientProfilePage.css";
@@ -10,11 +10,13 @@ import useModal from "../../hooks/useModal";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
-  const { fetchClient } = useTrainerActions();
+  const { fetchClient, selectClient } = useTrainerActions();
   const client = fetchClient(clientId!);
   const { showAddExerciseModal } = useModal();
 
-  // TODO: Create add exercise modal
+  useEffect(() => {
+    selectClient(clientId!);
+  }, [clientId, selectClient]);
 
   return (
     <Container className="text-white my-5">

@@ -18,7 +18,7 @@ const TrainerDashboard = ({
   },
 }: Props) => {
   const [clientList, setClientList] = useState<Client[]>([]);
-  const { fetchClients } = useTrainerActions();
+  const { fetchClients, selectClient } = useTrainerActions();
 
   useEffect(() => {
     const fetchedClients = fetchClients(trainerId);

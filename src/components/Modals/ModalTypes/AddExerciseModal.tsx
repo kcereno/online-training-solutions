@@ -1,16 +1,14 @@
 import React from "react";
-import { useContext } from "react";
 import { Modal, Form, Button, FloatingLabel } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { createId } from "../../../data/functions";
+import { AssignedExercise } from "../../../data/interfaces";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
-import UserContext from "../../../store/User/user-context";
 
 export const AddExerciseModal = () => {
-  const { activeUser } = useContext(UserContext);
-  const { addClient } = useTrainerActions();
+  const { addExerciseToClientProgram } = useTrainerActions();
   const { hideModal } = useModal();
+
   const {
     register,
     handleSubmit,
@@ -19,16 +17,23 @@ export const AddExerciseModal = () => {
 
   const useFormData = { register, errors: errors };
 
-  console.log(
-    "file: AddExerciseModal.tsx ~ line 22 ~ AddExerciseModal ~ useFormData",
-    useFormData
-  );
+  const handleAddButtonClick = ({
+    exerciseName,
+    targetWeight,
+    targetReps,
+    targetSets,
+  }: {
+    [key: string]: any;
+  }) => {
+    const newExercise: AssignedExercise = {
+      name: exerciseName,
+      weight: targetWeight,
+      reps: targetReps,
+      sets: targetSets,
+    };
 
-  const handleAddButtonClick = (data: any) => {
-    console.log(
-      "🚀 ~ file: AddExerciseModal.tsx ~ line 23 ~ handleAddButtonClick ~ data",
-      data
-    );
+    addExerciseToClientProgram(newExercise);
+    hideModal();
   };
 
   return (
@@ -78,6 +83,21 @@ export const AddExerciseModal = () => {
               {...register("targetReps", { required: true })}
             />
             {useFormData.errors.hasOwnProperty("targetReps") && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
+          </FloatingLabel>
+
+          <FloatingLabel
+            controlId="floatingTargetSets"
+            label="Target Sets"
+            className="mb-3"
+          >
+            <Form.Control
+              type="number"
+              placeholder="10"
+              {...register("targetSets", { required: true })}
+            />
+            {useFormData.errors.hasOwnProperty("targetSets") && (
               <span style={{ color: "red" }}>This field is required</span>
             )}
           </FloatingLabel>

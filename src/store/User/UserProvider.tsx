@@ -10,6 +10,11 @@ type PropTypes = {
 const UserProvider = ({ children }: PropTypes) => {
   // State
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
+  const [selectedClient, setSelectedClient] = useState<string | null>(null);
+
+  const selectClient = (clientId: string) => {
+    setSelectedClient(clientId);
+  };
 
   // Navigate
   const navigate = useNavigate();
@@ -31,6 +36,8 @@ const UserProvider = ({ children }: PropTypes) => {
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
+    selectedClient,
+    selectClient,
     login,
     logout,
     updateUser,
