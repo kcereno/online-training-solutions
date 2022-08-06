@@ -58,10 +58,22 @@ export const useTrainerActions = () => {
     };
 
     updateUser(updatedClient);
-
-    // TODO: Update client program with updatedClientProgram
   };
-  const deleteExercise = (exercise: any, clientId: string) => {};
+  const deleteExerciseFromClientProgram = (exerciseName: string) => {
+    const client = fetchClient(selectedClient!);
+
+    const updatedProgram = client.trainingPlan.program.filter(
+      (entry) => entry.name !== exerciseName
+    );
+
+    const updatedClient = {
+      ...client,
+      trainingPlan: { ...client.trainingPlan, program: updatedProgram },
+    };
+
+    updateUser(updatedClient);
+  };
+
   const editExercise = (exercise: any, clientId: string) => {};
 
   return {
@@ -71,6 +83,7 @@ export const useTrainerActions = () => {
     fetchClients,
     fetchClient,
     addExerciseToClientProgram,
+    deleteExerciseFromClientProgram,
     selectClient,
   };
 };

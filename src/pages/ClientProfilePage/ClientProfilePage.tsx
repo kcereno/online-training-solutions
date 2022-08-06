@@ -10,7 +10,8 @@ import useModal from "../../hooks/useModal";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
-  const { fetchClient, selectClient } = useTrainerActions();
+  const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
+    useTrainerActions();
   const client = fetchClient(clientId!);
   const { showAddExerciseModal } = useModal();
 
@@ -28,6 +29,7 @@ const ClientProfilePage = () => {
           <ClientProgram
             program={client.trainingPlan.program}
             addExercise={showAddExerciseModal}
+            deleteExercise={deleteExerciseFromClientProgram}
           />
           <ExerciseLog logs={client.trainingPlan.logs} />
         </Col>
