@@ -23,13 +23,13 @@ export const AddExerciseModal = () => {
     targetReps,
     targetSets,
   }: {
-    [key: string]: any;
+    [key: string]: string | number;
   }) => {
     const newExercise: AssignedExercise = {
-      name: exerciseName,
-      weight: targetWeight,
-      reps: targetReps,
-      sets: targetSets,
+      name: exerciseName as string,
+      weight: targetWeight as number,
+      reps: targetReps as number,
+      sets: targetSets as number,
     };
 
     addExerciseToClientProgram(newExercise);

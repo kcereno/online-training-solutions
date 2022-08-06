@@ -9,6 +9,7 @@ type Props = {
 
 const DatabaseProvider = ({ children }: Props) => {
   const [database, setDatabase] = useState<UserType[]>(DUMMY_DATA);
+  console.log("DatabaseProvider ~ database", database);
 
   const validateUser = (email: string, password: string) =>
     database.find(
@@ -25,12 +26,22 @@ const DatabaseProvider = ({ children }: Props) => {
     setDatabase(updatedDatabase);
   };
 
+  const updateUser = (updatedUser: UserType) => {
+    const userIndex = database.findIndex(
+      (entry) => entry.info.id === updatedUser.info.id
+    );
+    const updatedDb = [...database];
+    updatedDb[userIndex] = updatedUser;
+    setDatabase(updatedDb);
+  };
+
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
     updateDatabase: setDatabase,
     deleteUser,
     addUser,
     validateUser,
+    updateUser,
   };
 
   return (

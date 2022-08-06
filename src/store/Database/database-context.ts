@@ -7,6 +7,7 @@ export interface DatabaseContextInterface {
   addUser: (user: UserType) => void;
   deleteUser: (userId: string) => void;
   validateUser: (email: string, password: string) => UserType | undefined;
+  updateUser: (updatedUser: UserType) => void;
 }
 
 const DatabaseContext = createContext<DatabaseContextInterface>(

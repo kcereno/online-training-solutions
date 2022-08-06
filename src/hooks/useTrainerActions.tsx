@@ -9,6 +9,7 @@ export const useTrainerActions = () => {
     database,
     deleteUser: deleteUserFromDB,
     addUser: addUserToDB,
+    updateUser,
   } = useContext(DatabaseContext);
 
   const { selectClient, selectedClient } = useContext(UserContext);
@@ -37,38 +38,26 @@ export const useTrainerActions = () => {
     addUserToDB(newClient);
   };
 
-  const unassignClient = (trainerId: string, clientId: string) => {
-    // const trainer = fetchUser(trainerId) as Trainer;
-    // const updatedClientList = trainer.clients.filter(
-    //   (client) => client !== clientId
-    // );
-    // const updatedTrainer = { ...trainer, clients: updatedClientList };
-    // console.log(updatedTrainer);
-    // updateUser(updatedTrainer);
-    // updateDBUser(updatedTrainer);
-  };
+  const unassignClient = (trainerId: string, clientId: string) => {};
 
-  const assignClient = (trainerId: string, clientId: string) => {
-    // let trainer = fetchUser(trainerId);
-    // const updatedClientList = [...(trainer as Trainer).clients, clientId];
-    // const updatedTrainer = {
-    //   ...(trainer as Trainer),
-    //   clients: updatedClientList,
-    // };
-    // updateUser(updatedTrainer);
-    // updateDBUser(updatedTrainer);
-  };
+  const assignClient = (trainerId: string, clientId: string) => {};
 
   // * Exercise Functions
   // TODO change exerciseData to interface
   const addExerciseToClientProgram = (newExercise: AssignedExercise) => {
     const client = fetchClient(selectedClient!);
 
-    const updatedClientProgram = [...client.trainingPlan.program, newExercise];
-    console.log(
-      "file: useTrainerActions.tsx ~ line 68 ~ addExerciseToClientProgram ~ updatedClientProgram",
-      updatedClientProgram
-    );
+    const updatedProgram: AssignedExercise[] = [
+      ...client.trainingPlan.program,
+      newExercise,
+    ];
+
+    const updatedClient = {
+      ...client,
+      trainingPlan: { ...client.trainingPlan, program: updatedProgram },
+    };
+
+    updateUser(updatedClient);
 
     // TODO: Update client program with updatedClientProgram
   };
