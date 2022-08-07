@@ -45,14 +45,14 @@ const ClientCard = ({
 
   return (
     <>
-      <Card className="text-center text-white card-container  mx-3 my-3">
+      <Card className="text-center text-white card-container mx-3 mb-3" >
         <Card.Img
           variant="top"
-          className="profile-picture pt-2"
+          className="profile-picture"
           src={profilePicture}
         />
-        <Card.Title className="mt-2">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle>{setBadge()}</Card.Subtitle>
+        <Card.Title className="my-1">{`${firstName} ${lastName}`}</Card.Title>
+        {/* <Card.Subtitle>{setBadge()}</Card.Subtitle> */}
         <Card.Body>
           <Dropdown as={ButtonGroup}>
             <Button variant="primary" onClick={handleOpenButton}>

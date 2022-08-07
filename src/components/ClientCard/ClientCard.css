@@ -1,11 +1,12 @@
 .profile-picture {
-  width: 200px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 25px;
+  width: 100%;
+border-radius: 10px 10px 0px 0px;
+ 
 }
 
 .card-container {
-  width: auto;
-  background-color: #121212;
+  width: 250px;
+  background-color: #262626;
+  padding: 0px;
+  border-radius: 0px 0px 10px 10px;
 }
