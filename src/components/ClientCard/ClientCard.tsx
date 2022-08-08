@@ -1,5 +1,11 @@
-import { Card, ButtonGroup, Dropdown, Button, Badge, Container
- } from "react-bootstrap";
+import {
+  Card,
+  ButtonGroup,
+  Dropdown,
+  Button,
+  Badge,
+  Container,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./ClientCard.css";
 
@@ -46,19 +52,25 @@ const ClientCard = ({
 
   return (
     <>
-      <Card className="text-center  card-container mx-3 mb-3" >
+      <Card className="text-center card-container mx-4 mb-4">
         <Card.Img
           variant="top"
           className="profile-picture"
           src={profilePicture}
         />
-        <Card.Title className="mt-1">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle className="mb-2">{setBadge()}</Card.Subtitle>
-        <Card.Body style={{padding:'0px', marginBottom: "15px"}}>
+        <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
+        <Card.Subtitle>{setBadge()}</Card.Subtitle>
+        <hr style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }} />
+        <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
           <Container>
-          <p>Area for client notes. Important stuff to keep in mind. TODO: Add notes to client data structure </p>
+            <p>
+              Area for client notes. Important stuff to keep in mind such as
+              injuries, special accomodations and what not
+            </p>
           </Container>
-          
+          <hr
+            style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}
+          />
           <Dropdown as={ButtonGroup}>
             <Button variant="primary" onClick={handleOpenButton}>
               Open
