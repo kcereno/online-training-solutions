@@ -12,7 +12,7 @@ const ClientDetails = ({
   info: { firstName, lastName, birthday, email, profilePicture },
 }: Props) => {
   return (
-    <Card className="client-details-container">
+    <Card className="client-details-container my-3">
       <Card.Img className="pb-2" src={profilePicture} alt="Card image" />
       <h2 className="text-center client-details-name">
         {firstName} {lastName}

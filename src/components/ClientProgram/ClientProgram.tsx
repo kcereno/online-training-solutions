@@ -56,9 +56,6 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
             <h2 className="pt-2">Program</h2>
             {editButton}
           </Col>
-          <hr
-            style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
-          />
         </Row>
         <Table bordered hover variant="dark" className="text-center">
           <thead>

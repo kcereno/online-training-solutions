@@ -40,9 +40,9 @@ export let DUMMY_DATA: UserType[] = [
             {
               exercise: "Bench Press",
               data: [
+                { set: 1, weight: 350, reps: 8 },
                 { set: 2, weight: 350, reps: 8 },
                 { set: 3, weight: 350, reps: 8 },
-                { set: 1, weight: 350, reps: 8 },
               ],
             },
             {
