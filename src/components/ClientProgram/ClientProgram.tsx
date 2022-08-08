@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Card, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../data/interfaces";
 import { Row, Col } from "react-bootstrap";
 import "./ClientProgram.css";
@@ -27,8 +27,12 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
 
   const editControls = (
     <div>
-      <Button onClick={addExercise}>+</Button>
-      <Button onClick={handleExitButtonClick}>Exit</Button>
+      <Button className="mx-1" onClick={addExercise}>
+        +
+      </Button>
+      <Button variant="warning" onClick={handleExitButtonClick}>
+        Exit
+      </Button>
     </div>
   );
 
@@ -56,9 +60,43 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
             style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
           />
         </Row>
+        <Table bordered hover variant="dark" className="text-center">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Target Weight</th>
+              <th>Reps</th>
+              <th>Sets</th>
+              {editMode && <th>Delete</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {program.map((exercise: AssignedExercise) => {
+              return (
+                <tr key={exercise.name}>
+                  <th>{exercise.name}</th>
+                  <th>{exercise.weight}</th>
+                  <th>{exercise.reps}</th>
+                  <th>{exercise.sets}</th>
+                  {editMode && (
+                    <th>
+                      <Button
+                        style={{ backgroundColor: "#dc3545", height: "50%" }}
+                        variant="danger"
+                        onClick={() => handleDeleteButtonClick(exercise.name)}
+                      >
+                        X
+                      </Button>
+                    </th>
+                  )}
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
       </Container>
 
-      <ul>
+      {/* <ul>
         {program.map((exercise: AssignedExercise) => {
           return (
             <li key={exercise.name}>
@@ -71,7 +109,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </Card>
   );
 };
