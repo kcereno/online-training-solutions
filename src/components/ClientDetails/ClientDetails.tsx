@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { UserInfo } from "../../data/interfaces";
 import { Row, Col } from "react-bootstrap";
+import "./ClientDetails.css";
 
 interface Props {
   info: UserInfo;
@@ -11,9 +12,9 @@ const ClientDetails = ({
   info: { firstName, lastName, birthday, email, profilePicture },
 }: Props) => {
   return (
-    <Card style={{ width: "auto", background: "grey" }} className="rounded">
+    <Card className="client-details-container">
       <Card.Img className="pb-2" src={profilePicture} alt="Card image" />
-      <h2 className="text-center">
+      <h2 className="text-center client-details-name">
         {firstName} {lastName}
       </h2>
       <Container fluid>
