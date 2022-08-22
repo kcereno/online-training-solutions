@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import ModalContext from "../store/Modal/modal-context";
-import DeleteClientModal from "../components/Modals/ModalTypes/DeleteClientModal";
-import { AddClientModal } from "../components/Modals/ModalTypes/AddClientModal";
-import { AddExerciseModal } from "../components/Modals/ModalTypes/AddExerciseModal";
+import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
+import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
+import { AddExerciseModal } from "../UI/Modals/ModalTypes/AddExerciseModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =

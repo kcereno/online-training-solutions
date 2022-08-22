@@ -1,7 +1,7 @@
 import { Carousel, Container } from "react-bootstrap";
-import "./CustomerReviews.css";
+import "./CustomerReviewsSection.css";
 
-const CustomerReviews = () => {
+const CustomerReviewsSection = () => {
   return (
     <section id="customer-reviews">
       <Container fluid className="carousel text-center text-white">
@@ -31,4 +31,4 @@ const CustomerReviews = () => {
   );
 };
 
-export default CustomerReviews;
+export default CustomerReviewsSection;

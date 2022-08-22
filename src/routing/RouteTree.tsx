@@ -16,6 +16,8 @@ const RouteTree = () => {
 
   if (activeUser?.role === "TRAINER") {
     dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
+  } else if (activeUser?.role === "CLIENT") {
+    dashboard = <ClientDashboard />;
   }
 
   return (

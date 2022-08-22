@@ -1,8 +1,8 @@
 import { Button, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./Showcase.css";
+import "./HeroSection.css";
 
-const Showcase = () => {
+const HeroSection = () => {
   return (
     <section id="showcase">
       <Container className="text-white text-center vertical-align">
@@ -26,4 +26,4 @@ const Showcase = () => {
   );
 };
 
-export default Showcase;
+export default HeroSection;

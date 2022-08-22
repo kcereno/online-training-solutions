@@ -1,14 +1,14 @@
 import { Fragment } from "react";
-import CustomerReviews from "../../components/CustomerReviews/CustomerReviews";
+import CustomerReviews from "../../sections/CustomerReviewsSection/CustomerReviews";
 
-import Showcase from "../../components/Showcase/Showcase";
+import HeroSection from "../../sections/HeroSection/HeroSection";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   return (
-    <Fragment>
-      <Showcase />
+    <>
+      <HeroSection />
       <CustomerReviews />
-    </Fragment>
+    </>
   );
 }
