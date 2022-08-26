@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../data/types";
 import UserContext, { UserContextInterface } from "./user-context";
+import { Client } from "../../data/interfaces";
+
+import DatabaseContext from "../Database/database-context";
+import { act } from "react-dom/test-utils";
 
 type PropTypes = {
   children?: React.ReactNode;
@@ -11,6 +15,14 @@ const UserProvider = ({ children }: PropTypes) => {
   // State
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
   const [selectedClient, setSelectedClient] = useState<string | null>(null);
+
+  const { database } = useContext(DatabaseContext);
+
+  useEffect(() => {
+    setActiveUser(
+      database.find((user) => user.info.id === activeUser?.info.id) as UserType
+    );
+  }, [database]);
 
   const selectClient = (clientId: string) => {
     setSelectedClient(clientId);

@@ -3,10 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./ClientProfilePage.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
-import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
 import ClientDetails from "../../components/ClientDetails/ClientDetails";
 import ClientProgram from "../../components/ClientProgram/ClientProgram";
 import useModal from "../../hooks/useModal";
+import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
@@ -31,7 +31,7 @@ const ClientProfilePage = () => {
             addExercise={showAddExerciseModal}
             deleteExercise={deleteExerciseFromClientProgram}
           />
-          <ExerciseLog logs={client.trainingPlan.logs} />
+          <ExerciseLog logs={client.trainingPlan.log} />
         </Col>
       </Row>
     </Container>

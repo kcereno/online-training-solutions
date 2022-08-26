@@ -1,11 +1,11 @@
 import React from "react";
 import { Accordion, Card, Container, Row, Col } from "react-bootstrap";
-import { Log } from "../../data/interfaces";
+import { LogEntry } from "../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap";
 import "./ExerciseLog.css";
 
 interface Props {
-  logs: Log[];
+  logs: LogEntry[];
 }
 
 interface CustomToggleInterface {
@@ -13,13 +13,7 @@ interface CustomToggleInterface {
   eventKey: string;
 }
 
-function CustomToggle({
-  children,
-  eventKey,
-}: {
-  children: React.ReactNode;
-  eventKey: string;
-}) {
+function CustomToggle({ children, eventKey }: CustomToggleInterface) {
   const decoratedOnClick = useAccordionButton(eventKey);
 
   return (
@@ -49,26 +43,26 @@ const ExerciseLog = ({ logs }: Props) => {
             />
 
             <Accordion defaultActiveKey="0" className="pb-3">
-              {logs.map((log: Log) => (
+              {logs.map((logEntry: LogEntry) => (
                 <Card
                   style={{ background: "#212529" }}
-                  key={log.date.toDateString()}
+                  key={logEntry.date.toDateString()}
                 >
                   <Card.Header>
-                    <CustomToggle eventKey={log.date.toDateString()}>
-                      {log.date.toDateString()}
+                    <CustomToggle eventKey={logEntry.date.toDateString()}>
+                      {logEntry.date.toDateString()}
                     </CustomToggle>
                   </Card.Header>
-                  <Accordion.Collapse eventKey={log.date.toDateString()}>
+                  <Accordion.Collapse eventKey={logEntry.date.toDateString()}>
                     <Card.Body style={{ background: "black" }}>
-                      {log.entry.map((entry) => (
-                        <div key={entry.exercise}>
-                          <p>{entry.exercise}</p>
-                          {entry.data.map((data) => (
-                            <ul key={data.set}>
-                              <li
-                                key={data.set}
-                              >{`Set: ${data.set} Weight: ${data.weight} Reps: ${data.reps}`}</li>
+                      {logEntry.data.map((data, index) => (
+                        <div key={index.toString()}>
+                          <p>{data.exercise}</p>
+                          {data.sets.map((set, index) => (
+                            <ul key={index.toString()}>
+                              <li>{`Set: ${index + 1} Weight: ${
+                                set.weight
+                              } Reps: ${set.reps}`}</li>
                             </ul>
                           ))}
                         </div>

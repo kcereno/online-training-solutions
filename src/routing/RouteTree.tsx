@@ -7,7 +7,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/TrainerDashboard/TrainerDashboard";
 import UserContext from "../store/User/user-context";
-import { Trainer } from "../data/interfaces";
+import { Trainer, Client } from "../data/interfaces";
 
 const RouteTree = () => {
   const { activeUser } = useContext(UserContext);
@@ -17,7 +17,7 @@ const RouteTree = () => {
   if (activeUser?.role === "TRAINER") {
     dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
   } else if (activeUser?.role === "CLIENT") {
-    dashboard = <ClientDashboard />;
+    dashboard = <ClientDashboard client={activeUser as Client} />;
   }
 
   return (

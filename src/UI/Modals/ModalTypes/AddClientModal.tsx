@@ -50,7 +50,7 @@ export const AddClientModal = () => {
         trainer: "kcereno89",
         goal,
         program: [],
-        logs: [],
+        log: [],
       },
     };
     addClient(newClient, activeUser!.info.id);

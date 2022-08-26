@@ -31,47 +31,47 @@ export let DUMMY_DATA: UserType[] = [
       goal: "GAIN STRENGTH",
       program: [
         { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
-        { name: "Deadlifts", weight: 315, reps: 5, sets: 4 },
+        { name: "Deadlift", weight: 315, reps: 5, sets: 4 },
       ],
-      logs: [
+      log: [
         {
-          date: new Date(2018, 11, 24, 10, 33, 30, 0),
-          entry: [
+          date: new Date(2022, 7, 23),
+          data: [
             {
               exercise: "Bench Press",
-              data: [
-                { set: 1, weight: 350, reps: 8 },
-                { set: 2, weight: 350, reps: 8 },
-                { set: 3, weight: 350, reps: 8 },
+              sets: [
+                { weight: 350, reps: 8 },
+                { weight: 350, reps: 8 },
+                { weight: 350, reps: 8 },
               ],
             },
             {
               exercise: "Deadlift",
-              data: [
-                { set: 1, weight: 350, reps: 8 },
-                { set: 2, weight: 350, reps: 8 },
-                { set: 3, weight: 350, reps: 8 },
+              sets: [
+                { weight: 350, reps: 8 },
+                { weight: 350, reps: 8 },
+                { weight: 350, reps: 8 },
               ],
             },
           ],
         },
         {
-          date: new Date(2018, 11, 26, 10, 33, 30, 0),
-          entry: [
+          date: new Date(2022, 7, 20),
+          data: [
             {
               exercise: "Bench Press",
-              data: [
-                { set: 1, weight: 225, reps: 8 },
-                { set: 2, weight: 225, reps: 8 },
-                { set: 3, weight: 225, reps: 8 },
+              sets: [
+                { weight: 225, reps: 8 },
+                { weight: 225, reps: 8 },
+                { weight: 225, reps: 8 },
               ],
             },
             {
               exercise: "Deadlift",
-              data: [
-                { set: 1, weight: 315, reps: 8 },
-                { set: 2, weight: 325, reps: 8 },
-                { set: 3, weight: 250, reps: 8 },
+              sets: [
+                { weight: 315, reps: 8 },
+                { weight: 325, reps: 8 },
+                { weight: 250, reps: 8 },
               ],
             },
           ],
@@ -95,7 +95,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "BUILD MUSCLE",
       program: [],
-      logs: [],
+      log: [],
     },
   },
   {
@@ -114,7 +114,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "LOSE FAT",
       program: [],
-      logs: [],
+      log: [],
     },
   },
   {
@@ -133,7 +133,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "BODY RECOMPOSITION",
       program: [],
-      logs: [],
+      log: [],
     },
   },
   {
@@ -152,7 +152,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "SPORTS SPECIFIC",
       program: [],
-      logs: [],
+      log: [],
     },
   },
 ];
