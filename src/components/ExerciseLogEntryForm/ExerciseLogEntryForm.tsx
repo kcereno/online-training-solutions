@@ -25,14 +25,17 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
       className="d-flex justify-content-center mt-3"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Form.Group controlId="addEntryForm.WeightInput">
+      <Form.Group
+        controlId="addEntryForm.WeightInput"
+        style={{ width: "120px" }}
+      >
         <Form.Control
           type="string"
           placeholder="Weight"
           {...register("weight")}
         />
       </Form.Group>
-      <Form.Group controlId="addEntryForm.repsInput">
+      <Form.Group controlId="addEntryForm.repsInput" style={{ width: "120px" }}>
         <Form.Control type="number" placeholder="Reps" {...register("reps")} />
       </Form.Group>
       <Button variant="primary" type="submit">
