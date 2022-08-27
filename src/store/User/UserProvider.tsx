@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../data/types";
 import UserContext, { UserContextInterface } from "./user-context";
@@ -18,17 +18,19 @@ const UserProvider = ({ children }: PropTypes) => {
 
   const { database } = useContext(DatabaseContext);
 
-  useEffect(() => {
-    setActiveUser(
-      database.find((user) => user.info.id === activeUser?.info.id) as UserType
+  const validateUser = (
+    email: string,
+    password: string
+  ): UserType | undefined =>
+    database.find(
+      (user) => user.info.email === email && user.info.password === password
     );
-  }, [database]);
 
-  const selectClient = (clientId: string) => {
+  const selectClient = (clientId: string): void => {
     setSelectedClient(clientId);
   };
 
-  // Navigate
+  // Navigation
   const navigate = useNavigate();
 
   // Functions
@@ -53,6 +55,7 @@ const UserProvider = ({ children }: PropTypes) => {
     login,
     logout,
     updateUser,
+    validateUser,
   };
 
   return (

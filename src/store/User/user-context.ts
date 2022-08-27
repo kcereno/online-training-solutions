@@ -8,6 +8,7 @@ export interface UserContextInterface {
   login: (user: UserType) => void;
   logout: () => void;
   updateUser: (updatedUser: UserType) => void;
+  validateUser: (email: string, password: string) => UserType | undefined;
 }
 
 const UserContext = createContext<UserContextInterface>(

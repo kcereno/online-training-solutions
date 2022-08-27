@@ -13,8 +13,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
 
   // Context
-  const { login } = useContext(UserContext);
-  const { validateUser } = useContext(DatabaseContext);
+  const { login, validateUser } = useContext(UserContext);
+
   // Event Handlers
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -28,13 +28,19 @@ export default function LoginPage() {
 
     const validatedUser = validateUser(email, password);
 
-    if (validatedUser) {
-      login(validatedUser!);
-    } else {
-      setCredentialsValid(false);
-      setEmail("");
-      setPassword("");
-    }
+    // if (validatedUser) {
+    //   login(validatedUser!);
+    // } else {
+    //   setCredentialsValid(false);
+    //   setEmail("");
+    //   setPassword("");
+    // }
+
+    validatedUser && login(validatedUser);
+
+    setCredentialsValid(false);
+    setEmail("");
+    setPassword("");
   };
 
   return (
