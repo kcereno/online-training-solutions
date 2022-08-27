@@ -2,7 +2,6 @@ import { useContext, useCallback, useState } from "react";
 import { AssignedExercise, Client } from "../data/interfaces";
 import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
-import UserContext from "../store/User/user-context";
 
 export const useTrainerActions = () => {
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);

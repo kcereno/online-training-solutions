@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container, Form } from "react-bootstrap";
 import { useContext, useState } from "react";
 import UserContext from "../../store/User/user-context";
-import DatabaseContext from "../../store/Database/database-context";
 
 export default function LoginPage() {
   // States
@@ -16,31 +15,27 @@ export default function LoginPage() {
   const { login, validateUser } = useContext(UserContext);
 
   // Event Handlers
-  const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.target.value);
   };
-  const passwordChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const passwordChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setPassword(e.target.value);
   };
 
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     const validatedUser = validateUser(email, password);
 
-    // if (validatedUser) {
-    //   login(validatedUser!);
-    // } else {
-    //   setCredentialsValid(false);
-    //   setEmail("");
-    //   setPassword("");
-    // }
-
-    validatedUser && login(validatedUser);
-
-    setCredentialsValid(false);
-    setEmail("");
-    setPassword("");
+    if (validatedUser) {
+      login(validatedUser!);
+    } else {
+      setCredentialsValid(false);
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
