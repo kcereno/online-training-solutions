@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Container, Table } from "react-bootstrap";
-import { AssignedExercise } from "../../data/interfaces";
+import { AssignedExercise } from "../../../data/interfaces";
 import { Row, Col } from "react-bootstrap";
 import "./ClientProgram.css";
 

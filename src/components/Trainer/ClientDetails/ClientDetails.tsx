@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
-import { UserInfo } from "../../data/interfaces";
+import { UserInfo } from "../../../data/interfaces";
 import { Row, Col } from "react-bootstrap";
 import "./ClientDetails.css";
 

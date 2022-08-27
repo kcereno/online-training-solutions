@@ -1,5 +1,5 @@
 import { Client } from "../../data/interfaces";
-import ClientCard from "../../components/ClientCard/ClientCard";
+import ClientCard from "../../components/Trainer/ClientCard/ClientCard";
 
 interface Props {
   clients: Client[];

@@ -3,8 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./ClientProfilePage.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
-import ClientDetails from "../../components/ClientDetails/ClientDetails";
-import ClientProgram from "../../components/ClientProgram/ClientProgram";
+import ClientDetails from "../../components/Trainer/ClientDetails/ClientDetails";
+import ClientProgram from "../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../hooks/useModal";
 import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
 
