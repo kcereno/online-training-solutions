@@ -66,12 +66,16 @@ const ClientDashboard = ({
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
-                {todaysLogData ? (
-                  <div className="text-center">Set 1: 200lbs - 5 reps</div>
-                ) : (
-                  "no data"
-                )}
-                {/* <ExerciseLogEntryForm exercise={exercise.name} /> */}
+                {todaysLogData &&
+                todaysLogData[index].exercise === exercise.name
+                  ? todaysLogData[index].sets.map((set, index) => (
+                      <div className="text-center mb-2" key={index.toString()}>
+                        <strong>Set {index + 1}:</strong>{" "}
+                        {`${set.weight}lbs for  ${set.reps}`}
+                      </div>
+                    ))
+                  : "No data"}
+                <ExerciseLogEntryForm exercise={exercise.name} />
               </Card.Body>
             </Accordion.Collapse>
           </Card>

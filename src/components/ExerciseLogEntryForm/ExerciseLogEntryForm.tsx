@@ -22,7 +22,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
 
   return (
     <Form
-      className="d-flex justify-content-end my-3"
+      className="d-flex justify-content-center mt-3"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Form.Group controlId="addEntryForm.WeightInput">
