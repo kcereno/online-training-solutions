@@ -22,6 +22,4 @@ export const isToday = (date: Date) => {
   return convertedDate.getTime() === today.getTime();
 };
 
-export const today = () => {
-  return convertDate(new Date());
-};
+export const today = convertDate(new Date());

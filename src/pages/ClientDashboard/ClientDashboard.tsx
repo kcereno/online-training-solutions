@@ -2,10 +2,10 @@ import { Accordion, Container, Card } from "react-bootstrap";
 import { AccordianItem } from "../../components/Accordian/AccordianItem";
 import { Client } from "../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import { isToday, convertDate } from "../../data/functions";
-import { useEffect } from "react";
+import { isToday, convertDate, today } from "../../data/functions";
 import useClientActions from "../../hooks/useClientActions";
 import ExerciseLogEntryForm from "../../components/ExerciseLogEntryForm/ExerciseLogEntryForm";
+import { LogEntry } from "../../data/interfaces";
 
 interface Props {
   client: Client;
@@ -13,21 +13,24 @@ interface Props {
 
 // Toggle for Accordion
 function CustomToggle({
-  children,
   eventKey,
+  exercise,
+  targets,
 }: {
-  children: React.ReactNode;
+  // children: React.ReactNode;
   eventKey: string;
+  exercise: string;
+  targets: { weight: number; reps: number; sets: number };
 }) {
   const decoratedOnClick = useAccordionButton(eventKey);
 
   return (
-    <p
-      style={{ marginTop: "5px", marginBottom: "5px" }}
-      onClick={decoratedOnClick}
-    >
-      {children}
-    </p>
+    <div className="d-flex justify-content-between" onClick={decoratedOnClick}>
+      <div>{exercise}</div>
+      <div>
+        <strong>Target:</strong> {`${targets.sets} sets of ${targets.reps}`}
+      </div>
+    </div>
   );
 }
 
@@ -37,10 +40,10 @@ const ClientDashboard = ({
     trainingPlan: { program, log },
   },
 }: Props) => {
-  const { fetchTodaysWorkoutEntries } = useClientActions();
-
-  const todaysEntries = fetchTodaysWorkoutEntries(convertDate(new Date()));
-  console.log(todaysEntries);
+  const todaysLogData = log.find(
+    (entry: LogEntry) => entry.date.getTime() === today.getTime()
+  )?.data;
+  console.log("todaysLogData", todaysLogData);
 
   return (
     <Container className="text-white">
@@ -50,13 +53,26 @@ const ClientDashboard = ({
       <Accordion defaultActiveKey="0">
         {program.map((exercise, index) => (
           <Card style={{ background: "#212529" }} key={index.toString()}>
-            <Card.Header>
-              <CustomToggle eventKey={index.toString()}>
-                {`${exercise.name} : ${exercise.weight} lbs for ${exercise.reps} reps for ${exercise.sets} sets`}
-              </CustomToggle>
+            <Card.Header className="">
+              <CustomToggle
+                eventKey={index.toString()}
+                exercise={exercise.name}
+                targets={{
+                  weight: exercise.weight,
+                  reps: exercise.reps,
+                  sets: exercise.sets,
+                }}
+              />
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
-              <ExerciseLogEntryForm exercise={exercise.name} />
+              <Card.Body>
+                {todaysLogData ? (
+                  <div className="text-center">Set 1: 200lbs - 5 reps</div>
+                ) : (
+                  "no data"
+                )}
+                {/* <ExerciseLogEntryForm exercise={exercise.name} /> */}
+              </Card.Body>
             </Accordion.Collapse>
           </Card>
         ))}

@@ -35,7 +35,7 @@ export let DUMMY_DATA: UserType[] = [
       ],
       log: [
         {
-          date: new Date(2022, 7, 23),
+          date: new Date(2022, 7, 27),
           data: [
             {
               exercise: "Bench Press",
