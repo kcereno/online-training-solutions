@@ -2,21 +2,21 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../data/types";
 import UserContext, { UserContextInterface } from "./user-context";
-import { Client } from "../../data/interfaces";
-
 import DatabaseContext from "../Database/database-context";
-import { act } from "react-dom/test-utils";
 
 type PropTypes = {
   children?: React.ReactNode;
 };
 
 const UserProvider = ({ children }: PropTypes) => {
-  // State
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
-  const [selectedClient, setSelectedClient] = useState<string | null>(null);
 
   const { database } = useContext(DatabaseContext);
+
+  // Navigation
+  const navigate = useNavigate();
+
+  // Functions
 
   const validateUser = (
     email: string,
@@ -26,32 +26,23 @@ const UserProvider = ({ children }: PropTypes) => {
       (user) => user.info.email === email && user.info.password === password
     );
 
-  const selectClient = (clientId: string): void => {
-    setSelectedClient(clientId);
+  const updateUser = (updatedUser: UserType): void => {
+    setActiveUser(updatedUser);
   };
 
-  // Navigation
-  const navigate = useNavigate();
-
-  // Functions
-  const login = (user: UserType) => {
+  const login = (user: UserType): void => {
     setActiveUser(user);
     navigate("dashboard/" + user!.info.id);
   };
 
-  const logout = () => {
+  const logout = (): void => {
     setActiveUser(null);
     navigate("/");
   };
 
-  const updateUser = (updatedUser: UserType) => {
-    setActiveUser((prevVal) => (prevVal = updatedUser));
-  };
   // Context Value
   const UserContextValue: UserContextInterface = {
     activeUser,
-    selectedClient,
-    selectClient,
     login,
     logout,
     updateUser,

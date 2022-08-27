@@ -5,6 +5,8 @@ import DatabaseContext from "../store/Database/database-context";
 import UserContext from "../store/User/user-context";
 
 export const useTrainerActions = () => {
+  const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
+
   const {
     database,
     deleteUser: deleteUserFromDB,
@@ -12,9 +14,11 @@ export const useTrainerActions = () => {
     updateUser,
   } = useContext(DatabaseContext);
 
-  const { selectClient, selectedClient } = useContext(UserContext);
-
   // * Client related functions
+
+  const selectClient = (clientId: string): void => {
+    setSelectedClientId(clientId);
+  };
 
   const fetchClient = (clientId: string) => {
     return database.find((user) => user.info.id === clientId) as Client;
@@ -38,14 +42,10 @@ export const useTrainerActions = () => {
     addUserToDB(newClient);
   };
 
-  const unassignClient = (trainerId: string, clientId: string) => {};
-
-  const assignClient = (trainerId: string, clientId: string) => {};
-
   // * Exercise Functions
   // TODO change exerciseData to interface
   const addExerciseToClientProgram = (newExercise: AssignedExercise) => {
-    const client = fetchClient(selectedClient!);
+    const client = fetchClient(selectedClientId!);
 
     const updatedProgram: AssignedExercise[] = [
       ...client.trainingPlan.program,
@@ -60,7 +60,7 @@ export const useTrainerActions = () => {
     updateUser(updatedClient);
   };
   const deleteExerciseFromClientProgram = (exerciseName: string) => {
-    const client = fetchClient(selectedClient!);
+    const client = fetchClient(selectedClientId!);
 
     const updatedProgram = client.trainingPlan.program.filter(
       (entry) => entry.name !== exerciseName
@@ -79,7 +79,6 @@ export const useTrainerActions = () => {
   return {
     addClient,
     deleteClient,
-    assignClient,
     fetchClients,
     fetchClient,
     addExerciseToClientProgram,
