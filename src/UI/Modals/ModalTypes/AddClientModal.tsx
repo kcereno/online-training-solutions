@@ -7,8 +7,8 @@ import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import UserContext from "../../../store/User/user-context";
 import { Client } from "../../../data/interfaces";
-import AccordianInput from "../../../components/Accordian/AccordianInput";
-import { AccordianItem } from "../../../components/Accordian/AccordianItem";
+import AccordianInput from "../../Accordion/AccordionInput";
+import { AccordionItem } from "../../Accordion/AccordionItem";
 
 export const AddClientModal = () => {
   const { activeUser } = useContext(UserContext);
@@ -66,7 +66,7 @@ export const AddClientModal = () => {
         <Form>
           {/* Basic Info Section */}
           <Accordion defaultActiveKey="0">
-            <AccordianItem eventKey="0" header="Basic Information">
+            <AccordionItem eventKey="0" header="Basic Information">
               <AccordianInput
                 label="First Name"
                 controlId="firstName"
@@ -103,8 +103,8 @@ export const AddClientModal = () => {
                 }}
                 useFormData={useFormData}
               />
-            </AccordianItem>
-            <AccordianItem eventKey="2" header="Training Information">
+            </AccordionItem>
+            <AccordionItem eventKey="2" header="Training Information">
               <FloatingLabel controlId="floatingSelect" label="Goal">
                 <Form.Select
                   aria-label="text"
@@ -117,7 +117,7 @@ export const AddClientModal = () => {
                   <option value="SPORTS SPECIFIC">Sports Specific</option>
                 </Form.Select>
               </FloatingLabel>
-            </AccordianItem>
+            </AccordionItem>
           </Accordion>
         </Form>
       </Modal.Body>

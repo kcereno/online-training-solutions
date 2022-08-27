@@ -6,7 +6,8 @@ type PropTypes = {
   children: React.ReactNode;
   header: string;
 };
-export const AccordianItem = ({ eventKey, children, header }: PropTypes) => {
+
+export const AccordionItem = ({ eventKey, children, header }: PropTypes) => {
   return (
     <Accordion.Item eventKey={eventKey}>
       <Accordion.Header>{header}</Accordion.Header>

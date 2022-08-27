@@ -1,6 +1,6 @@
 import { FloatingLabel, Form } from "react-bootstrap";
 
-interface AccordianInputInterface {
+interface AccordionInputInterface {
   label: string;
   controlId: string;
   inputConfig: {
@@ -14,12 +14,12 @@ interface AccordianInputInterface {
     errors: any;
   };
 }
-const AccordianInput = ({
+const AccordionInput = ({
   label,
   controlId,
   inputConfig: { type, controlType, selectAriaLabel },
   useFormData,
-}: AccordianInputInterface) => {
+}: AccordionInputInterface) => {
   let inputContent;
   if (type === "control") {
     inputContent = (
@@ -55,4 +55,4 @@ const AccordianInput = ({
     </>
   );
 };
-export default AccordianInput;
+export default AccordionInput;
