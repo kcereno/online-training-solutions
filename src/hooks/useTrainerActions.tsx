@@ -5,6 +5,7 @@ import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
+  console.log(selectedClientId);
 
   const {
     database,

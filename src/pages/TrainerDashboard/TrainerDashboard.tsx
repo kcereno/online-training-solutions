@@ -3,11 +3,10 @@ import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Client, Trainer } from "../../data/interfaces";
-import ClientCard from "../../components/ClientCard/ClientCard";
-import "./TrainerDashboard.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
 import useModal from "../../hooks/useModal";
 import ClientsSection from "../../sections/ClientsSection/ClientsSection";
+import "./TrainerDashboard.css";
 
 interface Props {
   trainer: Trainer;
@@ -19,7 +18,7 @@ const TrainerDashboard = ({
   },
 }: Props) => {
   const [clientList, setClientList] = useState<Client[]>([]);
-  const { fetchClients, selectClient } = useTrainerActions();
+  const { fetchClients } = useTrainerActions();
 
   const { showDeleteClientModal, showAddClientModal } = useModal();
 
