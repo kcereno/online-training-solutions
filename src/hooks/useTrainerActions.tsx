@@ -25,10 +25,12 @@ export const useTrainerActions = () => {
   };
 
   const fetchClients = useCallback(
-    (trainerId: string): UserType[] =>
-      database.filter((user: UserType) =>
-        (user as Client).trainingPlan.trainer === trainerId
-      ),
+    (trainerId: string): UserType[] => {
+      const allClients = (database.filter((user:UserType)=> user.role === "CLIENT") as Client[])
+
+    return allClients.filter((client:Client)=> client.trainingPlan.trainer === trainerId)
+    }
+      ,
     [database]
   );
 
@@ -41,8 +43,8 @@ export const useTrainerActions = () => {
   };
 
   // * Exercise Functions
-
-  const addExerciseToClientProgram = (newExercise: AssignedExercise):void => {
+  // TODO change exerciseData to interface
+  const addExerciseToClientProgram = (newExercise: AssignedExercise) => {
     const client = fetchClient(selectedClientId!);
 
     const updatedProgram: AssignedExercise[] = [
@@ -57,7 +59,7 @@ export const useTrainerActions = () => {
 
     updateUser(updatedClient);
   };
-  const deleteExerciseFromClientProgram = (exerciseName: string):void => {
+  const deleteExerciseFromClientProgram = (exerciseName: string) => {
     const client = fetchClient(selectedClientId!);
 
     const updatedProgram = client.trainingPlan.program.filter(
@@ -72,7 +74,7 @@ export const useTrainerActions = () => {
     updateUser(updatedClient);
   };
 
-  // const editExercise = (exercise: any, clientId: string) => { };
+  const editExercise = (exercise: any, clientId: string) => { };
 
   return {
     addClient,
