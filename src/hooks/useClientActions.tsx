@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { convertDate } from "../data/functions";
 import { Client, LogEntry } from "../data/interfaces";
 import DatabaseContext from "../store/Database/database-context";
