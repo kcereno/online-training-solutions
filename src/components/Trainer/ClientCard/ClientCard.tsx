@@ -19,7 +19,7 @@ type PropTypes = {
 
 const ClientCard = ({
   info: { id, firstName, lastName, profilePicture },
-  trainingPlan: { goal },
+  trainingPlan: { goal, notes },
   deleteClient,
   trainer,
 }: PropTypes) => {
@@ -64,8 +64,7 @@ const ClientCard = ({
         <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
           <Container>
             <p>
-              Area for client notes. Important stuff to keep in mind such as
-              injuries, special accomodations and what not
+              {notes ? notes : 'Client does not have notes'}
             </p>
           </Container>
           <hr
