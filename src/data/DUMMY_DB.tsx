@@ -77,6 +77,7 @@ export let DUMMY_DATA: UserType[] = [
           ],
         },
       ],
+      notes: "This is Ric Flairs notes"
     },
   },
   {

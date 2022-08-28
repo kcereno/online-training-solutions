@@ -28,6 +28,7 @@ export const AddClientModal = () => {
     birthday,
     email,
     goal,
+    notes
   }: {
     [key: string]: any;
   }) => {
@@ -51,6 +52,7 @@ export const AddClientModal = () => {
         goal,
         program: [],
         log: [],
+        notes
       },
     };
     addClient(newClient, activeUser!.info.id);
@@ -116,6 +118,12 @@ export const AddClientModal = () => {
                   <option value="BUILD MUSCLE">Body Recomposition</option>
                   <option value="SPORTS SPECIFIC">Sports Specific</option>
                 </Form.Select>
+              </FloatingLabel>
+
+              <FloatingLabel className="mt-3" controlId="clientNotes" label="Notes">
+                <Form.Control as='textarea' style={{ height: '100px' }}
+                  {...useFormData.register("notes", { required: false })}
+                />
               </FloatingLabel>
             </AccordionItem>
           </Accordion>

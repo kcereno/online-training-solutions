@@ -23,6 +23,7 @@ export interface Client extends UserInterface {
     goal: TrainingGoal;
     program: AssignedExercise[];
     log: LogEntry[];
+    notes?:string
   };
 }
 export interface LogEntry {
