@@ -6,16 +6,16 @@ import Footer from "./UI/Footer/Footer";
 
 import "./App.css";
 
-export default function App() {
-  return (
-    <>
-      <Modals />
-      <NavBar />
-      <main>
-        <RouteTree />
-      </main>
-      <Footer />
-    </>
-  );
-}
+const App = () => (
+  <>
+    <Modals />
+    <NavBar />
+    <main>
+      <RouteTree />
+    </main>
+    <Footer />
+  </>
+)
+
+export default App
 
