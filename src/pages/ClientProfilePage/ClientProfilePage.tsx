@@ -6,7 +6,7 @@ import { useTrainerActions } from "../../hooks/useTrainerActions";
 import ClientDetails from "../../components/Trainer/ClientDetails/ClientDetails";
 import ClientProgram from "../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../hooks/useModal";
-import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
+import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();

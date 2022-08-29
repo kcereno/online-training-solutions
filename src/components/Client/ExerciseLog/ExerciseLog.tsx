@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion, Card, Container, Row, Col } from "react-bootstrap";
-import { LogEntry } from "../../data/interfaces";
+import { LogEntry } from "../../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap";
 import "./ExerciseLog.css";
 

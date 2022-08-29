@@ -2,7 +2,7 @@ import { Accordion, Container, Card } from "react-bootstrap";
 import { Client } from "../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { today } from "../../data/functions";
-import ExerciseLogEntryForm from "../../components/ExerciseLogEntryForm/ExerciseLogEntryForm";
+import ExerciseLogEntryForm from "../../components/Client/ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
 import { LogEntry } from "../../data/interfaces";
 
 interface Props {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import useClientActions from "../../hooks/useClientActions";
+import useClientActions from "../../../../hooks/useClientActions";
 
 interface Props {
   exercise: string;
