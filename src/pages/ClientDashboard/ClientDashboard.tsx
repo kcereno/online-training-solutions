@@ -1,5 +1,5 @@
 import { Accordion, Container, Card } from "react-bootstrap";
-import { Client } from "../../data/interfaces";
+import { Client, LogData } from "../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { today } from "../../data/functions";
 import { LogEntry } from "../../data/interfaces";
@@ -64,15 +64,21 @@ const ClientDashboard = ({
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
-                {todaysLogData &&
-                todaysLogData[index].exercise === exercise.name
-                  ? todaysLogData[index].sets.map((set, index) => (
-                      <div className="text-center mb-2" key={index.toString()}>
-                        <strong>Set {index + 1}:</strong>{" "}
-                        {`${set.weight}lbs for  ${set.reps}`}
-                      </div>
-                    ))
-                  : "No data"}
+                {todaysLogData?.map((data: LogData) =>
+                  data.exercise === exercise.name
+                    ? data.sets.map((set, index) => (
+                        <div
+                          className="text-center mb-2"
+                          key={index.toString()}
+                        >
+                          <strong>Set {index + 1}:</strong>{" "}
+                          {`${set.weight}lbs for  ${set.reps}`}
+                        </div>
+                      ))
+                    : null
+                )}
+                {!todaysLogData && "No Data"}
+
                 <ExerciseLogEntryForm exercise={exercise.name} />
               </Card.Body>
             </Accordion.Collapse>

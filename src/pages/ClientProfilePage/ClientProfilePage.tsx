@@ -10,6 +10,7 @@ import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
+
   const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
     useTrainerActions();
   const client = fetchClient(clientId!);

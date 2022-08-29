@@ -6,7 +6,8 @@ import UserContext from "../store/User/user-context";
 
 const useClientActions = () => {
   const { activeUser } = useContext(UserContext);
-  const { database, updateUser } = useContext(DatabaseContext);
+  const { database } = useContext(DatabaseContext);
+  const { updateUser } = useContext(UserContext);
 
   const fetchTodaysWorkoutEntries = (date: Date) => {
     // const foundLog = (activeUser as Client).trainingPlan.log.find(
@@ -34,6 +35,8 @@ const useClientActions = () => {
         log: [...(user as Client).trainingPlan.log, newEntry],
       },
     };
+
+    console.log(updatedUser);
 
     updateUser(updatedUser);
   };

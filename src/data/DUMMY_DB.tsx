@@ -35,7 +35,7 @@ export let DUMMY_DATA: UserType[] = [
       ],
       log: [
         {
-          date: new Date(2022, 7, 27),
+          date: new Date(2022, 7, 2),
           data: [
             {
               exercise: "Bench Press",
@@ -77,7 +77,7 @@ export let DUMMY_DATA: UserType[] = [
           ],
         },
       ],
-      notes: "This is Ric Flairs notes"
+      notes: "This is Ric Flairs notes",
     },
   },
   {

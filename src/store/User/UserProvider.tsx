@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserType } from "../../data/types";
 import UserContext, { UserContextInterface } from "./user-context";
 import DatabaseContext from "../Database/database-context";
+import { Client } from "../../data/interfaces";
 
 type PropTypes = {
   children?: React.ReactNode;
@@ -10,6 +11,7 @@ type PropTypes = {
 
 const UserProvider = ({ children }: PropTypes) => {
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
+  console.log("UserProvider ~ activeUser", activeUser);
 
   const { database } = useContext(DatabaseContext);
 
