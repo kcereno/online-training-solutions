@@ -5,7 +5,7 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Client, Trainer } from "../../data/interfaces";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
 import useModal from "../../hooks/useModal";
-import ClientsSection from "../../sections/ClientsSection/ClientsSection";
+import ClientsSection from "../../components/Sections/ClientsSection/ClientsSection";
 import "./TrainerDashboard.css";
 
 interface Props {

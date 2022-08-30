@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import CustomerReviews from "../../sections/CustomerReviewsSection/CustomerReviews";
-import HeroSection from "../../sections/HeroSection/HeroSection";
+import CustomerReviews from "../../components/Sections/CustomerReviewsSection/CustomerReviews";
+import HeroSection from "../../components/Sections/HeroSection/HeroSection";
 import "./LandingPage.css";
 
 const LandingPage = () => <>
