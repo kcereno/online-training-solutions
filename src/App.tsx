@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import RouteTree from "./routing/RouteTree";
-import NavBar from "./UI/NavBar/NavBar";
+import NavBar from "./UI/NavBar/Navbar";
 import Modals from "./UI/Modals/Modals";
 import Footer from "./UI/Footer/Footer";
 
@@ -15,7 +15,6 @@ const App = () => (
     </main>
     <Footer />
   </>
-)
+);
 
-export default App
-
+export default App;

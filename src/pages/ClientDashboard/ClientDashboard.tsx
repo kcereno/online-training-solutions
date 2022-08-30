@@ -1,35 +1,12 @@
 import { Accordion, Container, Card } from "react-bootstrap";
 import { Client, LogData } from "../../data/interfaces";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { today } from "../../data/functions";
 import { LogEntry } from "../../data/interfaces";
 import ExerciseLogEntryForm from "../../components/Client/ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
+import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
 
 interface Props {
   client: Client;
-}
-
-// Toggle for Accordion
-function CustomToggle({
-  eventKey,
-  exercise,
-  targets,
-}: {
-  // children: React.ReactNode;
-  eventKey: string;
-  exercise: string;
-  targets: { weight: number; reps: number; sets: number };
-}) {
-  const decoratedOnClick = useAccordionButton(eventKey);
-
-  return (
-    <div className="d-flex justify-content-between" onClick={decoratedOnClick}>
-      <div>{exercise}</div>
-      <div>
-        <strong>Target:</strong> {`${targets.sets} sets of ${targets.reps}`}
-      </div>
-    </div>
-  );
 }
 
 const ClientDashboard = ({
@@ -78,7 +55,6 @@ const ClientDashboard = ({
                     : null
                 )}
                 {!todaysLogData && "No Data"}
-
                 <ExerciseLogEntryForm exercise={exercise.name} />
               </Card.Body>
             </Accordion.Collapse>
