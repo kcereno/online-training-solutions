@@ -8,7 +8,7 @@ interface Props {
 }
 
 const ExerciseLogEntryForm = ({ exercise }: Props) => {
-  const { addToExerciseLog } = useClientActions();
+  const { addSetToLog } = useClientActions();
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   } = useForm();
 
   const onSubmit = ({ weight, reps }: any) => {
-    addToExerciseLog(exercise, weight, reps);
+    addSetToLog(exercise, weight, reps);
   };
 
   return (

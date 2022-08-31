@@ -23,7 +23,7 @@ export interface Client extends UserInterface {
     goal: TrainingGoal;
     program: AssignedExercise[];
     log: LogEntry[];
-    notes?:string
+    notes?: string;
   };
 }
 export interface LogEntry {
@@ -32,7 +32,7 @@ export interface LogEntry {
 }
 export interface LogData {
   exercise: string;
-  sets: set[];
+  sets: Set[];
 }
 
 export interface AssignedExercise {
@@ -42,7 +42,7 @@ export interface AssignedExercise {
   sets: number;
 }
 
-export interface set {
+export interface Set {
   weight: number;
   reps: number;
 }
