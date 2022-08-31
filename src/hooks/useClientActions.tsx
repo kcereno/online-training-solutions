@@ -71,6 +71,8 @@ const useClientActions = () => {
       // };
       // console.log("useClientActions ~ updatedClient", updatedClient);
 
+      // CURRENT ISSUE: ADDS DUPLICATE EXERCISE ETNRY TO DATA
+
       const updatedLog: LogEntry[] = [...client.trainingPlan.log];
       updatedLog[todayIndex] = {
         date: today,
