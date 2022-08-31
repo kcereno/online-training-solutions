@@ -5,11 +5,12 @@ import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 import UserContext from "../store/User/user-context";
 import { isToday } from '../data/functions'
+import { log } from "console";
 
 const useClientActions = () => {
   const { activeUser } = useContext(UserContext);
-  const { database } = useContext(DatabaseContext);
-  const { updateUser } = useContext(UserContext);
+  const { database, updateUser } = useContext(DatabaseContext);
+
 
   const fetchTodaysWorkoutEntries = (date: Date) => {
     // const foundLog = (activeUser as Client).trainingPlan.log.find(
@@ -24,22 +25,23 @@ const useClientActions = () => {
     reps: number
   ): void => {
 
-    const newSet: Set = { weight: +weight, reps: +reps }
-    const fetchedClient = (database.find((user: UserType) => user.info.id === activeUser?.info.id)) as Client
+    const hasLogEntryForToday = (activeUser as Client)!.trainingPlan.log.find((logEntry: LogEntry) => isToday(logEntry.date))
 
-    const todaysLog = (activeUser as Client).trainingPlan.log.find((logEntry: LogEntry) => isToday(logEntry.date))
-    console.log('todaysLog: ', todaysLog)
 
-    if (todaysLog) {
-      const targetExerciseIndex = todaysLog.data.findIndex((logData: LogData) => logData.exercise === exercise)
+    if (hasLogEntryForToday) {
+      const updatedUser = { ...activeUser as Client }
 
-      console.log(targetExerciseIndex)
+      updatedUser.trainingPlan.log.forEach((logEntry: LogEntry) => {
+        if (isToday(logEntry.date)) {
+          logEntry.data.forEach((logData: LogData) => {
+            if (logData.exercise === exercise) {
+              logData.sets.push({ weight: +weight, reps: +reps })
+            }
+          })
+        }
+      })
+      updateUser(updatedUser)
 
-      const updatedSets = [...todaysLog.data[targetExerciseIndex].sets, newSet]
-      console.log('updatedSets', updatedSets)
-
-      const updatedClient = { ...fetchedClient, trainingPlan: { ...fetchedClient.trainingPlan, log: [...fetchedClient.trainingPlan.log, { date: today, data: {exercise, sets: updatedSets} }] } }
-      console.log(updatedClient)
     }
   };
 
