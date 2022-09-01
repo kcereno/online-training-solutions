@@ -26,10 +26,10 @@ const useClientActions = () => {
   ): void => {
 
     const hasLogEntryForToday = (activeUser as Client)!.trainingPlan.log.find((logEntry: LogEntry) => isToday(logEntry.date))
-
+    const updatedUser = { ...activeUser as Client }
 
     if (hasLogEntryForToday) {
-      const updatedUser = { ...activeUser as Client }
+
 
       updatedUser.trainingPlan.log.forEach((logEntry: LogEntry) => {
         if (isToday(logEntry.date)) {
@@ -42,6 +42,9 @@ const useClientActions = () => {
       })
       updateUser(updatedUser)
 
+    } else {
+      updatedUser.trainingPlan.log.push({ date: today, data: [{ exercise, sets: [{ weight: +weight, reps: +reps }] }] })
+      updateUser(updatedUser)
     }
   };
 
