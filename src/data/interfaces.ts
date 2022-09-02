@@ -22,15 +22,15 @@ export interface Client extends UserInterface {
     trainer: string | null;
     goal: TrainingGoal;
     program: AssignedExercise[];
-    log: LogEntry[];
+    history: HistoryEntry[];
     notes?: string;
   };
 }
-export interface LogEntry {
+export interface HistoryEntry {
   date: Date;
-  data: LogData[];
+  data: HistoryEntryData[];
 }
-export interface LogData {
+export interface HistoryEntryData {
   exercise: string;
   sets: Set[];
 }

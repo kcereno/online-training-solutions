@@ -11,6 +11,9 @@ const DatabaseProvider = ({ children }: Props) => {
   const [database, setDatabase] = useState<UserType[]>(DUMMY_DATA);
   console.log("DatabaseProvider ~ database", database);
 
+  const fetchUser = (userId: string): UserType | undefined =>
+    database.find((user) => user.info.id === userId);
+
   const deleteUser = (userId: string) => {
     const updatedDatabase = database.filter((user) => user.info.id !== userId);
     setDatabase(updatedDatabase);
@@ -33,6 +36,7 @@ const DatabaseProvider = ({ children }: Props) => {
 
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
+    fetchUser,
     updateDatabase: setDatabase,
     deleteUser,
     addUser,

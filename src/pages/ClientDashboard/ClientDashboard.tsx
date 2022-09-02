@@ -1,7 +1,6 @@
 import { Accordion, Container, Card } from "react-bootstrap";
-import { Client, LogData } from "../../data/interfaces";
+import { Client, HistoryEntryData, HistoryEntry } from "../../data/interfaces";
 import { today } from "../../data/functions";
-import { LogEntry } from "../../data/interfaces";
 import ExerciseLogEntryForm from "../../components/Client/ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
 import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
 
@@ -12,13 +11,14 @@ interface Props {
 const ClientDashboard = ({
   client: {
     info: { firstName, lastName },
-    trainingPlan: { program, log },
+    trainingPlan: { program, history },
   },
 }: Props) => {
-  const todaysLogData = log.find(
-    (entry: LogEntry) => entry.date.getTime() === today.getTime()
+  const todaysHistoryEntry = history.find(
+    (historyEntry: HistoryEntry) =>
+      historyEntry.date.getTime() === today.getTime()
   )?.data;
-  console.log("todaysLogData", todaysLogData);
+  console.log("todaysHistoryEntry", todaysHistoryEntry);
 
   return (
     <Container className="text-white">
@@ -41,9 +41,9 @@ const ClientDashboard = ({
             </Card.Header>
             <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
-                {todaysLogData?.map((data: LogData) =>
-                  data.exercise === exercise.name
-                    ? data.sets.map((set, index) => (
+                {todaysHistoryEntry?.map((historyEntryData: HistoryEntryData) =>
+                  historyEntryData.exercise === exercise.name
+                    ? historyEntryData.sets.map((set, index) => (
                         <div
                           className="text-center mb-2"
                           key={index.toString()}
@@ -54,7 +54,7 @@ const ClientDashboard = ({
                       ))
                     : null
                 )}
-                {!todaysLogData && "No Data"}
+                {!todaysHistoryEntry && "No Data"}
                 <ExerciseLogEntryForm exercise={exercise.name} />
               </Card.Body>
             </Accordion.Collapse>

@@ -32,7 +32,7 @@ const ClientProfilePage = () => {
             addExercise={showAddExerciseModal}
             deleteExercise={deleteExerciseFromClientProgram}
           />
-          <ExerciseLog logs={client.trainingPlan.log} />
+          <ExerciseLog logs={client.trainingPlan.history} />
         </Col>
       </Row>
     </Container>

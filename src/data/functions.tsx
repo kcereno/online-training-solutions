@@ -1,4 +1,4 @@
-import { LogEntry } from "./interfaces";
+import { HistoryEntry } from "./interfaces";
 
 export const createId = (fName: string, lName: string) => {
   const firstLetter = fName.slice(0, 1);

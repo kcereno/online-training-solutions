@@ -33,9 +33,9 @@ export let DUMMY_DATA: UserType[] = [
         { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
         { name: "Deadlift", weight: 315, reps: 5, sets: 4 },
       ],
-      log: [
+      history: [
         {
-          date: new Date(2022, 7, 22),
+          date: new Date(2022, 8, 2),
           data: [
             {
               exercise: "Bench Press",
@@ -96,7 +96,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "BUILD MUSCLE",
       program: [],
-      log: [],
+      history: [],
     },
   },
   {
@@ -115,7 +115,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "LOSE FAT",
       program: [],
-      log: [],
+      history: [],
     },
   },
   {
@@ -134,7 +134,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "BODY RECOMPOSITION",
       program: [],
-      log: [],
+      history: [],
     },
   },
   {
@@ -153,7 +153,7 @@ export let DUMMY_DATA: UserType[] = [
       trainer: "kcereno89",
       goal: "SPORTS SPECIFIC",
       program: [],
-      log: [],
+      history: [],
     },
   },
 ];
