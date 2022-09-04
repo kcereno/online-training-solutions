@@ -26,7 +26,7 @@ const ClientDashboard = ({
       <p>This is your program</p>
 
       <div className="accordion">
-        <Accordion defaultActiveKey="0">
+        <Accordion alwaysOpen>
           {program.map((exercise, index) => (
             <Card style={{ background: "#212529" }} key={index.toString()}>
               <Card.Header className="">
