@@ -13,10 +13,12 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = ({ weight, reps }: any) => {
     addSetToLog(exercise, weight, reps);
+    reset();
   };
 
   return (
