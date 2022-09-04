@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { convertDate, today } from "../data/functions";
+import { convertDate, today, isToday } from "../data/functions";
 import {
   Client,
   HistoryEntryData,
@@ -9,12 +9,10 @@ import {
 import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 import UserContext from "../store/User/user-context";
-import { isToday } from "../data/functions";
-import { log } from "console";
 
 const useClientActions = () => {
-  const { activeUser } = useContext(UserContext);
-  const { database, updateUser, fetchUser } = useContext(DatabaseContext);
+  const { activeUser, updateUser } = useContext(UserContext);
+  const { database } = useContext(DatabaseContext);
 
   const fetchTodaysWorkoutEntries = (date: Date) => {
     // const foundLog = (activeUser as Client).trainingPlan.log.find(
@@ -28,52 +26,49 @@ const useClientActions = () => {
     weight: number,
     reps: number
   ): void => {
-    // upadate the logEngty
+    const newSet: Set = { weight: +weight, reps: +reps };
 
-    const today = convertDate(new Date());
+    const fetchedClient = database.find(
+      (user: UserType) => user.info.id === activeUser?.info.id
+    ) as Client;
 
-    const fetchedClient = fetchUser(activeUser!.info.id) as Client;
+    const todaysHistoryEntry = fetchedClient.trainingPlan.history.find(
+      (entry: HistoryEntry) => entry.date.getTime() === today.getTime()
+    );
 
-    const todaysHistoryEntry: HistoryEntry | undefined =
-      fetchedClient.trainingPlan.history.find((historyEntry: HistoryEntry) =>
-        isToday(historyEntry.date)
-      );
-    console.log("useClientActions ~ todaysHistoryEntry", todaysHistoryEntry);
+    let updatedHistory: HistoryEntry[] = [
+      ...fetchedClient.trainingPlan.history,
+    ];
 
     if (!todaysHistoryEntry) {
-      const updatedHistoryEntry: HistoryEntry = {
+      const newHistoryEntry: HistoryEntry = {
         date: today,
-        data: [{ exercise, sets: [{ weight, reps }] }],
+        data: [{ exercise, sets: [newSet] }],
       };
+      updatedHistory = [...fetchedClient.trainingPlan.history, newHistoryEntry];
+    } else {
+      updatedHistory = fetchedClient.trainingPlan.history.map(
+        (entry: HistoryEntry) => {
+          let updatedEntry: HistoryEntry = { ...entry };
+
+          if (isToday(entry.date)) {
+            entry.data.forEach((data: HistoryEntryData) => {
+              if (data.exercise === exercise) {
+                data.sets.push(newSet);
+              }
+            });
+          }
+          return updatedEntry;
+        }
+      );
     }
 
-    // if (!hasHistoryEntryForToday) {
-    //   const newLegEntry: HistoryEntry = {
-    //     date: convertDate(new Date()),
-    //     data: [],
-    //   };
-    // }
+    const updatedUser: Client = {
+      ...fetchedClient,
+      trainingPlan: { ...fetchedClient.trainingPlan, history: updatedHistory },
+    };
 
-    // // if (hasHistoryEntryForToday) {
-    // //   updatedUser.trainingPlan.log.forEach((HistoryEntry: HistoryEntry) => {
-    // //     if (isToday(HistoryEntry.date)) {
-    // //       HistoryEntry.data.forEach((logData: HistoryEntryData) => {
-    // //         if (logData.exercise === exercise) {
-    // //           logData.sets.push({ weight: +weight, reps: +reps });
-    // //         }
-    // //       });
-    // //     }
-    // //   });
-    // // } else {
-    // //   updatedUser.trainingPlan.log.push({
-    // //     date: today,
-    // //     data: [{ exercise, sets: [{ weight: +weight, reps: +reps }] }],
-    // //   });
-    // // }
-
-    // // const test = {...(activeUser as Client), trainingPlan:{...activeUser.trainingPlan, lo}};
-
-    // updateUser(updatedUser);
+    updateUser(updatedUser);
   };
 
   return { fetchTodaysWorkoutEntries, addSetToLog };

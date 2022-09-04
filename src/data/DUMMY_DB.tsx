@@ -35,7 +35,7 @@ export let DUMMY_DATA: UserType[] = [
       ],
       history: [
         {
-          date: new Date(2022, 8, 2),
+          date: new Date(2022, 8, 1),
           data: [
             {
               exercise: "Bench Press",
@@ -56,7 +56,7 @@ export let DUMMY_DATA: UserType[] = [
           ],
         },
         {
-          date: new Date(2022, 7, 20),
+          date: new Date(2022, 8, 3),
           data: [
             {
               exercise: "Bench Press",
