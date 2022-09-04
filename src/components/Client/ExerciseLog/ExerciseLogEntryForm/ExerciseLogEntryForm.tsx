@@ -12,7 +12,6 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   console.log("ExerciseLogEntryForm ~ errors", errors);

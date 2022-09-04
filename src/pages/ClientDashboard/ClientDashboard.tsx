@@ -49,12 +49,14 @@ const ClientDashboard = ({
                           key={index.toString()}
                         >
                           <strong>Set {index + 1}:</strong>{" "}
-                          {`${set.weight}lbs for  ${set.reps}`}
+                          {`${set.weight}lbs for  ${set.reps} reps`}
                         </div>
                       ))
                     : null
                 )}
-                {!todaysHistoryEntry && "No Data"}
+                {!todaysHistoryEntry && (
+                  <h3 className="text-center">Please add set below</h3>
+                )}
                 <ExerciseLogEntryForm exercise={exercise.name} />
               </Card.Body>
             </Accordion.Collapse>
