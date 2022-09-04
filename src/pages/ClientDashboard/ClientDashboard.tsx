@@ -21,7 +21,7 @@ const ClientDashboard = ({
   console.log("todaysHistoryEntry", todaysHistoryEntry);
 
   return (
-    <Container className="text-white" style={{ maxWidth: "700px" }}>
+    <Container className="text-white my-3" style={{ maxWidth: "700px" }}>
       <h1>Hello {firstName}</h1>
       <p>This is your program</p>
 
