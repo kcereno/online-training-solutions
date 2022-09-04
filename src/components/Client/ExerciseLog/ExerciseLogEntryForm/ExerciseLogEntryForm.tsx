@@ -14,7 +14,6 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log("ExerciseLogEntryForm ~ errors", errors);
 
   const onSubmit = ({ weight, reps }: any) => {
     addSetToLog(exercise, weight, reps);

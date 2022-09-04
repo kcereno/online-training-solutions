@@ -25,7 +25,6 @@ const DatabaseProvider = ({ children }: Props) => {
   };
 
   const updateUser = (updatedUser: UserType) => {
-    console.log("pinged");
     const userIndex = database.findIndex(
       (entry) => entry.info.id === updatedUser.info.id
     );

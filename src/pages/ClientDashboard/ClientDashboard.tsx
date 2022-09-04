@@ -21,48 +21,51 @@ const ClientDashboard = ({
   console.log("todaysHistoryEntry", todaysHistoryEntry);
 
   return (
-    <Container className="text-white">
+    <Container className="text-white" style={{ maxWidth: "700px" }}>
       <h1>Hello {firstName}</h1>
       <p>This is your program</p>
 
-      <Accordion defaultActiveKey="0">
-        {program.map((exercise, index) => (
-          <Card style={{ background: "#212529" }} key={index.toString()}>
-            <Card.Header className="">
-              <CustomToggle
-                eventKey={index.toString()}
-                exercise={exercise.name}
-                targets={{
-                  weight: exercise.weight,
-                  reps: exercise.reps,
-                  sets: exercise.sets,
-                }}
-              />
-            </Card.Header>
-            <Accordion.Collapse eventKey={index.toString()}>
-              <Card.Body>
-                {todaysHistoryEntry?.map((historyEntryData: HistoryEntryData) =>
-                  historyEntryData.exercise === exercise.name
-                    ? historyEntryData.sets.map((set, index) => (
-                        <div
-                          className="text-center mb-2"
-                          key={index.toString()}
-                        >
-                          <strong>Set {index + 1}:</strong>{" "}
-                          {`${set.weight}lbs for  ${set.reps} reps`}
-                        </div>
-                      ))
-                    : null
-                )}
-                {!todaysHistoryEntry && (
-                  <h3 className="text-center">Please add set below</h3>
-                )}
-                <ExerciseLogEntryForm exercise={exercise.name} />
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        ))}
-      </Accordion>
+      <div className="accordion">
+        <Accordion defaultActiveKey="0">
+          {program.map((exercise, index) => (
+            <Card style={{ background: "#212529" }} key={index.toString()}>
+              <Card.Header className="">
+                <CustomToggle
+                  eventKey={index.toString()}
+                  exercise={exercise.name}
+                  targets={{
+                    weight: exercise.weight,
+                    reps: exercise.reps,
+                    sets: exercise.sets,
+                  }}
+                />
+              </Card.Header>
+              <Accordion.Collapse eventKey={index.toString()}>
+                <Card.Body>
+                  {todaysHistoryEntry?.map(
+                    (historyEntryData: HistoryEntryData) =>
+                      historyEntryData.exercise === exercise.name
+                        ? historyEntryData.sets.map((set, index) => (
+                            <div
+                              className="text-center mb-2"
+                              key={index.toString()}
+                            >
+                              <strong>Set {index + 1}:</strong>{" "}
+                              {`${set.weight}lbs for  ${set.reps} reps`}
+                            </div>
+                          ))
+                        : null
+                  )}
+                  {!todaysHistoryEntry && (
+                    <h3 className="text-center">Please add set below</h3>
+                  )}
+                  <ExerciseLogEntryForm exercise={exercise.name} />
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          ))}
+        </Accordion>
+      </div>
     </Container>
   );
 };
