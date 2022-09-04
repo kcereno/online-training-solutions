@@ -1,11 +1,11 @@
 import React from "react";
 import { Accordion, Card, Container, Row, Col } from "react-bootstrap";
-import { LogEntry } from "../../data/interfaces";
+import { HistoryEntry } from "../../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap";
 import "./ExerciseLog.css";
 
 interface Props {
-  logs: LogEntry[];
+  logs: HistoryEntry[];
 }
 
 interface CustomToggleInterface {
@@ -43,19 +43,21 @@ const ExerciseLog = ({ logs }: Props) => {
             />
 
             <Accordion defaultActiveKey="0" className="pb-3">
-              {logs.map((logEntry: LogEntry) => (
+              {logs.map((HistoryEntry: HistoryEntry) => (
                 <Card
                   style={{ background: "#212529" }}
-                  key={logEntry.date.toDateString()}
+                  key={HistoryEntry.date.toDateString()}
                 >
                   <Card.Header>
-                    <CustomToggle eventKey={logEntry.date.toDateString()}>
-                      {logEntry.date.toDateString()}
+                    <CustomToggle eventKey={HistoryEntry.date.toDateString()}>
+                      {HistoryEntry.date.toDateString()}
                     </CustomToggle>
                   </Card.Header>
-                  <Accordion.Collapse eventKey={logEntry.date.toDateString()}>
+                  <Accordion.Collapse
+                    eventKey={HistoryEntry.date.toDateString()}
+                  >
                     <Card.Body style={{ background: "black" }}>
-                      {logEntry.data.map((data, index) => (
+                      {HistoryEntry.data.map((data, index) => (
                         <div key={index.toString()}>
                           <p>{data.exercise}</p>
                           {data.sets.map((set, index) => (

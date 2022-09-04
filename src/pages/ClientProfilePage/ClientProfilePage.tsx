@@ -5,11 +5,12 @@ import "./ClientProfilePage.css";
 import { useTrainerActions } from "../../hooks/useTrainerActions";
 import ClientProgram from "../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../hooks/useModal";
-import ExerciseLog from "../../components/ExerciseLog/ExerciseLog";
+import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
 import ClientDetails from "../../components/Trainer/ClientDetails/ClientDetails";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
+
   const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
     useTrainerActions();
   const client = fetchClient(clientId!);
@@ -31,7 +32,7 @@ const ClientProfilePage = () => {
             addExercise={showAddExerciseModal}
             deleteExercise={deleteExerciseFromClientProgram}
           />
-          <ExerciseLog logs={client.trainingPlan.log} />
+          <ExerciseLog logs={client.trainingPlan.history} />
         </Col>
       </Row>
     </Container>

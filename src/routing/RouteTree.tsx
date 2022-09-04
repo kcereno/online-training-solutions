@@ -14,11 +14,8 @@ const RouteTree = () => {
 
   let dashboard = <NotFoundPage />;
 
-  if (activeUser?.role === "TRAINER") {
-    dashboard = <TrainerDashboard trainer={activeUser as Trainer} />;
-  } else if (activeUser?.role === "CLIENT") {
-    dashboard = <ClientDashboard client={activeUser as Client} />;
-  }
+  if (activeUser?.role === "TRAINER") dashboard = <TrainerDashboard trainer={activeUser as Trainer} />
+  if (activeUser?.role === "CLIENT") dashboard = <ClientDashboard client={activeUser as Client} />;
 
   return (
     <Routes>

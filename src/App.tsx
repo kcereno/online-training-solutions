@@ -6,18 +6,15 @@ import Footer from "./UI/Footer/Footer";
 
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <Modals />
-      <NavBar />
-      <main>
-        <RouteTree />
-      </main>
-
-      <Footer />
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <Modals />
+    <NavBar />
+    <main>
+      <RouteTree />
+    </main>
+    <Footer />
+  </>
+);
 
 export default App;

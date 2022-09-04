@@ -1,11 +1,11 @@
-import "./LoginPage.css";
+import { useContext, useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Container, Form } from "react-bootstrap";
-import { useContext, useState } from "react";
 import UserContext from "../../store/User/user-context";
+import "./LoginPage.css";
 
-export default function LoginPage() {
+const LoginPage = () => {
   // States
   const [credentialsValid, setCredentialsValid] = useState<boolean>(true);
   const [email, setEmail] = useState<string>("");
@@ -29,13 +29,11 @@ export default function LoginPage() {
 
     const validatedUser = validateUser(email, password);
 
-    if (validatedUser) {
-      login(validatedUser!);
-    } else {
-      setCredentialsValid(false);
-      setEmail("");
-      setPassword("");
-    }
+    validatedUser && login(validatedUser);
+
+    setCredentialsValid(false);
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -85,4 +83,6 @@ export default function LoginPage() {
       </Form>
     </Container>
   );
-}
+};
+
+export default LoginPage;
