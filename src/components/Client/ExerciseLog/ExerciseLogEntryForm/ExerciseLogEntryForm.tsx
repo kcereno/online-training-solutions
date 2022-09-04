@@ -36,7 +36,8 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
           style={{ width: "120px" }}
         >
           <Form.Control
-            type="string"
+            type="number"
+            min="0"
             placeholder="Weight"
             {...register("weight")}
           />
@@ -47,6 +48,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
         >
           <Form.Control
             type="number"
+            min="0"
             placeholder="Reps"
             {...register("reps", { required: true })}
           />
