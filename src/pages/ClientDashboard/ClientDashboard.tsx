@@ -57,7 +57,7 @@ const ClientDashboard = ({
                         : null
                   )}
                   {!todaysHistoryEntry && (
-                    <h3 className="text-center">Please add set below</h3>
+                    <h4 className="text-center"> Add set below</h4>
                   )}
                   <ExerciseLogEntryForm exercise={exercise.name} />
                 </Card.Body>

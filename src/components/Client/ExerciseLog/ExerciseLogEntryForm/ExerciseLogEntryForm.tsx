@@ -22,7 +22,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   };
 
   return (
-    <>
+    <div>
       {errors.reps && (
         <p className="text-center mb-0" style={{ color: "red" }}>
           Reps is required
@@ -58,7 +58,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
           +
         </Button>
       </Form>
-    </>
+    </div>
   );
 };
 
