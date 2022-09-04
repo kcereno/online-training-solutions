@@ -23,6 +23,11 @@ const useClientActions = () => {
   ): void => {
     const newSet: Set = { weight: +weight, reps: +reps };
 
+    const newHistoryEntry: HistoryEntry = {
+      date: today,
+      data: [{ exercise, sets: [newSet] }],
+    };
+
     const fetchedClient = database.find(
       (user: UserType) => user.info.id === activeUser?.info.id
     ) as Client;
@@ -33,19 +38,12 @@ const useClientActions = () => {
 
     let updatedHistory: HistoryEntry[] = [
       ...fetchedClient.trainingPlan.history,
+      newHistoryEntry,
     ];
 
-    if (!todaysHistoryEntry) {
-      const newHistoryEntry: HistoryEntry = {
-        date: today,
-        data: [{ exercise, sets: [newSet] }],
-      };
-      updatedHistory = [...fetchedClient.trainingPlan.history, newHistoryEntry];
-    } else {
+    if (todaysHistoryEntry) {
       updatedHistory = fetchedClient.trainingPlan.history.map(
         (entry: HistoryEntry) => {
-          let updatedEntry: HistoryEntry = { ...entry };
-
           if (isToday(entry.date)) {
             const existingExerciseData = entry.data.find(
               (data: HistoryEntryData) => data.exercise === exercise
@@ -56,13 +54,12 @@ const useClientActions = () => {
             );
 
             if (existingExerciseData) {
-              // Add set to existing exercise
               entry.data[existingExerciseIndex].sets.push(newSet);
             } else {
               entry.data.push({ exercise, sets: [newSet] });
             }
           }
-          return updatedEntry;
+          return entry;
         }
       );
     }
