@@ -12,36 +12,51 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   const {
     register,
     handleSubmit,
-    // watch,
-    // formState: { errors },
+    watch,
+    formState: { errors },
   } = useForm();
+  console.log("ExerciseLogEntryForm ~ errors", errors);
 
   const onSubmit = ({ weight, reps }: any) => {
     addSetToLog(exercise, weight, reps);
   };
 
   return (
-    <Form
-      className="d-flex justify-content-center mt-3"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Form.Group
-        controlId="addEntryForm.WeightInput"
-        style={{ width: "120px" }}
+    <>
+      {errors.reps && (
+        <p className="text-center mb-0" style={{ color: "red" }}>
+          Reps is required
+        </p>
+      )}
+      <Form
+        className="d-flex justify-content-center mt-1"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <Form.Control
-          type="string"
-          placeholder="Weight"
-          {...register("weight")}
-        />
-      </Form.Group>
-      <Form.Group controlId="addEntryForm.repsInput" style={{ width: "120px" }}>
-        <Form.Control type="number" placeholder="Reps" {...register("reps")} />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        +
-      </Button>
-    </Form>
+        <Form.Group
+          controlId="addEntryForm.WeightInput"
+          style={{ width: "120px" }}
+        >
+          <Form.Control
+            type="string"
+            placeholder="Weight"
+            {...register("weight")}
+          />
+        </Form.Group>
+        <Form.Group
+          controlId="addEntryForm.repsInput"
+          style={{ width: "120px" }}
+        >
+          <Form.Control
+            type="number"
+            placeholder="Reps"
+            {...register("reps", { required: true })}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          +
+        </Button>
+      </Form>
+    </>
   );
 };
 

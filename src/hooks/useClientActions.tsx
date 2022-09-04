@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { convertDate, today, isToday } from "../data/functions";
+import { today, isToday } from "../data/functions";
 import {
   Client,
   HistoryEntryData,
@@ -14,12 +14,7 @@ const useClientActions = () => {
   const { activeUser, updateUser } = useContext(UserContext);
   const { database } = useContext(DatabaseContext);
 
-  const fetchTodaysWorkoutEntries = (date: Date) => {
-    // const foundLog = (activeUser as Client).trainingPlan.log.find(
-    //   (data) => data.date.getTime() === date.getTime()
-    // );
-    // return foundLog?.entry;
-  };
+  const fetchTodaysWorkoutEntries = (date: Date) => {};
 
   const addSetToLog = (
     exercise: string,
