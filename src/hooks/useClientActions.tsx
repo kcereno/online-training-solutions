@@ -47,11 +47,20 @@ const useClientActions = () => {
           let updatedEntry: HistoryEntry = { ...entry };
 
           if (isToday(entry.date)) {
-            entry.data.forEach((data: HistoryEntryData) => {
-              if (data.exercise === exercise) {
-                data.sets.push(newSet);
-              }
-            });
+            const existingExerciseData = entry.data.find(
+              (data: HistoryEntryData) => data.exercise === exercise
+            );
+
+            const existingExerciseIndex = entry.data.findIndex(
+              (data: HistoryEntryData) => data.exercise === exercise
+            );
+
+            if (existingExerciseData) {
+              // Add set to existing exercise
+              entry.data[existingExerciseIndex].sets.push(newSet);
+            } else {
+              entry.data.push({ exercise, sets: [newSet] });
+            }
           }
           return updatedEntry;
         }
