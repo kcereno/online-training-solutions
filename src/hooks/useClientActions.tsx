@@ -72,6 +72,12 @@ const useClientActions = () => {
     updateUser(updatedUser);
   };
 
-  return { fetchTodaysWorkoutEntries, addSetToLog };
+  const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
+    history.find(
+      (historyEntry: HistoryEntry) =>
+        historyEntry.date.getTime() === today.getTime()
+    )?.data;
+
+  return { fetchTodaysWorkoutEntries, addSetToLog, fetchTodaysHistoryEntry };
 };
 export default useClientActions;

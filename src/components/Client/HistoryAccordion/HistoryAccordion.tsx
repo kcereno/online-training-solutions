@@ -1,11 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Accordion, Card } from "react-bootstrap";
-import { AssignedExercise } from "../../../../data/interfaces";
-import CustomToggle from "../../../../UI/Accordion/CustomToggle/CustomToggle";
-import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-import { HistoryEntryData } from "../../../../data/interfaces";
-import ExerciseLogEntryForm from "../ExerciseLogEntryForm/ExerciseLogEntryForm";
+import { AssignedExercise } from "../../../data/interfaces";
+import CustomToggle from "../../../UI/Accordion/CustomToggle/CustomToggle";
+import { HistoryEntryData } from "../../../data/interfaces";
+import ExerciseLogEntryForm from "../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
+import SetEntry from "./SetEntry/SetEntry";
 
 interface Props {
   program: AssignedExercise[];
@@ -32,21 +31,9 @@ const HistoryAccordion = ({ program, todaysHistoryEntry }: Props) => {
             <Accordion.Collapse eventKey={index.toString()}>
               <Card.Body>
                 {todaysHistoryEntry?.map((historyEntryData: HistoryEntryData) =>
-                  historyEntryData.exercise === exercise.name
-                    ? historyEntryData.sets.map((set, index) => (
-                        <div className="d-flex justify-content-center">
-                          <p className="mb-1">
-                            <strong className="mx-2">Set {index + 1}:</strong>
-                            {`${set.weight}lbs for  ${set.reps} reps`}{" "}
-                            <FontAwesomeIcon
-                              style={{ color: "red" }}
-                              className="mx-2 align-self-center"
-                              icon={faDeleteLeft}
-                            />
-                          </p>
-                        </div>
-                      ))
-                    : null
+                  historyEntryData.sets.map((set, index) => (
+                    <SetEntry index={index} set={set} />
+                  ))
                 )}
                 {!todaysHistoryEntry && (
                   <h4 className="text-center"> Add set below</h4>
