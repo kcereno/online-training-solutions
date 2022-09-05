@@ -6,12 +6,12 @@ import { Set } from "../../../../data/interfaces";
 interface Props {
   index: number;
   set: Set;
-  deleteSet: () => void;
+  deleteSet: (index: number) => void;
 }
 
 const SetEntry = ({ index, set, deleteSet }: Props) => {
   const handleDeleteClick = () => {
-    deleteSet();
+    deleteSet(index);
   };
 
   return (

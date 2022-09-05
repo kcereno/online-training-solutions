@@ -18,9 +18,12 @@ const HistoryAccordionEntry = ({
   exercise,
   todaysHistoryEntry,
 }: Props) => {
+  console.log("todaysHistoryEntry", todaysHistoryEntry);
   const { deleteSetFromLog } = useClientActions();
 
-  const handleDeleteSet = () => {};
+  const handleDeleteSet = (setIndex: number) => {
+    deleteSetFromLog(todaysHistoryEntry!, exercise.name, setIndex);
+  };
 
   return (
     <Card style={{ background: "#212529" }} key={index.toString()}>

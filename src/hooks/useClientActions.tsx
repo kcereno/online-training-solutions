@@ -85,11 +85,25 @@ const useClientActions = () => {
     updateUser(updatedUser);
   };
 
-  const deleteSetFromLog = (date: Date, exercise: string, setIndex: number) => {
+  const deleteSetFromLog = (
+    historyEntry: HistoryEntry,
+    exercise: string,
+    setIndex: number
+  ) => {
+    console.log("useClientActions ~ historyEntry", historyEntry);
     //fetchLog
     // Use the data to remove the set
     // Store in a shallow copy of the log
     //updated User with the shallow copy
+
+    const exerciseIndex = historyEntry.data.findIndex(
+      (entry) => entry.exercise === exercise
+    );
+
+    const updatedSetList = historyEntry.data[exerciseIndex].sets.filter(
+      (elem, index) => index !== setIndex
+    );
+    console.log("useClientActions ~ updatedSetList", updatedSetList);
   };
 
   return {
