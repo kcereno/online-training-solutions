@@ -3,6 +3,8 @@ import { Client, HistoryEntryData, HistoryEntry } from "../../data/interfaces";
 import { today } from "../../data/functions";
 import ExerciseLogEntryForm from "../../components/Client/ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
 import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   client: Client;
@@ -46,12 +48,18 @@ const ClientDashboard = ({
                     (historyEntryData: HistoryEntryData) =>
                       historyEntryData.exercise === exercise.name
                         ? historyEntryData.sets.map((set, index) => (
-                            <div
-                              className="text-center mb-2"
-                              key={index.toString()}
-                            >
-                              <strong>Set {index + 1}:</strong>{" "}
-                              {`${set.weight}lbs for  ${set.reps} reps`}
+                            <div className="mx-0 d-flex justify-content-center align-items-center">
+                              <p className="mb-1">
+                                <strong className="mx-2">
+                                  Set {index + 1}:
+                                </strong>
+                                {`${set.weight}lbs for  ${set.reps} reps`}{" "}
+                                <FontAwesomeIcon
+                                  style={{ color: "red" }}
+                                  className="mx-2"
+                                  icon={faDeleteLeft}
+                                />
+                              </p>
                             </div>
                           ))
                         : null
