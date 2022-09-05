@@ -6,7 +6,6 @@ import {
   HistoryEntry,
   Set,
 } from "../data/interfaces";
-import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 import UserContext from "../store/User/user-context";
 
@@ -15,6 +14,8 @@ const useClientActions = () => {
   const { database } = useContext(DatabaseContext);
 
   const fetchTodaysWorkoutEntries = (date: Date) => {};
+
+  //  ADD SET
 
   const addSetToLog = (
     exercise: string,
@@ -28,21 +29,21 @@ const useClientActions = () => {
       data: [{ exercise, sets: [newSet] }],
     };
 
-    const fetchedClient = database.find(
-      (user: UserType) => user.info.id === activeUser?.info.id
-    ) as Client;
+    // const (activeUser as Client) = database.find(
+    //   (user: UserType) => user.info.id === activeUser?.info.id
+    // ) as Client;
 
-    const todaysHistoryEntry = fetchedClient.trainingPlan.history.find(
+    const todaysHistoryEntry = (activeUser as Client).trainingPlan.history.find(
       (entry: HistoryEntry) => entry.date.getTime() === today.getTime()
     );
 
     let updatedHistory: HistoryEntry[] = [
-      ...fetchedClient.trainingPlan.history,
+      ...(activeUser as Client).trainingPlan.history,
       newHistoryEntry,
     ];
 
     if (todaysHistoryEntry) {
-      updatedHistory = fetchedClient.trainingPlan.history.map(
+      updatedHistory = (activeUser as Client).trainingPlan.history.map(
         (entry: HistoryEntry) => {
           if (isToday(entry.date)) {
             const existingExerciseData = entry.data.find(
@@ -65,9 +66,13 @@ const useClientActions = () => {
     }
 
     const updatedUser: Client = {
-      ...fetchedClient,
-      trainingPlan: { ...fetchedClient.trainingPlan, history: updatedHistory },
+      ...(activeUser as Client),
+      trainingPlan: {
+        ...(activeUser as Client).trainingPlan,
+        history: updatedHistory,
+      },
     };
+    console.log("useClientActions ~ updatedUser", updatedUser);
 
     updateUser(updatedUser);
   };

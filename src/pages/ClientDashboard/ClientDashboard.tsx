@@ -19,7 +19,7 @@ const ClientDashboard = ({
   return (
     <Container className="text-white my-5" style={{ maxWidth: "700px" }}>
       <h1>Hello {firstName}</h1>
-      <p>This is your program</p>
+      <p>This is your program today is</p>
       <HistoryAccordion
         program={program}
         todaysHistoryEntry={todaysHistoryEntry}

@@ -10,13 +10,13 @@ interface Props {
 
 const SetEntry = ({ index, set }: Props) => {
   return (
-    <div className="d-flex justify-content-center">
-      <p className="mb-1">
+    <div className="d-flex justify-content-center" key={index}>
+      <p className="mb-1 d-flex align-items-center">
         <strong className="mx-2">Set {index + 1}:</strong>
-        {`${set.weight}lbs for  ${set.reps} reps`}{" "}
+        {`${set.weight}lbs for  ${set.reps} reps`}
         <FontAwesomeIcon
-          style={{ color: "red" }}
-          className="mx-2 align-self-center"
+          style={{ color: "red", paddingTop: "2px" }}
+          className="mx-2"
           icon={faDeleteLeft}
         />
       </p>
