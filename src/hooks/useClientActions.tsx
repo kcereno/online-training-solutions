@@ -45,22 +45,25 @@ const useClientActions = () => {
     if (todaysHistoryEntry) {
       updatedHistory = (activeUser as Client).trainingPlan.history.map(
         (entry: HistoryEntry) => {
+          const updatedEntry = { ...entry };
+          // Check if entry is todays entry
           if (isToday(entry.date)) {
             const existingExerciseData = entry.data.find(
               (data: HistoryEntryData) => data.exercise === exercise
             );
 
-            const existingExerciseIndex = entry.data.findIndex(
-              (data: HistoryEntryData) => data.exercise === exercise
-            );
+            // If exercise data does NOT exist
+            updatedEntry.data.push({ exercise, sets: [newSet] });
 
             if (existingExerciseData) {
-              entry.data[existingExerciseIndex].sets.push(newSet);
-            } else {
-              entry.data.push({ exercise, sets: [newSet] });
+              const existingExerciseIndex = entry.data.findIndex(
+                (data: HistoryEntryData) => data.exercise === exercise
+              );
+              updatedEntry.data[existingExerciseIndex].sets.push(newSet);
             }
           }
-          return entry;
+
+          return updatedEntry;
         }
       );
     }
@@ -72,7 +75,6 @@ const useClientActions = () => {
         history: updatedHistory,
       },
     };
-    console.log("useClientActions ~ updatedUser", updatedUser);
 
     updateUser(updatedUser);
   };

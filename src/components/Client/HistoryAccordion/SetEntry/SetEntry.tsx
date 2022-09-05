@@ -9,6 +9,10 @@ interface Props {
 }
 
 const SetEntry = ({ index, set }: Props) => {
+  const handleDeleteClick = () => {
+    console.log("delete", index);
+  };
+
   return (
     <div className="d-flex justify-content-center" key={index}>
       <p className="mb-1 d-flex align-items-center">
@@ -18,6 +22,7 @@ const SetEntry = ({ index, set }: Props) => {
           style={{ color: "red", paddingTop: "2px" }}
           className="mx-2"
           icon={faDeleteLeft}
+          onClick={handleDeleteClick}
         />
       </p>
     </div>
