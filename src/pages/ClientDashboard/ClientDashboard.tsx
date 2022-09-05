@@ -15,6 +15,7 @@ const ClientDashboard = ({
 }: Props) => {
   const { fetchTodaysHistoryEntry } = useClientActions();
   const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
+  console.log("todaysHistoryEntry", todaysHistoryEntry);
 
   return (
     <Container className="text-white my-5" style={{ maxWidth: "700px" }}>

@@ -1,12 +1,11 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import { AssignedExercise } from "../../../data/interfaces";
-import { HistoryEntryData } from "../../../data/interfaces";
+import { AssignedExercise, HistoryEntry } from "../../../data/interfaces";
 import HistoryAccordionEntry from "./HistoryAccordionEntry/HistoryAccordionEntry";
 
 interface Props {
   program: AssignedExercise[];
-  todaysHistoryEntry: HistoryEntryData[] | undefined;
+  todaysHistoryEntry: HistoryEntry | undefined;
 }
 
 const HistoryAccordion = ({ program, todaysHistoryEntry }: Props) => (

@@ -1,15 +1,16 @@
 import React from "react";
 import { Accordion, Card } from "react-bootstrap";
-import { AssignedExercise } from "../../../../data/interfaces";
+import { AssignedExercise, HistoryEntry } from "../../../../data/interfaces";
 import CustomToggle from "../../../../UI/Accordion/CustomToggle/CustomToggle";
 import { HistoryEntryData } from "../../../../data/interfaces";
 import SetEntry from "../SetEntry/SetEntry";
 import ExerciseLogEntryForm from "../../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
+import useClientActions from "../../../../hooks/useClientActions";
 
 interface Props {
   index: number;
   exercise: AssignedExercise;
-  todaysHistoryEntry: HistoryEntryData[] | undefined;
+  todaysHistoryEntry: HistoryEntry | undefined;
 }
 
 const HistoryAccordionEntry = ({
@@ -17,6 +18,10 @@ const HistoryAccordionEntry = ({
   exercise,
   todaysHistoryEntry,
 }: Props) => {
+  const { deleteSetFromLog } = useClientActions();
+
+  const handleDeleteSet = () => {};
+
   return (
     <Card style={{ background: "#212529" }} key={index.toString()}>
       <Card.Header>
@@ -32,14 +37,21 @@ const HistoryAccordionEntry = ({
       </Card.Header>
       <Accordion.Collapse eventKey={index.toString()}>
         <Card.Body>
-          {todaysHistoryEntry?.map((historyEntryData: HistoryEntryData) => {
-            if (historyEntryData.exercise === exercise.name)
-              return historyEntryData.sets.map((set, index) => (
-                <SetEntry index={index} set={set} key={index} />
-              ));
+          {todaysHistoryEntry?.data.map(
+            (historyEntryData: HistoryEntryData) => {
+              if (historyEntryData.exercise === exercise.name)
+                return historyEntryData.sets.map((set, index) => (
+                  <SetEntry
+                    key={index}
+                    index={index}
+                    set={set}
+                    deleteSet={handleDeleteSet}
+                  />
+                ));
 
-            return null;
-          })}
+              return null;
+            }
+          )}
           {!todaysHistoryEntry && (
             <h4 className="text-center"> Add set below</h4>
           )}

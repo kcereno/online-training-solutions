@@ -13,10 +13,16 @@ const useClientActions = () => {
   const { activeUser, updateUser } = useContext(UserContext);
   const { database } = useContext(DatabaseContext);
 
+  // FETCH FUNCTIONS
+  const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
+    history.find(
+      (historyEntry: HistoryEntry) =>
+        historyEntry.date.getTime() === today.getTime()
+    );
+
   const fetchTodaysWorkoutEntries = (date: Date) => {};
 
-  //  ADD SET
-
+  //  SET FUNCTIONS
   const addSetToLog = (
     exercise: string,
     weight: number,
@@ -79,12 +85,19 @@ const useClientActions = () => {
     updateUser(updatedUser);
   };
 
-  const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
-    history.find(
-      (historyEntry: HistoryEntry) =>
-        historyEntry.date.getTime() === today.getTime()
-    )?.data;
+  const deleteSetFromLog = (date: Date, exercise: string, setIndex: number) => {
+    //fetchLog
+    // Use the data to remove the set
+    // Store in a shallow copy of the log
+    //updated User with the shallow copy
+  };
 
-  return { fetchTodaysWorkoutEntries, addSetToLog, fetchTodaysHistoryEntry };
+  return {
+    fetchTodaysWorkoutEntries,
+    addSetToLog,
+    fetchTodaysHistoryEntry,
+    deleteSetFromLog,
+  };
 };
+
 export default useClientActions;
