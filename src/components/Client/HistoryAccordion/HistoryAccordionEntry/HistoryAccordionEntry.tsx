@@ -18,7 +18,6 @@ const HistoryAccordionEntry = ({
   exercise,
   todaysHistoryEntry,
 }: Props) => {
-  console.log("todaysHistoryEntry", todaysHistoryEntry);
   const { deleteSetFromLog } = useClientActions();
 
   const handleDeleteSet = (setIndex: number) => {

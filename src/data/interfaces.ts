@@ -35,16 +35,16 @@ export interface HistoryEntryData {
   sets: Set[];
 }
 
+export interface Set {
+  weight: number;
+  reps: number;
+}
+
 export interface AssignedExercise {
   name: string;
   weight: number;
   reps: number;
   sets: number;
-}
-
-export interface Set {
-  weight: number;
-  reps: number;
 }
 
 export type TrainingGoal =
