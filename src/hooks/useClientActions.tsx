@@ -20,7 +20,7 @@ const useClientActions = () => {
         historyEntry.date.getTime() === today.getTime()
     );
 
-  const fetchTodaysWorkoutEntries = (date: Date) => {};
+  const fetchTodaysWorkoutEntries = (date: Date) => { };
 
   //  SET FUNCTIONS
   const addSetToLog = (
@@ -28,33 +28,44 @@ const useClientActions = () => {
     weight: number,
     reps: number
   ): void => {
-    const newSet: Set = { weight: +weight, reps: +reps };
 
-    const todaysHistoryEntry = (activeUser as Client).trainingPlan.history.find(
-      (entry: HistoryEntry) => entry.date.getTime() === today.getTime()
-    );
+    //create shallowCopy of active user. Save as updatedUser
+    let updatedUser = { ...activeUser as Client }
 
-    let updatedHistory: HistoryEntry[] = [
-      ...(activeUser as Client).trainingPlan.history,
-    ];
+    // Check if there is a HistoryEntry for today
+    const todaysHistoryEntry = updatedUser.trainingPlan.history.find((entry: HistoryEntry) => isToday(entry.date))
+    console.log("todaysHistoryEntry", todaysHistoryEntry)
 
+
+    // If todaysHistoryEntry DOES NOT EXIST
+    //Create one and add it to activeUser.trainingPlan.history
     if (!todaysHistoryEntry) {
-      console.log("no todaysHistoryEntry");
-      const newHistoryEntry: HistoryEntry = { date: today, data: [] };
-      updatedHistory.push(newHistoryEntry);
-      console.log(
-        "useClientActions ~ updatedHistory with added etnry with empty data",
-        updatedHistory
-      );
+      const newHistoryEntry: HistoryEntry = { date: today, data: [] }
+      updatedUser.trainingPlan.history.push(newHistoryEntry)
     }
 
-    updatedHistory = updatedHistory.map((entry: HistoryEntry) => {
-      if (isToday(entry.date)) {
-        // IM UP TO HERE
-      }
 
-      return entry;
-    });
+    // At this point, there will ALWAYS be a todaysHistoryEntry
+    // Is there an HistoryEntryData for the exercise?
+
+    // HistoryEntryData DOES NOT exist
+    //Create historyData for that exercise
+
+    // HistoryEntryData Exists
+    // Add set to historyEntryData.sets
+
+
+    console.log('updatedUser', updatedUser)
+
+
+
+
+
+
+
+
+
+
 
     // const updatedUser: Client = {
     //   ...(activeUser as Client),
@@ -71,7 +82,7 @@ const useClientActions = () => {
     historyEntry: HistoryEntry,
     exercise: string,
     setIndex: number
-  ) => {};
+  ) => { };
 
   return {
     fetchTodaysWorkoutEntries,
