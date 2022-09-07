@@ -29,53 +29,30 @@ const useClientActions = () => {
     reps: number
   ): void => {
 
-    //create shallowCopy of active user. Save as updatedUser
-    let updatedUser = { ...activeUser as Client }
+    const newSet: Set = { weight: +weight, reps: +reps }
 
-    // Check if there is a HistoryEntry for today
-    const todaysHistoryEntry = updatedUser.trainingPlan.history.find((entry: HistoryEntry) => isToday(entry.date))
-    console.log("todaysHistoryEntry", todaysHistoryEntry)
+    const todaysHistoryEntry = (activeUser as Client).trainingPlan.history.find(entry => isToday(entry.date))
 
-
-    // If todaysHistoryEntry DOES NOT EXIST
-    //Create one and add it to activeUser.trainingPlan.history
     if (!todaysHistoryEntry) {
-      const newHistoryEntry: HistoryEntry = { date: today, data: [] }
-      updatedUser.trainingPlan.history.push(newHistoryEntry)
+      const newHistoryEntry: HistoryEntry = { date: today, data: [{ exercise, sets: [newSet] }] }
+      const updatedUser: Client = { ...(activeUser as Client), trainingPlan: { ...(activeUser as Client).trainingPlan, history: [...(activeUser as Client).trainingPlan.history, newHistoryEntry] } }
+
+      updateUser(updatedUser);
+    } else {
+      console.log("todaysHistoryEntry", todaysHistoryEntry)
+      const updatedTodaysHistoryEntryData: HistoryEntryData[] = []
+      const updatedTodaysHistoryEntry = { ...todaysHistoryEntry, data: updatedTodaysHistoryEntryData }
+      console.log('updatedTodaysHistoryEntry', updatedTodaysHistoryEntry)
+
     }
 
 
-    // At this point, there will ALWAYS be a todaysHistoryEntry
-    // Is there an HistoryEntryData for the exercise?
-
-    // HistoryEntryData DOES NOT exist
-    //Create historyData for that exercise
-
-    // HistoryEntryData Exists
-    // Add set to historyEntryData.sets
-
-
-    console.log('updatedUser', updatedUser)
 
 
 
 
 
 
-
-
-
-
-
-    // const updatedUser: Client = {
-    //   ...(activeUser as Client),
-    //   trainingPlan: {
-    //     ...(activeUser as Client).trainingPlan,
-    //     history: updatedHistory,
-    //   },
-    // };
-
-    // updateUser(updatedUser);
   };
 
   const deleteSetFromLog = (
