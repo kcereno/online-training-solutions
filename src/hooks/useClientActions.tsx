@@ -90,20 +90,19 @@ const useClientActions = () => {
     const updatedHistory: HistoryEntry[] = (
       activeUser as Client
     ).trainingPlan.history.map((entry) => {
-      if (isToday(entry.date)) {
-        const updatedData: HistoryEntryData[] = entry.data.map((data) => {
-          if (data.exercise === exercise) {
-            const updatedSets: Set[] = data.sets.filter(
-              (set, index) => index !== setIndex
-            );
-            return { ...data, sets: updatedSets };
-          }
-          return data;
-        });
+      if (isToday(entry.date))
+        return {
+          ...entry,
+          data: entry.data.map((data) => {
+            if (data.exercise === exercise)
+              return {
+                ...data,
+                sets: data.sets.filter((set, index) => index !== setIndex),
+              };
+            return data;
+          }),
+        };
 
-        const updatedEntry: HistoryEntry = { ...entry, data: updatedData };
-        return updatedEntry;
-      }
       return entry;
     });
 
