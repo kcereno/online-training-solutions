@@ -43,24 +43,20 @@ const useClientActions = () => {
     }
 
     updatedHistory = updatedHistory.map(entry => {
-
       if (isToday(entry.date)) {
         let updatedEntry = { ...entry }
+        
         const hasExistingExerciseData = entry.data.find(data => data.exercise === exercise)
 
-        if (!hasExistingExerciseData) {
-          updatedEntry = { ...updatedEntry, data: [...entry.data, { exercise, sets: [] }] }
-        }
+        if (!hasExistingExerciseData) updatedEntry = { ...updatedEntry, data: [...entry.data, { exercise, sets: [] }] }
 
         const updatedEntryData = updatedEntry.data.map(data => {
           if (data.exercise === exercise) return { exercise, sets: [...data.sets, { weight: +weight, reps: +reps }] }
 
           return data
         })
-
         return { ...updatedEntry, data: updatedEntryData }
       }
-
       return entry
     })
 
