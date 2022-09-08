@@ -8,6 +8,7 @@ import {
 } from "../data/interfaces";
 import DatabaseContext from "../store/Database/database-context";
 import UserContext from "../store/User/user-context";
+import { updateClientHistory } from "../data/functions";
 
 const useClientActions = () => {
   const { activeUser, updateUser } = useContext(UserContext);
@@ -74,13 +75,11 @@ const useClientActions = () => {
       return entry;
     });
 
-    const updatedUser: Client = {
-      ...(activeUser as Client),
-      trainingPlan: {
-        ...(activeUser as Client).trainingPlan,
-        history: updatedHistory,
-      },
-    };
+    const updatedUser = updateClientHistory(
+      activeUser as Client,
+      updatedHistory
+    );
+
     updateUser(updatedUser);
   };
 
@@ -106,13 +105,10 @@ const useClientActions = () => {
       return entry;
     });
 
-    const updatedUser: Client = {
-      ...(activeUser as Client),
-      trainingPlan: {
-        ...(activeUser as Client).trainingPlan,
-        history: updatedHistory,
-      },
-    };
+    const updatedUser = updateClientHistory(
+      activeUser as Client,
+      updatedHistory
+    );
 
     updateUser(updatedUser);
   };
