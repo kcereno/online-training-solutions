@@ -28,69 +28,41 @@ const useClientActions = () => {
     weight: number,
     reps: number
   ): void => {
-    const newSet: Set = { weight: +weight, reps: +reps };
 
-    const todaysHistoryEntry = (activeUser as Client).trainingPlan.history.find(
-      (entry) => isToday(entry.date)
-    );
+    const todaysHistoryEntry = fetchTodaysHistoryEntry((activeUser as Client).trainingPlan.history)
 
     let updatedHistory: HistoryEntry[] = [
       ...(activeUser as Client).trainingPlan.history,
     ];
 
-    // Add a new HistoryEnty if there isn't one
     if (!todaysHistoryEntry) {
-      const newHistoryEntry: HistoryEntry = {
+      updatedHistory = [...updatedHistory, {
         date: today,
         data: [],
-      };
-      updatedHistory = [...updatedHistory, newHistoryEntry];
+      }];
     }
-
-    // At this point, there will always be a an entry for today
-
-    // Iterate through History.
-    //    If current entry is todays
-    //      Check if current entry.data has an existing exercise data set
-    //        If not, create one and add to entry.data array
-    //      Iterate through current entry.data
-    //        if current entryData.exercise == exercise, return entryData.sets [existing data plus newSet]
-    //        if not, return entry.data
-
-    //    If current entry is not today
-    //      return entry
 
     updatedHistory = updatedHistory.map(entry => {
 
       if (isToday(entry.date)) {
-        let updatedEntry: HistoryEntry = { ...entry }
-        const newEntryData: HistoryEntryData = { exercise, sets: [] }
-
+        let updatedEntry = { ...entry }
         const hasExistingExerciseData = entry.data.find(data => data.exercise === exercise)
 
         if (!hasExistingExerciseData) {
-          updatedEntry = { ...updatedEntry, data: [...entry.data, newEntryData] }
+          updatedEntry = { ...updatedEntry, data: [...entry.data, { exercise, sets: [] }] }
         }
 
         const updatedEntryData = updatedEntry.data.map(data => {
-          if (data.exercise === exercise) {
-            const updatedData: HistoryEntryData = { exercise, sets: [...data.sets, newSet] }
-            return updatedData
-          }
+          if (data.exercise === exercise) return { exercise, sets: [...data.sets, { weight: +weight, reps: +reps }] }
+
           return data
         })
 
-
-
         return { ...updatedEntry, data: updatedEntryData }
-
       }
+
       return entry
     })
-
-    console.log(updatedHistory)
-
-
 
     const updatedUser: Client = {
       ...(activeUser as Client),
@@ -98,8 +70,7 @@ const useClientActions = () => {
         ...(activeUser as Client).trainingPlan,
         history: updatedHistory,
       },
-    };
-
+    }
     updateUser(updatedUser);
   };
 
