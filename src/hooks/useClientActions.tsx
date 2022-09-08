@@ -60,7 +60,35 @@ const useClientActions = () => {
     //    If current entry is not today
     //      return entry
 
+    updatedHistory = updatedHistory.map(entry => {
 
+      if (isToday(entry.date)) {
+        let updatedEntry: HistoryEntry = { ...entry }
+        const newEntryData: HistoryEntryData = { exercise, sets: [] }
+
+        const hasExistingExerciseData = entry.data.find(data => data.exercise === exercise)
+
+        if (!hasExistingExerciseData) {
+          updatedEntry = { ...updatedEntry, data: [...entry.data, newEntryData] }
+        }
+
+        const updatedEntryData = updatedEntry.data.map(data => {
+          if (data.exercise === exercise) {
+            const updatedData: HistoryEntryData = { exercise, sets: [...data.sets, newSet] }
+            return updatedData
+          }
+          return data
+        })
+
+
+
+        return { ...updatedEntry, data: updatedEntryData }
+
+      }
+      return entry
+    })
+
+    console.log(updatedHistory)
 
 
 
