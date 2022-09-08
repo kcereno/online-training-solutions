@@ -21,7 +21,7 @@ const HistoryAccordionEntry = ({
   const { deleteSetFromLog } = useClientActions();
 
   const handleDeleteSet = (setIndex: number) => {
-    deleteSetFromLog(todaysHistoryEntry!, exercise.name, setIndex);
+    deleteSetFromLog(exercise.name, setIndex, todaysHistoryEntry!.date);
   };
 
   return (

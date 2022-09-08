@@ -56,14 +56,14 @@ export let DUMMY_DATA: UserType[] = [
           ],
         },
         {
-          date: new Date(2022, 8, 6),
+          date: new Date(2022, 8, 8),
           data: [
             {
               exercise: "Bench Press",
               sets: [
-                { weight: 225, reps: 8 },
-                { weight: 225, reps: 8 },
-                { weight: 225, reps: 8 },
+                { weight: 100, reps: 8 },
+                { weight: 200, reps: 8 },
+                { weight: 300, reps: 8 },
               ],
             },
             {

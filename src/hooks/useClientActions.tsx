@@ -20,7 +20,7 @@ const useClientActions = () => {
         historyEntry.date.getTime() === today.getTime()
     );
 
-  const fetchTodaysWorkoutEntries = (date: Date) => { };
+  const fetchTodaysWorkoutEntries = (date: Date) => {};
 
   //  SET FUNCTIONS
   const addSetToLog = (
@@ -28,37 +28,51 @@ const useClientActions = () => {
     weight: number,
     reps: number
   ): void => {
-
-    const todaysHistoryEntry = fetchTodaysHistoryEntry((activeUser as Client).trainingPlan.history)
+    const todaysHistoryEntry = fetchTodaysHistoryEntry(
+      (activeUser as Client).trainingPlan.history
+    );
 
     let updatedHistory: HistoryEntry[] = [
       ...(activeUser as Client).trainingPlan.history,
     ];
 
     if (!todaysHistoryEntry) {
-      updatedHistory = [...updatedHistory, {
-        date: today,
-        data: [],
-      }];
+      updatedHistory = [
+        ...updatedHistory,
+        {
+          date: today,
+          data: [],
+        },
+      ];
     }
 
-    updatedHistory = updatedHistory.map(entry => {
+    updatedHistory = updatedHistory.map((entry) => {
       if (isToday(entry.date)) {
-        let updatedEntry = { ...entry }
-        
-        const hasExistingExerciseData = entry.data.find(data => data.exercise === exercise)
+        let updatedEntry = { ...entry };
 
-        if (!hasExistingExerciseData) updatedEntry = { ...updatedEntry, data: [...entry.data, { exercise, sets: [] }] }
+        const hasExistingExerciseData = entry.data.find(
+          (data) => data.exercise === exercise
+        );
 
-        const updatedEntryData = updatedEntry.data.map(data => {
-          if (data.exercise === exercise) return { exercise, sets: [...data.sets, { weight: +weight, reps: +reps }] }
+        if (!hasExistingExerciseData)
+          updatedEntry = {
+            ...updatedEntry,
+            data: [...entry.data, { exercise, sets: [] }],
+          };
 
-          return data
-        })
-        return { ...updatedEntry, data: updatedEntryData }
+        const updatedEntryData = updatedEntry.data.map((data) => {
+          if (data.exercise === exercise)
+            return {
+              exercise,
+              sets: [...data.sets, { weight: +weight, reps: +reps }],
+            };
+
+          return data;
+        });
+        return { ...updatedEntry, data: updatedEntryData };
       }
-      return entry
-    })
+      return entry;
+    });
 
     const updatedUser: Client = {
       ...(activeUser as Client),
@@ -66,15 +80,43 @@ const useClientActions = () => {
         ...(activeUser as Client).trainingPlan,
         history: updatedHistory,
       },
-    }
+    };
     updateUser(updatedUser);
   };
 
-  const deleteSetFromLog = (
-    historyEntry: HistoryEntry,
-    exercise: string,
-    setIndex: number
-  ) => { };
+  const deleteSetFromLog = (exercise: string, setIndex: number, date: Date) => {
+    console.log("deleteSetFromLog ~ Date", date);
+
+    const updatedHistory: HistoryEntry[] = (
+      activeUser as Client
+    ).trainingPlan.history.map((entry) => {
+      if (isToday(entry.date)) {
+        const updatedData: HistoryEntryData[] = entry.data.map((data) => {
+          if (data.exercise === exercise) {
+            const updatedSets: Set[] = data.sets.filter(
+              (set, index) => index !== setIndex
+            );
+            return { ...data, sets: updatedSets };
+          }
+          return data;
+        });
+
+        const updatedEntry: HistoryEntry = { ...entry, data: updatedData };
+        return updatedEntry;
+      }
+      return entry;
+    });
+
+    const updatedUser: Client = {
+      ...(activeUser as Client),
+      trainingPlan: {
+        ...(activeUser as Client).trainingPlan,
+        history: updatedHistory,
+      },
+    };
+
+    updateUser(updatedUser);
+  };
 
   return {
     fetchTodaysWorkoutEntries,
