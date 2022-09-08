@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";

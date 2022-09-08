@@ -1,8 +1,7 @@
-import { Accordion, Container, Card } from "react-bootstrap";
-import { Client, HistoryEntryData, HistoryEntry } from "../../data/interfaces";
-import { today } from "../../data/functions";
-import ExerciseLogEntryForm from "../../components/Client/ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
-import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
+import { Container } from "react-bootstrap";
+import { Client } from "../../data/interfaces";
+import HistoryAccordion from "../../components/Client/HistoryAccordion/HistoryAccordion";
+import useClientActions from "../../hooks/useClientActions";
 
 interface Props {
   client: Client;
@@ -14,58 +13,17 @@ const ClientDashboard = ({
     trainingPlan: { program, history },
   },
 }: Props) => {
-  const todaysHistoryEntry = history.find(
-    (historyEntry: HistoryEntry) =>
-      historyEntry.date.getTime() === today.getTime()
-  )?.data;
-  console.log("todaysHistoryEntry", todaysHistoryEntry);
+  const { fetchTodaysHistoryEntry } = useClientActions();
+  const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
 
   return (
-    <Container className="text-white my-3" style={{ maxWidth: "700px" }}>
+    <Container className="text-white my-5" style={{ maxWidth: "700px" }}>
       <h1>Hello {firstName}</h1>
-      <p>This is your program</p>
-
-      <div className="accordion">
-        <Accordion defaultActiveKey="0">
-          {program.map((exercise, index) => (
-            <Card style={{ background: "#212529" }} key={index.toString()}>
-              <Card.Header className="">
-                <CustomToggle
-                  eventKey={index.toString()}
-                  exercise={exercise.name}
-                  targets={{
-                    weight: exercise.weight,
-                    reps: exercise.reps,
-                    sets: exercise.sets,
-                  }}
-                />
-              </Card.Header>
-              <Accordion.Collapse eventKey={index.toString()}>
-                <Card.Body>
-                  {todaysHistoryEntry?.map(
-                    (historyEntryData: HistoryEntryData) =>
-                      historyEntryData.exercise === exercise.name
-                        ? historyEntryData.sets.map((set, index) => (
-                            <div
-                              className="text-center mb-2"
-                              key={index.toString()}
-                            >
-                              <strong>Set {index + 1}:</strong>{" "}
-                              {`${set.weight}lbs for  ${set.reps} reps`}
-                            </div>
-                          ))
-                        : null
-                  )}
-                  {!todaysHistoryEntry && (
-                    <h4 className="text-center"> Add set below</h4>
-                  )}
-                  <ExerciseLogEntryForm exercise={exercise.name} />
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          ))}
-        </Accordion>
-      </div>
+      <p>This is your program today is</p>
+      <HistoryAccordion
+        program={program}
+        todaysHistoryEntry={todaysHistoryEntry}
+      />
     </Container>
   );
 };
