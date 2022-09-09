@@ -3,6 +3,7 @@ import { Button, Card, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
 import { Row, Col } from "react-bootstrap";
 import "./ClientProgram.css";
+import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 
 interface Props {
   program: AssignedExercise[];
@@ -49,7 +50,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
   );
 
   return (
-    <Card className="client-program-container mb-3">
+    <SurfaceCard className="mb-3">
       <Container>
         <Row>
           <Col className="d-flex justify-content-between align-items-center ">
@@ -92,22 +93,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
           </tbody>
         </Table>
       </Container>
-
-      {/* <ul>
-        {program.map((exercise: AssignedExercise) => {
-          return (
-            <li key={exercise.name}>
-              {`${exercise.name} Target Weight: ${exercise.weight} || Target Reps:${exercise.reps} || Target Sets: ${exercise.sets}`}{" "}
-              {editMode && (
-                <Button onClick={() => handleDeleteButtonClick(exercise.name)}>
-                  Delete
-                </Button>
-              )}
-            </li>
-          );
-        })}
-      </ul> */}
-    </Card>
+    </SurfaceCard>
   );
 };
 
