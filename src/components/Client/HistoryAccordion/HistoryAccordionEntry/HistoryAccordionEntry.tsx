@@ -5,7 +5,7 @@ import CustomToggle from "../../../../UI/Accordion/CustomToggle/CustomToggle";
 import { HistoryEntryData } from "../../../../data/interfaces";
 import SetEntry from "../SetEntry/SetEntry";
 import ExerciseLogEntryForm from "../../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
-import useClientActions from "../../../../hooks/useClientActions";
+import useModal from "../../../../hooks/useModal";
 
 interface Props {
   index: number;
@@ -18,10 +18,14 @@ const HistoryAccordionEntry = ({
   exercise,
   todaysHistoryEntry,
 }: Props) => {
-  const { deleteSetFromLog } = useClientActions();
+  const { showDeleteSetModal } = useModal();
 
   const handleDeleteSet = (setIndex: number) => {
-    deleteSetFromLog(todaysHistoryEntry!, exercise.name, setIndex);
+    showDeleteSetModal({
+      exercise: exercise.name,
+      setIndex: setIndex,
+      date: todaysHistoryEntry!.date,
+    });
   };
 
   return (
