@@ -2,6 +2,9 @@ import { Container, Tabs, Tab } from "react-bootstrap";
 import { Client } from "../../data/interfaces";
 import HistoryAccordion from "../../components/Client/HistoryAccordion/HistoryAccordion";
 import useClientActions from "../../hooks/useClientActions";
+import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
+import { useContext } from "react";
+import UserContext from "../../store/User/user-context";
 
 interface Props {
   client: Client;
@@ -14,6 +17,7 @@ const ClientDashboard = ({
   },
 }: Props) => {
   const { todaysHistoryEntry } = useClientActions();
+  const { activeUser } = useContext(UserContext);
 
   return (
     <Container className="text-white my-5" style={{ maxWidth: "700px" }}>
@@ -25,7 +29,7 @@ const ClientDashboard = ({
           />
         </Tab>
         <Tab eventKey="profile" title="Previous Workouts">
-          <h1>History</h1>
+          <ExerciseLog logs={(activeUser as Client).trainingPlan.history} />
         </Tab>
       </Tabs>
     </Container>
