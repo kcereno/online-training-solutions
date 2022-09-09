@@ -13,8 +13,7 @@ const ClientDashboard = ({
     trainingPlan: { program, history },
   },
 }: Props) => {
-  const { fetchTodaysHistoryEntry } = useClientActions();
-  const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
+  const { todaysHistoryEntry } = useClientActions();
 
   return (
     <Container className="text-white my-5" style={{ maxWidth: "700px" }}>

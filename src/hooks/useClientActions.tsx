@@ -1,11 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { today, isToday } from "../data/functions";
 import { Client, HistoryEntry } from "../data/interfaces";
 import UserContext from "../store/User/user-context";
 import { updateClientHistory } from "../data/functions";
 
 const useClientActions = () => {
+  const [todaysHistoryEntry, setTodaysHistoryEntry] = useState<
+    HistoryEntry | undefined
+  >(undefined);
+
   const { activeUser, updateUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchedTodaysHistoryEntry = fetchTodaysHistoryEntry(
+      (activeUser as Client).trainingPlan.history
+    );
+
+    if (fetchedTodaysHistoryEntry)
+      setTodaysHistoryEntry(fetchedTodaysHistoryEntry);
+  }, [activeUser]);
 
   // FETCH FUNCTIONS
   const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
@@ -111,6 +124,7 @@ const useClientActions = () => {
     addSetToLog,
     fetchTodaysHistoryEntry,
     deleteSetFromLog,
+    todaysHistoryEntry,
   };
 };
 
