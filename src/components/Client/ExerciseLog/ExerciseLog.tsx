@@ -3,6 +3,7 @@ import { Accordion, Card, Container, Row, Col } from "react-bootstrap";
 import { HistoryEntry } from "../../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap";
 import "./ExerciseLog.css";
+import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 
 interface Props {
   logs: HistoryEntry[];
@@ -28,7 +29,7 @@ function CustomToggle({ children, eventKey }: CustomToggleInterface) {
 
 const ExerciseLog = ({ logs }: Props) => {
   return (
-    <Card className="exercise-log-container">
+    <SurfaceCard>
       <Container>
         <Row>
           <Col>
@@ -77,7 +78,10 @@ const ExerciseLog = ({ logs }: Props) => {
           </Col>
         </Row>
       </Container>
-    </Card>
+    </SurfaceCard>
+    // <Card className="exercise-log-container">
+
+    //
   );
 };
 
