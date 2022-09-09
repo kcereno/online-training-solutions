@@ -1,18 +1,11 @@
 import { useContext } from "react";
 import { today, isToday } from "../data/functions";
-import {
-  Client,
-  HistoryEntryData,
-  HistoryEntry,
-  Set,
-} from "../data/interfaces";
-import DatabaseContext from "../store/Database/database-context";
+import { Client, HistoryEntry } from "../data/interfaces";
 import UserContext from "../store/User/user-context";
 import { updateClientHistory } from "../data/functions";
 
 const useClientActions = () => {
   const { activeUser, updateUser } = useContext(UserContext);
-  const { database } = useContext(DatabaseContext);
 
   // FETCH FUNCTIONS
   const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>

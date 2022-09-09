@@ -3,6 +3,7 @@ import ModalContext from "../store/Modal/modal-context";
 import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
 import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
 import { AddExerciseModal } from "../UI/Modals/ModalTypes/AddExerciseModal";
+import DeleteSetModal from "../UI/Modals/ModalTypes/DeleteSetModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
@@ -26,6 +27,18 @@ const useModal = () => {
     setModalContent(null);
   };
 
+  interface Props {
+    exercise: string;
+    setIndex: number;
+    date: Date;
+  }
+  const showDeleteSetModal = ({ exercise, setIndex, date }: Props) => {
+    setIsShowing(true);
+    setModalContent(
+      <DeleteSetModal exercise={exercise} setIndex={setIndex} date={date} />
+    );
+  };
+
   return {
     isShowing,
     hideModal,
@@ -33,6 +46,7 @@ const useModal = () => {
     showAddClientModal,
     showDeleteClientModal,
     showAddExerciseModal,
+    showDeleteSetModal,
   };
 };
 
