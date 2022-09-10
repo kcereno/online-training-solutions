@@ -1,14 +1,15 @@
-import { Container, Tabs, Tab, Accordion, Card } from "react-bootstrap";
+import { Tabs, Tab, Accordion, Card } from "react-bootstrap";
 import { Client } from "../../data/interfaces";
-import HistoryAccordion from "../../components/Client/HistoryAccordion/HistoryAccordion";
+
 import useClientActions from "../../hooks/useClientActions";
-import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
+
 import { useContext } from "react";
 import UserContext from "../../store/User/user-context";
 import SurfaceCard from "../../UI/SurfaceCard/SurfaceCard";
 import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
 import { HistoryEntry } from "../../data/interfaces";
 import { useAccordionButton } from "react-bootstrap";
+import TodaysWorkoutAccordion from "../../components/Client/TodaysWorkoutAccordion/TodaysWorkoutAccordion";
 
 interface Props {
   client: Client;
@@ -49,7 +50,7 @@ const ClientDashboard = ({
     >
       <Tabs defaultActiveKey="todaysWorkout">
         <Tab eventKey="todaysWorkout" title="Todays Workout">
-          <HistoryAccordion
+          <TodaysWorkoutAccordion
             program={program}
             todaysHistoryEntry={todaysHistoryEntry}
           />

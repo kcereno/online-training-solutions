@@ -13,7 +13,7 @@ interface Props {
   todaysHistoryEntry: HistoryEntry | undefined;
 }
 
-const HistoryAccordionEntry = ({
+const TodaysWorkoutAccordionEntry = ({
   index,
   exercise,
   todaysHistoryEntry,
@@ -68,4 +68,4 @@ const HistoryAccordionEntry = ({
   );
 };
 
-export default HistoryAccordionEntry;
+export default TodaysWorkoutAccordionEntry;
