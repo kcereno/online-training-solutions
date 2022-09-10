@@ -1,4 +1,5 @@
 import { HistoryEntry } from "./interfaces";
+import { Client } from "./interfaces";
 
 export const createId = (fName: string, lName: string) => {
   const firstLetter = fName.slice(0, 1);
@@ -23,3 +24,36 @@ export const isToday = (date: Date) => {
 };
 
 export const today = convertDate(new Date());
+
+export const updateClientHistory = (
+  client: Client,
+  updatedHistory: HistoryEntry[]
+) => {
+  return {
+    ...client,
+    trainingPlan: { ...client.trainingPlan, history: updatedHistory },
+  };
+};
+
+export const dateToString = (date: Date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  return `${months[month]} ${day}, ${year}`;
+};

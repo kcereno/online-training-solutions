@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Button, Card, Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import "./ClientProgram.css";
+import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
+import Separator from "../../../UI/Separator/Separator";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   program: AssignedExercise[];
@@ -49,15 +53,14 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
   );
 
   return (
-    <Card className="client-program-container mb-3">
+    <SurfaceCard className="mb-3">
       <Container>
-        <Row>
-          <Col className="d-flex justify-content-between align-items-center ">
-            <h2 className="pt-2">Program</h2>
-            {editButton}
-          </Col>
-        </Row>
-        <Table bordered hover variant="dark" className="text-center">
+        <Col className="d-flex justify-content-between align-items-center my-2 ">
+          <h2 className="pt-2">Program</h2>
+          {editButton}
+        </Col>
+        <Separator width={100} />
+        <Table bordered hover variant="dark" className="text-center my-3">
           <thead>
             <tr>
               <th>Exercise</th>
@@ -77,13 +80,11 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
                   <th>{exercise.sets}</th>
                   {editMode && (
                     <th>
-                      <Button
-                        style={{ backgroundColor: "#dc3545", height: "50%" }}
-                        variant="danger"
+                      <FontAwesomeIcon
+                        icon={faTrashCan}
                         onClick={() => handleDeleteButtonClick(exercise.name)}
-                      >
-                        X
-                      </Button>
+                        style={{ color: "red" }}
+                      />
                     </th>
                   )}
                 </tr>
@@ -92,22 +93,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
           </tbody>
         </Table>
       </Container>
-
-      {/* <ul>
-        {program.map((exercise: AssignedExercise) => {
-          return (
-            <li key={exercise.name}>
-              {`${exercise.name} Target Weight: ${exercise.weight} || Target Reps:${exercise.reps} || Target Sets: ${exercise.sets}`}{" "}
-              {editMode && (
-                <Button onClick={() => handleDeleteButtonClick(exercise.name)}>
-                  Delete
-                </Button>
-              )}
-            </li>
-          );
-        })}
-      </ul> */}
-    </Card>
+    </SurfaceCard>
   );
 };
 

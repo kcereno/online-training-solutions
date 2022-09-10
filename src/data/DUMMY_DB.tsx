@@ -28,7 +28,7 @@ export let DUMMY_DATA: UserType[] = [
     },
     trainingPlan: {
       trainer: "kcereno89",
-      goal: "GAIN STRENGTH",
+      goal: "Gain strength",
       program: [
         { name: "Bench Press", weight: 225, reps: 10, sets: 4 },
         { name: "Deadlift", weight: 315, reps: 5, sets: 4 },
@@ -56,14 +56,14 @@ export let DUMMY_DATA: UserType[] = [
           ],
         },
         {
-          date: new Date(2022, 8, 2),
+          date: new Date(2022, 8, 8),
           data: [
             {
               exercise: "Bench Press",
               sets: [
-                { weight: 225, reps: 8 },
-                { weight: 225, reps: 8 },
-                { weight: 225, reps: 8 },
+                { weight: 100, reps: 8 },
+                { weight: 200, reps: 8 },
+                { weight: 300, reps: 8 },
               ],
             },
             {
@@ -94,7 +94,7 @@ export let DUMMY_DATA: UserType[] = [
     },
     trainingPlan: {
       trainer: "kcereno89",
-      goal: "BUILD MUSCLE",
+      goal: "Build muscle",
       program: [],
       history: [],
     },
@@ -113,7 +113,7 @@ export let DUMMY_DATA: UserType[] = [
     },
     trainingPlan: {
       trainer: "kcereno89",
-      goal: "LOSE FAT",
+      goal: "Lose fat",
       program: [],
       history: [],
     },
@@ -132,7 +132,7 @@ export let DUMMY_DATA: UserType[] = [
     },
     trainingPlan: {
       trainer: "kcereno89",
-      goal: "BODY RECOMPOSITION",
+      goal: "Body recomposition",
       program: [],
       history: [],
     },
@@ -151,7 +151,7 @@ export let DUMMY_DATA: UserType[] = [
     },
     trainingPlan: {
       trainer: "kcereno89",
-      goal: "SPORTS SPECIFIC",
+      goal: "Sports specific",
       program: [],
       history: [],
     },

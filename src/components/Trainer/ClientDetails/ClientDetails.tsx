@@ -1,35 +1,48 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { UserInfo } from "../../../data/interfaces";
-import { Row, Col } from "react-bootstrap";
+import Separator from "../../../UI/Separator/Separator";
+import { dateToString } from "../../../data/functions";
 import "./ClientDetails.css";
-
 interface Props {
   info: UserInfo;
+  goal: string;
+  notes?: string;
 }
 
 const ClientDetails = ({
   info: { firstName, lastName, birthday, email, profilePicture },
+  goal,
+  notes,
 }: Props) => {
   return (
-    <Card className="client-details-container my-3">
-      <Card.Img className="pb-2" src={profilePicture} alt="Card image" />
-      <h2 className="text-center client-details-name">
+    <Card
+      className="client-details-container mb-3"
+      style={{ marginRight: "auto", marginLeft: "auto" }}
+    >
+      <Card.Img
+        className="pb-2 card-img"
+        src={profilePicture}
+        alt="Card image"
+      />
+      <h1 className="text-center client-details-name display-6">
         {firstName} {lastName}
-      </h2>
-      <Container fluid>
-        <Row>
-          <Col>Email</Col>
-          <Col>{email}</Col>
-        </Row>{" "}
-        <Row>
-          <Col>Date of Birth</Col>
-          {/* TODO: Remove day */}
-          <Col>{birthday.toDateString()}</Col>
-        </Row>
+      </h1>
+      <Separator />
+      <Container fluid className="my-3">
+        <p className="text-muted info-field">Contact Email</p>
+        <p>{email}</p>
+        <p className="text-muted info-field  mb-0">Birthday</p>
+        <p>{dateToString(birthday)}</p>
       </Container>
-      {/* <p>{birthday.toDateString()}</p>
-      <p>{email}</p> */}
+      <Separator />
+
+      <Container fluid className="my-3">
+        <p className="text-muted info-field">Goal</p>
+        <p>{goal}</p>
+        <p className="text-muted info-field">Notes</p>
+        <p>{notes}</p>
+      </Container>
     </Card>
   );
 };

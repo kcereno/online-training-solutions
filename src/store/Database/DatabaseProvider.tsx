@@ -9,7 +9,7 @@ type Props = {
 
 const DatabaseProvider = ({ children }: Props) => {
   const [database, setDatabase] = useState<UserType[]>(DUMMY_DATA);
-  console.log("DatabaseProvider ~ database", database);
+  // console.log("DatabaseProvider ~ database", database);
 
   const fetchUser = (userId: string): UserType | undefined =>
     database.find((user) => user.info.id === userId);

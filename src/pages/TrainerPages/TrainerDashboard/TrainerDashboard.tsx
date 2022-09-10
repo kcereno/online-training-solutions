@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { Client, Trainer } from "../../data/interfaces";
-import { useTrainerActions } from "../../hooks/useTrainerActions";
-import useModal from "../../hooks/useModal";
-import ClientsSection from "../../components/Sections/ClientsSection/ClientsSection";
+import { Client, Trainer } from "../../../data/interfaces";
+import { useTrainerActions } from "../../../hooks/useTrainerActions";
+import useModal from "../../../hooks/useModal";
+import ClientsSection from "../../../sections/TrainerSections/ClientsSection/ClientsSection";
 import "./TrainerDashboard.css";
 
 interface Props {
