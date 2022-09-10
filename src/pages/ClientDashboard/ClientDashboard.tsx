@@ -1,15 +1,11 @@
-import { Tabs, Tab, Accordion, Card } from "react-bootstrap";
+import { Tabs, Tab } from "react-bootstrap";
 import { Client } from "../../data/interfaces";
-
-import useClientActions from "../../hooks/useClientActions";
-
 import { useContext } from "react";
 import UserContext from "../../store/User/user-context";
 import SurfaceCard from "../../UI/SurfaceCard/SurfaceCard";
-import CustomToggle from "../../UI/Accordion/CustomToggle/CustomToggle";
-import { HistoryEntry } from "../../data/interfaces";
-import { useAccordionButton } from "react-bootstrap";
 import TodaysWorkoutAccordion from "../../components/Client/TodaysWorkoutAccordion/TodaysWorkoutAccordion";
+import HistoryAccordion from "../../components/Shared/HistoryAccordion/HistoryAccordion";
+import useClientActions from "../../hooks/useClientActions";
 
 interface Props {
   client: Client;
@@ -23,24 +19,6 @@ const ClientDashboard = ({
 }: Props) => {
   const { todaysHistoryEntry } = useClientActions();
   const { activeUser } = useContext(UserContext);
-
-  interface CustomToggleInterface {
-    children: React.ReactNode;
-    eventKey: string;
-  }
-
-  function CustomToggle({ children, eventKey }: CustomToggleInterface) {
-    const decoratedOnClick = useAccordionButton(eventKey);
-
-    return (
-      <p
-        style={{ marginTop: "auto", marginBottom: "auto" }}
-        onClick={decoratedOnClick}
-      >
-        {children}
-      </p>
-    );
-  }
 
   return (
     <SurfaceCard
@@ -56,40 +34,9 @@ const ClientDashboard = ({
           />
         </Tab>
         <Tab eventKey="profile" title="Previous Workouts">
-          <Accordion defaultActiveKey="0">
-            {(activeUser as Client).trainingPlan.history.map(
-              (HistoryEntry: HistoryEntry) => (
-                <Card
-                  style={{ background: "#212529" }}
-                  key={HistoryEntry.date.toDateString()}
-                >
-                  <Card.Header>
-                    <CustomToggle eventKey={HistoryEntry.date.toDateString()}>
-                      {HistoryEntry.date.toDateString()}
-                    </CustomToggle>
-                  </Card.Header>
-                  <Accordion.Collapse
-                    eventKey={HistoryEntry.date.toDateString()}
-                  >
-                    <Card.Body style={{ background: "black" }}>
-                      {HistoryEntry.data.map((data, index) => (
-                        <div key={index.toString()}>
-                          <p>{data.exercise}</p>
-                          {data.sets.map((set, index) => (
-                            <ul key={index.toString()}>
-                              <li>{`Set: ${index + 1} Weight: ${
-                                set.weight
-                              } Reps: ${set.reps}`}</li>
-                            </ul>
-                          ))}
-                        </div>
-                      ))}
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              )
-            )}
-          </Accordion>
+          <HistoryAccordion
+            history={(activeUser as Client).trainingPlan.history}
+          />
         </Tab>
       </Tabs>
     </SurfaceCard>

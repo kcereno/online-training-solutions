@@ -25,7 +25,7 @@ const HistoryAccordion = ({ history }: Props) => {
   }
 
   return (
-    <Accordion defaultActiveKey="0" className="pb-3">
+    <Accordion defaultActiveKey="0">
       {history.map((HistoryEntry: HistoryEntry) => (
         <Card
           style={{ background: "#212529" }}
