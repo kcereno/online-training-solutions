@@ -5,6 +5,7 @@ import useClientActions from "../../hooks/useClientActions";
 import ExerciseLog from "../../components/Client/ExerciseLog/ExerciseLog";
 import { useContext } from "react";
 import UserContext from "../../store/User/user-context";
+import SurfaceCard from "../../UI/SurfaceCard/SurfaceCard";
 
 interface Props {
   client: Client;
@@ -20,8 +21,12 @@ const ClientDashboard = ({
   const { activeUser } = useContext(UserContext);
 
   return (
-    <Container className="text-white my-5" style={{ maxWidth: "700px" }}>
-      <Tabs defaultActiveKey="todaysWorkout" className="mb-3">
+    <SurfaceCard
+      style={{ maxWidth: "700px" }}
+      centered
+      className="text-white my-5"
+    >
+      <Tabs defaultActiveKey="todaysWorkout">
         <Tab eventKey="todaysWorkout" title="Todays Workout">
           <HistoryAccordion
             program={program}
@@ -29,19 +34,12 @@ const ClientDashboard = ({
           />
         </Tab>
         <Tab eventKey="profile" title="Previous Workouts">
-          <ExerciseLog logs={(activeUser as Client).trainingPlan.history} />
+          <h1>TEst</h1>
+          {/* <ExerciseLog logs={(activeUser as Client).trainingPlan.history} /> */}
         </Tab>
       </Tabs>
-    </Container>
+    </SurfaceCard>
   );
 };
 
 export default ClientDashboard;
-
-{
-  /* <Container className="text-white my-5" style={{ maxWidth: "700px" }}>
-
-<p>This is your program today is</p>
-
-</Container> */
-}
