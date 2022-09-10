@@ -16,7 +16,10 @@ const ClientDetails = ({
   notes,
 }: Props) => {
   return (
-    <Card className="client-details-container ">
+    <Card
+      className="client-details-container"
+      style={{ marginRight: "auto", marginLeft: "auto" }}
+    >
       <Card.Img
         className="pb-2 card-img"
         src={profilePicture}
@@ -29,7 +32,7 @@ const ClientDetails = ({
       <Container fluid className="my-3">
         <p className="text-muted info-field">Contact Email</p>
         <p>{email}</p>
-        <p className="text-muted info-field">Birthday</p>
+        <p className="text-muted info-field  mb-0">Birthday</p>
         <p>{dateToString(birthday)}</p>
       </Container>
       <Separator />
