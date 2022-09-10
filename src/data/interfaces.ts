@@ -48,8 +48,8 @@ export interface AssignedExercise {
 }
 
 export type TrainingGoal =
-  | "BUILD MUSCLE"
-  | "LOSE FAT"
-  | "GAIN STRENGTH"
-  | "BODY RECOMPOSITION"
-  | "SPORTS SPECIFIC";
+  | "Build muscle"
+  | "Lose fat"
+  | "Gain strength"
+  | "Body recomposition"
+  | "Sports specific";

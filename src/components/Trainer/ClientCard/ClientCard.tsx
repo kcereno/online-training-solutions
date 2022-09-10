@@ -40,11 +40,11 @@ const ClientCard = ({
 
   const setBadge = () => {
     const cases: stringToJSXElementIndex = {
-      "BUILD MUSCLE": <Badge bg="primary">BUILD MUSCLE</Badge>,
-      "LOSE FAT": <Badge bg="danger">LOSE FAT</Badge>,
-      "GAIN STRENGTH": <Badge bg="success">GAIN STRENGTH</Badge>,
-      "BODY RECOMPOSITION": <Badge bg="secondary">BODY RECOMPOSITION</Badge>,
-      "SPORTS SPECIFIC": <Badge bg="warning">SPORTS SPECIFIC</Badge>,
+      "Build muscle": <Badge bg="primary">BUILD MUSCLE</Badge>,
+      "Lose fat": <Badge bg="danger">LOSE FAT</Badge>,
+      "Gain strength": <Badge bg="success">GAIN STRENGTH</Badge>,
+      "Body recomposition": <Badge bg="secondary">BODY RECOMPOSITION</Badge>,
+      "Sports specific": <Badge bg="warning">SPORTS SPECIFIC</Badge>,
     };
 
     return cases[goal];
@@ -63,9 +63,7 @@ const ClientCard = ({
         <hr style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }} />
         <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
           <Container>
-            <p>
-              {notes ? notes : 'Client does not have notes'}
-            </p>
+            <p>{notes ? notes : "Client does not have notes"}</p>
           </Container>
           <hr
             style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}

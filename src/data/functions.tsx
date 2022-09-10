@@ -34,3 +34,26 @@ export const updateClientHistory = (
     trainingPlan: { ...client.trainingPlan, history: updatedHistory },
   };
 };
+
+export const dateToString = (date: Date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  return `${months[month]} ${day}, ${year}`;
+};
