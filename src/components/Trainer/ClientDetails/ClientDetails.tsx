@@ -17,7 +17,7 @@ const ClientDetails = ({
 }: Props) => {
   return (
     <Card
-      className="client-details-container"
+      className="client-details-container mb-3"
       style={{ marginRight: "auto", marginLeft: "auto" }}
     >
       <Card.Img
