@@ -1,12 +1,9 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { UserInfo } from "../../../data/interfaces";
-import { Row, Col } from "react-bootstrap";
-import "./ClientDetails.css";
 import Separator from "../../../UI/Separator/Separator";
-import { info } from "console";
 import { dateToString } from "../../../data/functions";
-
+import "./ClientDetails.css";
 interface Props {
   info: UserInfo;
   goal: string;
@@ -19,7 +16,7 @@ const ClientDetails = ({
   notes,
 }: Props) => {
   return (
-    <Card className="client-details-container my-3">
+    <Card className="client-details-container ">
       <Card.Img
         className="pb-2 card-img"
         src={profilePicture}
