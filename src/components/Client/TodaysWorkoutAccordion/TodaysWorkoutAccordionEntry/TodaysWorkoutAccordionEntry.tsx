@@ -1,7 +1,7 @@
 import React from "react";
 import { Accordion, Card } from "react-bootstrap";
 import { AssignedExercise, HistoryEntry } from "../../../../data/interfaces";
-import CustomToggle from "../../../../UI/Accordion/CustomToggle/CustomToggle";
+import CustomToggle from "../../../../UI/CustomAccordion/CustomToggle/CustomToggle";
 import { HistoryEntryData } from "../../../../data/interfaces";
 import SetEntry from "../SetEntry/SetEntry";
 import ExerciseLogEntryForm from "../../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
