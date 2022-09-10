@@ -32,8 +32,8 @@ const ExerciseLog = ({ logs }: Props) => {
     <SurfaceCard>
       <Container>
         <Row>
-          <Col>
-            <h2 className="pt-1 pb-0">Logs</h2>
+          <Col className="my-2">
+            <h2 className="pt-2">Logs</h2>
             <hr
               style={{
                 width: "100%",
