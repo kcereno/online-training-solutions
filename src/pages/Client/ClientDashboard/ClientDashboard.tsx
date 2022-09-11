@@ -1,11 +1,11 @@
 import { Tabs, Tab } from "react-bootstrap";
-import { Client } from "../../data/interfaces";
+import { Client } from "../../../data/interfaces";
 import { useContext } from "react";
-import UserContext from "../../store/User/user-context";
-import SurfaceCard from "../../UI/SurfaceCard/SurfaceCard";
-import TodaysWorkoutAccordion from "../../components/Client/TodaysWorkoutAccordion/TodaysWorkoutAccordion";
-import HistoryAccordion from "../../components/Shared/HistoryAccordion/HistoryAccordion";
-import useClientActions from "../../hooks/useClientActions";
+import UserContext from "../../../store/User/user-context";
+import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
+import TodaysWorkoutAccordion from "../../../components/Client/TodaysWorkoutAccordion/TodaysWorkoutAccordion";
+import HistoryAccordion from "../../../components/Shared/HistoryAccordion/HistoryAccordion";
+import useClientActions from "../../../hooks/useClientActions";
 
 interface Props {
   client: Client;
