@@ -7,8 +7,8 @@ import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import UserContext from "../../../store/User/user-context";
 import { Client } from "../../../data/interfaces";
-import AccordianInput from "../../Accordion/AccordionInput";
-import { AccordionItem } from "../../Accordion/AccordionItem";
+import AccordianInput from "../../CustomAccordion/AccordionInput";
+import { AccordionItem } from "../../CustomAccordion/AccordionItem";
 
 export const AddClientModal = () => {
   const { activeUser } = useContext(UserContext);

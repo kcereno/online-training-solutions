@@ -1,9 +1,8 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { HistoryEntry } from "../../../data/interfaces";
-import "./ExerciseLog.css";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import HistoryAccordion from "../../Shared/HistoryAccordion/HistoryAccordion";
+import "./ExerciseLog.css";
 
 interface Props {
   history: HistoryEntry[];
