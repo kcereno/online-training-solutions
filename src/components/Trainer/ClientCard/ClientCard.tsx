@@ -51,26 +51,21 @@ const ClientCard = ({
   };
 
   const cardFront = (
-    <Card className="text-center card-container mx-4 mb-4">
+    <Card className="text-center card-container">
       <Card.Img
         variant="top"
         className="profile-picture"
         src={profilePicture}
       />
-      <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
-      <Card.Subtitle>{setBadge()}</Card.Subtitle>
-      <hr
-        style={{
-          width: "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      />
+      <div className="my-3">
+        <Card.Title className="">{`${firstName} ${lastName}`}</Card.Title>
+        <Card.Subtitle>{setBadge()}</Card.Subtitle>
+      </div>
     </Card>
   );
 
   const cardBack = (
-    <Card className="text-center card-container mx-4 mb-4">
+    <Card className="text-center card-container">
       <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
         <Container>
           <p>{notes ? notes : "Client does not have notes"}</p>
@@ -101,48 +96,12 @@ const ClientCard = ({
   );
 
   return (
-    <Card className="text-center card-container mx-4 mb-4">
-      <Card.Img
-        variant="top"
-        className="profile-picture"
-        src={profilePicture}
-      />
-      <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
-      <Card.Subtitle>{setBadge()}</Card.Subtitle>
-      <hr
-        style={{
-          width: "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      />
-      <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
-        <Container>
-          <p>{notes ? notes : "Client does not have notes"}</p>
-        </Container>
-        <hr
-          style={{
-            width: "80%",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        />
-        <Dropdown as={ButtonGroup}>
-          <Button variant="primary" onClick={handleOpenButton}>
-            Open
-          </Button>
-
-          <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
-
-          <Dropdown.Menu>
-            <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-            <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
-              Delete
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Card.Body>
-    </Card>
+    <div className="flip-card">
+      <div className="flip-card-inner">
+        <div className="flip-card-front">{cardFront}</div>
+        <div className="flip-card-back">{cardBack}</div>
+      </div>
+    </div>
   );
 };
 
