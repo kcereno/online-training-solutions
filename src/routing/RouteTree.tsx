@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import ClientDashboard from "../pages/ClientDashboard/ClientDashboard";
-import ClientProfilePage from "../pages/TrainerPages/ClientProfilePage/ClientProfilePage";
-import LandingPage from "../pages/LandingPage/LandingPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import TrainerDashboard from "../pages/TrainerPages/TrainerDashboard/TrainerDashboard";
+import ClientDashboard from "../pages/Client/ClientDashboard/ClientDashboard";
+import ClientProfilePage from "../pages/Trainer/ClientProfilePage/ClientProfilePage";
+import LandingPage from "../pages/Shared/LandingPage/LandingPage";
+import LoginPage from "../pages/Shared/LoginPage/LoginPage";
+import NotFoundPage from "../pages/Shared/NotFoundPage/NotFoundPage";
+import TrainerDashboard from "../pages/Trainer/TrainerDashboard/TrainerDashboard";
 import UserContext from "../store/User/user-context";
 import { Trainer, Client } from "../data/interfaces";
 

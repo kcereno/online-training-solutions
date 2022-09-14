@@ -5,7 +5,7 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Client, Trainer } from "../../../data/interfaces";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import useModal from "../../../hooks/useModal";
-import ClientsSection from "../../../sections/TrainerSections/ClientsSection/ClientsSection";
+import ClientsSection from "../../../sections/Trainer/ClientsSection/ClientsSection";
 import "./TrainerDashboard.css";
 
 interface Props {
@@ -50,7 +50,7 @@ const TrainerDashboard = ({
           </div>
           <hr />
         </Row>
-        <Row className="d-flex justify-content-center flex-wrap header">
+        <Row>
           <ClientsSection
             clients={clientList}
             trainerId={trainerId}

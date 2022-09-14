@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import UserContext from "../../store/User/user-context";
+import UserContext from "../../../store/User/user-context";
 import "./LoginPage.css";
 
 const LoginPage = () => {

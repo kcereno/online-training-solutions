@@ -19,7 +19,7 @@ const ClientsSection = ({ clients, trainerId, deleteClient }: Props) => {
   ));
 
   return (
-    <>
+    <div className="d-flex flex-wrap justify-content-center">
       {clients.length === 0 ? (
         <h1 style={{ color: "white", textAlign: "center" }}>
           No clients. Please add.
@@ -27,7 +27,7 @@ const ClientsSection = ({ clients, trainerId, deleteClient }: Props) => {
       ) : (
         clientCards
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
 import { AssignedExercise, HistoryEntry } from "../../../data/interfaces";
-import HistoryAccordionEntry from "./HistoryAccordionEntry/HistoryAccordionEntry";
+import TodaysWorkoutAccordionEntry from "./TodaysWorkoutAccordionEntry/TodaysWorkoutAccordionEntry";
 
 interface Props {
   program: AssignedExercise[];
   todaysHistoryEntry: HistoryEntry | undefined;
 }
 
-const HistoryAccordion = ({ program, todaysHistoryEntry }: Props) => (
+const TodaysWorkoutAccordion = ({ program, todaysHistoryEntry }: Props) => (
   <div className="accordion">
     <Accordion alwaysOpen>
       {program.map((exercise, index) => (
-        <HistoryAccordionEntry
+        <TodaysWorkoutAccordionEntry
           key={index}
           exercise={exercise}
           index={index}
@@ -22,4 +22,4 @@ const HistoryAccordion = ({ program, todaysHistoryEntry }: Props) => (
     </Accordion>
   </div>
 );
-export default HistoryAccordion;
+export default TodaysWorkoutAccordion;
