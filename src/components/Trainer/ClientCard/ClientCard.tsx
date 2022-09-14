@@ -27,6 +27,7 @@ const ClientCard = ({
 
   // Handlers
   const handleOpenButton = () => {
+    console.log("clicked");
     navigate(`/dashboard/${trainer}/client/${id}`);
   };
 
@@ -66,32 +67,24 @@ const ClientCard = ({
 
   const cardBack = (
     <Card className="text-center card-container">
-      <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
-        <Container>
-          <p>{notes ? notes : "Client does not have notes"}</p>
-        </Container>
+      <Card.Body>
+        <h3>Notes</h3>
         <hr
           style={{
-            width: "80%",
+            width: "100%",
             marginLeft: "auto",
             marginRight: "auto",
           }}
         />
-        <Dropdown as={ButtonGroup}>
-          <Button variant="primary" onClick={handleOpenButton}>
-            Open
-          </Button>
-
-          <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
-
-          <Dropdown.Menu>
-            <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-            <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
-              Delete
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <div className="client-notes">
+          <p>{notes ? notes : "Client does not have notes"}</p>
+        </div>
       </Card.Body>
+      <Card.Footer>
+        <button className="open-button" onClick={handleOpenButton}>
+          Open
+        </button>
+      </Card.Footer>
     </Card>
   );
 
