@@ -50,7 +50,7 @@ const TrainerDashboard = ({
           </div>
           <hr />
         </Row>
-        <Row className="d-flex justify-content-center flex-wrap header">
+        <Row>
           <ClientsSection
             clients={clientList}
             trainerId={trainerId}
