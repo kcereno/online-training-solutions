@@ -50,16 +50,31 @@ const ClientCard = ({
     return cases[goal];
   };
 
-  return (
-    <>
-      <Card className="text-center card-container mx-4 mb-4">
-        <Card.Img
-          variant="top"
-          className="profile-picture"
-          src={profilePicture}
-        />
-        <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle>{setBadge()}</Card.Subtitle>
+  const cardFront = (
+    <Card className="text-center card-container mx-4 mb-4">
+      <Card.Img
+        variant="top"
+        className="profile-picture"
+        src={profilePicture}
+      />
+      <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
+      <Card.Subtitle>{setBadge()}</Card.Subtitle>
+      <hr
+        style={{
+          width: "80%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      />
+    </Card>
+  );
+
+  const cardBack = (
+    <Card className="text-center card-container mx-4 mb-4">
+      <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
+        <Container>
+          <p>{notes ? notes : "Client does not have notes"}</p>
+        </Container>
         <hr
           style={{
             width: "80%",
@@ -67,38 +82,67 @@ const ClientCard = ({
             marginRight: "auto",
           }}
         />
-        <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
-          <Container>
-            <p>{notes ? notes : "Client does not have notes"}</p>
-          </Container>
-          <hr
-            style={{
-              width: "80%",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          />
-          <Dropdown as={ButtonGroup}>
-            <Button variant="primary" onClick={handleOpenButton}>
-              Open
-            </Button>
+        <Dropdown as={ButtonGroup}>
+          <Button variant="primary" onClick={handleOpenButton}>
+            Open
+          </Button>
 
-            <Dropdown.Toggle
-              split
-              variant="primary"
-              id="dropdown-split-basic"
-            />
+          <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
 
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-              <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
-                Delete
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Card.Body>
-      </Card>
-    </>
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
+            <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
+              Delete
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Card.Body>
+    </Card>
+  );
+
+  return (
+    <Card className="text-center card-container mx-4 mb-4">
+      <Card.Img
+        variant="top"
+        className="profile-picture"
+        src={profilePicture}
+      />
+      <Card.Title className="my-2">{`${firstName} ${lastName}`}</Card.Title>
+      <Card.Subtitle>{setBadge()}</Card.Subtitle>
+      <hr
+        style={{
+          width: "80%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      />
+      <Card.Body style={{ padding: "0px", marginBottom: "15px" }}>
+        <Container>
+          <p>{notes ? notes : "Client does not have notes"}</p>
+        </Container>
+        <hr
+          style={{
+            width: "80%",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        />
+        <Dropdown as={ButtonGroup}>
+          <Button variant="primary" onClick={handleOpenButton}>
+            Open
+          </Button>
+
+          <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
+
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
+            <Dropdown.Item eventKey="2" onClick={handleDeleteButton}>
+              Delete
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Card.Body>
+    </Card>
   );
 };
 
