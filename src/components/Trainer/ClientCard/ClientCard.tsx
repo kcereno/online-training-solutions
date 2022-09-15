@@ -2,6 +2,7 @@ import { faBullseye, faLocationPin } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { TrainingGoal } from "../../../data/interfaces"
 
 import "./ClientCard.css";
 
@@ -19,11 +20,35 @@ const ClientCard = ({
 }: PropTypes) => {
   const navigate = useNavigate();
 
+
   // Handlers
   const handleOpenButton = () => {
     console.log("clicked");
     navigate(`/dashboard/${trainer}/client/${id}`);
   };
+
+
+  //  const getGoalColor = (goal:TrainingGoal)=>{
+
+  //   const options = {
+  //     "Build muscle": 'red'
+  //   }
+
+  //   return options[goal]
+  //  }
+
+
+  interface GoalColorsInterface {
+    [key: string]: string
+  }
+
+  const goalColors: GoalColorsInterface = {
+    "Build muscle": 'red',
+    'Lose fat': 'yellow',
+    "Gain strength": 'orange',
+    'Body recomposition': "green",
+    "Sports specific": 'pink'
+  }
 
   return (
     <Card className="text-center card-container mx-3 my-3">
@@ -36,7 +61,7 @@ const ClientCard = ({
         <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
         <div className="d-flex card-subtitle justify-content-center">
           <div className="mx-1">
-            <FontAwesomeIcon icon={faBullseye} /> <span>{goal}</span>
+            <FontAwesomeIcon icon={faBullseye} /> <span style={{ color: `${goalColors[goal]}` }}>{goal}</span>
           </div>
           <div className="mx-1">
             <FontAwesomeIcon icon={faLocationPin} /> <span>New York, NY</span>
