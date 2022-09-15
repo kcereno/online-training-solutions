@@ -4,17 +4,15 @@ import ClientCard from "../../../components/Trainer/ClientCard/ClientCard";
 interface Props {
   clients: Client[];
   trainerId: string;
-  deleteClient: (clientId: string) => void;
 }
 
-const ClientsSection = ({ clients, trainerId, deleteClient }: Props) => {
+const ClientsSection = ({ clients, trainerId }: Props) => {
   const clientCards = clients.map((client) => (
     <ClientCard
       key={client.info.id}
       info={client.info}
       trainer={trainerId}
       trainingPlan={client.trainingPlan}
-      deleteClient={deleteClient}
     />
   ));
 

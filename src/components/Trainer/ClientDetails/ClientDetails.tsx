@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { UserInfo } from "../../../data/interfaces";
 import Separator from "../../../UI/Separator/Separator";
 import { dateToString } from "../../../data/functions";
@@ -8,13 +8,19 @@ interface Props {
   info: UserInfo;
   goal: string;
   notes?: string;
+  deleteClient: (clientId: string) => void;
 }
 
 const ClientDetails = ({
-  info: { firstName, lastName, birthday, email, profilePicture },
+  info: { firstName, lastName, birthday, email, profilePicture, id },
   goal,
   notes,
+  deleteClient,
 }: Props) => {
+  const handleDeleteButtonClick = () => {
+    deleteClient(id);
+  };
+
   return (
     <Card
       className="client-details-container mb-3"
@@ -42,6 +48,13 @@ const ClientDetails = ({
         <p>{goal}</p>
         <p className="text-muted info-field">Notes</p>
         <p>{notes}</p>
+      </Container>
+      <Separator />
+
+      <Container className="my-3 d-grid gap-2">
+        <Button variant="danger" onClick={handleDeleteButtonClick}>
+          Delete
+        </Button>
       </Container>
     </Card>
   );

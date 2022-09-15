@@ -10,13 +10,11 @@ type PropTypes = {
   trainer: string;
   info: any;
   trainingPlan: any;
-  deleteClient: (clientId: string) => void;
 };
 
 const ClientCard = ({
   info: { id, firstName, lastName, profilePicture },
   trainingPlan: { goal, notes },
-  deleteClient,
   trainer,
 }: PropTypes) => {
   const navigate = useNavigate();
@@ -25,10 +23,6 @@ const ClientCard = ({
   const handleOpenButton = () => {
     console.log("clicked");
     navigate(`/dashboard/${trainer}/client/${id}`);
-  };
-
-  const handleDeleteButton = () => {
-    deleteClient(id);
   };
 
   return (

@@ -20,7 +20,7 @@ const TrainerDashboard = ({
   const [clientList, setClientList] = useState<Client[]>([]);
   const { fetchClients } = useTrainerActions();
 
-  const { showDeleteClientModal, showAddClientModal } = useModal();
+  const { showAddClientModal } = useModal();
 
   useEffect(() => {
     const fetchedClients = fetchClients(trainerId);
@@ -29,10 +29,6 @@ const TrainerDashboard = ({
 
   const handleAddClient = (): void => {
     showAddClientModal();
-  };
-
-  const handleDeleteClient = (clientId: string): void => {
-    showDeleteClientModal(clientId);
   };
 
   return (
@@ -51,11 +47,7 @@ const TrainerDashboard = ({
           <hr />
         </Row>
         <Row>
-          <ClientsSection
-            clients={clientList}
-            trainerId={trainerId}
-            deleteClient={handleDeleteClient}
-          />
+          <ClientsSection clients={clientList} trainerId={trainerId} />
         </Row>
       </Container>
     </section>
