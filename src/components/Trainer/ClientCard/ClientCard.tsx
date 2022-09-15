@@ -1,12 +1,9 @@
-import {
-  Card,
-  ButtonGroup,
-  Dropdown,
-  Button,
-  Badge,
-  Container,
-} from "react-bootstrap";
+import { faBullseye, faLocationPin } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { TrainingGoal } from "../../../data/interfaces"
+
 import "./ClientCard.css";
 
 type PropTypes = {
@@ -14,16 +11,15 @@ type PropTypes = {
   trainer: string;
   info: any;
   trainingPlan: any;
-  deleteClient: (clientId: string) => void;
 };
 
 const ClientCard = ({
   info: { id, firstName, lastName, profilePicture },
   trainingPlan: { goal, notes },
-  deleteClient,
   trainer,
 }: PropTypes) => {
   const navigate = useNavigate();
+
 
   // Handlers
   const handleOpenButton = () => {
@@ -31,70 +27,53 @@ const ClientCard = ({
     navigate(`/dashboard/${trainer}/client/${id}`);
   };
 
-  const handleDeleteButton = () => {
-    deleteClient(id);
-  };
 
-  interface stringToJSXElementIndex {
-    [key: string]: JSX.Element;
+  //  const getGoalColor = (goal:TrainingGoal)=>{
+
+  //   const options = {
+  //     "Build muscle": 'red'
+  //   }
+
+  //   return options[goal]
+  //  }
+
+
+  interface GoalColorsInterface {
+    [key: string]: string
   }
 
-  const setBadge = () => {
-    const cases: stringToJSXElementIndex = {
-      "Build muscle": <Badge bg="primary">BUILD MUSCLE</Badge>,
-      "Lose fat": <Badge bg="danger">LOSE FAT</Badge>,
-      "Gain strength": <Badge bg="success">GAIN STRENGTH</Badge>,
-      "Body recomposition": <Badge bg="secondary">BODY RECOMPOSITION</Badge>,
-      "Sports specific": <Badge bg="warning">SPORTS SPECIFIC</Badge>,
-    };
+  const goalColors: GoalColorsInterface = {
+    "Build muscle": 'red',
+    'Lose fat': 'yellow',
+    "Gain strength": 'orange',
+    'Body recomposition': "green",
+    "Sports specific": 'pink'
+  }
 
-    return cases[goal];
-  };
-
-  const cardFront = (
-    <Card className="text-center card-container">
+  return (
+    <Card className="text-center card-container mx-3 my-3">
       <Card.Img
         variant="top"
         className="profile-picture"
         src={profilePicture}
       />
-      <div className="my-3">
-        <Card.Title className="">{`${firstName} ${lastName}`}</Card.Title>
-        <Card.Subtitle>{setBadge()}</Card.Subtitle>
-      </div>
-    </Card>
-  );
-
-  const cardBack = (
-    <Card className="text-center card-container">
-      <Card.Body>
-        <h3>Notes</h3>
-        <hr
-          style={{
-            width: "100%",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        />
-        <div className="client-notes">
-          <p>{notes ? notes : "Client does not have notes"}</p>
+      <div className="my-3 card-details">
+        <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
+        <div className="d-flex card-subtitle justify-content-center">
+          <div className="mx-1">
+            <FontAwesomeIcon icon={faBullseye} /> <span style={{ color: `${goalColors[goal]}` }}>{goal}</span>
+          </div>
+          <div className="mx-1">
+            <FontAwesomeIcon icon={faLocationPin} /> <span>New York, NY</span>
+          </div>
         </div>
-      </Card.Body>
+      </div>
       <Card.Footer>
-        <button className="open-button" onClick={handleOpenButton}>
-          Open
-        </button>
+        <div className="d-grid gap-2">
+          <Button onClick={handleOpenButton}>Open</Button>
+        </div>
       </Card.Footer>
     </Card>
-  );
-
-  return (
-    <div className="flip-card">
-      <div className="flip-card-inner">
-        <div className="flip-card-front">{cardFront}</div>
-        <div className="flip-card-back">{cardBack}</div>
-      </div>
-    </div>
   );
 };
 

@@ -14,7 +14,7 @@ const ClientProfilePage = () => {
   const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
     useTrainerActions();
   const client = fetchClient(clientId!);
-  const { showAddExerciseModal } = useModal();
+  const { showAddExerciseModal, showDeleteClientModal } = useModal();
 
   useEffect(() => {
     selectClient(clientId!);
@@ -28,6 +28,7 @@ const ClientProfilePage = () => {
             info={client.info}
             goal={client.trainingPlan.goal}
             notes={client.trainingPlan.notes}
+            deleteClient={showDeleteClientModal}
           />
         </Col>
         <Col>
