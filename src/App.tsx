@@ -3,8 +3,7 @@ import RouteTree from "./routing/RouteTree";
 import NavBar from "./UI/NavBar/NavBar";
 import Modals from "./UI/Modals/Modals";
 import Footer from "./UI/Footer/Footer";
-
-import "./App.css";
+import "./App.scss";
 
 const App = () => (
   <>
