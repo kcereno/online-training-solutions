@@ -1,10 +1,10 @@
-import "./Footer.css";
+import "./Footer.scss";
 
 export default function Footer() {
   let currentYear = new Date().getFullYear();
 
   return (
-    <section id="footer" className="bg-dark  text-center text-white">
+    <section className="  text-center text-white footer">
       <div className="footer-content">
         <p>Copyright &copy; {currentYear}</p>
         <p>
