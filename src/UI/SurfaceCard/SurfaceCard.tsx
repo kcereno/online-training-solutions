@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import "./SurfaceCard.css";
+import "./SurfaceCard.scss";
 
 interface Props {
   children: React.ReactNode;

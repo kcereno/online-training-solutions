@@ -7,7 +7,6 @@ import ClientDetails from "../../../components/Trainer/ClientDetails/ClientDetai
 import ClientProgram from "../../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../../hooks/useModal";
 import ExerciseLog from "../../../components/Client/ExerciseLog/ExerciseLog";
-import "../../../global.scss";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
@@ -22,7 +21,7 @@ const ClientProfilePage = () => {
   }, [clientId, selectClient]);
 
   return (
-    <Container className="text-white page-content">
+    <Container className="text-white content-container">
       <Row>
         <Col xs="12" md="4">
           <ClientDetails
