@@ -10,12 +10,18 @@ $cardSubHeadline: #94a1b2;
 
 $primaryButton: #7f5af0;
 
-.page-content {
+.content-container {
   margin-top: 2rem;
   margin-bottom: 2rem;
 
-  @media screen and (max-width: 425px) {
+  // iphone 8+ and smaller
+  @media only screen and (max-device-width: 736px) {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+.section {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }

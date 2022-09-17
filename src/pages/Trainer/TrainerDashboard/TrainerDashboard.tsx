@@ -6,7 +6,8 @@ import { Client, Trainer } from "../../../data/interfaces";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import useModal from "../../../hooks/useModal";
 import ClientsSection from "../../../sections/Trainer/ClientsSection/ClientsSection";
-import "./TrainerDashboard.css";
+import "./TrainerDashboard.scss";
+import Separator from "../../../UI/Separator/Separator";
 
 interface Props {
   trainer: Trainer;
@@ -32,25 +33,23 @@ const TrainerDashboard = ({
   };
 
   return (
-    <section className=" py-5 trainer-dashboard">
-      <Container className="dashboard-container" fluid>
-        <Row>
-          <div className="d-flex justify-content-center align-items-center">
-            <h2 className="text-white display-4 ">Clients</h2>
-            <FontAwesomeIcon
-              className="header-button"
-              icon={faUserPlus}
-              color="white"
-              onClick={handleAddClient}
-            />
-          </div>
-          <hr />
-        </Row>
-        <Row>
-          <ClientsSection clients={clientList} trainerId={trainerId} />
-        </Row>
-      </Container>
-    </section>
+    <Container className="content-container" fluid>
+      <Row>
+        <div className="d-flex justify-content-center align-items-center section">
+          <h2 className="text-white display-4 ">Clients</h2>
+          <FontAwesomeIcon
+            className="header-button"
+            icon={faUserPlus}
+            color="white"
+            onClick={handleAddClient}
+          />
+        </div>
+        <Separator width={90} />
+      </Row>
+      <Row>
+        <ClientsSection clients={clientList} trainerId={trainerId} />
+      </Row>
+    </Container>
   );
 };
 

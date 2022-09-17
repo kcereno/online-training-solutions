@@ -3,7 +3,7 @@ import { Button, Card, Container } from "react-bootstrap";
 import { UserInfo } from "../../../data/interfaces";
 import Separator from "../../../UI/Separator/Separator";
 import { dateToString } from "../../../data/functions";
-import "./ClientDetails.css";
+import "./ClientDetails.scss";
 interface Props {
   info: UserInfo;
   goal: string;

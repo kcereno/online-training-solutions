@@ -1,5 +1,6 @@
 import { Client } from "../../../data/interfaces";
 import ClientCard from "../../../components/Trainer/ClientCard/ClientCard";
+import "../../../global.scss";
 
 interface Props {
   clients: Client[];
@@ -17,7 +18,7 @@ const ClientsSection = ({ clients, trainerId }: Props) => {
   ));
 
   return (
-    <div className="d-flex flex-wrap justify-content-center">
+    <div className="d-flex flex-wrap justify-content-center section">
       {clients.length === 0 ? (
         <h1 style={{ color: "white", textAlign: "center" }}>
           No clients. Please add.
