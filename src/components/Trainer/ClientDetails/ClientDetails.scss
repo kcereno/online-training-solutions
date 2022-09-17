@@ -7,6 +7,11 @@
   color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   max-width: 250px;
+
+  // iphone 8+ and smaller
+  @media only screen and (max-device-width: 736px) {
+    margin-bottom: 1rem;
+  }
 }
 
 .client-details-name {

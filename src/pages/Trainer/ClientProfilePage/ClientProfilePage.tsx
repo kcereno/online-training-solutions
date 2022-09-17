@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import "./ClientProfilePage.css";
+import "./ClientProfilePage.scss";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import ClientDetails from "../../../components/Trainer/ClientDetails/ClientDetails";
 import ClientProgram from "../../../components/Trainer/ClientProgram/ClientProgram";
@@ -14,20 +14,21 @@ const ClientProfilePage = () => {
   const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
     useTrainerActions();
   const client = fetchClient(clientId!);
-  const { showAddExerciseModal } = useModal();
+  const { showAddExerciseModal, showDeleteClientModal } = useModal();
 
   useEffect(() => {
     selectClient(clientId!);
   }, [clientId, selectClient]);
 
   return (
-    <Container className="text-white my-5">
+    <Container className="text-white content-container">
       <Row>
         <Col xs="12" md="4">
           <ClientDetails
             info={client.info}
             goal={client.trainingPlan.goal}
             notes={client.trainingPlan.notes}
+            deleteClient={showDeleteClientModal}
           />
         </Col>
         <Col>

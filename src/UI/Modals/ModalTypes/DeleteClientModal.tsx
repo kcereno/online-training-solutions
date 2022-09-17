@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import UserContext from "../../../store/User/user-context";
@@ -12,10 +13,12 @@ export const DeleteClientModal = ({ clientToDeleteId }: Props) => {
   const { activeUser } = useContext(UserContext);
   const { hideModal } = useModal();
   const { deleteClient } = useTrainerActions();
+  const navigate = useNavigate();
 
   const handleConfirmDeleteClient = () => {
     deleteClient(activeUser!.info.id, clientToDeleteId);
     hideModal();
+    navigate(`/dashboard/${activeUser?.info.id}`);
   };
 
   return (

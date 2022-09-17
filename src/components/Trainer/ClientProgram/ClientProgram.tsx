@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
 import { Col } from "react-bootstrap";
-import "./ClientProgram.css";
+import "./ClientProgram.scss";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import Separator from "../../../UI/Separator/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -56,7 +56,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
     <SurfaceCard className="mb-3">
       <Container>
         <Col className="d-flex justify-content-between align-items-center my-2 ">
-          <h2 className="pt-2">Program</h2>
+          <h2 className="section">Program</h2>
           {editButton}
         </Col>
         <Separator width={100} />

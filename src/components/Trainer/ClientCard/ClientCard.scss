@@ -1,0 +1,24 @@
+@import "../../../global.scss";
+
+.profile-picture {
+  width: 100%;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.card-subtitle {
+  color: $cardSubHeadline;
+  font-size: 12px;
+}
+
+.card-container {
+  width: 250px;
+  background-color: $cardBackground;
+  padding: 0px;
+  border-radius: 10px;
+  border: 0px;
+  color: $cardHeading;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
