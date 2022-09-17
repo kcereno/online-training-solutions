@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
 import { Col } from "react-bootstrap";
-import "./ClientProgram.css";
+import "./ClientProgram.scss";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import Separator from "../../../UI/Separator/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

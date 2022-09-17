@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import "./ClientProfilePage.css";
+import "./ClientProfilePage.scss";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import ClientDetails from "../../../components/Trainer/ClientDetails/ClientDetails";
 import ClientProgram from "../../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../../hooks/useModal";
 import ExerciseLog from "../../../components/Client/ExerciseLog/ExerciseLog";
+import "../../../global.scss";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
@@ -21,7 +22,7 @@ const ClientProfilePage = () => {
   }, [clientId, selectClient]);
 
   return (
-    <Container className="text-white my-5">
+    <Container className="text-white page-content">
       <Row>
         <Col xs="12" md="4">
           <ClientDetails

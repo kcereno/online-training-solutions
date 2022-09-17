@@ -9,3 +9,13 @@ $cardHeading: #fffffe;
 $cardSubHeadline: #94a1b2;
 
 $primaryButton: #7f5af0;
+
+.page-content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  @media screen and (max-width: 425px) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

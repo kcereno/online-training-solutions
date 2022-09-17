@@ -22,10 +22,7 @@ const ClientDetails = ({
   };
 
   return (
-    <Card
-      className="client-details-container mb-3"
-      style={{ marginRight: "auto", marginLeft: "auto" }}
-    >
+    <Card className="client-details-container" style={{ marginLeft: "auto" }}>
       <Card.Img
         className="pb-2 card-img"
         src={profilePicture}
