@@ -28,7 +28,7 @@ const ClientDetails = ({
         src={profilePicture}
         alt="Card image"
       />
-      <h1 className="text-center client-details-name display-6">
+      <h1 className="text-center client-details-name display-6 section">
         {firstName} {lastName}
       </h1>
       <Separator />

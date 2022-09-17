@@ -56,7 +56,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
     <SurfaceCard className="mb-3">
       <Container>
         <Col className="d-flex justify-content-between align-items-center my-2 ">
-          <h2 className="pt-2">Program</h2>
+          <h2 className="section">Program</h2>
           {editButton}
         </Col>
         <Separator width={100} />

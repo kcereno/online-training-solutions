@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { HistoryEntry } from "../../../data/interfaces";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import HistoryAccordion from "../../Shared/HistoryAccordion/HistoryAccordion";
-import "./ExerciseLog.css";
+import "./ExerciseLog.scss";
 
 interface Props {
   history: HistoryEntry[];
@@ -14,7 +14,7 @@ const ExerciseLog = ({ history }: Props) => {
       <Container>
         <Row>
           <Col className="my-2">
-            <h2 className="pt-2">Logs</h2>
+            <h2 className="section">Logs</h2>
             <hr
               style={{
                 width: "100%",
