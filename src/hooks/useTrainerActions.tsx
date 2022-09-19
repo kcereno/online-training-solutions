@@ -4,7 +4,7 @@ import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
-  const { database, updateDatabase } = useContext(DatabaseContext);
+  const { database, updateDatabase, updateUser } = useContext(DatabaseContext);
 
   // * Fetch
   const fetchClient = (clientId: string) =>
@@ -51,8 +51,9 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    // updateUser(updatedClient);
+    updateUser(updatedClient);
   };
+
   const deleteExerciseFromClientProgram = (
     clientId: string,
     exerciseName: string
@@ -68,7 +69,7 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    // updateUser(updatedClient);
+    updateUser(updatedClient);
   };
 
   const editExercise = (exercise: any, clientId: string) => {};

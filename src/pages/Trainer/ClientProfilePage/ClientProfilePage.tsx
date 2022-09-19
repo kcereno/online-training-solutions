@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "./ClientProfilePage.scss";
@@ -15,6 +15,10 @@ const ClientProfilePage = () => {
   const client = fetchClient(clientId!);
   const { showAddExerciseModal, showDeleteClientModal } = useModal();
 
+  const handleDeleteExercise = (exerciseName: string) => {
+    deleteExerciseFromClientProgram(clientId!, exerciseName);
+  };
+
   return (
     <Container className="text-white content-container">
       <Row>
@@ -30,7 +34,7 @@ const ClientProfilePage = () => {
           <ClientProgram
             program={client.trainingPlan.program}
             addExercise={showAddExerciseModal}
-            deleteExercise={deleteExerciseFromClientProgram}
+            deleteExercise={handleDeleteExercise}
           />
           <ExerciseLog history={client.trainingPlan.history} />
         </Col>

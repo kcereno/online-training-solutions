@@ -18,9 +18,21 @@ const DatabaseProvider = ({ children }: Props) => {
     setDatabase(updatedDatabase);
   };
 
+  const updateUser = (updatedUser: UserType) => {
+    const updatedDatabase = [...database];
+
+    const updatedUserIndex = database.findIndex(
+      (user) => user.info.id === updatedUser.info.id
+    );
+
+    updatedDatabase[updatedUserIndex] = updatedUser;
+    updateDatabase(updatedDatabase);
+  };
+
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
     updateDatabase,
+    updateUser,
   };
 
   return (
