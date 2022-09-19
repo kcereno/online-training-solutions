@@ -27,7 +27,7 @@ const DatabaseProvider = ({ children }: Props) => {
     updateDatabase(updatedDatabase)
   }
 
-  const fetchUser = (userId: string) => database.find(user => user.info.id === userId)
+  const fetchUser = (userId: string): UserType| undefined => database.find(user => user.info.id === userId)
 
   const updateUser = (updatedUser: UserType) => {
     const updatedDatabase = [...database];

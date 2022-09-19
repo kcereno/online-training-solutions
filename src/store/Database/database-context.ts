@@ -4,7 +4,8 @@ import { UserType } from "../../data/types";
 export interface DatabaseContextInterface {
   database: UserType[];
   addUser: (newUser:UserType)=> void,
-  fetchUser:(userId:string)=> void,
+  fetchUser:(userId:string)=> UserType| undefined,
+
   deleteUser: (userId:string)=>void,
   updateUser: (updatedUser: UserType) => void;
 }
