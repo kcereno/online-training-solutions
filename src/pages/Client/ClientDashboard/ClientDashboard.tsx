@@ -19,7 +19,10 @@ const ClientDashboard = ({
     trainingPlan: { program, history },
   },
 }: Props) => {
-  const { todaysHistoryEntry } = useClientActions();
+  const { fetchTodaysHistoryEntry } = useClientActions();
+
+  const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
+
   const { activeUser } = useContext(UserContext);
 
   return (

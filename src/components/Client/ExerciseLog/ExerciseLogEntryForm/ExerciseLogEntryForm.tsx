@@ -17,7 +17,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   } = useForm();
 
   const onSubmit = ({ weight, reps }: any) => {
-    addSetToLog(exercise, weight, reps);
+    // addSetToLog(exercise, weight, reps);
     reset();
   };
 

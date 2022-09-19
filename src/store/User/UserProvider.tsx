@@ -10,9 +10,8 @@ type PropTypes = {
 
 const UserProvider = ({ children }: PropTypes) => {
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
-  // console.log("UserProvider ~ activeUser", activeUser);
 
-  const { database, updateUser: updateUserInDb } = useContext(DatabaseContext);
+  const { database, updateDatabase } = useContext(DatabaseContext);
 
   // Navigation
   const navigate = useNavigate();
@@ -29,7 +28,14 @@ const UserProvider = ({ children }: PropTypes) => {
 
   const updateUser = (updatedUser: UserType): void => {
     setActiveUser(updatedUser);
-    updateUserInDb(updatedUser);
+
+    const updatedDatabase = [...database];
+    const updatedUserIndex = database.findIndex(
+      (user) => user.info.id === updatedUser.info.id
+    );
+
+    updatedDatabase[updatedUserIndex] = updatedUser;
+    updateDatabase(updatedDatabase);
   };
 
   const login = (user: UserType): void => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DUMMY_DATA } from "../../data/DUMMY_DB";
 import { UserType } from "../../data/types";
 import DatabaseContext, { DatabaseContextInterface } from "./database-context";
@@ -8,38 +8,19 @@ type Props = {
 };
 
 const DatabaseProvider = ({ children }: Props) => {
-  const [database, setDatabase] = useState<UserType[]>(DUMMY_DATA);
-  // console.log("DatabaseProvider ~ database", database);
+  const [database, setDatabase] = useState<UserType[]>([]);
 
-  const fetchUser = (userId: string): UserType | undefined =>
-    database.find((user) => user.info.id === userId);
+  useEffect(() => {
+    setDatabase(DUMMY_DATA);
+  }, []);
 
-  const deleteUser = (userId: string) => {
-    const updatedDatabase = database.filter((user) => user.info.id !== userId);
+  const updateDatabase = (updatedDatabase: UserType[]) => {
     setDatabase(updatedDatabase);
-  };
-
-  const addUser = (user: UserType) => {
-    const updatedDatabase = [...database, user];
-    setDatabase(updatedDatabase);
-  };
-
-  const updateUser = (updatedUser: UserType) => {
-    const userIndex = database.findIndex(
-      (entry) => entry.info.id === updatedUser.info.id
-    );
-    const updatedDb = [...database];
-    updatedDb[userIndex] = updatedUser;
-    setDatabase(updatedDb);
   };
 
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
-    fetchUser,
-    updateDatabase: setDatabase,
-    deleteUser,
-    addUser,
-    updateUser,
+    updateDatabase,
   };
 
   return (

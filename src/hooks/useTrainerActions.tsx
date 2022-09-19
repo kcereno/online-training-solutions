@@ -4,12 +4,7 @@ import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
-  const {
-    database,
-    deleteUser: deleteUserFromDB,
-    addUser: addUserToDB,
-    updateUser,
-  } = useContext(DatabaseContext);
+  const { database, updateDatabase } = useContext(DatabaseContext);
 
   // * Fetch
   const fetchClient = (clientId: string) =>
@@ -26,10 +21,14 @@ export const useTrainerActions = () => {
 
   // * Client CRUD
   const addClient = (newClient: Client, trainerId: string): void => {
-    addUserToDB(newClient);
+    // addUserToDB(newClient);
   };
-  const deleteClient = (trainerId: string, clientId: string): void => {
-    deleteUserFromDB(clientId);
+  const deleteClient = (clientId: string): void => {
+    const updatedDatabase = database.filter(
+      (user) => user.info.id !== clientId
+    );
+
+    updateDatabase(updatedDatabase);
   };
 
   // * Exercise Functions
@@ -50,7 +49,7 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    // updateUser(updatedClient);
   };
   const deleteExerciseFromClientProgram = (
     clientId: string,
@@ -67,7 +66,7 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    // updateUser(updatedClient);
   };
 
   const editExercise = (exercise: any, clientId: string) => {};
