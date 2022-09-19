@@ -32,7 +32,8 @@ export const AddExerciseModal = () => {
       sets: targetSets as number,
     };
 
-    addExerciseToClientProgram(newExercise);
+    // TODO CHANGE BELOW
+    addExerciseToClientProgram("client", newExercise);
     hideModal();
   };
 

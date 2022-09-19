@@ -11,7 +11,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 interface Props {
   program: AssignedExercise[];
   addExercise: () => void;
-  deleteExercise: (exerciseName: string) => void;
+  deleteExercise: (clientId: string, exerciseName: string) => void;
 }
 
 const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
@@ -26,7 +26,8 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
   };
 
   const handleDeleteButtonClick = (exerciseName: string) => {
-    deleteExercise(exerciseName);
+    // TODO CHANGE BELOW
+    deleteExercise("clientId", exerciseName);
   };
 
   const editControls = (

@@ -11,14 +11,9 @@ import ExerciseLog from "../../../components/Client/ExerciseLog/ExerciseLog";
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
 
-  const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
-    useTrainerActions();
+  const { fetchClient, deleteExerciseFromClientProgram } = useTrainerActions();
   const client = fetchClient(clientId!);
   const { showAddExerciseModal, showDeleteClientModal } = useModal();
-
-  useEffect(() => {
-    selectClient(clientId!);
-  }, [clientId, selectClient]);
 
   return (
     <Container className="text-white content-container">
