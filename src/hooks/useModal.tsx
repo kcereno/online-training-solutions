@@ -9,9 +9,9 @@ const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
     useContext(ModalContext);
 
-  const showAddExerciseModal = () => {
+  const showAddExerciseModal = (clientId: string) => {
     setIsShowing(true);
-    setModalContent(<AddExerciseModal />);
+    setModalContent(<AddExerciseModal clientId={clientId} />);
   };
 
   const showAddClientModal = () => {

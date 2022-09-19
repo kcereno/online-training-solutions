@@ -19,6 +19,10 @@ const ClientProfilePage = () => {
     deleteExerciseFromClientProgram(clientId!, exerciseName);
   };
 
+  const handleAddExercise = () => {
+    showAddExerciseModal(clientId!);
+  };
+
   return (
     <Container className="text-white content-container">
       <Row>
@@ -33,7 +37,7 @@ const ClientProfilePage = () => {
         <Col>
           <ClientProgram
             program={client.trainingPlan.program}
-            addExercise={showAddExerciseModal}
+            addExercise={handleAddExercise}
             deleteExercise={handleDeleteExercise}
           />
           <ExerciseLog history={client.trainingPlan.history} />

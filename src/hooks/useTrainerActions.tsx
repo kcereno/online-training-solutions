@@ -34,7 +34,6 @@ export const useTrainerActions = () => {
   };
 
   // * Exercise Functions
-  // TODO change exerciseData to interface
   const addExerciseToClientProgram = (
     clientId: string,
     newExercise: AssignedExercise
@@ -71,8 +70,6 @@ export const useTrainerActions = () => {
 
     updateUser(updatedClient);
   };
-
-  const editExercise = (exercise: any, clientId: string) => {};
 
   return {
     addClient,

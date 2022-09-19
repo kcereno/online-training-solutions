@@ -25,13 +25,17 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
     setEditMode(false);
   };
 
+  const handleAddButtonClick = () => {
+    addExercise();
+  };
+
   const handleDeleteButtonClick = (exerciseName: string) => {
     deleteExercise(exerciseName);
   };
 
   const editControls = (
     <div>
-      <Button className="mx-1" onClick={addExercise}>
+      <Button className="mx-1" onClick={handleAddButtonClick}>
         +
       </Button>
       <Button variant="warning" onClick={handleExitButtonClick}>

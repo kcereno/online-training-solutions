@@ -5,7 +5,11 @@ import { AssignedExercise } from "../../../data/interfaces";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 
-export const AddExerciseModal = () => {
+interface Props {
+  clientId: string;
+}
+
+export const AddExerciseModal = ({ clientId }: Props) => {
   const { addExerciseToClientProgram } = useTrainerActions();
   const { hideModal } = useModal();
 
@@ -33,7 +37,7 @@ export const AddExerciseModal = () => {
     };
 
     // TODO CHANGE BELOW
-    addExerciseToClientProgram("client", newExercise);
+    addExerciseToClientProgram(clientId!, newExercise);
     hideModal();
   };
 
