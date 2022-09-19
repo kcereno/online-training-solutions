@@ -21,7 +21,9 @@ export const useTrainerActions = () => {
 
   // * Client CRUD
   const addClient = (newClient: Client, trainerId: string): void => {
-    // addUserToDB(newClient);
+    const updatedDatabase = [...database, newClient];
+
+    updateDatabase(updatedDatabase);
   };
   const deleteClient = (clientId: string): void => {
     const updatedDatabase = database.filter(
