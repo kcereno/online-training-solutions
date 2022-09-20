@@ -4,10 +4,17 @@ import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
-  const { database, addUser, deleteUser, fetchUser, updateUser } = useContext(DatabaseContext);
+  const {
+    database,
+    addUser: addUserToDatabase,
+    deleteUser: deleteUserFromDatabase,
+    fetchUser: fetchUserFromDatabase,
+    updateUser: updateUserInDatabase,
+  } = useContext(DatabaseContext);
 
   // * Fetch
-  const fetchClient = (clientId: string) => fetchUser(clientId) as Client
+  const fetchClient = (clientId: string) =>
+    fetchUserFromDatabase(clientId) as Client;
 
   const fetchClients = useCallback(
     (trainerId: string): UserType[] =>
@@ -20,11 +27,11 @@ export const useTrainerActions = () => {
 
   // * Client CRUD
   const addClient = (newClient: Client): void => {
-    addUser(newClient)
+    addUserToDatabase(newClient);
   };
 
   const deleteClient = (clientId: string): void => {
-    deleteClient(clientId)
+    deleteUserFromDatabase(clientId);
   };
 
   // * Exercise CRUD
@@ -44,7 +51,7 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    updateUserInDatabase(updatedClient);
   };
 
   const deleteExerciseFromClientProgram = (
@@ -62,7 +69,7 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    updateUserInDatabase(updatedClient);
   };
 
   return {

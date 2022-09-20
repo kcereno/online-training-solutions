@@ -35,6 +35,7 @@ const UserProvider = ({ children }: PropTypes) => {
     );
 
     updatedDatabase[updatedUserIndex] = updatedUser;
+
     updateDatabase(updatedDatabase);
   };
 
