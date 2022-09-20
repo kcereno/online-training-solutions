@@ -5,7 +5,7 @@ import UserContext from "../store/User/user-context";
 import { updateClientHistory } from "../data/functions";
 
 const useClientActions = () => {
-  const { activeUser, updateUser } = useContext(UserContext);
+  const { activeUser } = useContext(UserContext);
 
   // FETCH FUNCTIONS
   const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
@@ -97,7 +97,7 @@ const useClientActions = () => {
       updatedHistory
     );
 
-    updateUser(updatedUser);
+    // updateUser(updatedUser);
   };
 
   return {

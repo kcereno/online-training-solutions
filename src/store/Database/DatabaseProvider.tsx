@@ -14,8 +14,6 @@ const DatabaseProvider = ({ children }: Props) => {
     setDatabase(DUMMY_DATA);
   }, []);
 
-
-
   const updateDatabase = (updatedDatabase: UserType[]) => {
     setDatabase(updatedDatabase);
   };
@@ -23,11 +21,12 @@ const DatabaseProvider = ({ children }: Props) => {
   // USER CRUD
 
   const addUser = (newUser: UserType) => {
-    const updatedDatabase = [...database, newUser]
-    updateDatabase(updatedDatabase)
-  }
+    const updatedDatabase = [...database, newUser];
+    updateDatabase(updatedDatabase);
+  };
 
-  const fetchUser = (userId: string): UserType| undefined => database.find(user => user.info.id === userId)
+  const fetchUser = (userId: string): UserType | undefined =>
+    database.find((user) => user.info.id === userId);
 
   const updateUser = (updatedUser: UserType) => {
     const updatedDatabase = [...database];
@@ -41,9 +40,9 @@ const DatabaseProvider = ({ children }: Props) => {
   };
 
   const deleteUser = (userId: string) => {
-    const updatedDatabase = database.filter(user => user.info.id !== userId)
-    updateDatabase(updatedDatabase)
-  }
+    const updatedDatabase = database.filter((user) => user.info.id !== userId);
+    updateDatabase(updatedDatabase);
+  };
 
   const DatabaseContextValue: DatabaseContextInterface = {
     database,
