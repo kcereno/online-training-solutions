@@ -11,7 +11,7 @@ type PropTypes = {
 const UserProvider = ({ children }: PropTypes) => {
   const [activeUser, setActiveUser] = useState<UserType | null>(null);
 
-  const { database } = useContext(DatabaseContext);
+  const { database, updateUser } = useContext(DatabaseContext);
 
   // Navigation
   const navigate = useNavigate();
@@ -26,18 +26,18 @@ const UserProvider = ({ children }: PropTypes) => {
       (user) => user.info.email === email && user.info.password === password
     );
 
-  // const updateUser = (updatedUser: UserType): void => {
-  //   setActiveUser(updatedUser);
+  const updateActiveUser = (updatedUser: UserType): void => {
+    setActiveUser(updatedUser);
+    updateUser(updatedUser);
 
-  //   const updatedDatabase = [...database];
-  //   const updatedUserIndex = database.findIndex(
-  //     (user) => user.info.id === updatedUser.info.id
-  //   );
+    // const updatedDatabase = [...database];
+    // const updatedUserIndex = database.findIndex(
+    //   (user) => user.info.id === updatedUser.info.id
+    // );
 
-  //   updatedDatabase[updatedUserIndex] = updatedUser;
-
-  //   updateDatabase(updatedDatabase);
-  // };
+    // updatedDatabase[updatedUserIndex] = updatedUser;
+    // updateDatabase(updatedDatabase);
+  };
 
   const login = (user: UserType): void => {
     setActiveUser(user);
@@ -54,7 +54,7 @@ const UserProvider = ({ children }: PropTypes) => {
     activeUser,
     login,
     logout,
-
+    updateActiveUser,
     validateUser,
   };
 

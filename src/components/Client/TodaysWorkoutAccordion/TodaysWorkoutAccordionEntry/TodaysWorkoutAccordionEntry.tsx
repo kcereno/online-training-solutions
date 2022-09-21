@@ -6,6 +6,7 @@ import { HistoryEntryData } from "../../../../data/interfaces";
 import SetEntry from "../SetEntry/SetEntry";
 import ExerciseLogEntryForm from "../../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
 import useModal from "../../../../hooks/useModal";
+import useClientActions from "../../../../hooks/useClientActions";
 
 interface Props {
   index: number;
@@ -19,6 +20,7 @@ const TodaysWorkoutAccordionEntry = ({
   todaysHistoryEntry,
 }: Props) => {
   const { showDeleteSetModal } = useModal();
+  const { addSetToLog } = useClientActions();
 
   const handleDeleteSet = (setIndex: number) => {
     showDeleteSetModal({
@@ -26,6 +28,10 @@ const TodaysWorkoutAccordionEntry = ({
       setIndex: setIndex,
       date: todaysHistoryEntry!.date,
     });
+  };
+
+  const handleAddSet = (weight: number, reps: number) => {
+    addSetToLog(exercise.name, weight, reps);
   };
 
   return (
@@ -61,7 +67,7 @@ const TodaysWorkoutAccordionEntry = ({
           {!todaysHistoryEntry && (
             <h4 className="text-center"> Add set below</h4>
           )}
-          <ExerciseLogEntryForm exercise={exercise.name} />
+          <ExerciseLogEntryForm addSet={handleAddSet} />
         </Card.Body>
       </Accordion.Collapse>
     </Card>
