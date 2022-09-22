@@ -4,6 +4,7 @@ import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
 import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
 import { AddExerciseModal } from "../UI/Modals/ModalTypes/AddExerciseModal";
 import DeleteSetModal from "../UI/Modals/ModalTypes/DeleteSetModal";
+import EditModal from "../UI/Modals/ModalTypes/EditModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
@@ -22,6 +23,12 @@ const useModal = () => {
     setIsShowing(true);
     setModalContent(<DeleteClientModal clientToDeleteId={clientId} />);
   };
+
+  const showEditModal = () => {
+    setIsShowing(true);
+    setModalContent(<EditModal />);
+  };
+
   const hideModal = () => {
     setIsShowing(false);
     setModalContent(null);
@@ -47,6 +54,7 @@ const useModal = () => {
     showDeleteClientModal,
     showAddExerciseModal,
     showDeleteSetModal,
+    showEditModal,
   };
 };
 

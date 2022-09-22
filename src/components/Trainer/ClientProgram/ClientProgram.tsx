@@ -1,30 +1,25 @@
-import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
 import { Col } from "react-bootstrap";
-import "./ClientProgram.scss";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import Separator from "../../../UI/Separator/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import "./ClientProgram.scss";
 
 interface Props {
   program: AssignedExercise[];
   addExercise: () => void;
   deleteExercise: (exerciseName: string) => void;
+  editExercise: () => void;
 }
 
-const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
-  const [editMode, setEditMode] = useState(false);
-
-  const handleEditButtonClick = () => {
-    setEditMode(true);
-  };
-
-  const handleExitButtonClick = () => {
-    setEditMode(false);
-  };
-
+const ClientProgram = ({
+  program,
+  addExercise,
+  deleteExercise,
+  editExercise,
+}: Props) => {
   const handleAddButtonClick = () => {
     addExercise();
   };
@@ -33,28 +28,9 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
     deleteExercise(exerciseName);
   };
 
-  const editControls = (
-    <div>
-      <Button className="mx-1" onClick={handleAddButtonClick}>
-        +
-      </Button>
-      <Button variant="warning" onClick={handleExitButtonClick}>
-        Exit
-      </Button>
-    </div>
-  );
-
-  const editButton = editMode ? (
-    editControls
-  ) : (
-    <Button
-      style={{ height: "70%" }}
-      variant="warning"
-      onClick={handleEditButtonClick}
-    >
-      Edit
-    </Button>
-  );
+  const handleEditButtonClick = () => {
+    editExercise();
+  };
 
   return (
     <SurfaceCard className="mb-3">
@@ -64,7 +40,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
           <Button
             style={{ height: "70%" }}
             variant="primary"
-            onClick={handleEditButtonClick}
+            onClick={handleAddButtonClick}
           >
             +
           </Button>
@@ -99,7 +75,9 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
                       />
                       <FontAwesomeIcon
                         icon={faPenToSquare}
-                        onClick={() => {}}
+                        onClick={() => {
+                          handleEditButtonClick();
+                        }}
                         style={{ color: "yellow" }}
                       />
                     </div>
