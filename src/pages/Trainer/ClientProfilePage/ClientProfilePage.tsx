@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import "./ClientProfilePage.scss";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import ClientDetails from "../../../components/Trainer/ClientDetails/ClientDetails";
 import ClientProgram from "../../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../../hooks/useModal";
 import ExerciseLog from "../../../components/Client/ExerciseLog/ExerciseLog";
+import "./ClientProfilePage.scss";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();

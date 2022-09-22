@@ -6,7 +6,7 @@ import "./ClientProgram.scss";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import Separator from "../../../UI/Separator/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   program: AssignedExercise[];
@@ -61,7 +61,13 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
       <Container>
         <Col className="d-flex justify-content-between align-items-center my-2 ">
           <h2 className="section">Program</h2>
-          {editButton}
+          <Button
+            style={{ height: "70%" }}
+            variant="primary"
+            onClick={handleEditButtonClick}
+          >
+            +
+          </Button>
         </Col>
         <Separator width={100} />
         <Table bordered hover variant="dark" className="text-center my-3">
@@ -71,7 +77,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
               <th>Target Weight</th>
               <th>Reps</th>
               <th>Sets</th>
-              {editMode && <th>Delete</th>}
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -82,15 +88,22 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
                   <th>{exercise.weight}</th>
                   <th>{exercise.reps}</th>
                   <th>{exercise.sets}</th>
-                  {editMode && (
-                    <th>
+
+                  <th>
+                    <div className="">
                       <FontAwesomeIcon
+                        className="mx-2"
                         icon={faTrashCan}
                         onClick={() => handleDeleteButtonClick(exercise.name)}
                         style={{ color: "red" }}
                       />
-                    </th>
-                  )}
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        onClick={() => {}}
+                        style={{ color: "yellow" }}
+                      />
+                    </div>
+                  </th>
                 </tr>
               );
             })}
