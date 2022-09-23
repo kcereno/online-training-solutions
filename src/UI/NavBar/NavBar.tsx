@@ -16,7 +16,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
         </Navbar.Brand>
-        {activeUser && (
+        {activeUser?.role === "TRAINER" && (
           <NavBarToggleMenu activeUser={activeUser} logout={logout} />
         )}
       </Container>
