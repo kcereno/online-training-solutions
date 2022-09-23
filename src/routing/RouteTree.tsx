@@ -8,6 +8,7 @@ import NotFoundPage from "../pages/Shared/NotFoundPage/NotFoundPage";
 import TrainerDashboard from "../pages/Trainer/TrainerDashboard/TrainerDashboard";
 import UserContext from "../store/User/user-context";
 import { Trainer, Client } from "../data/interfaces";
+import NoUserPage from "../pages/Shared/NoUserPage/NoUserPage";
 
 const RouteTree = () => {
   const { activeUser } = useContext(UserContext);
@@ -23,10 +24,13 @@ const RouteTree = () => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/signin" element={<LoginPage />} />
-      <Route path="/dashboard/:user" element={dashboard} />
+      <Route
+        path="/dashboard/:user"
+        element={activeUser ? dashboard : <NoUserPage />}
+      />
       <Route
         path="/dashboard/:user/client/:client"
-        element={<ClientProfilePage />}
+        element={activeUser ? <ClientProfilePage /> : <NoUserPage />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

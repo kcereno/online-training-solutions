@@ -1,7 +1,7 @@
 const NoUserPage = () => {
   return (
     <h1 className="text-center text-white py-5">
-      No user found. Please log in.
+      You must be logged in to access this page.
     </h1>
   );
 };
