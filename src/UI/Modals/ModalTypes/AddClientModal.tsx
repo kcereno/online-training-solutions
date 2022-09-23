@@ -40,7 +40,7 @@ export const AddClientModal = () => {
         id,
         firstName,
         lastName,
-        birthday,
+        birthday: new Date(birthday),
         email,
         password: "password",
         profilePicture:
