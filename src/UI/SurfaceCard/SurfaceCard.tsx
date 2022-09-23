@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import "./SurfaceCard.scss";
 
 interface Props {
@@ -13,12 +13,14 @@ const SurfaceCard = ({ children, className, style, centered }: Props) => {
   const isCentered = centered ? "centered" : null;
 
   return (
-    <Card
-      className={`${"surface-card-container"} ${className} ${isCentered}`}
-      style={style}
-    >
-      {children}
-    </Card>
+    <Container>
+      <Card
+        className={`${"surface-card-container"} ${className} ${isCentered}`}
+        style={style}
+      >
+        {children}
+      </Card>
+    </Container>
   );
 };
 

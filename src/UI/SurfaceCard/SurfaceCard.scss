@@ -6,6 +6,10 @@
   border: 0px;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  @media screen and (max-width: 320px) {
+    font-size: smaller;
+  }
 }
 
 .centered {

@@ -27,8 +27,8 @@ const ClientDashboard = ({
   return (
     <SurfaceCard
       style={{ maxWidth: "700px" }}
+      className="text-white my-3 my-md-5"
       centered
-      className="text-white my-5"
     >
       <Tabs defaultActiveKey="todaysWorkout">
         <Tab eventKey="todaysWorkout" title="Todays Workout" tabClassName="tab">
