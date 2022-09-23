@@ -9,9 +9,9 @@ type PropTypes = {
 };
 
 const UserProvider = ({ children }: PropTypes) => {
-  const [activeUser, setActiveUser] = useState<UserType | null>(null);
-
   const { database, updateUser } = useContext(DatabaseContext);
+  const KARL = database[0];
+  const [activeUser, setActiveUser] = useState<UserType | null>(KARL);
 
   // Navigation
   const navigate = useNavigate();

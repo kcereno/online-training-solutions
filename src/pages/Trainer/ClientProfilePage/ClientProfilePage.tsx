@@ -24,8 +24,12 @@ const ClientProfilePage = () => {
     showAddExerciseModal(clientId!);
   };
 
-  const handleEditExercise = () => {
-    showEditModal();
+  const handleEditExercise = (exerciseName: string) => {
+    const assignedExercise = client.trainingPlan.program.find(
+      (entry) => entry.name === exerciseName
+    );
+
+    showEditModal("Edit Exercise", assignedExercise!);
   };
 
   return (

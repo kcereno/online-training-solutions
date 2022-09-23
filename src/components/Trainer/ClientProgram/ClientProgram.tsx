@@ -11,7 +11,7 @@ interface Props {
   program: AssignedExercise[];
   addExercise: () => void;
   deleteExercise: (exerciseName: string) => void;
-  editExercise: () => void;
+  editExercise: (exerciseName: string) => void;
 }
 
 const ClientProgram = ({
@@ -28,8 +28,8 @@ const ClientProgram = ({
     deleteExercise(exerciseName);
   };
 
-  const handleEditButtonClick = () => {
-    editExercise();
+  const handleEditButtonClick = (exerciseName: string) => {
+    editExercise(exerciseName);
   };
 
   return (
@@ -76,7 +76,7 @@ const ClientProgram = ({
                       <FontAwesomeIcon
                         icon={faPenToSquare}
                         onClick={() => {
-                          handleEditButtonClick();
+                          handleEditButtonClick(exercise.name);
                         }}
                         style={{ color: "yellow" }}
                       />
