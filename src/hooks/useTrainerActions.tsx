@@ -72,6 +72,26 @@ export const useTrainerActions = () => {
     updateUserInDatabase(updatedClient);
   };
 
+  const editAssignedExercise = (
+    clientId: string,
+    initialExerciseName: string,
+    updatedExercise: AssignedExercise
+  ) => {
+    const client = fetchClient(clientId);
+
+    let updatedProgram = client.trainingPlan.program.map((entry) => {
+      if (entry.name === initialExerciseName) return updatedExercise;
+
+      return entry;
+    });
+
+    const updatedUser: Client = {
+      ...client,
+      trainingPlan: { ...client.trainingPlan, program: updatedProgram },
+    };
+    updateUserInDatabase(updatedUser);
+  };
+
   return {
     addClient,
     deleteClient,
@@ -79,5 +99,6 @@ export const useTrainerActions = () => {
     fetchClient,
     addExerciseToClientProgram,
     deleteExerciseFromClientProgram,
+    editAssignedExercise,
   };
 };

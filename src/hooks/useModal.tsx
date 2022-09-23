@@ -4,8 +4,8 @@ import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
 import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
 import { AddExerciseModal } from "../UI/Modals/ModalTypes/AddExerciseModal";
 import DeleteSetModal from "../UI/Modals/ModalTypes/DeleteSetModal";
-import EditModal from "../UI/Modals/ModalTypes/EditModal";
 import { AssignedExercise } from "../data/interfaces";
+import EditAssignedExerciseModal from "../UI/Modals/ModalTypes/EditAssignedExerciseModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
@@ -25,10 +25,16 @@ const useModal = () => {
     setModalContent(<DeleteClientModal clientToDeleteId={clientId} />);
   };
 
-  const showEditModal = (title: string, assignedExercise: AssignedExercise) => {
+  const showEditAssignedExerciseModal = (
+    clientId: string,
+    assignedExercise: AssignedExercise
+  ) => {
     setIsShowing(true);
     setModalContent(
-      <EditModal config={{ title, assignedExerciseData: assignedExercise }} />
+      <EditAssignedExerciseModal
+        clientId={clientId}
+        assignedExercise={assignedExercise}
+      />
     );
   };
 
@@ -57,7 +63,7 @@ const useModal = () => {
     showDeleteClientModal,
     showAddExerciseModal,
     showDeleteSetModal,
-    showEditModal,
+    showEditAssignedExerciseModal,
   };
 };
 

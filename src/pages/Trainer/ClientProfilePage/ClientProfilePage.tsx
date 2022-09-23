@@ -13,8 +13,11 @@ const ClientProfilePage = () => {
 
   const { fetchClient, deleteExerciseFromClientProgram } = useTrainerActions();
   const client = fetchClient(clientId!);
-  const { showAddExerciseModal, showDeleteClientModal, showEditModal } =
-    useModal();
+  const {
+    showAddExerciseModal,
+    showDeleteClientModal,
+    showEditAssignedExerciseModal,
+  } = useModal();
 
   const handleDeleteExercise = (exerciseName: string) => {
     deleteExerciseFromClientProgram(clientId!, exerciseName);
@@ -29,7 +32,7 @@ const ClientProfilePage = () => {
       (entry) => entry.name === exerciseName
     );
 
-    showEditModal("Edit Exercise", assignedExercise!);
+    showEditAssignedExerciseModal(clientId!, assignedExercise!);
   };
 
   return (
