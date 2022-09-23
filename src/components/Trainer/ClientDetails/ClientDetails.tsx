@@ -44,7 +44,7 @@ const ClientDetails = ({
         <p className="text-muted info-field">Goal</p>
         <p>{goal}</p>
         <p className="text-muted info-field">Notes</p>
-        <p>{notes}</p>
+        <p>{notes ? notes : "Client does not have any notes"}</p>
       </Container>
       <Separator />
 
