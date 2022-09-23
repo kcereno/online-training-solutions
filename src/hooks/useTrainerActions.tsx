@@ -1,50 +1,45 @@
-import { useContext, useCallback, useState } from "react";
+import { useContext, useCallback } from "react";
 import { AssignedExercise, Client } from "../data/interfaces";
 import { UserType } from "../data/types";
 import DatabaseContext from "../store/Database/database-context";
 
 export const useTrainerActions = () => {
-  const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
-
   const {
     database,
-    deleteUser: deleteUserFromDB,
-    addUser: addUserToDB,
-    updateUser,
+    addUser: addUserToDatabase,
+    deleteUser: deleteUserFromDatabase,
+    fetchUser: fetchUserFromDatabase,
+    updateUser: updateUserInDatabase,
   } = useContext(DatabaseContext);
 
-  // * Client related functions
-
-  const selectClient = (clientId: string): void => {
-    setSelectedClientId(clientId);
-  };
-
-  const fetchClient = (clientId: string) => {
-    return database.find((user) => user.info.id === clientId) as Client;
-  };
+  // * Fetch
+  const fetchClient = (clientId: string) =>
+    fetchUserFromDatabase(clientId) as Client;
 
   const fetchClients = useCallback(
-    (trainerId: string): UserType[] => {
-      const allClients = (database.filter((user:UserType)=> user.role === "CLIENT") as Client[])
-
-    return allClients.filter((client:Client)=> client.trainingPlan.trainer === trainerId)
-    }
-      ,
+    (trainerId: string): UserType[] =>
+      database.filter(
+        (user) =>
+          user.role === "CLIENT" && user.trainingPlan.trainer === trainerId
+      ),
     [database]
   );
 
-  const deleteClient = (trainerId: string, clientId: string):void => {
-    deleteUserFromDB(clientId);
+  // * Client CRUD
+  const addClient = (newClient: Client): void => {
+    addUserToDatabase(newClient);
   };
 
-  const addClient = (newClient: Client, trainerId: string):void => {
-    addUserToDB(newClient);
+  const deleteClient = (clientId: string): void => {
+    deleteUserFromDatabase(clientId);
   };
 
-  // * Exercise Functions
-  // TODO change exerciseData to interface
-  const addExerciseToClientProgram = (newExercise: AssignedExercise) => {
-    const client = fetchClient(selectedClientId!);
+  // * Exercise CRUD
+  const addExerciseToClientProgram = (
+    clientId: string,
+    newExercise: AssignedExercise
+  ) => {
+    const client = fetchClient(clientId!);
 
     const updatedProgram: AssignedExercise[] = [
       ...client.trainingPlan.program,
@@ -56,10 +51,14 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    updateUserInDatabase(updatedClient);
   };
-  const deleteExerciseFromClientProgram = (exerciseName: string) => {
-    const client = fetchClient(selectedClientId!);
+
+  const deleteExerciseFromClientProgram = (
+    clientId: string,
+    exerciseName: string
+  ) => {
+    const client = fetchClient(clientId!);
 
     const updatedProgram = client.trainingPlan.program.filter(
       (entry) => entry.name !== exerciseName
@@ -70,10 +69,28 @@ export const useTrainerActions = () => {
       trainingPlan: { ...client.trainingPlan, program: updatedProgram },
     };
 
-    updateUser(updatedClient);
+    updateUserInDatabase(updatedClient);
   };
 
-  const editExercise = (exercise: any, clientId: string) => { };
+  const editAssignedExercise = (
+    clientId: string,
+    initialExerciseName: string,
+    updatedExercise: AssignedExercise
+  ) => {
+    const client = fetchClient(clientId);
+
+    let updatedProgram = client.trainingPlan.program.map((entry) => {
+      if (entry.name === initialExerciseName) return updatedExercise;
+
+      return entry;
+    });
+
+    const updatedUser: Client = {
+      ...client,
+      trainingPlan: { ...client.trainingPlan, program: updatedProgram },
+    };
+    updateUserInDatabase(updatedUser);
+  };
 
   return {
     addClient,
@@ -82,6 +99,6 @@ export const useTrainerActions = () => {
     fetchClient,
     addExerciseToClientProgram,
     deleteExerciseFromClientProgram,
-    selectClient,
+    editAssignedExercise,
   };
 };

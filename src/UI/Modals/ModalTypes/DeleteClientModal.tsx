@@ -13,10 +13,11 @@ export const DeleteClientModal = ({ clientToDeleteId }: Props) => {
   const { activeUser } = useContext(UserContext);
   const { hideModal } = useModal();
   const { deleteClient } = useTrainerActions();
+
   const navigate = useNavigate();
 
   const handleConfirmDeleteClient = () => {
-    deleteClient(activeUser!.info.id, clientToDeleteId);
+    deleteClient(clientToDeleteId);
     hideModal();
     navigate(`/dashboard/${activeUser?.info.id}`);
   };

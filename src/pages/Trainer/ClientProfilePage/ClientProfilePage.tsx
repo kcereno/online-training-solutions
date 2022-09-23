@@ -1,24 +1,39 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import "./ClientProfilePage.scss";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 import ClientDetails from "../../../components/Trainer/ClientDetails/ClientDetails";
 import ClientProgram from "../../../components/Trainer/ClientProgram/ClientProgram";
 import useModal from "../../../hooks/useModal";
 import ExerciseLog from "../../../components/Client/ExerciseLog/ExerciseLog";
+import "./ClientProfilePage.scss";
 
 const ClientProfilePage = () => {
   const { client: clientId } = useParams();
 
-  const { fetchClient, selectClient, deleteExerciseFromClientProgram } =
-    useTrainerActions();
+  const { fetchClient, deleteExerciseFromClientProgram } = useTrainerActions();
   const client = fetchClient(clientId!);
-  const { showAddExerciseModal, showDeleteClientModal } = useModal();
+  const {
+    showAddExerciseModal,
+    showDeleteClientModal,
+    showEditAssignedExerciseModal,
+  } = useModal();
 
-  useEffect(() => {
-    selectClient(clientId!);
-  }, [clientId, selectClient]);
+  const handleDeleteExercise = (exerciseName: string) => {
+    deleteExerciseFromClientProgram(clientId!, exerciseName);
+  };
+
+  const handleAddExercise = () => {
+    showAddExerciseModal(clientId!);
+  };
+
+  const handleEditExercise = (exerciseName: string) => {
+    const assignedExercise = client.trainingPlan.program.find(
+      (entry) => entry.name === exerciseName
+    );
+
+    showEditAssignedExerciseModal(clientId!, assignedExercise!);
+  };
 
   return (
     <Container className="text-white content-container">
@@ -34,8 +49,9 @@ const ClientProfilePage = () => {
         <Col>
           <ClientProgram
             program={client.trainingPlan.program}
-            addExercise={showAddExerciseModal}
-            deleteExercise={deleteExerciseFromClientProgram}
+            addExercise={handleAddExercise}
+            deleteExercise={handleDeleteExercise}
+            editExercise={handleEditExercise}
           />
           <ExerciseLog history={client.trainingPlan.history} />
         </Col>

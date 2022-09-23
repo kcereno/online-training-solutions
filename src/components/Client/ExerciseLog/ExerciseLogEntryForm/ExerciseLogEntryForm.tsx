@@ -4,11 +4,10 @@ import { useForm } from "react-hook-form";
 import useClientActions from "../../../../hooks/useClientActions";
 
 interface Props {
-  exercise: string;
+  addSet: (weight: number, reps: number) => void;
 }
 
-const ExerciseLogEntryForm = ({ exercise }: Props) => {
-  const { addSetToLog } = useClientActions();
+const ExerciseLogEntryForm = ({ addSet }: Props) => {
   const {
     register,
     handleSubmit,
@@ -17,7 +16,7 @@ const ExerciseLogEntryForm = ({ exercise }: Props) => {
   } = useForm();
 
   const onSubmit = ({ weight, reps }: any) => {
-    addSetToLog(exercise, weight, reps);
+    addSet(weight, reps);
     reset();
   };
 

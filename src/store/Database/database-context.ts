@@ -3,12 +3,10 @@ import { UserType } from "../../data/types";
 
 export interface DatabaseContextInterface {
   database: UserType[];
-  fetchUser: (id: string) => UserType | undefined;
-  updateDatabase: React.Dispatch<React.SetStateAction<UserType[]>>;
-  addUser: (user: UserType) => void;
-  deleteUser: (userId: string) => void;
-
+  addUser: (newUser: UserType) => void;
+  fetchUser: (userId: string) => UserType | undefined;
   updateUser: (updatedUser: UserType) => void;
+  deleteUser: (userId: string) => void;
 }
 
 const DatabaseContext = createContext<DatabaseContextInterface>(

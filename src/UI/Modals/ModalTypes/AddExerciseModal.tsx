@@ -5,7 +5,11 @@ import { AssignedExercise } from "../../../data/interfaces";
 import useModal from "../../../hooks/useModal";
 import { useTrainerActions } from "../../../hooks/useTrainerActions";
 
-export const AddExerciseModal = () => {
+interface Props {
+  clientId: string;
+}
+
+export const AddExerciseModal = ({ clientId }: Props) => {
   const { addExerciseToClientProgram } = useTrainerActions();
   const { hideModal } = useModal();
 
@@ -32,7 +36,8 @@ export const AddExerciseModal = () => {
       sets: targetSets as number,
     };
 
-    addExerciseToClientProgram(newExercise);
+    // TODO CHANGE BELOW
+    addExerciseToClientProgram(clientId!, newExercise);
     hideModal();
   };
 

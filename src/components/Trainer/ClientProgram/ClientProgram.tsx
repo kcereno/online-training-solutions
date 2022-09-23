@@ -1,63 +1,49 @@
-import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { AssignedExercise } from "../../../data/interfaces";
 import { Col } from "react-bootstrap";
-import "./ClientProgram.scss";
 import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import Separator from "../../../UI/Separator/Separator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import "./ClientProgram.scss";
 
 interface Props {
   program: AssignedExercise[];
   addExercise: () => void;
   deleteExercise: (exerciseName: string) => void;
+  editExercise: (exerciseName: string) => void;
 }
 
-const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
-  const [editMode, setEditMode] = useState(false);
-
-  const handleEditButtonClick = () => {
-    setEditMode(true);
-  };
-
-  const handleExitButtonClick = () => {
-    setEditMode(false);
+const ClientProgram = ({
+  program,
+  addExercise,
+  deleteExercise,
+  editExercise,
+}: Props) => {
+  const handleAddButtonClick = () => {
+    addExercise();
   };
 
   const handleDeleteButtonClick = (exerciseName: string) => {
     deleteExercise(exerciseName);
   };
 
-  const editControls = (
-    <div>
-      <Button className="mx-1" onClick={addExercise}>
-        +
-      </Button>
-      <Button variant="warning" onClick={handleExitButtonClick}>
-        Exit
-      </Button>
-    </div>
-  );
-
-  const editButton = editMode ? (
-    editControls
-  ) : (
-    <Button
-      style={{ height: "70%" }}
-      variant="warning"
-      onClick={handleEditButtonClick}
-    >
-      Edit
-    </Button>
-  );
+  const handleEditButtonClick = (exerciseName: string) => {
+    editExercise(exerciseName);
+  };
 
   return (
     <SurfaceCard className="mb-3">
       <Container>
         <Col className="d-flex justify-content-between align-items-center my-2 ">
           <h2 className="section">Program</h2>
-          {editButton}
+          <Button
+            style={{ height: "70%" }}
+            variant="primary"
+            onClick={handleAddButtonClick}
+          >
+            +
+          </Button>
         </Col>
         <Separator width={100} />
         <Table bordered hover variant="dark" className="text-center my-3">
@@ -67,7 +53,7 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
               <th>Target Weight</th>
               <th>Reps</th>
               <th>Sets</th>
-              {editMode && <th>Delete</th>}
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -78,15 +64,24 @@ const ClientProgram = ({ program, addExercise, deleteExercise }: Props) => {
                   <th>{exercise.weight}</th>
                   <th>{exercise.reps}</th>
                   <th>{exercise.sets}</th>
-                  {editMode && (
-                    <th>
+
+                  <th>
+                    <div className="">
                       <FontAwesomeIcon
+                        className="mx-2"
                         icon={faTrashCan}
                         onClick={() => handleDeleteButtonClick(exercise.name)}
                         style={{ color: "red" }}
                       />
-                    </th>
-                  )}
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        onClick={() => {
+                          handleEditButtonClick(exercise.name);
+                        }}
+                        style={{ color: "yellow" }}
+                      />
+                    </div>
+                  </th>
                 </tr>
               );
             })}

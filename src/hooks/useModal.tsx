@@ -4,14 +4,16 @@ import DeleteClientModal from "../UI/Modals/ModalTypes/DeleteClientModal";
 import { AddClientModal } from "../UI/Modals/ModalTypes/AddClientModal";
 import { AddExerciseModal } from "../UI/Modals/ModalTypes/AddExerciseModal";
 import DeleteSetModal from "../UI/Modals/ModalTypes/DeleteSetModal";
+import { AssignedExercise } from "../data/interfaces";
+import EditAssignedExerciseModal from "../UI/Modals/ModalTypes/EditAssignedExerciseModal";
 
 const useModal = () => {
   const { setIsShowing, isShowing, modalContent, setModalContent } =
     useContext(ModalContext);
 
-  const showAddExerciseModal = () => {
+  const showAddExerciseModal = (clientId: string) => {
     setIsShowing(true);
-    setModalContent(<AddExerciseModal />);
+    setModalContent(<AddExerciseModal clientId={clientId} />);
   };
 
   const showAddClientModal = () => {
@@ -22,6 +24,20 @@ const useModal = () => {
     setIsShowing(true);
     setModalContent(<DeleteClientModal clientToDeleteId={clientId} />);
   };
+
+  const showEditAssignedExerciseModal = (
+    clientId: string,
+    assignedExercise: AssignedExercise
+  ) => {
+    setIsShowing(true);
+    setModalContent(
+      <EditAssignedExerciseModal
+        clientId={clientId}
+        assignedExercise={assignedExercise}
+      />
+    );
+  };
+
   const hideModal = () => {
     setIsShowing(false);
     setModalContent(null);
@@ -47,6 +63,7 @@ const useModal = () => {
     showDeleteClientModal,
     showAddExerciseModal,
     showDeleteSetModal,
+    showEditAssignedExerciseModal,
   };
 };
 

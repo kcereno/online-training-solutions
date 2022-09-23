@@ -12,6 +12,7 @@ const CustomAccordion = ({ elements }: Props) => {
       {elements.map((element) => {
         return (
           <CustomAccordionEntry
+            key={element.date.toDateString()}
             eventKey={element.date.toDateString()}
             title={element.date.toDateString()}
             content={element.data}

@@ -1,24 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { today, isToday } from "../data/functions";
 import { Client, HistoryEntry } from "../data/interfaces";
 import UserContext from "../store/User/user-context";
 import { updateClientHistory } from "../data/functions";
 
 const useClientActions = () => {
-  const [todaysHistoryEntry, setTodaysHistoryEntry] = useState<
-    HistoryEntry | undefined
-  >(undefined);
-
-  const { activeUser, updateUser } = useContext(UserContext);
-
-  useEffect(() => {
-    const fetchedTodaysHistoryEntry = fetchTodaysHistoryEntry(
-      (activeUser as Client).trainingPlan.history
-    );
-
-    if (fetchedTodaysHistoryEntry)
-      setTodaysHistoryEntry(fetchedTodaysHistoryEntry);
-  }, [activeUser]);
+  const { activeUser, updateActiveUser } = useContext(UserContext);
 
   // FETCH FUNCTIONS
   const fetchTodaysHistoryEntry = (history: HistoryEntry[]) =>
@@ -38,11 +25,9 @@ const useClientActions = () => {
     const todaysHistoryEntry = fetchTodaysHistoryEntry(
       (activeUser as Client).trainingPlan.history
     );
-
     let updatedHistory: HistoryEntry[] = [
       ...(activeUser as Client).trainingPlan.history,
     ];
-
     if (!todaysHistoryEntry) {
       updatedHistory = [
         ...updatedHistory,
@@ -52,41 +37,35 @@ const useClientActions = () => {
         },
       ];
     }
-
     updatedHistory = updatedHistory.map((entry) => {
       if (isToday(entry.date)) {
         let updatedEntry = { ...entry };
-
         const hasExistingExerciseData = entry.data.find(
           (data) => data.exercise === exercise
         );
-
         if (!hasExistingExerciseData)
           updatedEntry = {
             ...updatedEntry,
             data: [...entry.data, { exercise, sets: [] }],
           };
-
         const updatedEntryData = updatedEntry.data.map((data) => {
           if (data.exercise === exercise)
             return {
               exercise,
               sets: [...data.sets, { weight: +weight, reps: +reps }],
             };
-
           return data;
         });
         return { ...updatedEntry, data: updatedEntryData };
       }
       return entry;
     });
-
     const updatedUser = updateClientHistory(
       activeUser as Client,
       updatedHistory
     );
-
-    updateUser(updatedUser);
+    console.log("useClientActions ~ updatedUser", updatedUser);
+    updateActiveUser(updatedUser);
   };
 
   const deleteSetFromLog = (exercise: string, setIndex: number, date: Date) => {
@@ -116,7 +95,7 @@ const useClientActions = () => {
       updatedHistory
     );
 
-    updateUser(updatedUser);
+    updateActiveUser(updatedUser);
   };
 
   return {
@@ -124,7 +103,6 @@ const useClientActions = () => {
     addSetToLog,
     fetchTodaysHistoryEntry,
     deleteSetFromLog,
-    todaysHistoryEntry,
   };
 };
 
