@@ -1,0 +1,11 @@
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  img {
+    height: 50px;
+    filter: brightness(0) invert(1);
+    margin: 1.5rem 1.2rem 1.5rem;
+  }
+}
