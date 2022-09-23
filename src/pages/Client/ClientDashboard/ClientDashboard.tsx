@@ -8,6 +8,7 @@ import TodaysWorkoutAccordion from "../../../components/Client/TodaysWorkoutAcco
 import HistoryAccordion from "../../../components/Shared/HistoryAccordion/HistoryAccordion";
 import useClientActions from "../../../hooks/useClientActions";
 import "./ClientDashboard.css";
+import { Container } from "react-bootstrap";
 
 interface Props {
   client: Client;
@@ -25,6 +26,7 @@ const ClientDashboard = ({
   const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
 
   return (
+    <Container>
     <SurfaceCard
       style={{ maxWidth: "700px" }}
       className="text-white my-3 my-md-5"
@@ -44,6 +46,8 @@ const ClientDashboard = ({
         </Tab>
       </Tabs>
     </SurfaceCard>
+    </Container>
+
   );
 };
 

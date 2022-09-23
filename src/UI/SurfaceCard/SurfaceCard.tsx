@@ -13,14 +13,14 @@ const SurfaceCard = ({ children, className, style, centered }: Props) => {
   const isCentered = centered ? "centered" : null;
 
   return (
-    <Container>
+
       <Card
         className={`${"surface-card-container"} ${className} ${isCentered}`}
         style={style}
       >
         {children}
       </Card>
-    </Container>
+
   );
 };
 
