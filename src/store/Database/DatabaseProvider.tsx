@@ -9,6 +9,7 @@ type Props = {
 
 const DatabaseProvider = ({ children }: Props) => {
   const [database, setDatabase] = useState<UserType[]>([]);
+  console.log("DatabaseProvider ~ database", database);
 
   useEffect(() => {
     setDatabase(DUMMY_DATA);

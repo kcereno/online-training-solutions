@@ -40,7 +40,7 @@ export const AddClientModal = () => {
         id,
         firstName,
         lastName,
-        birthday,
+        birthday: new Date(birthday),
         email,
         password: "password",
         profilePicture:
@@ -111,11 +111,11 @@ export const AddClientModal = () => {
                   aria-label="text"
                   {...useFormData.register("goal", { required: true })}
                 >
-                  <option value="BUILD MUSCLE">Build Muscle</option>
-                  <option value="LOSE FAT">Lose Fat</option>
-                  <option value="GAIN STRENGTH">Gain Strength</option>
-                  <option value="BUILD MUSCLE">Body Recomposition</option>
-                  <option value="SPORTS SPECIFIC">Sports Specific</option>
+                  <option value="Build muscle">Build Muscle</option>
+                  <option value="Lose fat">Lose Fat</option>
+                  <option value="Gain strength">Gain Strength</option>
+                  <option value="Body recomposition">Body Recomposition</option>
+                  <option value="Sports specific">Sports Specific</option>
                 </Form.Select>
               </FloatingLabel>
 

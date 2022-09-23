@@ -20,6 +20,7 @@ const ClientProgram = ({
   deleteExercise,
   editExercise,
 }: Props) => {
+  console.log("program", program.length);
   const handleAddButtonClick = () => {
     addExercise();
   };
@@ -31,6 +32,10 @@ const ClientProgram = ({
   const handleEditButtonClick = (exerciseName: string) => {
     editExercise(exerciseName);
   };
+
+  const emptyProgramErrorMessage = (
+    <h3 className="text-center my-4">No Program Data</h3>
+  );
 
   return (
     <SurfaceCard className="mb-3">
@@ -46,47 +51,51 @@ const ClientProgram = ({
           </Button>
         </Col>
         <Separator width={100} />
-        <Table bordered hover variant="dark" className="text-center my-3">
-          <thead>
-            <tr>
-              <th>Exercise</th>
-              <th>Target Weight</th>
-              <th>Reps</th>
-              <th>Sets</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {program.map((exercise: AssignedExercise) => {
-              return (
-                <tr key={exercise.name}>
-                  <th>{exercise.name}</th>
-                  <th>{exercise.weight}</th>
-                  <th>{exercise.reps}</th>
-                  <th>{exercise.sets}</th>
+        {program.length === 0 ? (
+          emptyProgramErrorMessage
+        ) : (
+          <Table bordered hover variant="dark" className="text-center my-3">
+            <thead>
+              <tr>
+                <th>Exercise</th>
+                <th>Target Weight</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {program.map((exercise: AssignedExercise) => {
+                return (
+                  <tr key={exercise.name}>
+                    <th>{exercise.name}</th>
+                    <th>{exercise.weight}</th>
+                    <th>{exercise.reps}</th>
+                    <th>{exercise.sets}</th>
 
-                  <th>
-                    <div className="">
-                      <FontAwesomeIcon
-                        className="mx-2"
-                        icon={faTrashCan}
-                        onClick={() => handleDeleteButtonClick(exercise.name)}
-                        style={{ color: "red" }}
-                      />
-                      <FontAwesomeIcon
-                        icon={faPenToSquare}
-                        onClick={() => {
-                          handleEditButtonClick(exercise.name);
-                        }}
-                        style={{ color: "yellow" }}
-                      />
-                    </div>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+                    <th>
+                      <div className="">
+                        <FontAwesomeIcon
+                          className="mx-2"
+                          icon={faTrashCan}
+                          onClick={() => handleDeleteButtonClick(exercise.name)}
+                          style={{ color: "red" }}
+                        />
+                        <FontAwesomeIcon
+                          icon={faPenToSquare}
+                          onClick={() => {
+                            handleEditButtonClick(exercise.name);
+                          }}
+                          style={{ color: "yellow" }}
+                        />
+                      </div>
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        )}
       </Container>
     </SurfaceCard>
   );

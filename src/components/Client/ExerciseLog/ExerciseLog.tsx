@@ -9,6 +9,10 @@ interface Props {
 }
 
 const ExerciseLog = ({ history }: Props) => {
+  const emptyHistoryErrorMessage = (
+    <h3 className="text-center my-4">No History Data</h3>
+  );
+
   return (
     <SurfaceCard>
       <Container>
@@ -23,7 +27,11 @@ const ExerciseLog = ({ history }: Props) => {
                 marginTop: "5px",
               }}
             />
-            <HistoryAccordion history={history} />
+            {history.length === 0 ? (
+              emptyHistoryErrorMessage
+            ) : (
+              <HistoryAccordion history={history} />
+            )}
           </Col>
         </Row>
       </Container>
