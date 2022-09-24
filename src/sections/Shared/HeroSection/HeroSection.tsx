@@ -4,8 +4,8 @@ import "./HeroSection.scss";
 
 const HeroSection = () => (
   <section id="showcase">
-    <Container className="text-white text-center vertical-align">
-      <Row>
+    <Container className="text-white text-center ">
+      <Row className="mx-auto vertical-center">
         <h1 className="display-2 py-3 hero-text ">
           Where Trainers and Clients Connect
         </h1>
