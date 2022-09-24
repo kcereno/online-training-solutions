@@ -6,7 +6,7 @@ import "./LandingPage.css";
 const LandingPage = () => (
   <>
     <HeroSection />
-    {/* <FeaturedSection /> */}
+    <FeaturedSection />
     <CustomerReviewsSection />
   </>
 );

@@ -12,7 +12,7 @@ const FeaturedSection = () => {
   return (
     <section className="featured my-5 text-white">
       <Container>
-        <h2 className="display-5 text-center"> Featured In</h2>
+        <h2 className="display-5 "> Featured In</h2>
         <div className="logos">
           <img src={logo1} alt="Business Insider" />
           <img src={logo2} alt="Forbes" />
