@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap");
+
+// Variables
 $backgroundColor: #16161a;
 $headlineColor: #fffffe;
 
@@ -10,6 +13,13 @@ $cardSubHeadline: #94a1b2;
 
 $primaryButton: #7f5af0;
 
+$headingFontSize: 4.4rem;
+$headingFontWeight: 500;
+
+$headingFont: "Josefin Sans", sans-serif;
+$textFont: "Poppins", sans-serif;
+
+// Containers
 .content-container {
   margin-top: 2rem;
   margin-bottom: 2rem;

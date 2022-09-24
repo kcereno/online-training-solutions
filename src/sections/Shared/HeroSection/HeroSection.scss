@@ -1,5 +1,33 @@
 @import "../../../global.scss";
 
-.hero-text {
-  color: $headlineColor;
+.hero-section {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/images/LandingImage.jpeg");
+  height: 65vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    height: 50vh;
+  }
+}
+
+.hero-container {
+  width: 80%;
+}
+
+.hero-heading {
+  font-size: $headingFontSize;
+  font-family: $headingFont;
+  font-weight: $headingFontWeight;
+  line-height: 4.8rem;
+
+  @media screen and (max-width: 414px) {
+    font-size: 3rem;
+    line-height: 3.2rem;
+  }
 }
