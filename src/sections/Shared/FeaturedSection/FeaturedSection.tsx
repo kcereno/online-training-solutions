@@ -10,17 +10,29 @@ import "./FeaturedSection.scss";
 
 const FeaturedSection = () => {
   return (
-    <section className="featured my-5 text-white">
-      <Container>
-        <h2 className="display-5 "> Featured In</h2>
-        <div className="logos">
-          <img src={logo1} alt="Business Insider" />
-          <img src={logo2} alt="Forbes" />
-          <img src={logo3} alt="TechCrunch" />
-          <img src={logo4} alt="The New York Times" />
-          <img src={logo5} alt="USA Today" />
+    <section className=" text-white section">
+      <h2 className="text-center subheading"> Featured In</h2>
+      <div className="marquee">
+        <div className="track">
+          <div className="logos ">
+            <img src={logo1} alt="Business Insider" />
+            <img src={logo2} alt="Forbes" />
+            <img src={logo3} alt="TechCrunch" />
+            <img src={logo4} alt="The New York Times" />
+            <img src={logo5} alt="USA Today" />
+            <img src={logo1} alt="Business Insider" />
+            <img src={logo2} alt="Forbes" />
+            <img src={logo3} alt="TechCrunch" />
+            <img src={logo4} alt="The New York Times" />
+            <img src={logo5} alt="USA Today" />
+            <img src={logo1} alt="Business Insider" />
+            <img src={logo2} alt="Forbes" />
+            <img src={logo3} alt="TechCrunch" />
+            <img src={logo4} alt="The New York Times" />
+            <img src={logo5} alt="USA Today" />
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 };
