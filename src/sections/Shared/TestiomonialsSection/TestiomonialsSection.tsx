@@ -1,11 +1,12 @@
 import { Carousel, Container } from "react-bootstrap";
-import "./CustomerReviewsSection.scss";
+import "./TestiomonialsSection.scss";
+import TestimonialCard from "./TestomonialCard/TestimonialCard";
 
-const CustomerReviewsSection = () => (
+const TestiomonialsSection = () => (
   <section className="section testimonials">
     <Container fluid className="carousel text-center text-white">
       <h2 className="subheading">Testimonials</h2>
-      <Carousel controls={false}>
+      {/* <Carousel controls={false}>
         <Carousel.Item>
           <div className="pb-5">
             <p className="testimonial-text">
@@ -24,8 +25,9 @@ const CustomerReviewsSection = () => (
             <h4>Karl</h4>
           </div>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
+      <TestimonialCard />
     </Container>
   </section>
 );
-export default CustomerReviewsSection;
+export default TestiomonialsSection;
