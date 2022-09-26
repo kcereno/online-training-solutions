@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap");
 
 // Variables
-$backgroundColor: #16161a;
+$backgroundColor: #18181b;
 $headlineColor: #fffffe;
+$secondaryBackgroundColor: #3f3f46;
 
 $navColor: #242629;
 $footerColor: #242629;
@@ -34,15 +35,15 @@ $textFont: "Poppins", sans-serif;
 }
 
 .section {
-  margin: 4.8rem 0;
+  padding: 4.8rem 0;
 
   // tablets
   @media only screen and (max-device-width: 768px) {
-    margin: 3.2rem 0;
+    padding: 3.2rem 0;
   }
   // phones
   @media only screen and (max-device-width: 425px) {
-    margin: 2.4rem 0;
+    padding: 2.4rem 0;
   }
 }
 
@@ -90,7 +91,6 @@ $textFont: "Poppins", sans-serif;
 .subheading {
   font-size: 3rem;
   font-family: $headingFont;
-  font-weight: $headingFontWeight;
 
   @media only screen and (max-device-width: 768px) {
     font-size: 2.4rem;
