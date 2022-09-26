@@ -18,7 +18,7 @@ const ExerciseLog = ({ history }: Props) => {
       <Container>
         <Row>
           <Col className="my-2">
-            <h2 className="section">Logs</h2>
+            <h2 className=" ">Logs</h2>
             <hr
               style={{
                 width: "100%",

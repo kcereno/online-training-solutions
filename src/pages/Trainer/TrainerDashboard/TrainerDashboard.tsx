@@ -33,9 +33,9 @@ const TrainerDashboard = ({
   };
 
   return (
-    <Container className="content-container" fluid>
+    <Container className="section" fluid>
       <Row>
-        <div className="d-flex justify-content-center align-items-center section">
+        <div className="d-flex justify-content-center align-items-center">
           <h2 className="text-white display-4 ">Clients</h2>
           <FontAwesomeIcon
             className="header-button"

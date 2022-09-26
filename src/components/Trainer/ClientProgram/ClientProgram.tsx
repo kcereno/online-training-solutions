@@ -41,7 +41,7 @@ const ClientProgram = ({
     <SurfaceCard className="mb-3">
       <Container>
         <Col className="d-flex justify-content-between align-items-center my-2 ">
-          <h2 className="section">Program</h2>
+          <h2 className="">Program</h2>
           <Button
             style={{ height: "70%" }}
             variant="primary"

@@ -1,7 +1,6 @@
 import CustomerReviewsSection from "../../../sections/Shared/CustomerReviewsSection/CustomerReviewsSection";
 import FeaturedSection from "../../../sections/Shared/FeaturedSection/FeaturedSection";
 import HeroSection from "../../../sections/Shared/HeroSection/HeroSection";
-import Testimonials from "../../../sections/Shared/Testimonials/Testimonials";
 import "./LandingPage.css";
 
 const LandingPage = () => (
