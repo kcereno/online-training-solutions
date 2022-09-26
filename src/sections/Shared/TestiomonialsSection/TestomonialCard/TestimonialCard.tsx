@@ -6,7 +6,7 @@ import "./TestimonialCard.scss";
 
 const TestimonialCard = () => {
   return (
-    <SurfaceCard className="testimonial-card">
+    <SurfaceCard className="testimonial-card mx-3">
       <Container>
         <div className="testimonial-picture my-3">INSERT PHOTO HERE</div>
 
