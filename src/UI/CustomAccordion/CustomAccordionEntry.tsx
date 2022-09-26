@@ -11,7 +11,7 @@ interface Props {
 
 const CustomAccordionEntry = ({ eventKey, title, content }: Props) => {
   return (
-    <Card style={{ background: "#212529" }}>
+    <Card style={{ background: "#212529", fontSize: "1rem" }}>
       <Card.Header>
         <CustomToggle1 eventKey={eventKey}>{title}</CustomToggle1>
       </Card.Header>
