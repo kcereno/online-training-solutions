@@ -4,9 +4,13 @@ import { Container } from "react-bootstrap";
 import SurfaceCard from "../../../../UI/SurfaceCard/SurfaceCard";
 import "./TestimonialCard.scss";
 
-const TestimonialCard = () => {
+
+interface Props {
+  name:string
+}
+const TestimonialCard = ({name}:Props) => {
   return (
-    <SurfaceCard className="testimonial-card mx-3">
+    <SurfaceCard className="testimonial-card mx-3 my-3">
       <Container>
         <div className="testimonial-picture my-3">INSERT PHOTO HERE</div>
 
@@ -22,7 +26,7 @@ const TestimonialCard = () => {
         </div>
         <div className="testimonial-name my-3">
           <p>
-            <strong>Karl Cereno</strong>
+            <strong>{name}</strong>
           </p>
         </div>
       </Container>

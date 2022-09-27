@@ -7,10 +7,10 @@ const TestiomonialsSection = () => (
     <Container fluid className="carousel text-center text-white">
       <h2 className="subheading">Testimonials</h2>
 
-      <div className="testimonials d-flex justify-content-center">
-        <TestimonialCard />
-        <TestimonialCard />
-        <TestimonialCard />
+      <div className="testimonials d-flex justify-content-center flex-wrap">
+        <TestimonialCard  name="Hector Fabuloso"/>
+        <TestimonialCard  name="Patrick Bueno"/>
+        <TestimonialCard  name="Ricardo Mantalban"/>
       </div>
     </Container>
   </section>
