@@ -16,13 +16,15 @@ const NavBarToggleMenu = ({ activeUser, logout }: Props) => {
       <Navbar.Collapse id="respnsive-navbar-nav">
         <Nav className="ms-auto">
           <Nav.Link
+            style={{ fontSize: "1rem" }}
             onClick={() => {
               navigate(`/dashboard/${activeUser?.info.id}`, { replace: true });
             }}
+
           >
             Clients
           </Nav.Link>
-          <Nav.Link onClick={logout}>Log Out</Nav.Link>
+          <Nav.Link style={{ fontSize: "1rem" }} onClick={logout}>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </>

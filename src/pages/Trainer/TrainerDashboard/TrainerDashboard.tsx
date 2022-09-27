@@ -33,7 +33,7 @@ const TrainerDashboard = ({
   };
 
   return (
-    <Container className="section" fluid>
+    <Container className="my-5" fluid>
       <Row>
         <div className="d-flex justify-content-center align-items-center">
           <h2 className="text-white display-4 ">Clients</h2>
@@ -44,7 +44,7 @@ const TrainerDashboard = ({
             onClick={handleAddClient}
           />
         </div>
-        <Separator width={90} />
+        <Separator width={90}  className="mx-2"/>
       </Row>
       <Row>
         <ClientsSection clients={clientList} trainerId={trainerId} />
