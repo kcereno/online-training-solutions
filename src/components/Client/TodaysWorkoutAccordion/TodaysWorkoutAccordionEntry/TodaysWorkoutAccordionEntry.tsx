@@ -30,9 +30,13 @@ const TodaysWorkoutAccordionEntry = ({
     });
   };
 
+  console.log('TodaysWorkoutAccordionEntry', todaysHistoryEntry)
+
   const handleAddSet = (weight: number, reps: number) => {
     addSetToLog(exercise.name, weight, reps);
   };
+
+  const hasExerciseData = todaysHistoryEntry?.data.find(entry=> entry.exercise === exercise.name)
 
   return (
     <Card style={{ background: "#212529" }} key={index.toString()}>
@@ -64,7 +68,7 @@ const TodaysWorkoutAccordionEntry = ({
               return null;
             }
           )}
-          {!todaysHistoryEntry && (
+          {!hasExerciseData &&(
             <h4 className="text-center"> Add set below</h4>
           )}
           <ExerciseLogEntryForm addSet={handleAddSet} />
