@@ -22,50 +22,55 @@ const useClientActions = () => {
     weight: number,
     reps: number
   ): void => {
-    const todaysHistoryEntry = fetchTodaysHistoryEntry(
-      (activeUser as Client).trainingPlan.history
+    const todaysHistoryEntry = (activeUser as Client).trainingPlan.history.find(
+      (entry) => isToday(entry.date)
     );
+
     let updatedHistory: HistoryEntry[] = [
       ...(activeUser as Client).trainingPlan.history,
     ];
-    if (!todaysHistoryEntry) {
-      updatedHistory = [
-        ...updatedHistory,
-        {
-          date: today,
-          data: [],
-        },
-      ];
-    }
+
+    if (!todaysHistoryEntry)
+      updatedHistory = [...updatedHistory, { date: today, data: [] }];
+
+    let updatedHistoryEntry = updatedHistory.find((entry) =>
+      isToday(entry.date)
+    ) as HistoryEntry;
+
+    const entryHasExercise = updatedHistoryEntry!.data.find(
+      (data) => data.exercise === exercise
+    );
+
+    if (!entryHasExercise)
+      updatedHistoryEntry = {
+        ...updatedHistoryEntry,
+        data: [...updatedHistoryEntry.data, { exercise, sets: [] }],
+      };
+
+    updatedHistoryEntry = {
+      ...updatedHistoryEntry,
+      data: [...updatedHistoryEntry.data].map((entry) => {
+        if (entry.exercise === exercise)
+          return { ...entry, sets: [...entry.sets, { weight, reps }] };
+
+        return entry;
+      }),
+    };
+
     updatedHistory = updatedHistory.map((entry) => {
-      if (isToday(entry.date)) {
-        let updatedEntry = { ...entry };
-        const hasExistingExerciseData = entry.data.find(
-          (data) => data.exercise === exercise
-        );
-        if (!hasExistingExerciseData)
-          updatedEntry = {
-            ...updatedEntry,
-            data: [...entry.data, { exercise, sets: [] }],
-          };
-        const updatedEntryData = updatedEntry.data.map((data) => {
-          if (data.exercise === exercise)
-            return {
-              exercise,
-              sets: [...data.sets, { weight: +weight, reps: +reps }],
-            };
-          return data;
-        });
-        return { ...updatedEntry, data: updatedEntryData };
-      }
+      if (isToday(entry.date)) return updatedHistoryEntry;
+
       return entry;
     });
+
     const updatedUser = updateClientHistory(
       activeUser as Client,
       updatedHistory
     );
-    console.log("useClientActions ~ updatedUser", updatedUser);
+
     updateActiveUser(updatedUser);
+
+    console.log("useClientActions ~ updatedHistoryEntry", updatedHistoryEntry);
   };
 
   const deleteSetFromLog = (exercise: string, setIndex: number, date: Date) => {
