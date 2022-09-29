@@ -2,16 +2,15 @@
 
 .testimonial-card {
   width: 250px;
+  margin: 0.8rem;
 }
 
-
-
-.testimonial-name {
-}
-
-.testimonial-img img {
+.testimonial-img {
   width: 50%;
   object-fit: contain;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 1.6rem;
+}
+
+.testimonial-text {
+  margin: 2.4rem;
 }

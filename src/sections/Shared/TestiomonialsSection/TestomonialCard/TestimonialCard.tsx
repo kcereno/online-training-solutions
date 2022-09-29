@@ -10,15 +10,13 @@ interface Props {
 }
 const TestimonialCard = ({ name, photo }: Props) => {
   return (
-    <SurfaceCard className="testimonial-card mx-3 my-3">
+    <SurfaceCard className="testimonial-card ">
       <Container>
-        <div className="testimonial-img my-3">
-          <img
-            className="rounded-circle horizontally-center"
-            src={photo}
-            alt="testimonial "
-          />
-        </div>
+        <img
+          className="rounded-circle testimonial-img"
+          src={photo}
+          alt="testimonial"
+        />
 
         <div className="testimonial-text">
           <span className="mx-2">

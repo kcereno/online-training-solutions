@@ -6,10 +6,10 @@ import image3 from "../../../assets/images/testimonial-faces/image-lorem-face-51
 import "./TestiomonialsSection.scss";
 
 const TestiomonialsSection = () => (
-  <section className="section flex-wrap secondary-bg-color">
-    <Container fluid className="text-center text-white">
-      <h2 className="subheading">Testimonials</h2>
-      <div className="d-flex justify-content-center ">
+  <section className="section  secondary-bg text-center text-white">
+    <Container>
+      <h2 className="heading-text my-3">Testimonials</h2>
+      <div className="d-flex justify-content-center flex-wrap">
         <TestimonialCard name="Hector Fabuloso" photo={image1} />
         <TestimonialCard name="Patrick Bueno" photo={image2} />
         <TestimonialCard name="Ricardo Mantalban" photo={image3} />

@@ -7,7 +7,7 @@ const LandingPage = () => (
   <>
     <HeroSection />
     <FeaturedSection />
-    {/* <TestiomonialsSection /> */}
+    <TestiomonialsSection />
   </>
 );
 
