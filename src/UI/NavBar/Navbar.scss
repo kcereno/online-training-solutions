@@ -1,5 +1,9 @@
 @import "../../global.scss";
 
-.color-nav {
+.navbar {
   background-color: $navColor;
+
+  a {
+    font-size: $bodyTextSize;
+  }
 }

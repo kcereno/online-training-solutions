@@ -30,13 +30,18 @@ $textFont: "Poppins", sans-serif;
 // Typography
 .hero-text {
   font-size: $heroTextSize;
-  font-weight: 600;
   line-height: $heroTextSize;
+  font-weight: 600;
+  font-family: $headingFont;
 
   @media only screen and (max-device-width: 425px) {
     font-size: $heroTextSizeMobile;
     line-height: $heroTextSizeMobile;
   }
+}
+
+body-text {
+  font-size: $bodyTextSize;
 }
 
 .heading-text {
