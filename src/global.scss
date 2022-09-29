@@ -14,16 +14,19 @@ $cardSubHeadline: #94a1b2;
 
 $primaryButton: #7f5af0;
 
+// Font Sizes
 $heroTextSize: 6.2rem;
-$heroTextSizeMobile: 5.2rem;
-
-$bodyTextSize: 1.6rem !important;
+$heroTextSizeMobile: 4.4rem;
 
 $headingTextSize: 3.2rem !important;
 $headingFontWeight: 500;
+$headingTextSizeMobile: 2rem !important;
+
+$bodyTextSize: 1.6rem !important;
 
 $subheadingFontSize: 3rem;
 
+// Fonts
 $headingFont: "Josefin Sans", sans-serif;
 $textFont: "Poppins", sans-serif;
 
@@ -49,18 +52,6 @@ body-text {
   font-family: $headingFont;
   font-weight: 500;
   line-height: $headingTextSize;
-
-  // tablets
-  @media only screen and (max-device-width: 768px) {
-    font-size: 3.6rem;
-    line-height: 3.6rem;
-  }
-
-  // phones
-  @media only screen and (max-device-width: 425px) {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
 }
 
 // Spacing
