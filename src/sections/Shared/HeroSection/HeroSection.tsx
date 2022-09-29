@@ -8,7 +8,7 @@ const HeroSection = () => (
       <Row className="center w-75 ">
         <h1 className="hero-text ">Where Trainers and Clients Connect</h1>
         <Link to="/signin">
-          <Button className="my-3" variant="outline-light" size="lg">
+          <Button className="my-3 login-btn" variant="outline-light" size="lg">
             Log In
           </Button>
         </Link>
