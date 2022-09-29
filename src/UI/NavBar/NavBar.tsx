@@ -10,7 +10,7 @@ const NavBar = () => {
   const { activeUser, logout } = useContext(UserContext);
 
   return (
-    <Navbar collapseOnSelect expand="md" variant="dark" className="navbar my-1">
+    <Navbar collapseOnSelect expand="md" variant="dark" className="navbar py-1">
       <Container fluid>
         <Navbar.Brand href="/" className="body-text">
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />

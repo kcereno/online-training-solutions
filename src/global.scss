@@ -63,46 +63,10 @@ body-text {
   }
 }
 
-.subheading {
-  font-size: 3rem;
-  font-family: $headingFont;
-
-  @media only screen and (max-device-width: 768px) {
-    font-size: 2.4rem;
-  }
-
-  // phones
-  @media only screen and (max-device-width: 425px) {
-    font-size: 2rem;
-  }
-}
-
-// Buttons
-
-// Containers
-.content-container {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-  // iphone 8+ and smaller
-  @media only screen and (max-device-width: 736px) {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-}
-
+// Spacing
 .section {
-  padding: 4.8rem 0;
-
-  // tablets
-  @media only screen and (max-device-width: 768px) {
-    padding: 3.2rem 0;
-  }
-
-  // phones
-  @media only screen and (max-device-width: 425px) {
-    padding: 2.4rem 0;
-  }
+  padding-top: 6.4rem;
+  padding-bottom: 6.4rem;
 }
 
 // Alignment Classes
@@ -129,10 +93,10 @@ body-text {
 
 // Background Colors
 
-.primary-bg-color {
+.primary-bg {
   background-color: $backgroundColor;
 }
 
-.secondary-bg-color {
+.secondary-bg {
   background-color: $secondaryBackgroundColor;
 }
