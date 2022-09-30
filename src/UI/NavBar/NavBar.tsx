@@ -11,7 +11,7 @@ const NavBar = () => {
 
   return (
     <Navbar collapseOnSelect expand="md" variant="dark" className="navbar py-1">
-      <Container fluid>
+      <Container fluid className="py-2">
         <Navbar.Brand href="/" className="body-text">
           <FontAwesomeIcon icon={faDumbbell} className="px-2" />
           Online Training Solutions
