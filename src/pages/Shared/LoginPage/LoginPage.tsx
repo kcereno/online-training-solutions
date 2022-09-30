@@ -3,7 +3,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import UserContext from "../../../store/User/user-context";
-import "./LoginPage.css";
+import "./LoginPage.scss";
 
 const LoginPage = () => {
   // States
@@ -49,7 +49,7 @@ const LoginPage = () => {
         <div className="input-fields mb-3">
           <Form.Group>
             <Form.Control
-              className="w-100"
+              className="w-100 mb-1"
               type="email"
               placeholder="Email"
               onChange={emailChangeHandler}
@@ -69,13 +69,13 @@ const LoginPage = () => {
           {!credentialsValid && (
             <p className="my-2 red-text">Incorrect Email or Password</p>
           )}
+          <div className="d-grid gap-2 my-3">
+            <Button variant="outline-light" size="lg" type="submit">
+              Sign In
+            </Button>
+          </div>
         </div>
 
-        <div className="d-grid gap-2">
-          <Button variant="outline-light" size="lg" type="submit">
-            Sign In
-          </Button>
-        </div>
         <div id="demo" className="py-2"></div>
         <p>For Demo Purposes: </p>
         <p>Trainer Credentials: trainer@gmail.com : password</p>
