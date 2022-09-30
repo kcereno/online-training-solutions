@@ -3,14 +3,17 @@
 .testimonial-card {
   width: 250px;
   margin: 0.8rem;
+  background-color: $backgroundColor;
 }
 
 .testimonial-img {
   width: 50%;
   object-fit: contain;
   margin-top: 1.6rem;
+  border: 2px solid $headlineColor;
 }
 
 .testimonial-text {
   margin: 2.4rem;
+  color: #94a1b2;
 }
