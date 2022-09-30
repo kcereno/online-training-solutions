@@ -44,8 +44,10 @@ const ClientCard = ({
         className="profile-picture"
         src={profilePicture}
       />
-      <div className="my-3 card-details">
-        <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
+      <div className="my-3 card-content">
+        <Card.Title className="card-title">
+          <h1>{`${firstName} ${lastName}`}</h1>
+        </Card.Title>
         <div className="d-flex card-subtitle justify-content-center">
           <div className="mx-1">
             <FontAwesomeIcon icon={faBullseye} />{" "}
@@ -56,8 +58,9 @@ const ClientCard = ({
           </div>
         </div>
       </div>
+
       <Card.Footer>
-        <div className="d-grid gap-2">
+        <div className="d-grid gap-2 card-footer">
           <Button onClick={handleOpenButton}>Open</Button>
         </div>
       </Card.Footer>

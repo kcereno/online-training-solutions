@@ -44,7 +44,7 @@ const TrainerDashboard = ({
             onClick={handleAddClient}
           />
         </div>
-        <Separator width={90}  className="mx-2"/>
+        <Separator width={90} className="my-2 mx-auto" />
       </Row>
       <Row>
         <ClientsSection clients={clientList} trainerId={trainerId} />
