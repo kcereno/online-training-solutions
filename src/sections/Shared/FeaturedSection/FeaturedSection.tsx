@@ -22,6 +22,26 @@ const FeaturedSection = () => {
           <img className="logo" src={logo3} alt="TechCrunch" />
           <img className="logo" src={logo4} alt="The New York Times" />
           <img className="logo" src={logo5} alt="USA Today" />
+          <img className="logo" src={logo1} alt="Business Insider" />
+          <img className="logo" src={logo2} alt="Forbes" />
+          <img className="logo" src={logo3} alt="TechCrunch" />
+          <img className="logo" src={logo4} alt="The New York Times" />
+          <img className="logo" src={logo5} alt="USA Today" />
+          <img className="logo" src={logo1} alt="Business Insider" />
+          <img className="logo" src={logo2} alt="Forbes" />
+          <img className="logo" src={logo3} alt="TechCrunch" />
+          <img className="logo" src={logo4} alt="The New York Times" />
+          <img className="logo" src={logo5} alt="USA Today" />
+          <img className="logo" src={logo1} alt="Business Insider" />
+          <img className="logo" src={logo2} alt="Forbes" />
+          <img className="logo" src={logo3} alt="TechCrunch" />
+          <img className="logo" src={logo4} alt="The New York Times" />
+          <img className="logo" src={logo5} alt="USA Today" />
+          <img className="logo" src={logo1} alt="Business Insider" />
+          <img className="logo" src={logo2} alt="Forbes" />
+          <img className="logo" src={logo3} alt="TechCrunch" />
+          <img className="logo" src={logo4} alt="The New York Times" />
+          <img className="logo" src={logo5} alt="USA Today" />
         </div>
       </Marquee>
     </section>
