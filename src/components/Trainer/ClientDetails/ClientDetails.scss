@@ -1,6 +1,7 @@
+@import "/src/global.scss";
+
 .client-details-container {
   width: 100%;
-  background-color: #262626;
   padding: 0px;
   border-radius: 10px;
   border: 0px;
@@ -11,6 +12,10 @@
   // iphone 8+ and smaller
   @media only screen and (max-device-width: 736px) {
     margin-bottom: 1rem;
+  }
+
+  button {
+    font-size: 1.6rem !important;
   }
 }
 

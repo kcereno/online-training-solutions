@@ -14,24 +14,26 @@ const ExerciseLog = ({ history }: Props) => {
   );
 
   return (
-    <SurfaceCard>
+    <SurfaceCard className="secondary-bg">
       <Container>
         <Row>
-          <Col className="my-2">
-            <h2 className=" ">Logs</h2>
-            <hr
-              style={{
-                width: "100%",
-                marginLeft: "auto",
-                marginRight: "auto",
-                marginTop: "5px",
-              }}
-            />
-            {history.length === 0 ? (
-              emptyHistoryErrorMessage
-            ) : (
-              <HistoryAccordion history={history} />
-            )}
+          <Col>
+            <div className="my-3">
+              <h1 className=" ">Logs</h1>
+              <hr
+                style={{
+                  width: "100%",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  marginTop: "5px",
+                }}
+              />
+              {history.length === 0 ? (
+                emptyHistoryErrorMessage
+              ) : (
+                <HistoryAccordion history={history} />
+              )}
+            </div>
           </Col>
         </Row>
       </Container>

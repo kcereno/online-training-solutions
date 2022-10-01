@@ -38,17 +38,15 @@ const ClientProgram = ({
   );
 
   return (
-    <SurfaceCard className="mb-3">
+    <SurfaceCard className="mb-3 secondary-bg">
       <Container>
-        <Col className="d-flex justify-content-between align-items-center my-2 ">
-          <h2 className="">Program</h2>
-          <Button
-            style={{ height: "70%" }}
-            variant="primary"
-            onClick={handleAddButtonClick}
-          >
-            +
-          </Button>
+        <Col>
+          <div className="d-flex justify-content-between align-items-center my-3 ">
+            <h1 className="my-auto ">Program</h1>
+            <Button variant="primary" onClick={handleAddButtonClick}>
+              +
+            </Button>
+          </div>
         </Col>
         <Separator width={100} />
         {program.length === 0 ? (

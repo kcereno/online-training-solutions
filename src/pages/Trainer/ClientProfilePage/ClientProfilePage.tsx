@@ -36,27 +36,29 @@ const ClientProfilePage = () => {
   };
 
   return (
-    <Container className="text-white content-container">
-      <Row>
-        <Col xs="12" md="4">
-          <ClientDetails
-            info={client.info}
-            goal={client.trainingPlan.goal}
-            notes={client.trainingPlan.notes}
-            deleteClient={showDeleteClientModal}
-          />
-        </Col>
-        <Col>
-          <ClientProgram
-            program={client.trainingPlan.program}
-            addExercise={handleAddExercise}
-            deleteExercise={handleDeleteExercise}
-            editExercise={handleEditExercise}
-          />
-          <ExerciseLog history={client.trainingPlan.history} />
-        </Col>
-      </Row>
-    </Container>
+    <div className="my-5">
+      <Container className="text-white ">
+        <Row>
+          <Col xs="12" md="4">
+            <ClientDetails
+              info={client.info}
+              goal={client.trainingPlan.goal}
+              notes={client.trainingPlan.notes}
+              deleteClient={showDeleteClientModal}
+            />
+          </Col>
+          <Col>
+            <ClientProgram
+              program={client.trainingPlan.program}
+              addExercise={handleAddExercise}
+              deleteExercise={handleDeleteExercise}
+              editExercise={handleEditExercise}
+            />
+            <ExerciseLog history={client.trainingPlan.history} />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
