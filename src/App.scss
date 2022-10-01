@@ -1,7 +1,6 @@
 @import "./global";
 
 body {
-  font-size: 1.6rem;
   position: relative;
   min-height: 100vh;
   padding-bottom: 100px;
@@ -9,11 +8,8 @@ body {
   /* Footer height */
 }
 
-button {
-  font-size: 1.6rem !important;
-}
-
 p,
-li {
-  font-size: 1.6rem !important;
+li,
+input {
+  font-size: 1rem !important;
 }

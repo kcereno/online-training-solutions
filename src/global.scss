@@ -16,14 +16,14 @@ $cardSubHeadline: #94a1b2;
 $primaryButton: #7f5af0;
 
 // Font Sizes
-$heroTextSize: 6.2rem;
-$heroTextSizeMobile: 4.4rem;
+$heroTextSize: 4rem;
+$heroTextSizeMobile: 2.5rem;
 
-$headingTextSize: 3.2rem !important;
+$headingTextSize: 2rem;
 $headingFontWeight: 500;
-$headingTextSizeMobile: 2rem !important;
+$headingTextSizeMobile: 2rem;
 
-$bodyTextSize: 1.6rem !important;
+$bodyTextSize: 1rem;
 
 $subheadingFontSize: 3rem;
 
@@ -57,12 +57,12 @@ body-text {
 
 // Spacing
 .section {
-  padding-top: 6.4rem;
-  padding-bottom: 6.4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   @media only screen and (max-device-width: 425px) {
-    padding-top: 4.8rem;
-    padding-bottom: 4.8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 

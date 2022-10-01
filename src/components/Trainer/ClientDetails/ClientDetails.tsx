@@ -31,7 +31,7 @@ const ClientDetails = ({
         src={profilePicture}
         alt="Card image"
       />
-      <h1 className="text-center client-details-name display-6 ">
+      <h1 className="text-center client-details-name display-6 my-3">
         {firstName} {lastName}
       </h1>
       <Separator />
