@@ -1,7 +1,7 @@
 import React from "react";
 import { Accordion, Card } from "react-bootstrap";
 import { HistoryEntryData } from "../../data/interfaces";
-import CustomToggle1 from "./CustomToggle/CustomToggle1";
+import HistoryToggle from "./CustomToggle/HistoryToggle/HistoryToggle";
 
 interface Props {
   eventKey: string;
@@ -13,13 +13,15 @@ const CustomAccordionEntry = ({ eventKey, title, content }: Props) => {
   return (
     <Card style={{ background: "#212529", fontSize: "1rem" }}>
       <Card.Header>
-        <CustomToggle1 eventKey={eventKey}>{title}</CustomToggle1>
+        <HistoryToggle eventKey={eventKey}>{title}</HistoryToggle>
       </Card.Header>
       <Accordion.Collapse eventKey={eventKey}>
         <Card.Body style={{ background: "black" }}>
           {content.map((data, index) => (
             <div key={index.toString()}>
-              <p>{data.exercise}</p>
+              <p>
+                <strong>{data.exercise}</strong>
+              </p>
               {data.sets.map((set, index) => (
                 <ul key={index.toString()}>
                   <li>{`Set: ${index + 1} Weight: ${set.weight} Reps: ${

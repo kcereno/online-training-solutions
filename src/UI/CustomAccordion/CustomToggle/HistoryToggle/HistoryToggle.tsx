@@ -1,22 +1,20 @@
 import React from "react";
 import { useAccordionButton } from "react-bootstrap";
+import "./HistoryToggle.scss";
 
 interface Props {
   children: React.ReactNode;
   eventKey: string;
 }
 
-const CustomToggle1 = ({ children, eventKey }: Props) => {
+const HistoryToggle = ({ children, eventKey }: Props) => {
   const decoratedOnClick = useAccordionButton(eventKey);
 
   return (
-    <p
-      style={{ marginTop: "auto", marginBottom: "auto" }}
-      onClick={decoratedOnClick}
-    >
+    <p className="my-auto" onClick={decoratedOnClick}>
       {children}
     </p>
   );
 };
 
-export default CustomToggle1;
+export default HistoryToggle;
