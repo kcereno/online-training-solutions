@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import "./HeroSection.scss";
 
 const HeroSection = () => (
-  <section className="hero-section ">
+  <section className="hero-section center">
     <Container>
-      <Row className="center w-75 ">
-        <h1 className="hero-text ">Where Trainers and Clients Connect</h1>
-        <Link to="/signin">
-          <Button className="my-3 login-btn" variant="outline-light" size="lg">
-            Log In
-          </Button>
-        </Link>
+      <Row>
+        <div>
+          <h1 className="hero-text ">Where Trainers and Clients Connect</h1>
+          <Link to="/signin">
+            <Button className="my-3 " variant="outline-light" size="lg">
+              Log In
+            </Button>
+          </Link>
+        </div>
       </Row>
     </Container>
   </section>
