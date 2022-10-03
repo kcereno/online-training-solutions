@@ -33,23 +33,25 @@ const TrainerDashboard = ({
   };
 
   return (
-    <Container className="my-5" fluid>
-      <Row>
-        <div className="d-flex justify-content-center align-items-center">
-          <h2 className="text-white display-4 ">Clients</h2>
-          <FontAwesomeIcon
-            className="header-button"
-            icon={faUserPlus}
-            color="white"
-            onClick={handleAddClient}
-          />
-        </div>
-        <Separator width={90} className="my-2 mx-auto" />
-      </Row>
-      <Row>
-        <ClientsSection clients={clientList} trainerId={trainerId} />
-      </Row>
-    </Container>
+    <section className="my-5 page">
+      <Container fluid>
+        <Row>
+          <div className="d-flex justify-content-center align-items-center">
+            <h2 className="text-white display-4 ">Clients</h2>
+            <FontAwesomeIcon
+              className="header-button"
+              icon={faUserPlus}
+              color="white"
+              onClick={handleAddClient}
+            />
+          </div>
+          <Separator width={90} className="my-2 mx-auto" />
+        </Row>
+        <Row>
+          <ClientsSection clients={clientList} trainerId={trainerId} />
+        </Row>
+      </Container>
+    </section>
   );
 };
 

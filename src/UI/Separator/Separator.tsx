@@ -15,6 +15,7 @@ const Separator = ({ width = 80, className }: Props) => {
         marginRight: "auto",
         marginTop: "0",
         marginBottom: "0",
+        color: "white",
       }}
     />
   );
