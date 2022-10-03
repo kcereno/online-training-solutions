@@ -18,15 +18,6 @@
   border: 0px;
   color: $cardHeading;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.card-content h1 {
-  font-size: 2rem;
-}
-
-.card-footer button {
-  font-size: 1.6rem;
+  margin-inline: auto;
 }

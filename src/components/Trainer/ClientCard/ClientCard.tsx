@@ -38,15 +38,16 @@ const ClientCard = ({
   };
 
   return (
-    <Card className="text-center card-container mx-3 my-3">
+    <Card className="text-center card-container m-3">
       <Card.Img
         variant="top"
         className="profile-picture"
         src={profilePicture}
       />
+
       <div className="my-3 card-content">
         <Card.Title className="card-title">
-          <h1>{`${firstName} ${lastName}`}</h1>
+          <h3>{`${firstName} ${lastName}`}</h3>
         </Card.Title>
         <div className="d-flex card-subtitle justify-content-center">
           <div className="mx-1">
