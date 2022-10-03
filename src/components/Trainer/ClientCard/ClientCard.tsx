@@ -21,7 +21,6 @@ const ClientCard = ({
 
   // Handlers
   const handleOpenButton = () => {
-    console.log("clicked");
     navigate(`/dashboard/${trainer}/client/${id}`);
   };
 

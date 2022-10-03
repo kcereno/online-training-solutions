@@ -20,7 +20,6 @@ const ClientProgram = ({
   deleteExercise,
   editExercise,
 }: Props) => {
-  console.log("program", program.length);
   const handleAddButtonClick = () => {
     addExercise();
   };
