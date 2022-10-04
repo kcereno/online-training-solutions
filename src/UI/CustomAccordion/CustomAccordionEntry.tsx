@@ -16,7 +16,7 @@ const CustomAccordionEntry = ({ eventKey, title, content }: Props) => {
         <HistoryToggle eventKey={eventKey}>{title}</HistoryToggle>
       </Card.Header>
       <Accordion.Collapse eventKey={eventKey}>
-        <Card.Body style={{ background: "black" }}>
+        <Card.Body className="primary-bg">
           {content.map((data, index) => (
             <div key={index.toString()}>
               <p>
