@@ -7,6 +7,7 @@ import SetEntry from "../SetEntry/SetEntry";
 import ExerciseLogEntryForm from "../../ExerciseLog/ExerciseLogEntryForm/ExerciseLogEntryForm";
 import useModal from "../../../../hooks/useModal";
 import useClientActions from "../../../../hooks/useClientActions";
+import "./TodaysWorkoutAccordionEntry.scss";
 
 interface Props {
   index: number;
@@ -30,16 +31,18 @@ const TodaysWorkoutAccordionEntry = ({
     });
   };
 
-  console.log('TodaysWorkoutAccordionEntry', todaysHistoryEntry)
+  console.log("TodaysWorkoutAccordionEntry", todaysHistoryEntry);
 
   const handleAddSet = (weight: number, reps: number) => {
     addSetToLog(exercise.name, weight, reps);
   };
 
-  const hasExerciseData = todaysHistoryEntry?.data.find(entry=> entry.exercise === exercise.name)
+  const hasExerciseData = todaysHistoryEntry?.data.find(
+    (entry) => entry.exercise === exercise.name
+  );
 
   return (
-    <Card style={{ background: "#212529" }} key={index.toString()}>
+    <Card key={index.toString()} className="secondary-bg">
       <Card.Header>
         <CustomToggle
           eventKey={index.toString()}
@@ -52,7 +55,7 @@ const TodaysWorkoutAccordionEntry = ({
         />
       </Card.Header>
       <Accordion.Collapse eventKey={index.toString()}>
-        <Card.Body>
+        <Card.Body className="primary-bg">
           {todaysHistoryEntry?.data.map(
             (historyEntryData: HistoryEntryData) => {
               if (historyEntryData.exercise === exercise.name)
@@ -68,8 +71,8 @@ const TodaysWorkoutAccordionEntry = ({
               return null;
             }
           )}
-          {!hasExerciseData &&(
-            <h4 className="text-center"> Add set below</h4>
+          {!hasExerciseData && (
+            <h4 className="text-center my-3"> Add set below</h4>
           )}
           <ExerciseLogEntryForm addSet={handleAddSet} />
         </Card.Body>
