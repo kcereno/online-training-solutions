@@ -23,7 +23,7 @@ const ClientDetails = ({
 
   return (
     <Card
-      className="client-details-container secondary-bg mx-auto"
+      className="client-details-container secondary-bg mr-auto"
       style={{ marginLeft: "auto" }}
     >
       <Card.Img
