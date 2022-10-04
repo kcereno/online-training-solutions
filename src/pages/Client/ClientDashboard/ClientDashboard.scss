@@ -1,12 +1,16 @@
 @import "/src/global.scss";
 
 .tabs {
-  ul,
+  background-color: $secondaryBackgroundColor;
   div {
-    background-color: $secondaryBackgroundColor;
+    background-color: red !important;
   }
 }
 
-.tab {
+.tab.nav-link {
   color: white;
+}
+
+.tab-content {
+  background-color: $secondaryBackgroundColor;
 }

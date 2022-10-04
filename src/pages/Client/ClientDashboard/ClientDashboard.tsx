@@ -7,7 +7,7 @@ import SurfaceCard from "../../../UI/SurfaceCard/SurfaceCard";
 import TodaysWorkoutAccordion from "../../../components/Client/TodaysWorkoutAccordion/TodaysWorkoutAccordion";
 import HistoryAccordion from "../../../components/Shared/HistoryAccordion/HistoryAccordion";
 import useClientActions from "../../../hooks/useClientActions";
-import "./ClientDashboard.css";
+import "./ClientDashboard.scss";
 import { Container } from "react-bootstrap";
 
 interface Props {
@@ -29,7 +29,7 @@ const ClientDashboard = ({
     <section className="page my-md-5 my-3 text-white">
       <Container>
         <SurfaceCard style={{ maxWidth: "700px" }} centered>
-          <Tabs defaultActiveKey="todaysWorkout">
+          <Tabs defaultActiveKey="todaysWorkout" className="tabs">
             <Tab
               eventKey="todaysWorkout"
               title="Todays Workout"
