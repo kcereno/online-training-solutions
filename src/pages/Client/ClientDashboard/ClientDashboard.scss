@@ -1,0 +1,12 @@
+@import "/src/global.scss";
+
+.tabs {
+  ul,
+  div {
+    background-color: $secondaryBackgroundColor;
+  }
+}
+
+.tab {
+  color: white;
+}

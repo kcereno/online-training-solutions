@@ -26,32 +26,38 @@ const ClientDashboard = ({
   const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
 
   return (
-    <Container>
-      <SurfaceCard
-        style={{ maxWidth: "700px" }}
-        className="text-white my-3 my-md-5"
-        centered
-      >
-        <Tabs defaultActiveKey="todaysWorkout" style={{ fontSize: "1rem" }}>
-          <Tab
-            eventKey="todaysWorkout"
-            title="Todays Workout"
-            tabClassName="tab"
-            style={{ fontSize: "1rem" }}
-          >
-            <TodaysWorkoutAccordion
-              program={program}
-              todaysHistoryEntry={todaysHistoryEntry}
-            />
-          </Tab>
-          <Tab eventKey="profile" title="Previous Workouts" tabClassName="tab">
-            <HistoryAccordion
-              history={(activeUser as Client).trainingPlan.history}
-            />
-          </Tab>
-        </Tabs>
-      </SurfaceCard>
-    </Container>
+    <section className="page">
+      <Container>
+        <SurfaceCard
+          style={{ maxWidth: "700px" }}
+          className="text-white my-3 my-md-5"
+          centered
+        >
+          <Tabs defaultActiveKey="todaysWorkout" style={{ fontSize: "1rem" }}>
+            <Tab
+              eventKey="todaysWorkout"
+              title="Todays Workout"
+              tabClassName="tab"
+              style={{ fontSize: "1rem" }}
+            >
+              <TodaysWorkoutAccordion
+                program={program}
+                todaysHistoryEntry={todaysHistoryEntry}
+              />
+            </Tab>
+            <Tab
+              eventKey="profile"
+              title="Previous Workouts"
+              tabClassName="tab"
+            >
+              <HistoryAccordion
+                history={(activeUser as Client).trainingPlan.history}
+              />
+            </Tab>
+          </Tabs>
+        </SurfaceCard>
+      </Container>
+    </section>
   );
 };
 
