@@ -26,14 +26,10 @@ const ClientDashboard = ({
   const todaysHistoryEntry = fetchTodaysHistoryEntry(history);
 
   return (
-    <section className="page">
+    <section className="page my-md-5 my-3 text-white">
       <Container>
-        <SurfaceCard
-          style={{ maxWidth: "700px" }}
-          className="text-white my-3 my-md-5"
-          centered
-        >
-          <Tabs defaultActiveKey="todaysWorkout" style={{ fontSize: "1rem" }}>
+        <SurfaceCard style={{ maxWidth: "700px" }} centered>
+          <Tabs defaultActiveKey="todaysWorkout">
             <Tab
               eventKey="todaysWorkout"
               title="Todays Workout"
