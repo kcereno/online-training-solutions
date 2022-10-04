@@ -44,7 +44,7 @@ const ClientCard = ({
         src={profilePicture}
       />
 
-      <div className="my-3 card-content">
+      <div className="my-2 card-content">
         <Card.Title className="card-title">
           <h3>{`${firstName} ${lastName}`}</h3>
         </Card.Title>
@@ -60,7 +60,7 @@ const ClientCard = ({
       </div>
 
       <Card.Footer>
-        <div className="d-grid gap-2 card-footer">
+        <div className="d-grid gap-2 ">
           <Button onClick={handleOpenButton}>Open</Button>
         </div>
       </Card.Footer>
