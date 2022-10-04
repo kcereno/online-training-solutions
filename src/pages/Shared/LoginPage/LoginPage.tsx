@@ -50,7 +50,7 @@ const LoginPage = () => {
           <div className="login-input mb-3 mw-50">
             <Form.Group>
               <Form.Control
-                className="w-100 mb-1"
+                className="w-100"
                 type="email"
                 placeholder="Email"
                 onChange={emailChangeHandler}
