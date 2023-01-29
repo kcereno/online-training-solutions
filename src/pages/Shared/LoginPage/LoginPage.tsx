@@ -1,15 +1,15 @@
-import { useContext, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import UserContext from "../../../store/User/user-context";
-import "./LoginPage.scss";
+import { useContext, useState } from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UserContext from '../../../store/User/user-context';
+import './LoginPage.scss';
 
 const LoginPage = () => {
   // States
   const [credentialsValid, setCredentialsValid] = useState<boolean>(true);
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   // Context
   const { login, validateUser } = useContext(UserContext);
@@ -32,8 +32,8 @@ const LoginPage = () => {
     validatedUser && login(validatedUser);
 
     setCredentialsValid(false);
-    setEmail("");
-    setPassword("");
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -71,7 +71,11 @@ const LoginPage = () => {
               <p className="my-2 red-text">Incorrect Email or Password</p>
             )}
             <div className="d-grid gap-2">
-              <Button variant="outline-light" size="lg" type="submit">
+              <Button
+                variant="outline-light"
+                size="lg"
+                type="submit"
+              >
                 Sign In
               </Button>
             </div>

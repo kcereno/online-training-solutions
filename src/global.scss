@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap');
 
 // Variables
 $backgroundColor: #16161a;
@@ -28,8 +28,8 @@ $bodyTextSize: 1rem;
 $subheadingFontSize: 3rem;
 
 // Fonts
-$headingFont: "Josefin Sans", sans-serif;
-$textFont: "Poppins", sans-serif;
+$headingFont: 'Josefin Sans', sans-serif;
+$textFont: 'Poppins', sans-serif;
 
 // Typography
 .hero-text {
@@ -96,5 +96,5 @@ body-text {
 }
 
 .page {
-  min-height: 65vh;
+  min-height: 80vh;
 }

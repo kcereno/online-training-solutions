@@ -1,9 +1,9 @@
-import { faBullseye, faLocationPin } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { faBullseye, faLocationPin } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-import "./ClientCard.scss";
+import './ClientCard.scss';
 
 type PropTypes = {
   key: string;
@@ -29,11 +29,11 @@ const ClientCard = ({
   }
 
   const goalColors: GoalColorsInterface = {
-    "Build muscle": "red",
-    "Lose fat": "yellow",
-    "Gain strength": "orange",
-    "Body recomposition": "green",
-    "Sports specific": "pink",
+    'Build muscle': 'red',
+    'Lose fat': 'yellow',
+    'Gain strength': 'orange',
+    'Body recomposition': 'green',
+    'Sports specific': 'pink',
   };
 
   return (
@@ -50,7 +50,7 @@ const ClientCard = ({
         </Card.Title>
         <div className="d-flex card-subtitle justify-content-center">
           <div className="mx-1">
-            <FontAwesomeIcon icon={faBullseye} />{" "}
+            <FontAwesomeIcon icon={faBullseye} />{' '}
             <span style={{ color: `${goalColors[goal]}` }}>{goal}</span>
           </div>
           <div className="mx-1">
