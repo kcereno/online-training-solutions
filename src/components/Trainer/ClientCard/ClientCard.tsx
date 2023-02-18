@@ -44,7 +44,7 @@ const ClientCard = ({
         src={profilePicture}
       />
 
-      <div className="my-2 card-content">
+      <div className="my-4 card-content">
         <Card.Title className="card-title">
           <h3>{`${firstName} ${lastName}`}</h3>
         </Card.Title>
